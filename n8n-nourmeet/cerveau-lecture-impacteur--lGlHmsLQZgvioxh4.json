@@ -1,0 +1,98 @@
+{
+  "active": true,
+  "connections": {
+    "Appel du cerveau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire Prospection",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire Prospection": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "lGlHmsLQZgvioxh4",
+  "name": "CERVEAU - lecture Impacteur",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Appel du cerveau",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "cerveau-impacteur-7ea5be6fe8f10793486b7a4a3a2cf755",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "cerveau-impacteur-7ea5be6fe8f10793486b7a4a3a2cf755"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a2",
+      "name": "Lire Prospection",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "read",
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        240,
+        0
+      ],
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6
+    },
+    {
+      "id": "a3",
+      "name": "Répondre",
+      "parameters": {
+        "options": {},
+        "respondWith": "allIncomingItems"
+      },
+      "position": [
+        480,
+        0
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none"
+  },
+  "tags": []
+}

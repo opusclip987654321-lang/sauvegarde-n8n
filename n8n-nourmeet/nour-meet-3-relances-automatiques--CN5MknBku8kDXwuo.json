@@ -1,0 +1,629 @@
+{
+  "active": false,
+  "connections": {
+    "Champs : envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer envoyé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : prospect contacté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour le prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer en échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour à 9 h 30": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Configuration",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Configuration": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les exclusions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la relance": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "File d'envoi",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer le mail (OVH)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : envoyé",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Champs : échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "File d'envoi": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la relance",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les propositions en attente",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les propositions en attente": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les prospects contactés",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les prospects contactés": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Qui relancer aujourd'hui ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer en échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause entre deux mails",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : prospect contacté",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mettre à jour le prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause entre deux mails",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pause entre deux mails": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer le mail": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer le mail (OVH)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Qui relancer aujourd'hui ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Une par une": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "Préparer le mail",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "CN5MknBku8kDXwuo",
+  "name": "Nour Meet 3 - Relances automatiques",
+  "nodes": [
+    {
+      "id": "2b42db9d-1986-48df-a538-26bb4e6b5059",
+      "name": "Chaque jour à 9 h 30",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "30 9 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "78d98fb0-cf9a-4d24-8716-3563bef06e11",
+      "name": "Configuration",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  MODE_TEST: true,                          // true = 3 mails seulement, tous vers ADRESSE_TEST, avec [TEST] dans l'objet\n  ADRESSE_TEST: 'contact@nourmeet.com',\n  TELEGRAM_CHAT_ID: '6339897621',           // reçoit le bilan quotidien (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <contact@nourmeet.com>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/restaurateurs',\n  SITE_WEB: 'https://nourmeet.com',         // lien du logo en bas du mail\n  LOGO_URL: 'https://n8n.nourmeet.com/webhook/logo-nour-meet', // logo servi par le workflow 5 (vide = lien texte seul)\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (validé le 26/09)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (validé le 26/09)\n  PAUSE_ENTRE_MAILS_S: 45,                  // espacement des envois (délivrabilité)\n  SUIVI_URL: 'https://n8n.nourmeet.com/webhook/ouverture', // pixel d'ouverture (workflow 7)\n};\nreturn [{ json: CONFIG }];"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "8932ba69-c09a-4bf3-9791-5664804883be",
+      "name": "Lire les exclusions",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "5463edcc-00a9-4dfc-b6f2-54f8a9beca50",
+      "name": "Lire les propositions en attente",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "statut",
+              "keyValue": "a_envoyer"
+            }
+          ]
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "executeOnce": true,
+      "id": "c56357a4-c381-4628-a552-c4abbfe25032",
+      "name": "Lire les prospects contactés",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "statut",
+              "keyValue": "contacte"
+            },
+            {
+              "keyName": "statut",
+              "keyValue": "relance1"
+            }
+          ]
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d49d7560-9ebc-4dca-8bd3-d8f6306d5fb1",
+      "name": "Qui relancer aujourd'hui ?",
+      "parameters": {
+        "jsCode": "function phraseAccroche(p) {\n  const faits = [];\n  if (p.sans_alcool === 'confirmé (site)') faits.push('votre offre de boissons sans alcool');\n  if (p.privatisation === 'confirmé (site)') faits.push('la possibilité de privatiser vos espaces');\n  const lieu = p.ville ? `${p.nom} à ${p.ville}` : p.nom;\n  if (faits.length) return `En découvrant ${lieu}, et notamment ${faits.join(' et ')}, nous avons pensé que vous pourriez accueillir ce type de soirée.`;\n  return `En découvrant ${lieu}, nous avons pensé que votre établissement pourrait accueillir ce type de soirée.`;\n}\nconst PIED = (C) => `Bien cordialement,\\n${C.SIGNATAIRE}\\nNūr Meet\\n${C.SITE_WEB}\\n\\nSi vous ne souhaitez plus recevoir de message de notre part, répondez simplement « STOP ».`;\n\nfunction mailInitial(p, C) {\n  return {\n    objet: `${p.nom} : proposer vos soirées rencontre et networking sur Nūr Meet`,\n    corps:\n`Bonjour,\n\nJe vous écris au nom de Nūr Meet, une plateforme qui publie des soirées de rencontre et de networking organisées dans des restaurants d'Île-de-France.\n\n${phraseAccroche(p)}\n\nLe principe est simple :\n- vous proposez vos propres soirées payantes, de rencontre ou de networking, et publiez l'annonce sur Nūr Meet ;\n- vous restez l'organisateur de la soirée dans votre établissement ;\n- notre équipe valide chaque annonce avant sa publication.\n\nPour candidater, il suffit de créer votre compte ici : ${C.LIEN_CANDIDATURE}\n\nJe reste disponible pour répondre à vos questions par simple retour de mail.\n\n${PIED(C)}`,\n  };\n}\n\nfunction mailRelance(p, n, C) {\n  if (n === 1) return {\n    objet: `Nūr Meet : vos soirées chez ${p.nom} ?`,\n    corps:\n`Bonjour,\n\nJe me permets de revenir vers vous au sujet de Nūr Meet. Si l'idée d'organiser des soirées de rencontre ou de networking chez ${p.nom} vous intéresse, la candidature se fait en quelques minutes : ${C.LIEN_CANDIDATURE}\n\nNous validons chaque annonce avant publication, et vous restez l'organisateur de vos soirées.\n\n${PIED(C)}`,\n  };\n  return {\n    objet: `Dernier message : Nūr Meet et ${p.nom}`,\n    corps:\n`Bonjour,\n\nJe vous adresse un dernier message au sujet de Nūr Meet. Si ce n'est pas le bon moment, aucun souci, je ne vous relancerai plus.\n\nSi l'idée vous tente plus tard, vous pourrez toujours candidater ici : ${C.LIEN_CANDIDATURE}\n\n${PIED(C)}`,\n  };\n}\n\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst C = $('Configuration').first().json;\nconst exclus = new Set($('Lire les exclusions').all().map(i => i.json.email).filter(Boolean));\nconst enAttente = new Set($('Lire les propositions en attente').all().map(i => i.json.prospect_place_id).filter(Boolean));\nconst jours = (d) => (Date.now() - new Date(d).getTime()) / 86400000;\nconst out = [];\nfor (const { json: p } of $input.all()) {\n  if (!p.place_id || !p.date_premier_envoi || exclus.has(p.email) || enAttente.has(p.place_id)) continue;\n  let n = 0;\n  if (p.statut === 'contacte' && jours(p.date_premier_envoi) >= C.RELANCE_1_APRES_JOURS) n = 1;\n  if (p.statut === 'relance1' && jours(p.date_premier_envoi) >= C.RELANCE_2_APRES_JOURS) n = 2;\n  if (!n) continue;\n  const m = mailRelance(p, n, C);\n  out.push({ json: {\n    ligne: { prospect_place_id: p.place_id, nom: p.nom, email: p.email, type: 'relance' + n, objet: m.objet,\n             corps: m.corps, statut: 'a_envoyer', date_proposition: new Date().toISOString() },\n  }});\n}\nreturn out;"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "6b96d57c-96ed-4dba-b2a1-8806ddff6cc8",
+      "name": "Ligne proposition",
+      "parameters": {
+        "jsCode": "return $input.all().map(i => ({ json: i.json.ligne }));"
+      },
+      "position": [
+        1328,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "fe682635-78b2-4036-bcd1-cf02e674bcab",
+      "name": "Enregistrer la relance",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "options": {}
+      },
+      "position": [
+        1552,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "6bb6447b-26fc-4d4d-bbdc-c993fecf3c29",
+      "name": "File d'envoi",
+      "parameters": {
+        "jsCode": "return $input.all().map(it => ({ json: { envoi_id: it.json.id, email: it.json.email, objet: it.json.objet,\n  corps: it.json.corps, type: it.json.type, prospect_place_id: it.json.prospect_place_id } }));"
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cc7dcaad-bb8c-40eb-86e5-352744977781",
+      "name": "Une par une",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        1984,
+        0
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "597eebb2-b987-41e2-a523-0085f68f2649",
+      "name": "Préparer le mail",
+      "parameters": {
+        "jsCode": "const C = $('Configuration').first().json;\n\nconst e = $json;\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst fmt = (t) => esc(t).replace(/(https?:\\/\\/[^\\s<]+)/g, '<a href=\"$1\">$1</a>').replace(/\\n/g, '<br>');\n// Le logo se place juste après la signature, avant la ligne « STOP »\nconst i = String(e.corps).lastIndexOf('\\n\\nSi vous ne souhaitez plus');\nconst avant = i >= 0 ? String(e.corps).slice(0, i) : String(e.corps);\nconst stop = i >= 0 ? String(e.corps).slice(i + 2) : '';\nconst site = esc(C.SITE_WEB);\nconst logo = C.LOGO_URL\n  ? `<a href=\"${site}\"><img src=\"${esc(C.LOGO_URL)}\" alt=\"Nūr Meet\" width=\"140\" style=\"border:0;display:block;margin-top:16px\"></a>`\n  : '';\n// Pixel d'ouverture : compté quand la messagerie affiche les images (approximatif)\nconst pixel = C.SUIVI_URL ? `<img src=\"${esc(C.SUIVI_URL)}?e=${e.envoi_id}\" width=\"1\" height=\"1\" alt=\"\" style=\"border:0\">` : '';\nconst html = `<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#222\">${fmt(avant)}${logo}${stop ? `<p style=\"font-size:12px;color:#777\">${fmt(stop)}</p>` : ''}${pixel}</div>`;\nreturn { json: { ...e, html,\n  to: C.MODE_TEST ? C.ADRESSE_TEST : e.email,\n  subject: (C.MODE_TEST ? '[TEST] ' : '') + e.objet,\n  test: !!C.MODE_TEST } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2224,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "smtp": {
+          "id": "fZPsmbTaU3rVPrOn",
+          "name": "SMTP OVH contact@nourmeet.com"
+        }
+      },
+      "id": "4e044c76-3f54-449e-a6af-742dd600e802",
+      "name": "Envoyer le mail (OVH)",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "emailFormat": "both",
+        "fromEmail": "={{ $('Configuration').first().json.EXPEDITEUR }}",
+        "html": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false
+        },
+        "subject": "={{ $json.subject }}",
+        "text": "={{ $json.corps }}",
+        "toEmail": "={{ $json.to }}"
+      },
+      "position": [
+        2464,
+        112
+      ],
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "webhookId": "2b063fa6-b66d-429b-9137-68703d42d725"
+    },
+    {
+      "id": "717f2bc0-9982-4932-8bb1-b33a607101d8",
+      "name": "Champs : envoyé",
+      "parameters": {
+        "jsCode": "return { json: { statut: $('Préparer le mail').item.json.test ? 'test' : 'envoye', date_decision: new Date().toISOString() } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2704,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "19154b67-ccb5-4d1d-be35-ea6c64658efc",
+      "name": "Marquer envoyé",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        2944,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "ec3a8fb5-a63b-46eb-9d20-869f1b96a3ad",
+      "name": "Champs : prospect contacté",
+      "parameters": {
+        "jsCode": "const e = $json;                      // ligne np_envois mise à jour\nconst now = new Date().toISOString();\nif (e.statut === 'test') return { json: { statut: 'test' } };\nconst o = { date_dernier_envoi: now };\nif (e.type === 'initial') Object.assign(o, { statut: 'contacte', date_premier_envoi: now, nb_relances: 0 });\nif (e.type === 'relance1') Object.assign(o, { statut: 'relance1', nb_relances: 1 });\nif (e.type === 'relance2') Object.assign(o, { statut: 'relance2', nb_relances: 2 });\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        3184,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "4be0e8a9-32b4-4a80-84b1-a109f1f2f62a",
+      "name": "Mettre à jour le prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $('Marquer envoyé').item.json.prospect_place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        3424,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "468082a9-53b6-41d5-8451-92e1578cacf5",
+      "name": "Champs : échec",
+      "parameters": {
+        "jsCode": "return { json: { statut: 'echec', date_decision: new Date().toISOString(), erreur: String($json.error?.message || $json.error || 'erreur inconnue').slice(0, 500) } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2704,
+        224
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "dfb365b1-3bc0-419c-ae08-818a72e97b34",
+      "name": "Marquer en échec",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        2944,
+        224
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "5d2c9d93-36f5-4b63-9d84-1845cdaea025",
+      "name": "Pause entre deux mails",
+      "parameters": {
+        "amount": "={{ $('Configuration').first().json.PAUSE_ENTRE_MAILS_S }}"
+      },
+      "position": [
+        3664,
+        112
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "3ca6e34a-6cd6-4c34-bd80-b1d9ecc747ca"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

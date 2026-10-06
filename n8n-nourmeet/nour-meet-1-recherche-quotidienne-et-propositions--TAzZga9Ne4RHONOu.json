@@ -1,0 +1,915 @@
+{
+  "active": false,
+  "connections": {
+    "Analyser l'accueil": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire la page contact",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Aplatir, garder l'IDF, dédoublonner": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pas déjà en base (place_id)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Au plus 120 sites à lire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire le site (accueil)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Noter le message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour à 9 h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Configuration et requêtes du jour",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Configuration et requêtes du jour": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Google Places : recherche texte",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E-mail pas déjà prospecté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Trier et garder les 50 meilleurs",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E-mail trouvé ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pas dans les exclusions",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Fiche sans e-mail",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer le message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer le prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Fiche sans e-mail": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer (sans e-mail)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Google Places : recherche texte": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Aplatir, garder l'IDF, dédoublonner",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer le prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire la page contact": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Qualifier et rédiger",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire le site (accueil)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analyser l'accueil",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Noter le message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause 2 s",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pas dans les exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E-mail pas déjà prospecté",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pas déjà en base (place_id)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Au plus 120 sites à lire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pause 2 s": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer le message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Qualifier et rédiger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E-mail trouvé ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Telegram : proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Trier et garder les 50 meilleurs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Une par une": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Telegram : bilan du jour",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Telegram : proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "TAzZga9Ne4RHONOu",
+  "name": "Nour Meet 1 - Recherche quotidienne et propositions",
+  "nodes": [
+    {
+      "id": "dc192d11-49bb-4106-b242-69c3a52350f1",
+      "name": "Chaque jour à 9 h",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 9 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        -4416,
+        304
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "8c72efe0-9859-4757-bac8-88a985483612",
+      "name": "Configuration et requêtes du jour",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  TELEGRAM_CHAT_ID: '6339897621',            // ton identifiant de chat Telegram (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <https://nourmeet.com/>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/restaurateurs',\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (à confirmer)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (à confirmer)\n};\n\n// Zones d'Île-de-France parcourues à tour de rôle\nconst ZONES = [\n  'Paris 1er','Paris 2e','Paris 3e','Paris 4e','Paris 5e','Paris 6e','Paris 7e','Paris 8e','Paris 9e','Paris 10e',\n  'Paris 11e','Paris 12e','Paris 13e','Paris 14e','Paris 15e','Paris 16e','Paris 17e','Paris 18e','Paris 19e','Paris 20e',\n  'Neuilly-sur-Seine','Levallois-Perret','Boulogne-Billancourt','Issy-les-Moulineaux','Malakoff','Montrouge',\n  'Saint-Denis','Saint-Ouen','Aubervilliers','Montreuil','Vincennes','Saint-Mandé','Créteil','Vitry-sur-Seine',\n  'Ivry-sur-Seine','Nanterre','Courbevoie','Puteaux','Rueil-Malmaison','Versailles','Saint-Germain-en-Laye',\n  'Argenteuil','Cergy','Sarcelles','Bobigny','Pantin','Clichy','Massy','Évry-Courcouronnes','Meaux',\n];\nconst THEMES = [\n  'restaurant halal haut de gamme',\n  'restaurant sans alcool chic',\n  'restaurant privatisable pour soirée',\n  'restaurant lounge chicha',\n  'restaurant gastronomique halal',\n];\n// 10 requêtes par jour : 2 zones x 5 thèmes, qui tournent chaque jour\nconst jour = Math.floor(Date.now() / 86400000);\nconst items = [];\nfor (let z = 0; z < 2; z++) {\n  const zone = ZONES[(jour * 2 + z) % ZONES.length];\n  for (const theme of THEMES) items.push({ json: { ...CONFIG, textQuery: `${theme} ${zone}`, zone } });\n}\nreturn items;"
+      },
+      "position": [
+        -4208,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "v92f4jnnMm7KTRm9",
+          "name": "Google Places API (clé)"
+        }
+      },
+      "id": "09386848-7430-4b39-b005-316faa6c4b0f",
+      "name": "Google Places : recherche texte",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Goog-FieldMask",
+              "value": "places.id,places.displayName,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber,places.googleMapsUri,places.rating,places.userRatingCount,places.priceLevel,places.primaryType,places.businessStatus,places.goodForGroups,places.reservable,places.servesBeer,places.servesWine,places.servesCocktails"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify({ textQuery: $json.textQuery, languageCode: 'fr', regionCode: 'FR', pageSize: 20, locationRestriction: { rectangle: { low: { latitude: 48.12, longitude: 1.44 }, high: { latitude: 49.24, longitude: 3.56 } } } }) }}",
+        "method": "POST",
+        "options": {
+          "timeout": 20000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://places.googleapis.com/v1/places:searchText"
+      },
+      "position": [
+        -3984,
+        304
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "af638ccc-ff04-4ae1-b075-62763bfce7bd",
+      "name": "Aplatir, garder l'IDF, dédoublonner",
+      "parameters": {
+        "jsCode": "const PRIX = { PRICE_LEVEL_INEXPENSIVE: '€', PRICE_LEVEL_MODERATE: '€€', PRICE_LEVEL_EXPENSIVE: '€€€', PRICE_LEVEL_VERY_EXPENSIVE: '€€€€' };\nconst vus = new Set(); const out = [];\nfor (const it of $input.all()) {\n  for (const p of (it.json.places || [])) {\n    if (!p.id || vus.has(p.id)) continue;\n    if (p.businessStatus && p.businessStatus !== 'OPERATIONAL') continue;\n    const adr = p.formattedAddress || '';\n    const cp = (adr.match(/\\b(75|77|78|91|92|93|94|95)\\d{3}\\b/) || [])[0];\n    if (!cp) continue;                                   // hors Île-de-France\n    vus.add(p.id);\n    const ville = (adr.match(new RegExp(cp + '\\\\s+([^,]+)')) || [])[1] || '';\n    const indices = [];\n    if (p.goodForGroups) indices.push('adapté aux groupes (Google)');\n    if (p.reservable) indices.push('réservable (Google)');\n    if (p.servesBeer || p.servesWine) indices.push('sert de l\\'alcool (Google)');\n    if (p.servesCocktails) indices.push('cocktails (Google)');\n    out.push({ json: {\n      place_id: p.id, nom: p.displayName?.text || '', adresse: adr, ville: ville.trim(), code_postal: cp,\n      site: p.websiteUri || '', telephone: p.nationalPhoneNumber || '', maps_url: p.googleMapsUri || '',\n      note: p.rating ?? null, nb_avis: p.userRatingCount ?? null, niveau_prix: PRIX[p.priceLevel] || '',\n      groupes: !!p.goodForGroups, alcool_google: !!(p.servesBeer || p.servesWine),\n      indices_google: indices.join(', '),\n    }});\n  }\n}\nreturn out;"
+      },
+      "position": [
+        -3760,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "b341dfa8-895b-441b-92c2-7b9fa5a0f70c",
+      "name": "Pas déjà en base (place_id)",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $json.place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        -3536,
+        304
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d2a27745-484c-4a44-820b-917f568be833",
+      "name": "Au plus 120 sites à lire",
+      "parameters": {
+        "maxItems": 120
+      },
+      "position": [
+        -3328,
+        304
+      ],
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1
+    },
+    {
+      "id": "d2841984-596f-4a9b-a1bb-0392fca619c8",
+      "name": "Lire le site (accueil)",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; NourMeetBot/1.0; +https://nourmeet.com)"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 5
+            }
+          },
+          "response": {
+            "response": {
+              "outputPropertyName": "html",
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        },
+        "sendHeaders": true,
+        "url": "={{ $json.site || 'https://site-absent.invalid' }}"
+      },
+      "position": [
+        -3104,
+        304
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "8dfcc5dc-c6e8-45df-8732-be398181f7b3",
+      "name": "Analyser l'accueil",
+      "parameters": {
+        "jsCode": "const texte = (html) => String(html || '').replace(/<script[\\s\\S]*?<\\/script>|<style[\\s\\S]*?<\\/style>/gi, ' ')\n  .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/\\s+/g, ' ');\nconst EXCLUS = /(example|exemple|domain|sentry|wixpress|wix\\.com|godaddy|\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.svg|noreply|no-reply|privacy|rgpd@|dpo@)/i;\nfunction emails(html) {\n  const brut = String(html || '').replace(/&#64;|\\[at\\]|\\(at\\)/gi, '@');\n  const trouves = brut.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [];\n  return [...new Set(trouves.map(e => e.toLowerCase().replace(/^mailto:/, '')))].filter(e => !EXCLUS.test(e));\n}\nfunction indices(t) {\n  const r = {};\n  if (/\\bhalal\\b/i.test(t) && !/non[\\s-]halal|pas halal/i.test(t)) r.halal = true;\n  if (/sans alcool|mocktail|0\\s?% alcool|alcohol[\\s-]free/i.test(t)) r.sans_alcool = true;\n  if (/privatis/i.test(t)) r.privatisation = true;\n  if (/chicha|shisha|narguil/i.test(t)) r.chicha = true;\n  const cap = t.match(/(?:jusqu['’]?\\s?à|capacité(?: de)?|accueillir)\\s*(\\d{2,3})\\s*(?:personnes|couverts|convives|invités|places)/i);\n  if (cap) r.capacite = parseInt(cap[1], 10);\n  return r;\n}\n\nconst base = $('Au plus 120 sites à lire').all();\nreturn $input.all().map((it, i) => {\n  const p = base[i].json; const html = it.json.html || '';\n  let contact_url = '';\n  if (p.site) {\n    const lien = (String(html).match(/href=[\"']([^\"'#]*(?:contact|reserv|privatis|evenement|événement|groupe)[^\"']*)[\"']/i) || [])[1];\n    try { contact_url = new URL(lien || '/contact', p.site).href; } catch (e) { contact_url = ''; }\n  }\n  return { json: { ...p, emails_accueil: emails(html), indices_accueil: indices(texte(html)), contact_url } };\n});"
+      },
+      "position": [
+        -2880,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "fd7890e5-235b-45cd-bdb5-87922cfae4df",
+      "name": "Lire la page contact",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; NourMeetBot/1.0; +https://nourmeet.com)"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 5
+            }
+          },
+          "response": {
+            "response": {
+              "outputPropertyName": "html",
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        },
+        "sendHeaders": true,
+        "url": "={{ $json.contact_url || 'https://site-absent.invalid' }}"
+      },
+      "position": [
+        -2656,
+        304
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "9700e5de-5301-45ab-bfbe-a1997886c185",
+      "name": "Qualifier et rédiger",
+      "parameters": {
+        "jsCode": "const texte = (html) => String(html || '').replace(/<script[\\s\\S]*?<\\/script>|<style[\\s\\S]*?<\\/style>/gi, ' ')\n  .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/\\s+/g, ' ');\nconst EXCLUS = /(example|exemple|domain|sentry|wixpress|wix\\.com|godaddy|\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.svg|noreply|no-reply|privacy|rgpd@|dpo@)/i;\nfunction emails(html) {\n  const brut = String(html || '').replace(/&#64;|\\[at\\]|\\(at\\)/gi, '@');\n  const trouves = brut.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [];\n  return [...new Set(trouves.map(e => e.toLowerCase().replace(/^mailto:/, '')))].filter(e => !EXCLUS.test(e));\n}\nfunction indices(t) {\n  const r = {};\n  if (/\\bhalal\\b/i.test(t) && !/non[\\s-]halal|pas halal/i.test(t)) r.halal = true;\n  if (/sans alcool|mocktail|0\\s?% alcool|alcohol[\\s-]free/i.test(t)) r.sans_alcool = true;\n  if (/privatis/i.test(t)) r.privatisation = true;\n  if (/chicha|shisha|narguil/i.test(t)) r.chicha = true;\n  const cap = t.match(/(?:jusqu['’]?\\s?à|capacité(?: de)?|accueillir)\\s*(\\d{2,3})\\s*(?:personnes|couverts|convives|invités|places)/i);\n  if (cap) r.capacite = parseInt(cap[1], 10);\n  return r;\n}\n\nfunction phraseAccroche(p) {\n  const faits = [];\n  if (p.sans_alcool === 'confirmé (site)') faits.push('votre offre de boissons sans alcool');\n  if (p.privatisation === 'confirmé (site)') faits.push('la possibilité de privatiser vos espaces');\n  const lieu = p.ville ? `${p.nom} à ${p.ville}` : p.nom;\n  if (faits.length) return `En découvrant ${lieu}, et notamment ${faits.join(' et ')}, nous avons pensé que vous pourriez accueillir ce type de soirée.`;\n  return `En découvrant ${lieu}, nous avons pensé que votre établissement pourrait accueillir ce type de soirée.`;\n}\nconst PIED = (C) => `Bien cordialement,\\n${C.SIGNATAIRE}\\nNūr Meet\\ncontact@nourmeet.com\\n\\nSi vous ne souhaitez plus recevoir de message de notre part, répondez simplement « STOP ».`;\n\nfunction mailInitial(p, C) {\n  return {\n    objet: `${p.nom} : proposer vos soirées rencontre et networking sur Nūr Meet`,\n    corps:\n`Bonjour,\n\nJe vous écris au nom de Nūr Meet, une plateforme qui publie des soirées de rencontre et de networking organisées dans des restaurants d'Île-de-France.\n\n${phraseAccroche(p)}\n\nLe principe est simple :\n- vous proposez vos propres soirées payantes, de rencontre ou de networking, et publiez l'annonce sur Nūr Meet ;\n- vous restez l'organisateur de la soirée dans votre établissement ;\n- notre équipe valide chaque annonce avant sa publication.\n\nPour candidater, il suffit de créer votre compte ici : ${C.LIEN_CANDIDATURE}\n\nJe reste disponible pour répondre à vos questions par simple retour de mail.\n\n${PIED(C)}`,\n  };\n}\n\nfunction mailRelance(p, n, C) {\n  if (n === 1) return {\n    objet: `Nūr Meet : vos soirées chez ${p.nom} ?`,\n    corps:\n`Bonjour,\n\nJe me permets de revenir vers vous au sujet de Nūr Meet. Si l'idée d'organiser des soirées de rencontre ou de networking chez ${p.nom} vous intéresse, la candidature se fait en quelques minutes : ${C.LIEN_CANDIDATURE}\n\nNous validons chaque annonce avant publication, et vous restez l'organisateur de vos soirées.\n\n${PIED(C)}`,\n  };\n  return {\n    objet: `Dernier message : Nūr Meet et ${p.nom}`,\n    corps:\n`Bonjour,\n\nJe vous adresse un dernier message au sujet de Nūr Meet. Si ce n'est pas le bon moment, aucun souci, je ne vous relancerai plus.\n\nSi l'idée vous tente plus tard, vous pourrez toujours candidater ici : ${C.LIEN_CANDIDATURE}\n\n${PIED(C)}`,\n  };\n}\n\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst C = $('Configuration et requêtes du jour').first().json;\nconst base = $(\"Analyser l'accueil\").all();\nconst maintenant = new Date().toISOString();\nreturn $input.all().map((it, i) => {\n  const p = base[i].json; const html = it.json.html || '';\n  const ic = indices(texte(html)); const ia = p.indices_accueil || {};\n  const src = (k) => ia[k] ? p.site : (ic[k] ? p.contact_url : '');\n  // e-mail : on préfère une adresse du domaine du site, puis contact@/reservation@\n  const liste = [...new Set([...(p.emails_accueil || []), ...emails(html)])];\n  let domaine = ''; try { domaine = new URL(p.site).hostname.replace(/^www\\./, ''); } catch (e) {}\n  const rang = (e) => (domaine && e.endsWith('@' + domaine) ? 0 : 2) + (/^(contact|info|reservation|resa|events?|bonjour|hello)@/.test(e) ? 0 : 1);\n  liste.sort((a, b) => rang(a) - rang(b));\n  const email = liste[0] || '';\n  const email_source = email ? ((p.emails_accueil || []).includes(email) ? p.site : p.contact_url) : '';\n  const etat = (k) => src(k) ? 'confirmé (site)' : 'à vérifier';\n  const capa = ia.capacite || ic.capacite;\n  const f = {\n    ...p, email, email_source,\n    halal: etat('halal'), sans_alcool: etat('sans_alcool'), privatisation: etat('privatisation'),\n    chicha: src('chicha') ? 'oui (site)' : 'non mentionné',\n    capacite: capa ? `${capa} (site : ${src('capacite')})` : 'à vérifier',\n  };\n  f.sources = ['halal', 'sans_alcool', 'privatisation', 'chicha', 'capacite']\n    .filter(k => src(k)).map(k => `${k}: ${src(k)}`).join(' | ');\n  // Score : priorité haut de gamme, halal, sans alcool, privatisation, 20 pers.\n  let s = 0;\n  if (f.niveau_prix === '€€€' || f.niveau_prix === '€€€€') s += 3; else if (f.niveau_prix === '€€') s += 1;\n  if (f.halal.startsWith('confirmé')) s += 3;\n  if (f.sans_alcool.startsWith('confirmé')) s += 2;\n  if (f.privatisation.startsWith('confirmé')) s += 2;\n  if (capa && capa >= 20) s += 2;\n  if (p.groupes) s += 1;\n  if ((p.note || 0) >= 4.3 && (p.nb_avis || 0) >= 50) s += 1;\n  f.score = s;\n  const m = mailInitial(f, C);\n  f.objet = m.objet; f.corps = m.corps; f.date_decouverte = maintenant;\n  const ok = (v) => v.startsWith('confirmé') || v.startsWith('oui');\n  const confirmes = [['halal', f.halal], ['boissons sans alcool', f.sans_alcool], ['privatisation', f.privatisation], ['chicha', f.chicha]]\n    .filter(([, v]) => ok(v)).map(([k]) => k);\n  if (capa) confirmes.push(`capacité ${capa} pers.`);\n  const averifier = [['halal', f.halal], ['boissons sans alcool', f.sans_alcool], ['privatisation', f.privatisation], ['capacité 20+', f.capacite]]\n    .filter(([, v]) => v === 'à vérifier').map(([k]) => k);\n  f.telegram_text =\n`<b>🍽 ${esc(f.nom)}</b>  ·  score ${s}\n📍 ${esc(f.adresse)}\n🌐 ${esc(f.site || 'pas de site')}  ·  ⭐ ${f.note ?? '?'} (${f.nb_avis ?? 0} avis)  ·  ${esc(f.niveau_prix || 'prix ?')}\n✉️ ${esc(email)}  <i>(trouvé sur ${esc(email_source)})</i>\n✅ Confirmé : ${esc(confirmes.join(', ') || 'rien de confirmé')}\n❓ À vérifier : ${esc(averifier.join(', ') || 'rien')}\nℹ️ Google : ${esc(f.indices_google || 'aucun indice')}\n🔎 Sources : ${esc(f.sources || 'aucune')}\n🗺 ${esc(f.maps_url)}\n\n<b>Objet :</b> ${esc(f.objet)}\n<blockquote expandable>${esc(f.corps)}</blockquote>`;\n  delete f.emails_accueil; delete f.indices_accueil;\n  return { json: f };\n});"
+      },
+      "position": [
+        -2448,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e8807d3f-1abf-448d-8d59-56595af32811",
+      "name": "E-mail trouvé ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "5a47bc98-6bb9-45be-9228-b27537855298",
+              "leftValue": "={{ $json.email }}",
+              "operator": {
+                "operation": "notEmpty",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -2224,
+        304
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "a53d8ad8-e0f9-48b7-a980-aed428cb488b",
+      "name": "Fiche sans e-mail",
+      "parameters": {
+        "jsCode": "const c = [\"place_id\", \"nom\", \"adresse\", \"ville\", \"code_postal\", \"site\", \"telephone\", \"maps_url\", \"email\", \"email_source\", \"note\", \"nb_avis\", \"niveau_prix\", \"halal\", \"sans_alcool\", \"privatisation\", \"capacite\", \"chicha\", \"indices_google\", \"sources\", \"score\", \"date_decouverte\"];\nconst o = {}; for (const k of c) o[k] = $json[k] ?? null;\no.statut = 'sans_email'; o.nb_relances = 0;\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        -2000,
+        512
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "eda019be-a016-4a50-bc02-1bf2742ff434",
+      "name": "Enregistrer (sans e-mail)",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "options": {}
+      },
+      "position": [
+        -1776,
+        512
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "0e3ae0cd-1144-4710-9eab-1b17c66e616f",
+      "name": "Pas dans les exclusions",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        -2000,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "f9f7d73b-1373-4201-aa25-17e675a4f71a",
+      "name": "E-mail pas déjà prospecté",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        -1776,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "1b4a00a7-2b87-4a2c-8326-0dbb7c9c9ab1",
+      "name": "Trier et garder les 50 meilleurs",
+      "parameters": {
+        "jsCode": "const C = $('Configuration et requêtes du jour').first().json;\nconst vus = new Set();\nreturn $input.all().sort((a, b) => b.json.score - a.json.score)\n  .filter(it => !vus.has(it.json.email) && vus.add(it.json.email))\n  .slice(0, C.PROPOSITIONS_PAR_JOUR);"
+      },
+      "position": [
+        -1568,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "3facca82-7c68-4112-9dbc-13ed7f8e6cbd",
+      "name": "Ligne prospect",
+      "parameters": {
+        "jsCode": "const c = [\"place_id\", \"nom\", \"adresse\", \"ville\", \"code_postal\", \"site\", \"telephone\", \"maps_url\", \"email\", \"email_source\", \"note\", \"nb_avis\", \"niveau_prix\", \"halal\", \"sans_alcool\", \"privatisation\", \"capacite\", \"chicha\", \"indices_google\", \"sources\", \"score\", \"date_decouverte\"];\nconst o = {}; for (const k of c) o[k] = $json[k] ?? null;\no.statut = 'propose'; o.nb_relances = 0;\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        -1344,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "75db1f69-d7bb-47bc-949c-0a4c184ff5ca",
+      "name": "Enregistrer le prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "options": {}
+      },
+      "position": [
+        -1120,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "46896889-6e0e-4c4d-a4e0-031b88754181",
+      "name": "Ligne proposition",
+      "parameters": {
+        "jsCode": "const src = $('Trier et garder les 50 meilleurs').all();\nreturn $input.all().map((_, i) => { const p = src[i].json; return { json: {\n  prospect_place_id: p.place_id, nom: p.nom, email: p.email, type: 'initial', objet: p.objet, corps: p.corps,\n  statut: 'en_attente', date_proposition: new Date().toISOString(),\n}}; });"
+      },
+      "position": [
+        -896,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "254efe8f-067a-48c7-b685-e967a36e5ddf",
+      "name": "Enregistrer la proposition",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "options": {}
+      },
+      "position": [
+        -688,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "dce080ca-f1f0-4472-a5d7-1034b9efb39d",
+      "name": "Préparer le message Telegram",
+      "parameters": {
+        "jsCode": "const src = $('Trier et garder les 50 meilleurs').all();\nreturn $input.all().map((it, i) => ({ json: { envoi_id: it.json.id, telegram_text: src[i].json.telegram_text } }));"
+      },
+      "position": [
+        -464,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "0b1ea53c-99bd-406a-b826-d86e8b41a90a",
+      "name": "Une par une",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        -240,
+        208
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "id": "739d4c18-6103-43f1-aed5-01bea8ee5b2c",
+      "name": "Telegram : proposition",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $('Configuration et requêtes du jour').first().json.TELEGRAM_CHAT_ID }}",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "additionalFields": {
+                      "callback_data": "=S:{{ $json.envoi_id }}"
+                    },
+                    "text": "✅ Envoyer"
+                  },
+                  {
+                    "additionalFields": {
+                      "callback_data": "=R:{{ $json.envoi_id }}"
+                    },
+                    "text": "❌ Refuser"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyMarkup": "inlineKeyboard",
+        "text": "={{ $json.telegram_text }}"
+      },
+      "position": [
+        0,
+        304
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "waitBetweenTries": 5000,
+      "webhookId": "9725432a-67fb-4369-8717-ea4dde97c7af"
+    },
+    {
+      "id": "82584b98-c63f-4ed9-8242-cdf14baafabe",
+      "name": "Champs : message Telegram",
+      "parameters": {
+        "jsCode": "return { json: { telegram_message_id: $json.result.message_id } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        240,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e5ab8932-7c8f-4d91-be77-c5f1181a193f",
+      "name": "Noter le message Telegram",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        480,
+        304
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "4ff128bd-ea46-4f45-b8a8-9491a5a98dd4",
+      "name": "Pause 2 s",
+      "parameters": {
+        "amount": 2
+      },
+      "position": [
+        720,
+        304
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "852f3eae-2227-43af-8e82-ecdc27ce8436"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "13374eef-28a0-453b-ad38-c93d0cc119ab",
+      "name": "Telegram : bilan du jour",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $('Configuration et requêtes du jour').first().json.TELEGRAM_CHAT_ID }}",
+        "text": "={{ '📋 Recherche du jour terminée : ' + $('Trier et garder les 50 meilleurs').all().length + ' proposition(s) envoyée(s) ci-dessus.' }}"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "7be5e5ce-1fbb-4ca8-9192-a4704b52867d"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

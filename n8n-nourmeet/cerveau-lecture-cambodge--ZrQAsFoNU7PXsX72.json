@@ -1,0 +1,92 @@
+{
+  "active": true,
+  "connections": {
+    "Appel du cerveau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les mails Cambodge",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les mails Cambodge": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "ZrQAsFoNU7PXsX72",
+  "name": "CERVEAU - lecture Cambodge",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Appel du cerveau",
+      "parameters": {
+        "options": {},
+        "path": "cerveau-cambodge-e79761fdeffe51b08dae2494cd3071e8",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "cerveau-cambodge-e79761fdeffe51b08dae2494cd3071e8"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7REqIXIuHirnrPIq",
+          "name": "Gmail account 2"
+        }
+      },
+      "id": "a2",
+      "name": "Lire les mails Cambodge",
+      "parameters": {
+        "filters": {
+          "q": "label:cambodge"
+        },
+        "limit": 100,
+        "operation": "getAll"
+      },
+      "position": [
+        240,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "07bb842a-a870-411a-b673-397b69fe6e22"
+    },
+    {
+      "id": "a3",
+      "name": "Répondre",
+      "parameters": {
+        "options": {},
+        "respondWith": "allIncomingItems"
+      },
+      "position": [
+        480,
+        0
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none"
+  },
+  "tags": []
+}

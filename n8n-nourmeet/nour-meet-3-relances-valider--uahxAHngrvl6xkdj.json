@@ -1,0 +1,476 @@
+{
+  "active": false,
+  "connections": {
+    "Champs : message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Noter le message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour à 9 h 30": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Configuration",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Configuration": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les exclusions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la relance": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer le message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la relance",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les propositions en attente",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les propositions en attente": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les prospects contactés",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les prospects contactés": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Qui relancer aujourd'hui ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Noter le message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause 2 s",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pause 2 s": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer le message Telegram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Qui relancer aujourd'hui ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Telegram : proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : message Telegram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Une par une": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "Telegram : proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "uahxAHngrvl6xkdj",
+  "name": "Nour Meet 3 - Relances à valider",
+  "nodes": [
+    {
+      "id": "43e87e84-802c-4a21-b79c-268259064aa2",
+      "name": "Chaque jour à 9 h 30",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "30 9 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "8de77b7a-9191-4aa4-b937-f25d9cc9ec37",
+      "name": "Configuration",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  TELEGRAM_CHAT_ID: 'A_REMPLIR',            // ton identifiant de chat Telegram (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <https://nourmeet.com>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/login',\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (à confirmer)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (à confirmer)\n};\nreturn [{ json: CONFIG }];"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "6d5c4761-b78c-4916-a522-ab38193eab4e",
+      "name": "Lire les exclusions",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "f8d47dbe-b8da-4765-95bd-26df7f2e18f6",
+      "name": "Lire les propositions en attente",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "statut",
+              "keyValue": "en_attente"
+            }
+          ]
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "executeOnce": true,
+      "id": "4d1f31be-27e1-4bcd-a761-64cfd17faf90",
+      "name": "Lire les prospects contactés",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "statut",
+              "keyValue": "contacte"
+            },
+            {
+              "keyName": "statut",
+              "keyValue": "relance1"
+            }
+          ]
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "36c88ebe-b474-4cc0-bbc2-e4517ef2ee9b",
+      "name": "Qui relancer aujourd'hui ?",
+      "parameters": {
+        "jsCode": "function phraseAccroche(p) {\n  const faits = [];\n  if (p.sans_alcool === 'confirmé (site)') faits.push('votre offre de boissons sans alcool');\n  if (p.privatisation === 'confirmé (site)') faits.push('la possibilité de privatiser vos espaces');\n  const lieu = p.ville ? `${p.nom} à ${p.ville}` : p.nom;\n  if (faits.length) return `En découvrant ${lieu}, et notamment ${faits.join(' et ')}, nous avons pensé que vous pourriez accueillir ce type de soirée.`;\n  return `En découvrant ${lieu}, nous avons pensé que votre établissement pourrait accueillir ce type de soirée.`;\n}\nconst PIED = (C) => `Bien cordialement,\\n${C.SIGNATAIRE}\\nNūr Meet\\ncontact@nourmeet.com\\n\\nSi vous ne souhaitez plus recevoir de message de notre part, répondez simplement « STOP ».`;\n\nfunction mailInitial(p, C) {\n  return {\n    objet: `${p.nom} : proposer vos soirées rencontre et networking sur Nūr Meet`,\n    corps:\n`Bonjour,\n\nJe vous écris au nom de Nūr Meet, une plateforme qui publie des soirées de rencontre et de networking organisées dans des restaurants d'Île-de-France.\n\n${phraseAccroche(p)}\n\nLe principe est simple :\n- vous proposez vos propres soirées payantes, de rencontre ou de networking, et publiez l'annonce sur Nūr Meet ;\n- vous restez l'organisateur de la soirée dans votre établissement ;\n- notre équipe valide chaque annonce avant sa publication.\n\nPour candidater, il suffit de créer votre compte ici : ${C.LIEN_CANDIDATURE}\n\nJe reste disponible pour répondre à vos questions par simple retour de mail.\n\n${PIED(C)}`,\n  };\n}\n\nfunction mailRelance(p, n, C) {\n  if (n === 1) return {\n    objet: `Nūr Meet : vos soirées chez ${p.nom} ?`,\n    corps:\n`Bonjour,\n\nJe me permets de revenir vers vous au sujet de Nūr Meet. Si l'idée d'organiser des soirées de rencontre ou de networking chez ${p.nom} vous intéresse, la candidature se fait en quelques minutes : ${C.LIEN_CANDIDATURE}\n\nNous validons chaque annonce avant publication, et vous restez l'organisateur de vos soirées.\n\n${PIED(C)}`,\n  };\n  return {\n    objet: `Dernier message : Nūr Meet et ${p.nom}`,\n    corps:\n`Bonjour,\n\nJe vous adresse un dernier message au sujet de Nūr Meet. Si ce n'est pas le bon moment, aucun souci, je ne vous relancerai plus.\n\nSi l'idée vous tente plus tard, vous pourrez toujours candidater ici : ${C.LIEN_CANDIDATURE}\n\n${PIED(C)}`,\n  };\n}\n\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst C = $('Configuration').first().json;\nconst exclus = new Set($('Lire les exclusions').all().map(i => i.json.email).filter(Boolean));\nconst enAttente = new Set($('Lire les propositions en attente').all().map(i => i.json.prospect_place_id).filter(Boolean));\nconst jours = (d) => (Date.now() - new Date(d).getTime()) / 86400000;\nconst out = [];\nfor (const { json: p } of $input.all()) {\n  if (!p.place_id || !p.date_premier_envoi || exclus.has(p.email) || enAttente.has(p.place_id)) continue;\n  let n = 0;\n  if (p.statut === 'contacte' && jours(p.date_premier_envoi) >= C.RELANCE_1_APRES_JOURS) n = 1;\n  if (p.statut === 'relance1' && jours(p.date_premier_envoi) >= C.RELANCE_2_APRES_JOURS) n = 2;\n  if (!n) continue;\n  const m = mailRelance(p, n, C);\n  out.push({ json: {\n    ligne: { prospect_place_id: p.place_id, nom: p.nom, email: p.email, type: 'relance' + n, objet: m.objet,\n             corps: m.corps, statut: 'en_attente', date_proposition: new Date().toISOString() },\n    telegram_text:\n`<b>🔁 Relance ${n} : ${esc(p.nom)}</b>\n✉️ ${esc(p.email)}  ·  1er mail le ${new Date(p.date_premier_envoi).toLocaleDateString('fr-FR')}\n🌐 ${esc(p.site || '')}\n\n<b>Objet :</b> ${esc(m.objet)}\n<blockquote expandable>${esc(m.corps)}</blockquote>`,\n  }});\n}\nreturn out;"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "9afd8e60-6b57-4b28-a57c-d286df084819",
+      "name": "Ligne proposition",
+      "parameters": {
+        "jsCode": "return $input.all().map(i => ({ json: i.json.ligne }));"
+      },
+      "position": [
+        1328,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "15dcaa4f-a284-4c6b-94ea-ac42f35f57c3",
+      "name": "Enregistrer la relance",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "options": {}
+      },
+      "position": [
+        1552,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "80a74686-1c35-4304-9b08-7e6946f2b706",
+      "name": "Préparer le message Telegram",
+      "parameters": {
+        "jsCode": "const src = $(\"Qui relancer aujourd'hui ?\").all();\nreturn $input.all().map((it, i) => ({ json: { envoi_id: it.json.id, telegram_text: src[i].json.telegram_text } }));"
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "b59e4894-e5f8-4180-92af-2723912ebf0c",
+      "name": "Une par une",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        1984,
+        0
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "id": "08d46a4e-1c74-4b41-820d-99b4b737d187",
+      "name": "Telegram : proposition",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $('Configuration').first().json.TELEGRAM_CHAT_ID }}",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "additionalFields": {
+                      "callback_data": "=S:{{ $json.envoi_id }}"
+                    },
+                    "text": "✅ Envoyer"
+                  },
+                  {
+                    "additionalFields": {
+                      "callback_data": "=R:{{ $json.envoi_id }}"
+                    },
+                    "text": "❌ Refuser"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyMarkup": "inlineKeyboard",
+        "text": "={{ $json.telegram_text }}"
+      },
+      "position": [
+        2224,
+        112
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "waitBetweenTries": 5000,
+      "webhookId": "b679f65b-b60c-4ae3-8a9f-8b45b3b16eb7"
+    },
+    {
+      "id": "d5744b2f-f525-4fbd-9872-675a23b6f7ce",
+      "name": "Champs : message Telegram",
+      "parameters": {
+        "jsCode": "return { json: { telegram_message_id: $json.result.message_id } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2464,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "73a8faa7-c2c9-479e-86f3-c11c634b0e2d",
+      "name": "Noter le message Telegram",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        2704,
+        112
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "13359e18-164a-46c0-8fc3-cd266861d5db",
+      "name": "Pause 2 s",
+      "parameters": {
+        "amount": 2
+      },
+      "position": [
+        2944,
+        112
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "55c2b5af-00d8-45c4-84c8-c57b8b99542f"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

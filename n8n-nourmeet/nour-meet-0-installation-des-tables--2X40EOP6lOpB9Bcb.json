@@ -1,0 +1,295 @@
+{
+  "active": false,
+  "connections": {
+    "Créer np_envois": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer np_exclusions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Créer np_exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer np_ouvertures",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Créer np_prospects": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer np_envois",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancer une fois": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer np_prospects",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "2X40EOP6lOpB9Bcb",
+  "name": "Nour Meet 0 - Installation des tables",
+  "nodes": [
+    {
+      "id": "bf9a0ad5-224d-4519-bc27-4a6ed5e9fa36",
+      "name": "Lancer une fois",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "d80b4eba-cd99-4605-8442-68b7f9d3ab10",
+      "name": "Créer np_prospects",
+      "parameters": {
+        "columns": {
+          "column": [
+            {
+              "name": "place_id"
+            },
+            {
+              "name": "nom"
+            },
+            {
+              "name": "adresse"
+            },
+            {
+              "name": "ville"
+            },
+            {
+              "name": "code_postal"
+            },
+            {
+              "name": "site"
+            },
+            {
+              "name": "telephone"
+            },
+            {
+              "name": "maps_url"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "email_source"
+            },
+            {
+              "name": "note",
+              "type": "number"
+            },
+            {
+              "name": "nb_avis",
+              "type": "number"
+            },
+            {
+              "name": "niveau_prix"
+            },
+            {
+              "name": "halal"
+            },
+            {
+              "name": "sans_alcool"
+            },
+            {
+              "name": "privatisation"
+            },
+            {
+              "name": "capacite"
+            },
+            {
+              "name": "chicha"
+            },
+            {
+              "name": "indices_google"
+            },
+            {
+              "name": "sources"
+            },
+            {
+              "name": "score",
+              "type": "number"
+            },
+            {
+              "name": "statut"
+            },
+            {
+              "name": "nb_relances",
+              "type": "number"
+            },
+            {
+              "name": "date_decouverte"
+            },
+            {
+              "name": "date_premier_envoi"
+            },
+            {
+              "name": "date_dernier_envoi"
+            },
+            {
+              "name": "date_reponse"
+            }
+          ]
+        },
+        "operation": "create",
+        "options": {
+          "createIfNotExists": true
+        },
+        "resource": "table",
+        "tableName": "np_prospects"
+      },
+      "position": [
+        240,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "b387c215-72bb-4d2b-ad59-eb810131da38",
+      "name": "Créer np_envois",
+      "parameters": {
+        "columns": {
+          "column": [
+            {
+              "name": "prospect_place_id"
+            },
+            {
+              "name": "nom"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "objet"
+            },
+            {
+              "name": "corps"
+            },
+            {
+              "name": "statut"
+            },
+            {
+              "name": "telegram_message_id",
+              "type": "number"
+            },
+            {
+              "name": "date_proposition"
+            },
+            {
+              "name": "date_decision"
+            },
+            {
+              "name": "erreur"
+            }
+          ]
+        },
+        "operation": "create",
+        "options": {
+          "createIfNotExists": true
+        },
+        "resource": "table",
+        "tableName": "np_envois"
+      },
+      "position": [
+        480,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "be88ebb9-af8c-4173-9769-da6a38a277db",
+      "name": "Créer np_exclusions",
+      "parameters": {
+        "columns": {
+          "column": [
+            {
+              "name": "email"
+            },
+            {
+              "name": "motif"
+            },
+            {
+              "name": "date_ajout"
+            }
+          ]
+        },
+        "operation": "create",
+        "options": {
+          "createIfNotExists": true
+        },
+        "resource": "table",
+        "tableName": "np_exclusions"
+      },
+      "position": [
+        720,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "b378a7d5-1fc5-4b9c-a3c9-2a7555248676",
+      "name": "Créer np_ouvertures",
+      "parameters": {
+        "columns": {
+          "column": [
+            {
+              "name": "envoi_id",
+              "type": "number"
+            },
+            {
+              "name": "date"
+            },
+            {
+              "name": "agent"
+            }
+          ]
+        },
+        "operation": "create",
+        "options": {
+          "createIfNotExists": true
+        },
+        "resource": "table",
+        "tableName": "np_ouvertures"
+      },
+      "position": [
+        960,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

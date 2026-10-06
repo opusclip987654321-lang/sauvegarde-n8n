@@ -1,0 +1,568 @@
+{
+  "active": false,
+  "connections": {
+    "CAPTURER ID AFRIQUE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER BROUILLON AFRIQUE",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "PREPARER CONFIRMATIONS",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CAPTURER ID FREXIT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER BROUILLON FREXIT",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "PREPARER CONFIRMATIONS",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "COMPTE GMAIL ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GMAIL AFRIQUE - créer brouillon",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GMAIL FREXIT - créer brouillon",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "FILTRER APPROUVES": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "COMPTE GMAIL ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL AFRIQUE - créer brouillon": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CAPTURER ID AFRIQUE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL FREXIT - créer brouillon": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CAPTURER ID FREXIT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LANCER - créer les brouillons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIRE FICHES": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "FILTRER APPROUVES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PREPARER CONFIRMATIONS": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PROGRAMMATION - toutes les heures": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "y73MZqVwtBujLtm6",
+  "name": "IMPACTEUR C - BROUILLONS",
+  "nodes": [
+    {
+      "id": "9960eda0-5849-4fec-a4c2-f2c2249ca95a",
+      "name": "PROGRAMMATION - toutes les heures",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "triggerAtMinute": 23
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "63eaa17d-a3a1-4db0-ab40-fbdb0ea3c812",
+      "name": "LANCER - créer les brouillons",
+      "parameters": {},
+      "position": [
+        0,
+        192
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "65337ce7-ae50-4191-b246-e18f19767d3f",
+      "maxTries": 3,
+      "name": "LIRE FICHES",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        208,
+        96
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "2fb47f4e-bceb-4b10-88eb-116ad219d691",
+      "name": "FILTRER APPROUVES",
+      "parameters": {
+        "jsCode": "const FOOTER=\"Pour vous donner une idée du format, voici un exemple d’interview que j’ai réalisée sur ma chaîne consacrée à l’Afrique :\\n\\nhttps://www.youtube.com/watch?v=z9B8b6ZrCb4\";\n// Brouillons pour les fiches APPROUVE + OUI. L'approbation humaine fait foi.\nconst lignes=$input.all().map(i=>i.json);\nconst _cfgRow=lignes.find(r=>String(r.cle_unique||'').trim()==='_config_telegram');\nconst chat_id=_cfgRow?String(_cfgRow.informations_a_verifier||'').trim():'';\nconst publicDomains=new Set(['gmail.com','hotmail.com','outlook.com','yahoo.com','proton.me','icloud.com','live.com']);\nconst dejaEmails=new Set(lignes.filter(r=>['NE_PAS_CONTACTER','REFUSE','OPPOSITION']\n .includes(String(r.statut||'').trim().toUpperCase()))\n .map(r=>String(r.email_contact||'').trim().toLowerCase()).filter(Boolean));\nconst sortie=[];\nfor(const r of lignes){\n if(sortie.length>=5)break;\n const statut=String(r.statut||'').trim().toUpperCase();\n const validation=String(r.validation_contact||'').trim().toUpperCase();\n const email=String(r.email_contact||'').trim().toLowerCase();\n const type=String(r.type_contact||'').trim().toLowerCase();\n if(statut!=='APPROUVE')continue;\n if(validation!=='OUI'&&validation!=='OUI_EXCEPTION')continue;\n if(String(r.draft_id||'').trim())continue;\n if(!/^\\S+@\\S+\\.\\S+$/.test(email))continue;\n if(dejaEmails.has(email))continue;\n if(publicDomains.has(email.split('@')[1]||'')&&validation!=='OUI_EXCEPTION')continue;\n if(!['Impacteur Afrique','Impacteur Frexit'].includes(String(r.chaine||'').trim()))continue;\n const estEditeur=['editeur','presse_generique','service_presse'].includes(type);\n const objet=String(r[estEditeur?'objet_editeur':'objet_auteur']||'').trim();\n const message=String(r[estEditeur?'message_editeur':'message_auteur']||'').trim();\n if(!objet||!message||!r.cle_unique)continue;\n if(!message.includes(FOOTER)||!message.endsWith('Cordialement,\\nWalid\\n'+String(r.chaine).trim()))continue;\n sortie.push({json:{cle_unique:String(r.cle_unique),email_contact:email,\n  chaine:String(r.chaine).trim(),objet,message,auteur:String(r.auteur||''),chat_id},pairedItem:{item:0}});\n}\nreturn sortie;"
+      },
+      "position": [
+        400,
+        96
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e652d87b-534e-46ad-a38e-7e21fdb51538",
+      "name": "COMPTE GMAIL ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a46a2219-dca1-4001-8552-597eda3e3a41",
+              "leftValue": "={{ $json.chaine }}",
+              "operator": {
+                "operation": "contains",
+                "type": "string"
+              },
+              "rightValue": "Afrique"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        608,
+        96
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "id": "a281978f-196f-464a-b370-512aaa848bfb",
+      "maxTries": 3,
+      "name": "GMAIL AFRIQUE - créer brouillon",
+      "parameters": {
+        "message": "={{ $json.message }}",
+        "options": {
+          "sendTo": "={{ $json.email_contact }}"
+        },
+        "resource": "draft",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        800,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "f4e398a5-f950-46af-bea2-088831fbcad8"
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "id": "264a94af-9e82-4b63-a951-faa8740e7584",
+      "maxTries": 3,
+      "name": "GMAIL FREXIT - créer brouillon",
+      "parameters": {
+        "message": "={{ $json.message }}",
+        "options": {
+          "sendTo": "={{ $json.email_contact }}"
+        },
+        "resource": "draft",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        800,
+        192
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "4add6dd3-066b-440f-92ee-ecf785d6e566"
+    },
+    {
+      "id": "e8de779f-b7b8-441a-990a-1e56ad4535ba",
+      "name": "CAPTURER ID AFRIQUE",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const original=$('FILTRER APPROUVES').itemMatching(i).json;\n const id=String(item.json.id||'').trim();\n if(!id||!original.cle_unique)throw new Error('Identifiant brouillon ou fiche manquant.');\n return {json:{cle_unique:original.cle_unique,statut:'BROUILLON_CREE',draft_id:id,\n  derniere_mise_a_jour:new Date().toISOString(),\n  chat_id:String(original.chat_id||''),\n  telegram_message:'📨 Brouillon Gmail créé — '+String(original.auteur||'')+' ('+String(original.chaine||'')+')\\n✉️ '+String(original.email_contact||'')},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1008,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "497b2039-355e-4733-97d9-6119b33bb844",
+      "name": "CAPTURER ID FREXIT",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const original=$('FILTRER APPROUVES').itemMatching(i).json;\n const id=String(item.json.id||'').trim();\n if(!id||!original.cle_unique)throw new Error('Identifiant brouillon ou fiche manquant.');\n return {json:{cle_unique:original.cle_unique,statut:'BROUILLON_CREE',draft_id:id,\n  derniere_mise_a_jour:new Date().toISOString(),\n  chat_id:String(original.chat_id||''),\n  telegram_message:'📨 Brouillon Gmail créé — '+String(original.auteur||'')+' ('+String(original.chaine||'')+')\\n✉️ '+String(original.email_contact||'')},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1008,
+        192
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "3a56af6b-8c98-4d5a-b06e-69be1541fed1",
+      "maxTries": 3,
+      "name": "SAUVER BROUILLON AFRIQUE",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "draft_id": "={{ $json.draft_id }}",
+            "statut": "={{ $json.statut }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "6e570ea0-ef2e-4d6a-a36a-1a888206af1d",
+      "maxTries": 3,
+      "name": "SAUVER BROUILLON FREXIT",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "draft_id": "={{ $json.draft_id }}",
+            "statut": "={{ $json.statut }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        1200,
+        192
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "6056b571-3576-4f79-ac16-ace22fec81f0",
+      "name": "PREPARER CONFIRMATIONS",
+      "parameters": {
+        "jsCode": "const out=[];\nfor(const item of $input.all()){\n const r=item.json;\n const chat_id=String(r.chat_id||'').trim();\n if(!chat_id||!String(r.telegram_message||''))continue;\n out.push({json:{chat_id,telegram_message:String(r.telegram_message)},pairedItem:{item:0}});\n}\nreturn out;"
+      },
+      "position": [
+        1200,
+        368
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "ncNh8IVLRGwp5Ocz",
+          "name": "Telegram - Impacteur Prospection"
+        }
+      },
+      "id": "0c623a43-c049-4f6b-8ede-aa346a38ee62",
+      "name": "TELEGRAM - envoyer",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.telegram_message }}"
+      },
+      "position": [
+        1408,
+        368
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "2e16bc47-040c-409d-9785-20ee03e139b8"
+    },
+    {
+      "id": "b895e620-4109-4995-9246-af0b2b9b29ef",
+      "name": "NOTE - Workflow C",
+      "parameters": {
+        "color": 6,
+        "content": "## C — Brouillons Gmail\n\nToutes les heures (et à la demande) : lit le Sheets, prend les fiches APPROUVE + validation OUI/OUI_EXCEPTION avec email valide et invitation conforme, crée le brouillon Gmail sur le bon compte, enregistre draft_id + BROUILLON_CREE, confirme sur Telegram.\n\nLe workflow D crée aussi le brouillon immédiatement après /valider — celui-ci sert de filet (validation faite à la main dans le Sheets, ou passage D indisponible).",
+        "height": 300,
+        "width": 460
+      },
+      "position": [
+        0,
+        368
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

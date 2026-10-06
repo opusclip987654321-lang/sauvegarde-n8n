@@ -1,0 +1,192 @@
+{
+  "active": true,
+  "connections": {
+    "LIRE FICHES": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MARQUER OUVERTURE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "MARQUER OUVERTURE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER OUVERTURE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PIXEL - ouverture": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "HMDNzszMrJFsQ3pH",
+  "name": "IMPACTEUR E - TRACKING OUVERTURES",
+  "nodes": [
+    {
+      "id": "8b472cc0-ca1b-424a-8abb-54df7588bd1e",
+      "name": "PIXEL - ouverture",
+      "parameters": {
+        "options": {},
+        "path": "impacteur-ouverture"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "bcce261d-8824-4343-87c5-53f3bc8d9e96"
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "8ae0c6c3-ce10-40e0-892b-7f48f820cea6",
+      "maxTries": 3,
+      "name": "LIRE FICHES",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        224,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "f4ff1e25-f127-427f-aa3c-2f62edf55080",
+      "name": "MARQUER OUVERTURE",
+      "parameters": {
+        "jsCode": "// Marque la première ouverture d'un email envoyé (pixel de suivi).\nlet cle='';\ntry{cle=String($('PIXEL - ouverture').first().json.query?.c||'').trim();}catch(e){}\nif(!cle)return [];\nconst lignes=$input.all().map(i=>i.json);\nconst row=lignes.find(r=>String(r.cle_unique||'').trim()===cle);\nif(!row)return [];                       // clé inconnue : on ignore (pas de ligne créée)\nif(!String(row.date_envoi||'').trim())return []; // jamais envoyé : on ignore\nif(String(row.ouvert_le||'').trim())return [];   // déjà marqué ouvert\nreturn [{json:{cle_unique:cle,ouvert_le:new Date().toISOString()}}];"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "e024ed30-3076-444e-85b6-211785b60026",
+      "maxTries": 3,
+      "name": "SAUVER OUVERTURE",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "ouvert_le",
+              "id": "ouvert_le",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "ouvert_le": "={{ $json.ouvert_le }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        672,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "f73d80bf-1063-481d-8d60-daf1bd719795",
+      "name": "NOTE - Workflow E",
+      "parameters": {
+        "color": 7,
+        "content": "## E — Suivi des ouvertures (pixel)\n\nChaque email envoyé par C contient une image invisible pointant vers ce webhook (…/webhook/impacteur-ouverture?c=CLE). À la première ouverture, la colonne ouvert_le de la fiche est renseignée.\n\nIndicateur APPROXIMATIF : certaines messageries bloquent les images (ouverture manquée), d'autres les préchargent (fausse ouverture). Une clé inconnue ou une fiche jamais envoyée est ignorée (aucune ligne créée).\n\nLe workflow doit être PUBLIÉ pour que l'URL de production soit active.",
+        "height": 300,
+        "width": 460
+      },
+      "position": [
+        0,
+        192
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,711 @@
+{
+  "active": true,
+  "connections": {
+    "COMPTE GMAIL ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GMAIL AFRIQUE - envoyer",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GMAIL FREXIT - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL AFRIQUE - envoyer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MARQUER ENVOYE AFRIQUE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL FREXIT - envoyer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MARQUER ENVOYE FREXIT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LANCER - envoyer maintenant": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIRE FICHES": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SELECTIONNER ENVOIS",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "MARQUER ENVOYE AFRIQUE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER ENVOI AFRIQUE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "MARQUER ENVOYE FREXIT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER ENVOI FREXIT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PROGRAMMATION - 10h07": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PROGRAMMATION - 15h07": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "RETENU ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - retenus",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "COMPTE GMAIL ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SELECTIONNER ENVOIS": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "RETENU ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "H9SkBVHSc1LIZ2n1",
+  "name": "IMPACTEUR C - ENVOIS AUTOMATIQUES",
+  "nodes": [
+    {
+      "id": "7b495596-499d-4ee1-8dd5-78ce20c7b3ab",
+      "name": "PROGRAMMATION - 10h07",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10,
+              "triggerAtMinute": 7
+            }
+          ]
+        }
+      },
+      "position": [
+        784,
+        992
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "c724e41f-025a-41ee-98a0-32239028fd61",
+      "name": "PROGRAMMATION - 15h07",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 15,
+              "triggerAtMinute": 7
+            }
+          ]
+        }
+      },
+      "position": [
+        784,
+        1152
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "af013297-dd85-4d00-83f2-402d535f2f5c",
+      "name": "LANCER - envoyer maintenant",
+      "parameters": {},
+      "position": [
+        784,
+        1312
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "fcaf7326-6466-46a5-8c73-d939a1435f37",
+      "maxTries": 3,
+      "name": "LIRE FICHES",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        1008,
+        1152
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "db6e7303-ba19-42c0-a081-cf8e8da4d219",
+      "name": "SELECTIONNER ENVOIS",
+      "parameters": {
+        "jsCode": "const FOOTER=\"Pour vous donner une idée du format, voici un exemple d’interview que j’ai réalisée sur ma chaîne consacrée à l’Afrique :\\n\\nhttps://www.youtube.com/watch?v=z9B8b6ZrCb4\";\n// ENVOI AUTOMATIQUE (décision de Louis, 25-28/09) : toute fiche A_VERIFIER avec\n// invitation conforme et un email candidat part sans validation. Plafond 5/jour.\nconst TRACKING_URL='https://n8n.nourmeet.com/webhook/impacteur-ouverture';\nconst PLAFOND_JOUR=5;\nconst lignes=$input.all().map(i=>i.json);\nconst _cfgRow=lignes.find(r=>String(r.cle_unique||'').trim()==='_config_telegram');\nconst chat_id=_cfgRow?String(_cfgRow.informations_a_verifier||'').trim():'';\nconst norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();\nconst jourParis=t=>new Date(t).toLocaleDateString('fr-CA',{timeZone:'Europe/Paris'});\nconst publicDomains=new Set(['gmail.com','hotmail.com','outlook.com','yahoo.com','proton.me','icloud.com','live.com']);\nconst aujourdhui=jourParis(Date.now());\nconst envoyesAujourdhui=lignes.filter(r=>String(r.date_envoi||'').trim()&&jourParis(r.date_envoi)===aujourdhui).length;\nlet budget=PLAFOND_JOUR-envoyesAujourdhui;\nif(budget<=0)return [];\nconst emailsInterdits=new Set(lignes.filter(r=>['NE_PAS_CONTACTER','REFUSE','OPPOSITION']\n .includes(String(r.statut||'').trim().toUpperCase()))\n .map(r=>String(r.email_contact||'').trim().toLowerCase()).filter(Boolean));\nconst emailsDejaServis=new Set(lignes.filter(r=>String(r.date_envoi||'').trim()||String(r.draft_id||'').trim())\n .map(r=>String(r.email_contact||'').trim().toLowerCase()).filter(Boolean));\nconst auteursDejaServis=new Set(lignes.filter(r=>String(r.date_envoi||'').trim()||String(r.draft_id||'').trim())\n .map(r=>norm(r.auteur)).filter(Boolean));\nconst esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst sortie=[];\nconst retenus=[];\nfor(const r of lignes){\n if(budget<=0)break;\n if(String(r.statut||'').trim().toUpperCase()!=='A_VERIFIER')continue;\n if(String(r.draft_id||'').trim()||String(r.date_envoi||'').trim())continue;\n if(!['Impacteur Afrique','Impacteur Frexit'].includes(String(r.chaine||'').trim()))continue;\n const objet=String(r.objet_auteur||'').trim();\n const message=String(r.message_auteur||'').trim();\n if(!objet||!message||!r.cle_unique)continue;\n if(!message.includes(FOOTER)||!message.endsWith('Cordialement,\\nWalid\\n'+String(r.chaine).trim())){retenus.push('👤 '+esc(String(r.auteur||'?'))+' ('+esc(String(r.chaine||'?'))+') — /valider '+String(r.cle_unique||''));continue;}\n if(auteursDejaServis.has(norm(r.auteur)))continue;\n let candidats=[];try{candidats=JSON.parse(String(r.emails_candidats||'[]'));}catch(e){candidats=[];}\n if(!Array.isArray(candidats))candidats=[];\n const best=candidats.find(x=>x&&x.email&&!publicDomains.has(String(x.email).split('@')[1]||''))||candidats.find(x=>x&&x.email);\n if(!best)continue; // pas d'email -> reste en validation manuelle (/email via Telegram)\n const email=String(best.email).trim().toLowerCase();\n if(!/^\\S+@\\S+\\.\\S+$/.test(email)||emailsInterdits.has(email)||emailsDejaServis.has(email))continue;\n const pixel='<img src=\"'+TRACKING_URL+'?c='+encodeURIComponent(String(r.cle_unique))+'\" width=\"1\" height=\"1\" alt=\"\">';\n const message_html='<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#111\">'\n   +esc(message).replace(/\\n/g,'<br>')+'</div>'+pixel;\n emailsDejaServis.add(email);auteursDejaServis.add(norm(r.auteur));\n sortie.push({json:{\n  cle_unique:String(r.cle_unique),auteur:String(r.auteur||''),livre:String(r.livre||''),\n  chaine:String(r.chaine).trim(),email_contact:email,objet,message_html,\n  source_contact_validee:/^https:\\/\\//.test(String(best.source||''))?String(best.source):String(r.source_livre||''),\n  chat_id\n },pairedItem:{item:0}});\n budget--;\n}\nif(retenus.length&&chat_id)sortie.push({json:{retenu:true,chat_id,telegram_message:'⚠️ '+retenus.length+' invitation(s) retenue(s) avant envoi : le texte ne correspond pas au modèle de la chaîne (signature ou exemple). Rien n\\'est parti.\\n'+retenus.join('\\n')+'\\n\\nCorrige la fiche dans le Sheet, ou /valider CLE pour créer un brouillon à envoyer toi-même.'},pairedItem:{item:0}});\nreturn sortie;"
+      },
+      "position": [
+        1232,
+        1152
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c537f2f8-d4f7-43cd-9f6c-6fcbb462edca",
+      "name": "COMPTE GMAIL ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "6931f961-9d74-439d-a61c-9296c882ed3a",
+              "leftValue": "={{ $json.chaine }}",
+              "operator": {
+                "operation": "contains",
+                "type": "string"
+              },
+              "rightValue": "Afrique"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1456,
+        1152
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "SO5LY7nXS3log8Bk",
+          "name": "Gmail account"
+        }
+      },
+      "id": "40fcb01f-3fac-4765-aeb6-bc5c5ab565ec",
+      "maxTries": 3,
+      "name": "GMAIL AFRIQUE - envoyer",
+      "parameters": {
+        "message": "={{ $json.message_html }}",
+        "options": {
+          "appendAttribution": false
+        },
+        "sendTo": "={{ $json.email_contact }}",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        1664,
+        1056
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "e987ce50-9fde-4e02-80a7-d2971ada262b"
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "id": "fb7dbbd3-1e4e-4373-a896-9f4ac381fea5",
+      "maxTries": 3,
+      "name": "GMAIL FREXIT - envoyer",
+      "parameters": {
+        "message": "={{ $json.message_html }}",
+        "options": {
+          "appendAttribution": false
+        },
+        "sendTo": "={{ $json.email_contact }}",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        1664,
+        1264
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "871ca8cc-b6ff-4767-ba40-ddcb340a50a6"
+    },
+    {
+      "id": "803686bb-ada8-417e-bc3b-7aaef3e006ce",
+      "name": "MARQUER ENVOYE AFRIQUE",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const o=$('SELECTIONNER ENVOIS').itemMatching(i).json;\n if(!o.cle_unique)throw new Error('Fiche manquante après envoi.');\n return {json:{cle_unique:o.cle_unique,statut:'ENVOYE',\n  corps:String(o.message_html||''),compte_envoi:'Gmail account',\n  email_contact:o.email_contact,type_contact:'auteur',\n  source_contact_validee:o.source_contact_validee,validation_contact:'OUI_AUTO',\n  date_envoi:new Date().toISOString(),derniere_mise_a_jour:new Date().toISOString()},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1888,
+        1056
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "1be908da-7984-4293-a438-18fc5f2e221e",
+      "name": "MARQUER ENVOYE FREXIT",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const o=$('SELECTIONNER ENVOIS').itemMatching(i).json;\n if(!o.cle_unique)throw new Error('Fiche manquante après envoi.');\n return {json:{cle_unique:o.cle_unique,statut:'ENVOYE',\n  corps:String(o.message_html||''),compte_envoi:'Gmail - Impacteur Frexit',\n  email_contact:o.email_contact,type_contact:'auteur',\n  source_contact_validee:o.source_contact_validee,validation_contact:'OUI_AUTO',\n  date_envoi:new Date().toISOString(),derniere_mise_a_jour:new Date().toISOString()},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1888,
+        1264
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "c6a379dd-8ebe-4ee0-ac32-4f2f10239e1e",
+      "maxTries": 3,
+      "name": "SAUVER ENVOI AFRIQUE",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "email_contact",
+              "id": "email_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "type_contact",
+              "id": "type_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_contact_validee",
+              "id": "source_contact_validee",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "validation_contact",
+              "id": "validation_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "date_envoi",
+              "id": "date_envoi",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "compte_envoi": "={{ $json.compte_envoi }}",
+            "corps": "={{ $json.corps }}",
+            "date_envoi": "={{ $json.date_envoi }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "email_contact": "={{ $json.email_contact }}",
+            "source_contact_validee": "={{ $json.source_contact_validee }}",
+            "statut": "={{ $json.statut }}",
+            "type_contact": "={{ $json.type_contact }}",
+            "validation_contact": "={{ $json.validation_contact }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        2112,
+        1056
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "7ad5c27c-f6a3-4468-9c8d-1d76045ebb54",
+      "maxTries": 3,
+      "name": "SAUVER ENVOI FREXIT",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "email_contact",
+              "id": "email_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "type_contact",
+              "id": "type_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_contact_validee",
+              "id": "source_contact_validee",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "validation_contact",
+              "id": "validation_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "date_envoi",
+              "id": "date_envoi",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "compte_envoi": "={{ $json.compte_envoi }}",
+            "corps": "={{ $json.corps }}",
+            "date_envoi": "={{ $json.date_envoi }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "email_contact": "={{ $json.email_contact }}",
+            "source_contact_validee": "={{ $json.source_contact_validee }}",
+            "statut": "={{ $json.statut }}",
+            "type_contact": "={{ $json.type_contact }}",
+            "validation_contact": "={{ $json.validation_contact }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        2112,
+        1264
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "f379466c-9b21-4e5f-8e62-62cd35a5eed9",
+      "name": "NOTE - Workflow C (envoi automatique)",
+      "parameters": {
+        "color": 6,
+        "content": "## C — Envois automatiques\n\nDécision de Louis : plus de validation Telegram. Deux passes par jour (10h07 et 15h07), plafond 5 envois/jour toutes chaînes confondues.\n\nPart automatiquement : fiche A_VERIFIER + invitation conforme + email candidat trouvé (priorité aux domaines non grand public), jamais deux fois le même email ou le même auteur. Fiche SANS email : reste en attente, notifiée sur Telegram (/email CLE adresse pour la compléter — le workflow D crée alors un brouillon à relire).\n\nChaque email part en HTML avec un pixel de suivi (workflow E enregistre les ouvertures dans la colonne ouvert_le). Statut ENVOYE + date_envoi écrits dans le Sheets. Le récap quotidien (workflow D, 8h33) résume envois et ouvertures.\n\nPRÉREQUIS : ajouter les colonnes date_envoi et ouvert_le à la fin de la ligne d'en-tête du Sheets, et publier le workflow E (pixel).",
+        "height": 420,
+        "width": 470
+      },
+      "position": [
+        784,
+        1472
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    },
+    {
+      "id": "cerveau-retenu-if",
+      "name": "RETENU ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "cerveau-retenu-cond",
+              "leftValue": "={{ $json.retenu ? 'OUI' : 'NON' }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "OUI"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1452,
+        1332
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "ncNh8IVLRGwp5Ocz",
+          "name": "Telegram - Impacteur Prospection"
+        }
+      },
+      "id": "cerveau-retenu-telegram",
+      "maxTries": 3,
+      "name": "TELEGRAM - retenus",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.telegram_message }}"
+      },
+      "position": [
+        1672,
+        1472
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "waitBetweenTries": 3000,
+      "webhookId": "9feda564-7ff2-4d9f-b43d-8b7b01a0979e"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,1037 @@
+{
+  "active": false,
+  "connections": {
+    "Analyser l'accueil": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire la page contact",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Aplatir, garder l'IDF, dédoublonner": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pas déjà en base (place_id)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Au plus 120 sites à lire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire le site (accueil)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer envoyé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : prospect contacté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour le prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer en échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour à 9 h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Configuration et requêtes du jour",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Configuration et requêtes du jour": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Google Places : recherche texte",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E-mail pas déjà prospecté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Trier et garder les 50 meilleurs",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "E-mail trouvé ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pas dans les exclusions",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Fiche sans e-mail",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "File d'envoi",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer le prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer le mail (OVH)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : envoyé",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Champs : échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Fiche sans e-mail": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer (sans e-mail)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "File d'envoi": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Google Places : recherche texte": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Aplatir, garder l'IDF, dédoublonner",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ligne prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer le prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire la page contact": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Qualifier et rédiger",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire le site (accueil)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analyser l'accueil",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer en échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause entre deux mails",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : prospect contacté",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mettre à jour le prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pause entre deux mails",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pas dans les exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E-mail pas déjà prospecté",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pas déjà en base (place_id)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Au plus 120 sites à lire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pause entre deux mails": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Une par une",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer le mail": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer le mail (OVH)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Qualifier et rédiger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "E-mail trouvé ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Trier et garder les 50 meilleurs": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ligne prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Une par une": {
+      "main": [
+        [],
+        [
+          {
+            "index": 0,
+            "node": "Préparer le mail",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "UAYys6wJpkVTNgg2",
+  "name": "Nour Meet 1 - Recherche et envoi automatique",
+  "nodes": [
+    {
+      "id": "5479a323-be36-48d0-b7b6-6d0a8157a04e",
+      "name": "Chaque jour à 9 h",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 9 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        -2416,
+        112
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "de4308bf-105b-4a8b-9149-efe85bf6ebcc",
+      "name": "Configuration et requêtes du jour",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  MODE_TEST: true,                          // true = 3 mails seulement, tous vers ADRESSE_TEST, avec [TEST] dans l'objet\n  ADRESSE_TEST: 'contact@nourmeet.com',\n  TELEGRAM_CHAT_ID: '6339897621',           // reçoit le bilan quotidien (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <contact@nourmeet.com>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/restaurateurs',\n  SITE_WEB: 'https://nourmeet.com',         // lien du logo en bas du mail\n  LOGO_URL: 'https://n8n.nourmeet.com/webhook/logo-nour-meet', // logo servi par le workflow 5 (vide = lien texte seul)\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (validé le 26/09)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (validé le 26/09)\n  PAUSE_ENTRE_MAILS_S: 45,                  // espacement des envois (délivrabilité)\n  SUIVI_URL: 'https://n8n.nourmeet.com/webhook/ouverture', // pixel d'ouverture (workflow 7)\n};\n\n// Zones d'Île-de-France parcourues à tour de rôle\nconst ZONES = [\n  'Paris 1er','Paris 2e','Paris 3e','Paris 4e','Paris 5e','Paris 6e','Paris 7e','Paris 8e','Paris 9e','Paris 10e',\n  'Paris 11e','Paris 12e','Paris 13e','Paris 14e','Paris 15e','Paris 16e','Paris 17e','Paris 18e','Paris 19e','Paris 20e',\n  'Neuilly-sur-Seine','Levallois-Perret','Boulogne-Billancourt','Issy-les-Moulineaux','Malakoff','Montrouge',\n  'Saint-Denis','Saint-Ouen','Aubervilliers','Montreuil','Vincennes','Saint-Mandé','Créteil','Vitry-sur-Seine',\n  'Ivry-sur-Seine','Nanterre','Courbevoie','Puteaux','Rueil-Malmaison','Versailles','Saint-Germain-en-Laye',\n  'Argenteuil','Cergy','Sarcelles','Bobigny','Pantin','Clichy','Massy','Évry-Courcouronnes','Meaux',\n];\nconst THEMES = [\n  'restaurant halal haut de gamme',\n  'restaurant sans alcool chic',\n  'restaurant privatisable pour soirée',\n  'restaurant lounge chicha',\n  'restaurant gastronomique halal',\n];\n// 10 requêtes par jour : 2 zones x 5 thèmes, qui tournent chaque jour\nconst jour = Math.floor(Date.now() / 86400000);\nconst items = [];\nfor (let z = 0; z < 2; z++) {\n  const zone = ZONES[(jour * 2 + z) % ZONES.length];\n  for (const theme of THEMES) items.push({ json: { ...CONFIG, textQuery: `${theme} ${zone}`, zone } });\n}\nreturn items;"
+      },
+      "position": [
+        -2208,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "v92f4jnnMm7KTRm9",
+          "name": "Google Places API (clé)"
+        }
+      },
+      "id": "65c36cac-d6fc-43b3-b530-4c4476205299",
+      "name": "Google Places : recherche texte",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Goog-FieldMask",
+              "value": "places.id,places.displayName,places.formattedAddress,places.websiteUri,places.nationalPhoneNumber,places.googleMapsUri,places.rating,places.userRatingCount,places.priceLevel,places.primaryType,places.businessStatus,places.goodForGroups,places.reservable,places.servesBeer,places.servesWine,places.servesCocktails"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify({ textQuery: $json.textQuery, languageCode: 'fr', regionCode: 'FR', pageSize: 20, locationRestriction: { rectangle: { low: { latitude: 48.12, longitude: 1.44 }, high: { latitude: 49.24, longitude: 3.56 } } } }) }}",
+        "method": "POST",
+        "options": {
+          "timeout": 20000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://places.googleapis.com/v1/places:searchText"
+      },
+      "position": [
+        -1984,
+        112
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "875a9092-6381-487e-8cf1-c3ab7f794ee1",
+      "name": "Aplatir, garder l'IDF, dédoublonner",
+      "parameters": {
+        "jsCode": "const PRIX = { PRICE_LEVEL_INEXPENSIVE: '€', PRICE_LEVEL_MODERATE: '€€', PRICE_LEVEL_EXPENSIVE: '€€€', PRICE_LEVEL_VERY_EXPENSIVE: '€€€€' };\nconst vus = new Set(); const out = [];\nfor (const it of $input.all()) {\n  for (const p of (it.json.places || [])) {\n    if (!p.id || vus.has(p.id)) continue;\n    if (p.businessStatus && p.businessStatus !== 'OPERATIONAL') continue;\n    const adr = p.formattedAddress || '';\n    const cp = (adr.match(/\\b(75|77|78|91|92|93|94|95)\\d{3}\\b/) || [])[0];\n    if (!cp) continue;                                   // hors Île-de-France\n    vus.add(p.id);\n    const ville = (adr.match(new RegExp(cp + '\\\\s+([^,]+)')) || [])[1] || '';\n    const indices = [];\n    if (p.goodForGroups) indices.push('adapté aux groupes (Google)');\n    if (p.reservable) indices.push('réservable (Google)');\n    if (p.servesBeer || p.servesWine) indices.push('sert de l\\'alcool (Google)');\n    if (p.servesCocktails) indices.push('cocktails (Google)');\n    out.push({ json: {\n      place_id: p.id, nom: p.displayName?.text || '', adresse: adr, ville: ville.trim(), code_postal: cp,\n      site: p.websiteUri || '', telephone: p.nationalPhoneNumber || '', maps_url: p.googleMapsUri || '',\n      note: p.rating ?? null, nb_avis: p.userRatingCount ?? null, niveau_prix: PRIX[p.priceLevel] || '',\n      groupes: !!p.goodForGroups, alcool_google: !!(p.servesBeer || p.servesWine),\n      indices_google: indices.join(', '),\n    }});\n  }\n}\nreturn out;"
+      },
+      "position": [
+        -1760,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "80677852-b15a-4815-a137-a6614517dfcc",
+      "name": "Pas déjà en base (place_id)",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $json.place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        -1536,
+        112
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "f2ac587a-2287-4c29-b25f-de121397367c",
+      "name": "Au plus 120 sites à lire",
+      "parameters": {
+        "maxItems": 120
+      },
+      "position": [
+        -1328,
+        112
+      ],
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1
+    },
+    {
+      "id": "90310b87-3665-4605-809b-5cbda987fb6a",
+      "name": "Lire le site (accueil)",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; NourMeetBot/1.0; +https://nourmeet.com)"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 5
+            }
+          },
+          "response": {
+            "response": {
+              "outputPropertyName": "html",
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        },
+        "sendHeaders": true,
+        "url": "={{ $json.site || 'https://site-absent.invalid' }}"
+      },
+      "position": [
+        -1104,
+        112
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "f36b4bcc-ede2-4a14-a097-92f57d035f43",
+      "name": "Analyser l'accueil",
+      "parameters": {
+        "jsCode": "const texte = (html) => String(html || '').replace(/<script[\\s\\S]*?<\\/script>|<style[\\s\\S]*?<\\/style>/gi, ' ')\n  .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/\\s+/g, ' ');\nconst EXCLUS = /(example|exemple|domain|sentry|wixpress|wix\\.com|godaddy|\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.svg|noreply|no-reply|privacy|rgpd@|dpo@)/i;\nfunction emails(html) {\n  const brut = String(html || '').replace(/&#64;|\\[at\\]|\\(at\\)/gi, '@');\n  const trouves = brut.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [];\n  return [...new Set(trouves.map(e => e.toLowerCase().replace(/^mailto:/, '')))].filter(e => !EXCLUS.test(e));\n}\nfunction indices(t) {\n  const r = {};\n  if (/\\bhalal\\b/i.test(t) && !/non[\\s-]halal|pas halal/i.test(t)) r.halal = true;\n  if (/sans alcool|mocktail|0\\s?% alcool|alcohol[\\s-]free/i.test(t)) r.sans_alcool = true;\n  if (/privatis/i.test(t)) r.privatisation = true;\n  if (/chicha|shisha|narguil/i.test(t)) r.chicha = true;\n  const cap = t.match(/(?:jusqu['’]?\\s?à|capacité(?: de)?|accueillir)\\s*(\\d{2,3})\\s*(?:personnes|couverts|convives|invités|places)/i);\n  if (cap) r.capacite = parseInt(cap[1], 10);\n  return r;\n}\n\nconst base = $('Au plus 120 sites à lire').all();\nreturn $input.all().map((it, i) => {\n  const p = base[i].json; const html = it.json.html || '';\n  let contact_url = '';\n  if (p.site) {\n    const lien = (String(html).match(/href=[\"']([^\"'#]*(?:contact|reserv|privatis|evenement|événement|groupe)[^\"']*)[\"']/i) || [])[1];\n    try { contact_url = new URL(lien || '/contact', p.site).href; } catch (e) { contact_url = ''; }\n  }\n  return { json: { ...p, emails_accueil: emails(html), indices_accueil: indices(texte(html)), contact_url } };\n});"
+      },
+      "position": [
+        -880,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "9393bbfc-af7a-43fe-934a-a92d413e70cd",
+      "name": "Lire la page contact",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; NourMeetBot/1.0; +https://nourmeet.com)"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 5
+            }
+          },
+          "response": {
+            "response": {
+              "outputPropertyName": "html",
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        },
+        "sendHeaders": true,
+        "url": "={{ $json.contact_url || 'https://site-absent.invalid' }}"
+      },
+      "position": [
+        -656,
+        112
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "fc28e461-de15-44c5-b355-e0f83922b286",
+      "name": "Qualifier et rédiger",
+      "parameters": {
+        "jsCode": "const texte = (html) => String(html || '').replace(/<script[\\s\\S]*?<\\/script>|<style[\\s\\S]*?<\\/style>/gi, ' ')\n  .replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').replace(/\\s+/g, ' ');\nconst EXCLUS = /(example|exemple|domain|sentry|wixpress|wix\\.com|godaddy|\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.svg|noreply|no-reply|privacy|rgpd@|dpo@)/i;\nfunction emails(html) {\n  const brut = String(html || '').replace(/&#64;|\\[at\\]|\\(at\\)/gi, '@');\n  const trouves = brut.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [];\n  return [...new Set(trouves.map(e => e.toLowerCase().replace(/^mailto:/, '')))].filter(e => !EXCLUS.test(e));\n}\nfunction indices(t) {\n  const r = {};\n  if (/\\bhalal\\b/i.test(t) && !/non[\\s-]halal|pas halal/i.test(t)) r.halal = true;\n  if (/sans alcool|mocktail|0\\s?% alcool|alcohol[\\s-]free/i.test(t)) r.sans_alcool = true;\n  if (/privatis/i.test(t)) r.privatisation = true;\n  if (/chicha|shisha|narguil/i.test(t)) r.chicha = true;\n  const cap = t.match(/(?:jusqu['’]?\\s?à|capacité(?: de)?|accueillir)\\s*(\\d{2,3})\\s*(?:personnes|couverts|convives|invités|places)/i);\n  if (cap) r.capacite = parseInt(cap[1], 10);\n  return r;\n}\n\nfunction phraseAccroche(p) {\n  const faits = [];\n  if (p.sans_alcool === 'confirmé (site)') faits.push('votre offre de boissons sans alcool');\n  if (p.privatisation === 'confirmé (site)') faits.push('la possibilité de privatiser vos espaces');\n  const lieu = p.ville ? `${p.nom} à ${p.ville}` : p.nom;\n  if (faits.length) return `En découvrant ${lieu}, et notamment ${faits.join(' et ')}, nous avons pensé que vous pourriez accueillir ce type de soirée.`;\n  return `En découvrant ${lieu}, nous avons pensé que votre établissement pourrait accueillir ce type de soirée.`;\n}\nconst PIED = (C) => `Bien cordialement,\\n${C.SIGNATAIRE}\\nNūr Meet\\n${C.SITE_WEB}\\n\\nSi vous ne souhaitez plus recevoir de message de notre part, répondez simplement « STOP ».`;\n\nfunction mailInitial(p, C) {\n  return {\n    objet: `${p.nom} : proposer vos soirées rencontre et networking sur Nūr Meet`,\n    corps:\n`Bonjour,\n\nJe vous écris au nom de Nūr Meet, une plateforme qui publie des soirées de rencontre et de networking organisées dans des restaurants d'Île-de-France.\n\n${phraseAccroche(p)}\n\nLe principe est simple :\n- vous proposez vos propres soirées payantes, de rencontre ou de networking, et publiez l'annonce sur Nūr Meet ;\n- vous restez l'organisateur de la soirée dans votre établissement ;\n- notre équipe valide chaque annonce avant sa publication.\n\nPour candidater, il suffit de créer votre compte ici : ${C.LIEN_CANDIDATURE}\n\nJe reste disponible pour répondre à vos questions par simple retour de mail.\n\n${PIED(C)}`,\n  };\n}\n\nfunction mailRelance(p, n, C) {\n  if (n === 1) return {\n    objet: `Nūr Meet : vos soirées chez ${p.nom} ?`,\n    corps:\n`Bonjour,\n\nJe me permets de revenir vers vous au sujet de Nūr Meet. Si l'idée d'organiser des soirées de rencontre ou de networking chez ${p.nom} vous intéresse, la candidature se fait en quelques minutes : ${C.LIEN_CANDIDATURE}\n\nNous validons chaque annonce avant publication, et vous restez l'organisateur de vos soirées.\n\n${PIED(C)}`,\n  };\n  return {\n    objet: `Dernier message : Nūr Meet et ${p.nom}`,\n    corps:\n`Bonjour,\n\nJe vous adresse un dernier message au sujet de Nūr Meet. Si ce n'est pas le bon moment, aucun souci, je ne vous relancerai plus.\n\nSi l'idée vous tente plus tard, vous pourrez toujours candidater ici : ${C.LIEN_CANDIDATURE}\n\n${PIED(C)}`,\n  };\n}\n\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\nconst C = $('Configuration et requêtes du jour').first().json;\nconst base = $(\"Analyser l'accueil\").all();\nconst maintenant = new Date().toISOString();\nreturn $input.all().map((it, i) => {\n  const p = base[i].json; const html = it.json.html || '';\n  const ic = indices(texte(html)); const ia = p.indices_accueil || {};\n  const src = (k) => ia[k] ? p.site : (ic[k] ? p.contact_url : '');\n  // e-mail : on préfère une adresse du domaine du site, puis contact@/reservation@\n  const liste = [...new Set([...(p.emails_accueil || []), ...emails(html)])];\n  let domaine = ''; try { domaine = new URL(p.site).hostname.replace(/^www\\./, ''); } catch (e) {}\n  const rang = (e) => (domaine && e.endsWith('@' + domaine) ? 0 : 2) + (/^(contact|info|reservation|resa|events?|bonjour|hello)@/.test(e) ? 0 : 1);\n  liste.sort((a, b) => rang(a) - rang(b));\n  const email = liste[0] || '';\n  const email_source = email ? ((p.emails_accueil || []).includes(email) ? p.site : p.contact_url) : '';\n  const etat = (k) => src(k) ? 'confirmé (site)' : 'à vérifier';\n  const capa = ia.capacite || ic.capacite;\n  const f = {\n    ...p, email, email_source,\n    halal: etat('halal'), sans_alcool: etat('sans_alcool'), privatisation: etat('privatisation'),\n    chicha: src('chicha') ? 'oui (site)' : 'non mentionné',\n    capacite: capa ? `${capa} (site : ${src('capacite')})` : 'à vérifier',\n  };\n  f.sources = ['halal', 'sans_alcool', 'privatisation', 'chicha', 'capacite']\n    .filter(k => src(k)).map(k => `${k}: ${src(k)}`).join(' | ');\n  // Score : priorité haut de gamme, halal, sans alcool, privatisation, 20 pers.\n  let s = 0;\n  if (f.niveau_prix === '€€€' || f.niveau_prix === '€€€€') s += 3; else if (f.niveau_prix === '€€') s += 1;\n  if (f.halal.startsWith('confirmé')) s += 3;\n  if (f.sans_alcool.startsWith('confirmé')) s += 2;\n  if (f.privatisation.startsWith('confirmé')) s += 2;\n  if (capa && capa >= 20) s += 2;\n  if (p.groupes) s += 1;\n  if ((p.note || 0) >= 4.3 && (p.nb_avis || 0) >= 50) s += 1;\n  f.score = s;\n  const m = mailInitial(f, C);\n  f.objet = m.objet; f.corps = m.corps; f.date_decouverte = maintenant;\n  const ok = (v) => v.startsWith('confirmé') || v.startsWith('oui');\n  const confirmes = [['halal', f.halal], ['boissons sans alcool', f.sans_alcool], ['privatisation', f.privatisation], ['chicha', f.chicha]]\n    .filter(([, v]) => ok(v)).map(([k]) => k);\n  if (capa) confirmes.push(`capacité ${capa} pers.`);\n  const averifier = [['halal', f.halal], ['boissons sans alcool', f.sans_alcool], ['privatisation', f.privatisation], ['capacité 20+', f.capacite]]\n    .filter(([, v]) => v === 'à vérifier').map(([k]) => k);\n  f.telegram_text =\n`<b>🍽 ${esc(f.nom)}</b>  ·  score ${s}\n📍 ${esc(f.adresse)}\n🌐 ${esc(f.site || 'pas de site')}  ·  ⭐ ${f.note ?? '?'} (${f.nb_avis ?? 0} avis)  ·  ${esc(f.niveau_prix || 'prix ?')}\n✉️ ${esc(email)}  <i>(trouvé sur ${esc(email_source)})</i>\n✅ Confirmé : ${esc(confirmes.join(', ') || 'rien de confirmé')}\n❓ À vérifier : ${esc(averifier.join(', ') || 'rien')}\nℹ️ Google : ${esc(f.indices_google || 'aucun indice')}\n🔎 Sources : ${esc(f.sources || 'aucune')}\n🗺 ${esc(f.maps_url)}\n\n<b>Objet :</b> ${esc(f.objet)}\n<blockquote expandable>${esc(f.corps)}</blockquote>`;\n  delete f.emails_accueil; delete f.indices_accueil;\n  return { json: f };\n});"
+      },
+      "position": [
+        -448,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "56e072ba-a5e8-4beb-bda6-1028360e5750",
+      "name": "E-mail trouvé ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "80def0cd-c1e3-4114-9908-084de9441c10",
+              "leftValue": "={{ $json.email }}",
+              "operator": {
+                "operation": "notEmpty",
+                "singleValue": true,
+                "type": "string"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -224,
+        112
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "494783b3-d7b9-4535-9a5b-a93977b24c2b",
+      "name": "Fiche sans e-mail",
+      "parameters": {
+        "jsCode": "const c = [\"place_id\", \"nom\", \"adresse\", \"ville\", \"code_postal\", \"site\", \"telephone\", \"maps_url\", \"email\", \"email_source\", \"note\", \"nb_avis\", \"niveau_prix\", \"halal\", \"sans_alcool\", \"privatisation\", \"capacite\", \"chicha\", \"indices_google\", \"sources\", \"score\", \"date_decouverte\"];\nconst o = {}; for (const k of c) o[k] = $json[k] ?? null;\no.statut = 'sans_email'; o.nb_relances = 0;\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        0,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "3a6e02cc-14dd-43e5-9a6c-e0eca0077f85",
+      "name": "Enregistrer (sans e-mail)",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "options": {}
+      },
+      "position": [
+        224,
+        304
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "04cad760-3c29-4103-839e-46ff2ad165ee",
+      "name": "Pas dans les exclusions",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "91812ea8-71d3-47c2-b8a6-472362f82325",
+      "name": "E-mail pas déjà prospecté",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "38f6d807-61af-4b6e-bb99-9466f785de7b",
+      "name": "Trier et garder les 50 meilleurs",
+      "parameters": {
+        "jsCode": "const C = $('Configuration et requêtes du jour').first().json;\nconst vus = new Set();\nreturn $input.all().sort((a, b) => b.json.score - a.json.score)\n  .filter(it => !vus.has(it.json.email) && vus.add(it.json.email))\n  .slice(0, C.MODE_TEST ? 3 : C.PROPOSITIONS_PAR_JOUR);   // en mode test : 3 mails seulement"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "aafa5ce9-3492-421e-9fc7-451efa8c8192",
+      "name": "Ligne prospect",
+      "parameters": {
+        "jsCode": "const c = [\"place_id\", \"nom\", \"adresse\", \"ville\", \"code_postal\", \"site\", \"telephone\", \"maps_url\", \"email\", \"email_source\", \"note\", \"nb_avis\", \"niveau_prix\", \"halal\", \"sans_alcool\", \"privatisation\", \"capacite\", \"chicha\", \"indices_google\", \"sources\", \"score\", \"date_decouverte\"];\nconst o = {}; for (const k of c) o[k] = $json[k] ?? null;\no.statut = 'propose'; o.nb_relances = 0;\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cd5b6359-9d61-4974-9a4e-e0363688c3c3",
+      "name": "Enregistrer le prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "options": {}
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "3c9bb021-f080-4c2d-b0dd-355badff1416",
+      "name": "Ligne proposition",
+      "parameters": {
+        "jsCode": "const src = $('Trier et garder les 50 meilleurs').all();\nreturn $input.all().map((_, i) => { const p = src[i].json; return { json: {\n  prospect_place_id: p.place_id, nom: p.nom, email: p.email, type: 'initial', objet: p.objet, corps: p.corps,\n  statut: 'a_envoyer', date_proposition: new Date().toISOString(),\n}}; });"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c1be1e1c-82fd-4b7e-9513-7ec414464bfc",
+      "name": "Enregistrer la proposition",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "options": {}
+      },
+      "position": [
+        1328,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "190a150e-5925-4019-a14b-5a0a755a4554",
+      "name": "File d'envoi",
+      "parameters": {
+        "jsCode": "return $input.all().map(it => ({ json: { envoi_id: it.json.id, email: it.json.email, objet: it.json.objet,\n  corps: it.json.corps, type: it.json.type, prospect_place_id: it.json.prospect_place_id } }));"
+      },
+      "position": [
+        1552,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "d3cb1ea8-7a8e-42e4-83ef-3ce56641e35f",
+      "name": "Une par une",
+      "parameters": {
+        "options": {}
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3
+    },
+    {
+      "id": "6d001b33-aa8d-4d4f-96a4-38945021db22",
+      "name": "Préparer le mail",
+      "parameters": {
+        "jsCode": "const C = $('Configuration et requêtes du jour').first().json;\n\nconst e = $json;\nconst esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst fmt = (t) => esc(t).replace(/(https?:\\/\\/[^\\s<]+)/g, '<a href=\"$1\">$1</a>').replace(/\\n/g, '<br>');\n// Le logo se place juste après la signature, avant la ligne « STOP »\nconst i = String(e.corps).lastIndexOf('\\n\\nSi vous ne souhaitez plus');\nconst avant = i >= 0 ? String(e.corps).slice(0, i) : String(e.corps);\nconst stop = i >= 0 ? String(e.corps).slice(i + 2) : '';\nconst site = esc(C.SITE_WEB);\nconst logo = C.LOGO_URL\n  ? `<a href=\"${site}\"><img src=\"${esc(C.LOGO_URL)}\" alt=\"Nūr Meet\" width=\"140\" style=\"border:0;display:block;margin-top:16px\"></a>`\n  : '';\n// Pixel d'ouverture : compté quand la messagerie affiche les images (approximatif)\nconst pixel = C.SUIVI_URL ? `<img src=\"${esc(C.SUIVI_URL)}?e=${e.envoi_id}\" width=\"1\" height=\"1\" alt=\"\" style=\"border:0\">` : '';\nconst html = `<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#222\">${fmt(avant)}${logo}${stop ? `<p style=\"font-size:12px;color:#777\">${fmt(stop)}</p>` : ''}${pixel}</div>`;\nreturn { json: { ...e, html,\n  to: C.MODE_TEST ? C.ADRESSE_TEST : e.email,\n  subject: (C.MODE_TEST ? '[TEST] ' : '') + e.objet,\n  test: !!C.MODE_TEST } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2000,
+        112
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "smtp": {
+          "id": "fZPsmbTaU3rVPrOn",
+          "name": "SMTP OVH contact@nourmeet.com"
+        }
+      },
+      "id": "1ff3441c-616f-486e-83c5-eb9698bca973",
+      "name": "Envoyer le mail (OVH)",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "emailFormat": "both",
+        "fromEmail": "={{ $('Configuration et requêtes du jour').first().json.EXPEDITEUR }}",
+        "html": "={{ $json.html }}",
+        "options": {
+          "appendAttribution": false
+        },
+        "subject": "={{ $json.subject }}",
+        "text": "={{ $json.corps }}",
+        "toEmail": "={{ $json.to }}"
+      },
+      "position": [
+        2240,
+        112
+      ],
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "webhookId": "4afe8308-bd96-4dda-9dac-3de6dac32206"
+    },
+    {
+      "id": "d8298eb6-ee0f-4227-81a3-28293aa1e054",
+      "name": "Champs : envoyé",
+      "parameters": {
+        "jsCode": "return { json: { statut: $('Préparer le mail').item.json.test ? 'test' : 'envoye', date_decision: new Date().toISOString() } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2480,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c1cfcc67-e877-4fcd-890d-f04ecb8a32f7",
+      "name": "Marquer envoyé",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        2720,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "74aa59ac-de7c-4e2b-8f5d-4922ec35524e",
+      "name": "Champs : prospect contacté",
+      "parameters": {
+        "jsCode": "const e = $json;                      // ligne np_envois mise à jour\nconst now = new Date().toISOString();\nif (e.statut === 'test') return { json: { statut: 'test' } };\nconst o = { date_dernier_envoi: now };\nif (e.type === 'initial') Object.assign(o, { statut: 'contacte', date_premier_envoi: now, nb_relances: 0 });\nif (e.type === 'relance1') Object.assign(o, { statut: 'relance1', nb_relances: 1 });\nif (e.type === 'relance2') Object.assign(o, { statut: 'relance2', nb_relances: 2 });\nreturn { json: o };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2960,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "3490e93a-5f30-42da-8228-0ffd6ac4cf77",
+      "name": "Mettre à jour le prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $('Marquer envoyé').item.json.prospect_place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        3200,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "78698dd2-2678-4471-afde-a1f694bf4329",
+      "name": "Champs : échec",
+      "parameters": {
+        "jsCode": "return { json: { statut: 'echec', date_decision: new Date().toISOString(), erreur: String($json.error?.message || $json.error || 'erreur inconnue').slice(0, 500) } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        2480,
+        224
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "25cb85e1-48c4-4ac3-9a54-65ca809778a1",
+      "name": "Marquer en échec",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Une par une').item.json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        2720,
+        224
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d85efab3-9b07-4be5-af38-35682751ff21",
+      "name": "Pause entre deux mails",
+      "parameters": {
+        "amount": "={{ $('Configuration et requêtes du jour').first().json.PAUSE_ENTRE_MAILS_S }}"
+      },
+      "position": [
+        3440,
+        112
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "182d0690-0d87-46de-b781-83ef8ba93fe9"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

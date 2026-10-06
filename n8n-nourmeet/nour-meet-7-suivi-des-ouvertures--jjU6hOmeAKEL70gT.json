@@ -1,0 +1,198 @@
+{
+  "active": true,
+  "connections": {
+    "Champs : ouverture": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Noter l'ouverture",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Identifiant valide ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : ouverture",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Image invisible": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Renvoyer l'image",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mail ouvert": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Image invisible",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Renvoyer l'image": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Identifiant valide ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "jjU6hOmeAKEL70gT",
+  "name": "Nour Meet 7 - Suivi des ouvertures",
+  "nodes": [
+    {
+      "id": "09e7246f-b2ba-47bd-a0f8-c6e3165fb384",
+      "name": "Mail ouvert",
+      "parameters": {
+        "options": {},
+        "path": "ouverture",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "3022330d-b6b1-4c4e-ab5c-b7ad3e22b075"
+    },
+    {
+      "id": "189c3a94-4c72-4c8c-addd-c07691b13b63",
+      "name": "Image invisible",
+      "parameters": {
+        "jsCode": "const id = Number($json.query?.e);\nreturn [{ json: { envoi_id: Number.isInteger(id) && id > 0 ? id : 0, agent: String($json.headers?.['user-agent'] || '').slice(0, 200) },\n  binary: { data: { data: 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', mimeType: 'image/gif', fileName: 'p.gif' } } }];"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "fe2d7d33-2c4f-4564-ae87-a6bf84673e03",
+      "name": "Renvoyer l'image",
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "image/gif"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-store, no-cache, must-revalidate"
+              }
+            ]
+          }
+        },
+        "respondWith": "binary"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "4b111ede-8c3c-4684-8e9e-e36c2f34de35",
+      "name": "Identifiant valide ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "4075f0ab-8520-4c35-bd54-2ed5ce7e3c7c",
+              "leftValue": "={{ $json.envoi_id }}",
+              "operator": {
+                "operation": "gt",
+                "type": "number"
+              },
+              "rightValue": 0
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "7ad249f5-50e9-4089-8491-ad3fff5bbc39",
+      "name": "Champs : ouverture",
+      "parameters": {
+        "jsCode": "return { json: { envoi_id: $json.envoi_id, date: new Date().toISOString(), agent: $json.agent } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "3988dfeb-6159-4275-a0c6-d0e4cff78c7b",
+      "name": "Noter l'ouverture",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_ouvertures"
+        },
+        "options": {}
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

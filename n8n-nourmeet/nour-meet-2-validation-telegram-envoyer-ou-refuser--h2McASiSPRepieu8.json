@@ -1,0 +1,1026 @@
+{
+  "active": false,
+  "connections": {
+    "Autorisé ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer ?",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Répondre : non autorisé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer envoyé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : prospect contacté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour le prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : prospect écarté": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour le prospect (refus)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : refusé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Refuser la proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : verrou": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Verrouiller la proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer en échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Clic sur un bouton": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire le clic",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : verrou",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Champs : refusé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer le mail (OVH)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : envoyé",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Champs : échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire le clic": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Autorisé ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer en échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre : échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : prospect contacté",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mettre à jour le prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre : envoyé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mettre à jour le prospect (refus)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre : refusé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Refus enregistré ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : prospect écarté",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Répondre : déjà traité (refus)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Refuser la proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Refus enregistré ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Répondre : envoyé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer le message : envoyé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Répondre : refusé": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer le message : refusé",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Répondre : échec": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer le message : échec",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Verrou obtenu ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer le mail (OVH)",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Répondre : déjà traité",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Verrouiller la proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Verrou obtenu ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "h2McASiSPRepieu8",
+  "name": "Nour Meet 2 - Validation Telegram (Envoyer ou Refuser)",
+  "nodes": [
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "id": "a0db94b2-34ef-4439-bff3-d12e889f250b",
+      "name": "Clic sur un bouton",
+      "parameters": {
+        "additionalFields": {},
+        "updates": [
+          "callback_query"
+        ]
+      },
+      "position": [
+        -1760,
+        304
+      ],
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "webhookId": "49bb092f-b3f0-40b9-a34a-96ffa4896814"
+    },
+    {
+      "id": "89ddc2ae-6e08-4f35-a2e7-8cff2bdb6101",
+      "name": "Lire le clic",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  TELEGRAM_CHAT_ID: '6339897621',            // ton identifiant de chat Telegram (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <contact@nourmeet.com>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/login',\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (à confirmer)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (à confirmer)\n};\n\nconst cq = $json.callback_query || {};\nconst [action, id] = String(cq.data || '').split(':');\nreturn { json: {\n  ...CONFIG,\n  autorise: String(cq.from?.id) === String(CONFIG.TELEGRAM_CHAT_ID) && ['S', 'R'].includes(action) && !!id,\n  action, envoi_id: Number(id), query_id: cq.id,\n  chat_id: cq.message?.chat?.id, message_id: cq.message?.message_id, texte: cq.message?.text || '',\n}};"
+      },
+      "position": [
+        -1536,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "67c77142-5df2-441c-81d6-ad0c089d3556",
+      "name": "Autorisé ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "7fdaded9-7931-4db1-94bb-4699455b3d91",
+              "leftValue": "={{ $json.autorise }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -1328,
+        304
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "id": "4bdb8d13-4227-41d9-b13f-ca2b3d185c2c",
+      "name": "Répondre : non autorisé",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": true,
+          "text": "Action non autorisée."
+        },
+        "queryId": "={{ $json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        -1104,
+        512
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "500377d9-af9a-4cbc-a87a-3a729ed10dd0"
+    },
+    {
+      "id": "0c2eb647-7e72-43c5-9124-5cd6042ecd2b",
+      "name": "Envoyer ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ae56a9a6-53c1-4c3e-aff8-2f5ead51d01c",
+              "leftValue": "={{ $json.action }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "S"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -1104,
+        304
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "d4dc0deb-3ef5-40fe-9265-f8c2eb1f8958",
+      "name": "Champs : verrou",
+      "parameters": {
+        "jsCode": "return [{ json: { statut: 'envoi_en_cours', date_decision: new Date().toISOString() } }];"
+      },
+      "position": [
+        -880,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "c5cd0da7-0c14-4d29-a742-dfe099d7d87f",
+      "name": "Verrouiller la proposition",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Lire le clic').first().json.envoi_id }}"
+            },
+            {
+              "keyName": "statut",
+              "keyValue": "en_attente"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        -656,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "4ce7cc9a-0f87-4497-9081-4ecbdbb57816",
+      "name": "Verrou obtenu ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "42c26c0a-3d66-4de5-9fd9-d4120915324d",
+              "leftValue": "={{ $json.id }}",
+              "operator": {
+                "operation": "exists",
+                "singleValue": true,
+                "type": "number"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -448,
+        208
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "854d6495-2a34-41b5-b495-bb69df019971",
+      "name": "Répondre : déjà traité",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": true,
+          "text": "Déjà traité ou annulé (réponse reçue). Rien n'a été envoyé."
+        },
+        "queryId": "={{ $('Lire le clic').first().json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        -224,
+        400
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "63b6c83a-bfe1-4a11-baa9-1fc1b896b001"
+    },
+    {
+      "credentials": {
+        "smtp": {
+          "id": "fZPsmbTaU3rVPrOn",
+          "name": "SMTP OVH contact@nourmeet.com"
+        }
+      },
+      "id": "ef4593b2-5e9f-45dd-8917-a5e83e397ad7",
+      "name": "Envoyer le mail (OVH)",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "emailFormat": "text",
+        "fromEmail": "={{ $('Lire le clic').first().json.EXPEDITEUR }}",
+        "options": {
+          "appendAttribution": false
+        },
+        "subject": "={{ $json.objet }}",
+        "text": "={{ $json.corps }}",
+        "toEmail": "={{ $json.email }}"
+      },
+      "position": [
+        -224,
+        112
+      ],
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "webhookId": "7398ce4c-13d8-4a3e-8f3f-24e4c3b12284"
+    },
+    {
+      "id": "6b71ce9c-7750-41d1-9b6b-93e4c61229e5",
+      "name": "Champs : envoyé",
+      "parameters": {
+        "jsCode": "return [{ json: { statut: 'envoye' } }];"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "5966df36-963e-4b65-8b42-a8677ace9024",
+      "name": "Marquer envoyé",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Lire le clic').first().json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "71d946de-6eba-4e2b-bd8f-6159a255897e",
+      "name": "Champs : prospect contacté",
+      "parameters": {
+        "jsCode": "const e = $('Verrouiller la proposition').first().json;\nconst now = new Date().toISOString();\nconst o = { date_dernier_envoi: now };\nif (e.type === 'initial') Object.assign(o, { statut: 'contacte', date_premier_envoi: now, nb_relances: 0 });\nif (e.type === 'relance1') Object.assign(o, { statut: 'relance1', nb_relances: 1 });\nif (e.type === 'relance2') Object.assign(o, { statut: 'relance2', nb_relances: 2 });\nreturn [{ json: o }];"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "6b4735bd-94b9-4061-abd4-257f354b830a",
+      "name": "Mettre à jour le prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $('Verrouiller la proposition').first().json.prospect_place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "9368af1f-9777-4b46-ad66-95cd35f6a843",
+      "name": "Répondre : envoyé",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": false,
+          "text": "Mail envoyé ✅"
+        },
+        "queryId": "={{ $('Lire le clic').first().json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "206225a6-3198-4d19-ad95-35f4d5f5eeda"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "cff73766-379c-4072-aefd-32e8f856b941",
+      "name": "Marquer le message : envoyé",
+      "parameters": {
+        "additionalFields": {
+          "disable_web_page_preview": true
+        },
+        "chatId": "={{ $('Lire le clic').first().json.chat_id }}",
+        "messageId": "={{ $('Lire le clic').first().json.message_id }}",
+        "operation": "editMessageText",
+        "text": "={{ $('Lire le clic').first().json.texte + '\\n\\n' + '✅ ENVOYÉ le ' + new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }) }}"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "69e9ade6-0d09-48a4-a11e-b3bc7cae3a01"
+    },
+    {
+      "id": "d896679b-984e-4a6a-a9c9-9002046d632a",
+      "name": "Champs : échec",
+      "parameters": {
+        "jsCode": "return [{ json: { statut: 'echec', erreur: String($json.error?.message || $json.error || 'erreur inconnue').slice(0, 500) } }];"
+      },
+      "position": [
+        0,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c33e3d16-89ab-4b53-9a9c-d1816bdd1044",
+      "name": "Marquer en échec",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Lire le clic').first().json.envoi_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        224,
+        208
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a83493ab-787c-4257-82e2-92ccab7c1fe4",
+      "name": "Répondre : échec",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": true,
+          "text": "Échec de l'envoi : rien n'est parti. Détail dans n8n."
+        },
+        "queryId": "={{ $('Lire le clic').first().json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        448,
+        208
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "95d1e09b-7a91-4967-ad88-3e1f8fc03930"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "cb23e7d6-85d4-422b-8b25-ce60db20cfb8",
+      "name": "Marquer le message : échec",
+      "parameters": {
+        "additionalFields": {
+          "disable_web_page_preview": true
+        },
+        "chatId": "={{ $('Lire le clic').first().json.chat_id }}",
+        "messageId": "={{ $('Lire le clic').first().json.message_id }}",
+        "operation": "editMessageText",
+        "text": "={{ $('Lire le clic').first().json.texte + '\\n\\n' + '⚠️ ÉCHEC D\\'ENVOI, rien n\\'est parti. Voir l\\'exécution dans n8n.' }}"
+      },
+      "position": [
+        672,
+        208
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "5651bf2b-f574-45a3-9087-5dd91b2ccfb6"
+    },
+    {
+      "id": "5853827c-910d-4837-808c-a92b05f5ac66",
+      "name": "Champs : refusé",
+      "parameters": {
+        "jsCode": "return [{ json: { statut: 'refuse', date_decision: new Date().toISOString() } }];"
+      },
+      "position": [
+        -880,
+        608
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "d0000e2d-6539-4100-b22a-cb7440a45502",
+      "name": "Refuser la proposition",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Lire le clic').first().json.envoi_id }}"
+            },
+            {
+              "keyName": "statut",
+              "keyValue": "en_attente"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        -656,
+        608
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "8026320f-1cc0-470b-b063-e7769203bc75",
+      "name": "Refus enregistré ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "652488fa-895e-4ea6-97f1-9d1a69f29655",
+              "leftValue": "={{ $json.id }}",
+              "operator": {
+                "operation": "exists",
+                "singleValue": true,
+                "type": "number"
+              },
+              "rightValue": ""
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -448,
+        608
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "e1a59a5b-1619-4e75-b025-8b007864a7f0",
+      "name": "Champs : prospect écarté",
+      "parameters": {
+        "jsCode": "// Refus du 1er mail : prospect écarté. Refus d'une relance : plus de relance.\nreturn [{ json: { statut: $json.type === 'initial' ? 'ecarte' : 'termine' } }];"
+      },
+      "position": [
+        -224,
+        608
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "9f113de0-3879-4643-8e94-27d0daaccf68",
+      "name": "Mettre à jour le prospect (refus)",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "place_id",
+              "keyValue": "={{ $('Refuser la proposition').first().json.prospect_place_id }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        0,
+        608
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a2fa68ac-3fe7-4e65-9fe2-b9525fa4e5bc",
+      "name": "Répondre : refusé",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": false,
+          "text": "Refusé, rien n'est envoyé."
+        },
+        "queryId": "={{ $('Lire le clic').first().json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        224,
+        608
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "c7aa5908-6ac0-433a-9639-1969ef2eab93"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "f6d70311-74fc-4c3a-b907-f5a98259bf64",
+      "name": "Marquer le message : refusé",
+      "parameters": {
+        "additionalFields": {
+          "disable_web_page_preview": true
+        },
+        "chatId": "={{ $('Lire le clic').first().json.chat_id }}",
+        "messageId": "={{ $('Lire le clic').first().json.message_id }}",
+        "operation": "editMessageText",
+        "text": "={{ $('Lire le clic').first().json.texte + '\\n\\n' + '❌ REFUSÉ, rien n\\'a été envoyé.' }}"
+      },
+      "position": [
+        448,
+        608
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "7956e02f-2211-45cc-a775-fe38e833d480"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "executeOnce": true,
+      "id": "fe5bf56f-4cfc-4c7f-862e-d5996cb13a03",
+      "name": "Répondre : déjà traité (refus)",
+      "parameters": {
+        "additionalFields": {
+          "show_alert": true,
+          "text": "Déjà traité ou annulé."
+        },
+        "queryId": "={{ $('Lire le clic').first().json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        -224,
+        800
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "0a148842-fac8-4c3a-b1e7-1642f7c5a23b"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,1348 @@
+{
+  "active": false,
+  "connections": {
+    "ANALYSER MESSAGE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CONFIG ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CAPTURER ID AFRIQUE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER BROUILLON AFRIQUE",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "CONFIRMER BROUILLON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CAPTURER ID FREXIT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER BROUILLON FREXIT",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "CONFIRMER BROUILLON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "COMPTE GMAIL ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "GMAIL AFRIQUE - créer brouillon",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "GMAIL FREXIT - créer brouillon",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CONFIG ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER CONFIG",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "VALIDATION ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CONFIRMER BROUILLON": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL AFRIQUE - créer brouillon": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CAPTURER ID AFRIQUE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "GMAIL FREXIT - créer brouillon": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CAPTURER ID FREXIT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "INFO ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES RAPPORT",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIRE FICHES RAPPORT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "RAPPORT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIRE FICHES VALIDATION": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PREPARER VALIDATION",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PREPARER BROUILLON IMMEDIAT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "COMPTE GMAIL ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PREPARER VALIDATION": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "VALIDATION OK ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "RAPPORT": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "REPONSE CONFIG": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "REPONSE VALIDATION": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SAUVER CONFIG": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "REPONSE CONFIG",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "SAUVER VALIDATION": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "REPONSE VALIDATION",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "PREPARER BROUILLON IMMEDIAT",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "TELEGRAM - recevoir": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "ANALYSER MESSAGE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "VALIDATION ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES VALIDATION",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "INFO ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "VALIDATION OK ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "SAUVER VALIDATION",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "TELEGRAM - envoyer",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "6RVBdIJP1R9MOE8i",
+  "name": "IMPACTEUR D - TELEGRAM",
+  "nodes": [
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "ncNh8IVLRGwp5Ocz",
+          "name": "Telegram - Impacteur Prospection"
+        }
+      },
+      "id": "76301411-6a06-4045-ae94-17a2604b5abe",
+      "name": "TELEGRAM - recevoir",
+      "parameters": {
+        "additionalFields": {},
+        "updates": [
+          "message"
+        ]
+      },
+      "position": [
+        -608,
+        128
+      ],
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.5,
+      "webhookId": "6f813907-b0c5-4e58-9dad-16d6bcb1f194"
+    },
+    {
+      "id": "d6efad2c-382a-4318-b0ff-a9f594556d81",
+      "name": "ANALYSER MESSAGE",
+      "parameters": {
+        "jsCode": "const input=$input.first().json;\nconst msg=input.message||{};\nconst raw=String(msg.text||'').trim();\nconst chatId=msg.chat?.id;\nconst userId=msg.from?.id;\nif(!raw||chatId===undefined||userId===undefined)return [];\n\nconst store=$getWorkflowStaticData('global');\nconst CLAIM_CODE='X2VF3EJ19C';\nconst norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();\nconst html=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst cleaned=raw.replace(/^\\/([a-zA-Z_]+)@\\w+/,'/$1').trim();\nconst low=norm(cleaned);\n\nif(!store.telegram_owner_user_id){\n if(low==='/claim '+CLAIM_CODE.toLowerCase()){\n  store.telegram_owner_user_id=String(userId);\n  store.telegram_chat_id=String(chatId);\n  return [{json:{route:'config',chat_id:String(chatId),\n   cle_unique:'_config_telegram',statut:'CONFIG',\n   informations_a_verifier:String(chatId),\n   derniere_mise_a_jour:new Date().toISOString(),\n   telegram_message:'✅ Bot Impacteur associé à ce compte.\\n\\nLes fiches prêtes arriveront ici automatiquement.\\nEnvoie /aide pour voir les commandes.'}}];\n }\n return [{json:{route:'reply',chat_id:String(chatId),\n  telegram_message:'🔒 Bot non associé. Utilise la commande /claim fournie lors de l’installation.'}}];\n}\nif(String(userId)!==String(store.telegram_owner_user_id))return [];\nstore.telegram_chat_id=String(chatId);\n\nconst help=`Commandes :\n\nValidation des fiches prêtes (reçues ici automatiquement) :\n/valider CLE — approuve avec l’email proposé et crée le brouillon Gmail immédiatement\n/email CLE adresse@retiree.invalid — approuve avec cette adresse\n/rejeter CLE — écarte la fiche\n\n/rapport — état de la prospection\n/aide — ce message\n\nDécouvertes automatiques : livres (workflow A, 8h07) et YouTube (workflow B, 12h07), en alternance de chaîne. Lancement manuel possible dans n8n.\nAucun email n’est envoyé automatiquement : uniquement des brouillons Gmail après TA validation.`;\n\nif(['/start','/aide','aide','menu','commandes'].includes(low)){\n return [{json:{route:'reply',chat_id:String(chatId),telegram_message:help}}];\n}\nif(low==='/id'||low==='id'){\n return [{json:{route:'reply',chat_id:String(chatId),\n  telegram_message:'User ID : '+html(userId)+'\\nChat ID : '+html(chatId)}}];\n}\n\nlet v=cleaned.match(/^\\/valider\\s+(\\S+)$/i);\nif(v)return [{json:{route:'validation',action:'valider',chat_id:String(chatId),cle_unique:v[1].trim()}}];\nv=cleaned.match(/^\\/rejeter\\s+(\\S+)$/i);\nif(v)return [{json:{route:'validation',action:'rejeter',chat_id:String(chatId),cle_unique:v[1].trim()}}];\nv=cleaned.match(/^\\/email\\s+(\\S+)\\s+(\\S+@\\S+\\.\\S+)$/i);\nif(v)return [{json:{route:'validation',action:'email',chat_id:String(chatId),cle_unique:v[1].trim(),email:v[2].trim().toLowerCase()}}];\nif(/^\\/(valider|rejeter|email)\\b/i.test(cleaned)){\n return [{json:{route:'reply',chat_id:String(chatId),\n  telegram_message:'Usage :\\n/valider CLE\\n/email CLE adresse@retiree.invalid\\n/rejeter CLE\\n\\nLa CLE figure dans le message « Fiche prête ».'}}];\n}\nif(low==='/rapport'||/\\b(rapport|bilan)\\b/.test(low)){\n return [{json:{route:'info',chat_id:String(chatId)}}];\n}\nreturn [{json:{route:'reply',chat_id:String(chatId),\n telegram_message:'Commande non reconnue. Envoie /aide pour la liste.'}}];"
+      },
+      "position": [
+        -400,
+        128
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "b92fba80-1df9-4708-a6af-80861b4b9fd7",
+      "name": "CONFIG ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a6af1a3c-247e-448c-8155-3c51d9af4604",
+              "leftValue": "={{ $json.route }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "config"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -208,
+        128
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "89c593af-a164-4b8c-bca2-575627e524ee",
+      "maxTries": 3,
+      "name": "SAUVER CONFIG",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "informations_a_verifier": "={{ $json.informations_a_verifier }}",
+            "statut": "={{ $json.statut }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "1ab2dc14-7fab-4dc7-8924-c5d2a6746035",
+      "name": "REPONSE CONFIG",
+      "parameters": {
+        "jsCode": "const req=$('ANALYSER MESSAGE').first().json;\nreturn [{json:{chat_id:String(req.chat_id||''),telegram_message:String(req.telegram_message||'OK')}}];"
+      },
+      "position": [
+        208,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "16dee78c-65dd-4bd9-b930-d28698afd5a0",
+      "name": "VALIDATION ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "54f1897a-093e-4f3a-a76c-49a729b970a5",
+              "leftValue": "={{ $json.route }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "validation"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -208,
+        272
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "708c8275-890e-4410-865d-a49c48d6cb16",
+      "maxTries": 3,
+      "name": "LIRE FICHES VALIDATION",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        0,
+        208
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "14059a48-dac9-44dc-9781-54aa1e52c3f5",
+      "name": "PREPARER VALIDATION",
+      "parameters": {
+        "jsCode": "// V20 : traite /valider, /email, /rejeter sur une fiche prête.\nconst req=$('ANALYSER MESSAGE').first().json;\nconst cle=String(req.cle_unique||'').trim();\nconst action=String(req.action||'');\nconst chat_id=String(req.chat_id||'');\nconst rows=$input.all().map(i=>i.json);\nconst row=rows.find(r=>String(r.cle_unique||'').trim()===cle);\nif(!row){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Aucune fiche trouvée pour '+cle+'.'}}];\n}\nconst publicDomains=new Set(['gmail.com','hotmail.com','outlook.com','yahoo.com','proton.me','icloud.com','live.com']);\nlet candidats=[];try{candidats=JSON.parse(String(row.emails_candidats||'[]'));}catch(e){candidats=[];}\nif(!Array.isArray(candidats))candidats=[];\n\nif(action==='rejeter'){\n  return [{json:{...row,ok:true,action,chat_id,\n    statut:'REJETE_MANUEL',validation_contact:'NON',\n    derniere_mise_a_jour:new Date().toISOString(),\n    telegram_message:'🗑 Fiche '+cle+' rejetée ('+String(row.auteur||'')+'). Aucun brouillon ne sera créé. L’auteur reste prospectable pour un autre livre.'}}];\n}\n\nif(String(row.draft_id||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'ℹ️ Un brouillon Gmail existe déjà pour '+cle+' ('+String(row.auteur||'')+').'}}];\n}\nif(!String(row.message_auteur||'').trim()||!String(row.objet_auteur||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ La fiche '+cle+' n’a pas d’invitation rédigée : impossible de la valider. Statut actuel : '+String(row.statut||'')+'.'}}];\n}\n\nlet email='';let source='';\nif(action==='email'){\n  email=String(req.email||'').trim().toLowerCase();\n  const c=candidats.find(x=>x&&String(x.email||'').toLowerCase()===email);\n  if(c&&/^https:\\/\\//.test(String(c.source||'')))source=String(c.source);\n}else{\n  const best=candidats.find(x=>x&&x.email&&!publicDomains.has(String(x.email).split('@')[1]||''))||candidats.find(x=>x&&x.email);\n  if(!best){\n    return [{json:{ok:false,action,chat_id,telegram_message:'❌ Aucun email candidat pour '+cle+'.\\nRéponds : /email '+cle+' adresse@retiree.invalid'}}];\n  }\n  email=String(best.email).trim().toLowerCase();\n  if(/^https:\\/\\//.test(String(best.source||'')))source=String(best.source);\n}\nif(!/^\\S+@\\S+\\.\\S+$/.test(email)){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Adresse invalide : '+email}}];\n}\nif(!source)source=/^https:\\/\\//.test(String(row.source_livre||''))?String(row.source_livre):'https://validation.telegram.impacteur/'+encodeURIComponent(cle);\nconst domaine=email.split('@')[1]||'';\nconst exception=publicDomains.has(domaine);\nreturn [{json:{...row,ok:true,action,chat_id,\n  email_contact:email,type_contact:'auteur',source_contact_validee:source,\n  statut:'APPROUVE',validation_contact:exception?'OUI_EXCEPTION':'OUI',\n  derniere_mise_a_jour:new Date().toISOString(),\n  telegram_message:'✅ Fiche '+cle+' approuvée ('+String(row.auteur||'')+').\\n✉️ '+email+(exception?' (domaine grand public : validé en exception)':'')+'\\n📨 Création du brouillon Gmail '+String(row.chaine||'')+' en cours…'}}];"
+      },
+      "position": [
+        208,
+        208
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e5b0ee23-33db-414b-a936-aeb58dc2c033",
+      "name": "VALIDATION OK ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "94389654-84cb-4a60-b963-6be7ad47cfdf",
+              "leftValue": "={{ $json.ok ? 'OUI' : 'NON' }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "OUI"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        400,
+        208
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "1c7117c8-c2d1-4c04-9891-1d1c066d4d61",
+      "maxTries": 3,
+      "name": "SAUVER VALIDATION",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "auteur",
+              "id": "auteur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "livre",
+              "id": "livre",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "editeur",
+              "id": "editeur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "date_publication",
+              "id": "date_publication",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_livre",
+              "id": "source_livre",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "description_livre",
+              "id": "description_livre",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "chaine",
+              "id": "chaine",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "recherches_auteur",
+              "id": "recherches_auteur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "recherches_editeur",
+              "id": "recherches_editeur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "emails_candidats",
+              "id": "emails_candidats",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "sources_contacts",
+              "id": "sources_contacts",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "objet_auteur",
+              "id": "objet_auteur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "message_auteur",
+              "id": "message_auteur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "objet_editeur",
+              "id": "objet_editeur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "message_editeur",
+              "id": "message_editeur",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "informations_a_verifier",
+              "id": "informations_a_verifier",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "email_contact",
+              "id": "email_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "type_contact",
+              "id": "type_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_contact_validee",
+              "id": "source_contact_validee",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "validation_contact",
+              "id": "validation_contact",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "auteur": "={{ $json.auteur }}",
+            "chaine": "={{ $json.chaine }}",
+            "cle_unique": "={{ $json.cle_unique }}",
+            "date_publication": "={{ $json.date_publication }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "description_livre": "={{ $json.description_livre }}",
+            "draft_id": "={{ $json.draft_id }}",
+            "editeur": "={{ $json.editeur }}",
+            "email_contact": "={{ $json.email_contact }}",
+            "emails_candidats": "={{ $json.emails_candidats }}",
+            "informations_a_verifier": "={{ $json.informations_a_verifier }}",
+            "livre": "={{ $json.livre }}",
+            "message_auteur": "={{ $json.message_auteur }}",
+            "message_editeur": "={{ $json.message_editeur }}",
+            "objet_auteur": "={{ $json.objet_auteur }}",
+            "objet_editeur": "={{ $json.objet_editeur }}",
+            "recherches_auteur": "={{ $json.recherches_auteur }}",
+            "recherches_editeur": "={{ $json.recherches_editeur }}",
+            "source_contact_validee": "={{ $json.source_contact_validee }}",
+            "source_livre": "={{ $json.source_livre }}",
+            "sources_contacts": "={{ $json.sources_contacts }}",
+            "statut": "={{ $json.statut }}",
+            "type_contact": "={{ $json.type_contact }}",
+            "validation_contact": "={{ $json.validation_contact }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        608,
+        128
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "e66517c7-4294-45e3-a561-b5f158886bbb",
+      "name": "REPONSE VALIDATION",
+      "parameters": {
+        "jsCode": "const prep=$('PREPARER VALIDATION').first().json;\nreturn [{json:{chat_id:String(prep.chat_id||''),telegram_message:String(prep.telegram_message||'OK')}}];"
+      },
+      "position": [
+        800,
+        48
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "2cf3ab61-7dc9-48b8-b090-91074f7fa2cf",
+      "name": "PREPARER BROUILLON IMMEDIAT",
+      "parameters": {
+        "jsCode": "// Après approbation (/valider ou /email), crée le brouillon tout de suite.\nconst p=$('PREPARER VALIDATION').first().json;\nif(!p.ok||p.action==='rejeter')return [];\nif(String(p.draft_id||'').trim())return [];\nreturn [{json:{\n cle_unique:String(p.cle_unique||''),email_contact:String(p.email_contact||''),\n chaine:String(p.chaine||''),objet:String(p.objet_auteur||''),message:String(p.message_auteur||''),\n auteur:String(p.auteur||''),chat_id:String(p.chat_id||'')\n}}];"
+      },
+      "position": [
+        800,
+        240
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "aa53f57c-76cc-4e69-820e-2f56d23fda21",
+      "name": "COMPTE GMAIL ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "12b24789-62a9-4338-b9cf-7fc3ed828b29",
+              "leftValue": "={{ $json.chaine }}",
+              "operator": {
+                "operation": "contains",
+                "type": "string"
+              },
+              "rightValue": "Afrique"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1008,
+        240
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "id": "5ef4fb09-2356-40d3-ab1e-2f43096bc6b3",
+      "maxTries": 3,
+      "name": "GMAIL AFRIQUE - créer brouillon",
+      "parameters": {
+        "message": "={{ $json.message }}",
+        "options": {
+          "sendTo": "={{ $json.email_contact }}"
+        },
+        "resource": "draft",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        1200,
+        160
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "6511a526-94d1-41b0-8e66-98d9b14b2217"
+    },
+    {
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "id": "81e9d2c8-a8f2-472f-b2fa-82944b5ff8bc",
+      "maxTries": 3,
+      "name": "GMAIL FREXIT - créer brouillon",
+      "parameters": {
+        "message": "={{ $json.message }}",
+        "options": {
+          "sendTo": "={{ $json.email_contact }}"
+        },
+        "resource": "draft",
+        "subject": "={{ $json.objet }}"
+      },
+      "position": [
+        1200,
+        320
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "waitBetweenTries": 3000,
+      "webhookId": "fb47f9f9-34c4-4702-a53f-e44ccda074d7"
+    },
+    {
+      "id": "39efffd9-f8eb-4254-9b5d-d48bdbf70997",
+      "name": "CAPTURER ID AFRIQUE",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const original=$('PREPARER BROUILLON IMMEDIAT').itemMatching(i).json;\n const id=String(item.json.id||'').trim();\n if(!id||!original.cle_unique)throw new Error('Identifiant brouillon ou fiche manquant.');\n return {json:{cle_unique:original.cle_unique,statut:'BROUILLON_CREE',draft_id:id,\n  derniere_mise_a_jour:new Date().toISOString(),\n  chat_id:String(original.chat_id||''),\n  telegram_message:'📨 Brouillon Gmail créé — '+String(original.auteur||'')+' ('+String(original.chaine||'')+')\\n✉️ '+String(original.email_contact||'')},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1408,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "5b534dd6-4a03-4d57-bc8b-a2d83c398b71",
+      "name": "CAPTURER ID FREXIT",
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{\n const original=$('PREPARER BROUILLON IMMEDIAT').itemMatching(i).json;\n const id=String(item.json.id||'').trim();\n if(!id||!original.cle_unique)throw new Error('Identifiant brouillon ou fiche manquant.');\n return {json:{cle_unique:original.cle_unique,statut:'BROUILLON_CREE',draft_id:id,\n  derniere_mise_a_jour:new Date().toISOString(),\n  chat_id:String(original.chat_id||''),\n  telegram_message:'📨 Brouillon Gmail créé — '+String(original.auteur||'')+' ('+String(original.chaine||'')+')\\n✉️ '+String(original.email_contact||'')},\n  pairedItem:{item:i}};\n});"
+      },
+      "position": [
+        1408,
+        320
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "bcb9a88e-c0e5-46c1-8797-7bbb3e75371c",
+      "maxTries": 3,
+      "name": "SAUVER BROUILLON AFRIQUE",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "draft_id": "={{ $json.draft_id }}",
+            "statut": "={{ $json.statut }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        1600,
+        160
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "681d1fd2-2913-4180-834e-42c6d427bc4a",
+      "maxTries": 3,
+      "name": "SAUVER BROUILLON FREXIT",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "cle_unique"
+          ],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": true,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": false,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "removed": false,
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "value": {
+            "cle_unique": "={{ $json.cle_unique }}",
+            "derniere_mise_a_jour": "={{ $json.derniere_mise_a_jour }}",
+            "draft_id": "={{ $json.draft_id }}",
+            "statut": "={{ $json.statut }}"
+          }
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "appendOrUpdate",
+        "options": {
+          "cellFormat": "RAW"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        1600,
+        320
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "caa60081-c890-4a94-b392-784e2f6804ae",
+      "name": "CONFIRMER BROUILLON",
+      "parameters": {
+        "jsCode": "const out=[];\nfor(const item of $input.all()){\n const r=item.json;\n if(String(r.chat_id||'')&&String(r.telegram_message||''))\n  out.push({json:{chat_id:String(r.chat_id),telegram_message:String(r.telegram_message)},pairedItem:{item:0}});\n}\nreturn out;"
+      },
+      "position": [
+        1600,
+        480
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "e29be697-bd04-4718-9c8d-a7151ddb24b9",
+      "name": "INFO ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ccc37231-9cf5-4f2c-ab91-1b80e04d7f1b",
+              "leftValue": "={{ $json.route }}",
+              "operator": {
+                "operation": "equals",
+                "type": "string"
+              },
+              "rightValue": "info"
+            }
+          ],
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        -208,
+        432
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "af01f6fa-ca2f-496c-a8cc-fd0ee8ecaead",
+      "maxTries": 3,
+      "name": "LIRE FICHES RAPPORT",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Prospection"
+        }
+      },
+      "position": [
+        0,
+        432
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "waitBetweenTries": 3000
+    },
+    {
+      "id": "ba9693f2-26f0-40f8-91eb-ea0abc3dc00e",
+      "name": "RAPPORT",
+      "parameters": {
+        "jsCode": "const req=$('ANALYSER MESSAGE').first().json;\nconst lignes=$input.all().map(i=>i.json).filter(r=>String(r.cle_unique||'')!=='_config_telegram');\nconst html=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst compte={};\nfor(const r of lignes){const s=String(r.statut||'VIDE').trim().toUpperCase();compte[s]=(compte[s]||0)+1;}\nconst l=['📊 <b>Prospection</b> — '+lignes.length+' fiches'];\nfor(const [s,c] of Object.entries(compte).sort((a,b)=>b[1]-a[1]))l.push('• '+s+' : '+c);\nconst attente=lignes.filter(r=>String(r.statut||'').toUpperCase()==='A_VERIFIER'&&String(r.message_auteur||'').trim());\nif(attente.length){\n l.push('','⏳ <b>En attente de validation :</b>');\n for(const r of attente.slice(0,5)){\n  l.push('👤 '+html(r.auteur)+' — /valider '+String(r.cle_unique||''));\n }\n if(attente.length>5)l.push('… et '+(attente.length-5)+' autres.');\n}\nreturn [{json:{chat_id:String(req.chat_id||''),telegram_message:l.join('\\n')}}];"
+      },
+      "position": [
+        208,
+        432
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "ncNh8IVLRGwp5Ocz",
+          "name": "Telegram - Impacteur Prospection"
+        }
+      },
+      "id": "5136e552-be4c-4e39-9ebc-68e672fcca4e",
+      "maxTries": 3,
+      "name": "TELEGRAM - envoyer",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.telegram_message }}"
+      },
+      "position": [
+        400,
+        592
+      ],
+      "retryOnFail": true,
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "waitBetweenTries": 3000,
+      "webhookId": "dcea6a3c-08db-4c6b-9c40-669d53307fe6"
+    },
+    {
+      "id": "5872d2b1-2735-4c21-838c-41bfffd10363",
+      "name": "NOTE - Workflow D",
+      "parameters": {
+        "color": 3,
+        "content": "## D — Bot Telegram (pilotage)\n\nPoint d'entrée unique du bot (un seul workflow doit détenir le trigger Telegram — dépublier toute ancienne version).\n\n1. /claim CODE : associe le bot ET écrit la ligne _config_telegram dans le Sheets (les workflows A/B/C y lisent le chat).\n2. /valider CLE : approuve avec l'email proposé, écrit APPROUVE + OUI, crée le brouillon Gmail IMMÉDIATEMENT et confirme. /email CLE adresse : idem avec cette adresse. /rejeter CLE : REJETE_MANUEL.\n3. /rapport : compte des statuts + fiches en attente avec commandes prêtes.\n\nLe workflow C repasse toutes les heures en filet de sécurité.",
+        "height": 360,
+        "width": 460
+      },
+      "position": [
+        -608,
+        688
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

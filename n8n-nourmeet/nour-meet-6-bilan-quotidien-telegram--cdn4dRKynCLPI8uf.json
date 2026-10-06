@@ -1,0 +1,181 @@
+{
+  "active": true,
+  "connections": {
+    "Calculer le bilan": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Telegram : bilan",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour à 10 h 30": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Configuration",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Configuration": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les envois",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les envois": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire les ouvertures",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les ouvertures": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Calculer le bilan",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "cdn4dRKynCLPI8uf",
+  "name": "Nour Meet 6 - Bilan quotidien (Telegram)",
+  "nodes": [
+    {
+      "id": "ebb512f0-fe12-4534-922b-7c4ed1923264",
+      "name": "Chaque jour à 10 h 30",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "30 10 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "ef980f1b-2dc8-4bf6-b8d7-4e1bb0e69dbe",
+      "name": "Configuration",
+      "parameters": {
+        "jsCode": "// ====== À REMPLIR UNE FOIS ======\nconst CONFIG = {\n  MODE_TEST: true,                          // true = 3 mails seulement, tous vers ADRESSE_TEST, avec [TEST] dans l'objet\n  ADRESSE_TEST: 'contact@nourmeet.com',\n  TELEGRAM_CHAT_ID: '6339897621',           // reçoit le bilan quotidien (via @userinfobot)\n  EXPEDITEUR: 'Nūr Meet <contact@nourmeet.com>',\n  SIGNATAIRE: 'Walid',\n  LIEN_CANDIDATURE: 'https://nourmeet.com/restaurants',\n  SITE_WEB: 'https://nourmeet.com',         // lien du logo en bas du mail\n  LOGO_URL: 'https://n8n.nourmeet.com/webhook/logo-nour-meet', // logo servi par le workflow 5 (vide = lien texte seul)\n  PROPOSITIONS_PAR_JOUR: 50,\n  RELANCE_1_APRES_JOURS: 4,                 // J+4 (validé le 26/09)\n  RELANCE_2_APRES_JOURS: 9,                 // J+9 (validé le 26/09)\n  PAUSE_ENTRE_MAILS_S: 45,                  // espacement des envois (délivrabilité)\n  SUIVI_URL: 'https://n8n.nourmeet.com/webhook/ouverture', // pixel d'ouverture (workflow 7)\n};\nreturn [{ json: CONFIG }];"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "09b3d8b5-6d24-417f-9be1-4629353ba8ee",
+      "name": "Lire les envois",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "e7f3a9fe-18f0-4e62-8139-00a0b0630479",
+      "name": "Lire les ouvertures",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_ouvertures"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "76017bd6-e7d0-4551-b714-29202e3abb2c",
+      "name": "Calculer le bilan",
+      "parameters": {
+        "jsCode": "const C = $('Configuration').first().json;\nconst jour = (d) => d ? new Date(d).toLocaleDateString('fr-CA', { timeZone: 'Europe/Paris' }) : '';\nconst auj = jour(new Date());\nconst hier = jour(new Date(Date.now() - 86400000));\nconst il7 = jour(new Date(Date.now() - 6 * 86400000));\nconst envois = $('Lire les envois').all().map(i => i.json).filter(e => e.id);\nconst ouverts = new Set($('Lire les ouvertures').all().map(i => Number(i.json.envoi_id)).filter(Boolean));\nfunction stats(filtre) {\n  const l = envois.filter(e => filtre(jour(e.date_decision)));\n  const env = l.filter(e => e.statut === 'envoye');\n  const ouv = env.filter(e => ouverts.has(Number(e.id))).length;\n  return { env: env.length, ouv, pct: env.length ? Math.round(100 * ouv / env.length) : 0,\n           relances: env.filter(e => String(e.type).startsWith('relance')).length,\n           echecs: l.filter(e => e.statut === 'echec').length,\n           tests: l.filter(e => e.statut === 'test').length,\n           testsOuv: l.filter(e => e.statut === 'test' && ouverts.has(Number(e.id))).length };\n}\nconst a = stats(d => d === auj), h = stats(d => d === hier), s = stats(d => d && d >= il7), t = stats(d => !!d);\nconst lignes = [\n  `📬 Bilan Nūr Meet du ${new Date().toLocaleDateString('fr-FR', { timeZone: 'Europe/Paris' })}`,\n  '',\n  `Aujourd'hui : ${a.env} mail(s) envoyé(s)` + (a.relances ? ` dont ${a.relances} relance(s)` : '') + (a.echecs ? `, ${a.echecs} échec(s)` : ''),\n  `Hier : ${h.env} envoyé(s), ${h.ouv} ouvert(s) (${h.pct} %)`,\n  `7 derniers jours : ${s.env} envoyé(s), ${s.ouv} ouvert(s) (${s.pct} %)`,\n  `Depuis le début : ${t.env} envoyé(s), ${t.ouv} ouvert(s) (${t.pct} %)`,\n];\nif (a.tests || C.MODE_TEST) lignes.push('', `🧪 Mode test : ${a.tests} mail(s) de test envoyé(s) aujourd'hui vers ${C.ADRESSE_TEST}, ${a.testsOuv} ouvert(s).`);\nlignes.push('', 'Ouvertures approximatives : certaines messageries bloquent les images, d\\'autres les ouvrent automatiquement.');\nreturn [{ json: { texte: lignes.join('\\n') } }];"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "Ia6gizwzphext8hu",
+          "name": "Telegram account"
+        }
+      },
+      "id": "6385728d-ab78-4bf5-908d-f616bccb6ef2",
+      "name": "Telegram : bilan",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "={{ $('Configuration').first().json.TELEGRAM_CHAT_ID }}",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "486db8b8-e88d-40c3-b35e-35dd98b7a2d6"
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

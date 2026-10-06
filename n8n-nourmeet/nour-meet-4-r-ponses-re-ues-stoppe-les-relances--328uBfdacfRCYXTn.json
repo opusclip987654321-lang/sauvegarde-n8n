@@ -1,0 +1,397 @@
+{
+  "active": true,
+  "connections": {
+    "Analyser la réponse": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prospect connu ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CERVEAU - garder la réponse": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CERVEAU - écrire np_reponses",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : annulation": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Annuler les propositions en attente",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : exclusion": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ajouter aux exclusions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Champs : prospect": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Arrêter le suivi du prospect",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Nouveau mail reçu (IMAP)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analyser la réponse",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "CERVEAU - garder la réponse",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prospect connu ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : prospect",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Champs : annulation",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Refus ou adresse invalide ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Refus ou adresse invalide ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : exclusion",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "328uBfdacfRCYXTn",
+  "name": "Nour Meet 4 - Réponses reçues (stoppe les relances)",
+  "nodes": [
+    {
+      "credentials": {
+        "imap": {
+          "id": "KYNtvsWkOOnoEL1O",
+          "name": "IMAP OVH contact@nourmeet.com"
+        }
+      },
+      "id": "15586c2a-2886-4954-be46-55fcebb40e09",
+      "name": "Nouveau mail reçu (IMAP)",
+      "parameters": {
+        "options": {
+          "customEmailConfig": "[\"ALL\", [\"SINCE\", \"2026-09-25\"]]",
+          "trackLastMessageId": true
+        },
+        "postProcessAction": "nothing"
+      },
+      "position": [
+        -656,
+        160
+      ],
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1
+    },
+    {
+      "id": "b03b21d7-c7f4-4c8c-aab7-d0a4eaacad92",
+      "name": "Analyser la réponse",
+      "parameters": {
+        "jsCode": "// Les mails restent NON LUS : Walid les lit lui-même dans sa messagerie.\nconst out = [];\nfor (const { json: m } of $input.all()) {\n  const from = String(m.from || '');\n  const adr = ((from.match(/<([^>]+)>/) || [])[1] || from).trim().toLowerCase();\n  const sujet = String(m.subject || ''); const corps = String(m.textPlain || m.text || '');\n  if (/réponse automatique|reponse automatique|automatic reply|auto[- ]?reply|absent|out of office|congés/i.test(sujet)) continue;\n  if (/mailer-daemon|postmaster/i.test(adr)) {\n    // Retour en erreur : on retrouve l'adresse qui a échoué dans le texte\n    const cible = (corps.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [])\n      .map(e => e.toLowerCase()).find(e => !e.endsWith('@nourmeet.com') && !/mailer-daemon|postmaster/.test(e));\n    if (cible) out.push({ json: { email: cible, motif: 'adresse_invalide' } });\n    continue;\n  }\n  const refus = /^\\s*stop\\b|\\bstop\\b|désinscri|desinscri|ne plus (me |nous )?(contacter|écrire|ecrire)|pas intéress|pas interess/i.test(corps.slice(0, 600) + ' ' + sujet);\n  out.push({ json: { email: adr, motif: refus ? 'refus' : 'reponse' } });\n}\nreturn out;"
+      },
+      "position": [
+        -448,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "af143b76-9428-49cd-9f8a-3bd3bb82734a",
+      "name": "Prospect connu ?",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowExists"
+      },
+      "position": [
+        -224,
+        160
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d0088bd6-b9c6-40f5-9ac4-ff405018de19",
+      "name": "Champs : prospect",
+      "parameters": {
+        "jsCode": "return { json: { email: $json.email, statut: $json.motif === 'reponse' ? 'repondu' : 'exclu', date_reponse: new Date().toISOString() } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8adf6d33-845f-40e8-ade4-9358eaa2c91c",
+      "name": "Arrêter le suivi du prospect",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_prospects"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "d4726380-c12d-462b-a673-554c09e5788c",
+      "name": "Champs : annulation",
+      "parameters": {
+        "jsCode": "return { json: { email: $json.email, statut: 'annule' } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        0,
+        160
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "id": "a490b61c-8793-43f3-b282-42f681325513",
+      "name": "Annuler les propositions en attente",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_envois"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            },
+            {
+              "keyName": "statut",
+              "keyValue": "en_attente"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "update",
+        "options": {}
+      },
+      "position": [
+        224,
+        160
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "ed117f16-0ffa-4252-958f-c69dd9350c0f",
+      "name": "Refus ou adresse invalide ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "df21493b-d977-4b45-a096-11931169a4db",
+              "leftValue": "={{ $json.motif }}",
+              "operator": {
+                "operation": "notEquals",
+                "type": "string"
+              },
+              "rightValue": "reponse"
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        0,
+        304
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2
+    },
+    {
+      "id": "3d6271a2-113f-42b7-ab9e-8d1d1e8e7bf6",
+      "name": "Champs : exclusion",
+      "parameters": {
+        "jsCode": "return { json: { email: $json.email, motif: $json.motif, date_ajout: new Date().toISOString() } };",
+        "mode": "runOnceForEachItem"
+      },
+      "position": [
+        224,
+        304
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "398e5354-8486-47e8-b3f8-47d100ce3cca",
+      "name": "Ajouter aux exclusions",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "options": {}
+      },
+      "position": [
+        448,
+        304
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "cerveau-garde-reponse",
+      "name": "CERVEAU - garder la réponse",
+      "parameters": {
+        "jsCode": "const out = [];\nfor (const { json: m } of $input.all()) {\n  const from = String(m.from || '');\n  const adr = ((from.match(/<([^>]+)>/) || [])[1] || from).trim().toLowerCase();\n  const sujet = String(m.subject || ''); const corps = String(m.textPlain || m.text || '');\n  if (/réponse automatique|reponse automatique|automatic reply|auto[- ]?reply|absent|out of office|congés/i.test(sujet)) continue;\n  if (/mailer-daemon|postmaster/i.test(adr)) continue;\n  out.push({ json: { email: adr, de: from.slice(0, 200), objet: sujet.slice(0, 300), texte: corps.slice(0, 2000), recu: new Date().toISOString() } });\n}\nreturn out;"
+      },
+      "position": [
+        -448,
+        440
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cerveau-ecrit-reponses",
+      "name": "CERVEAU - écrire np_reponses",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_reponses"
+        },
+        "options": {}
+      },
+      "position": [
+        448,
+        440
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}
