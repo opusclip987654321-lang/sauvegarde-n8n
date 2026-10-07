@@ -1,0 +1,24 @@
+{
+  "active": false,
+  "connections": {},
+  "id": "lL8MGmPIZ8Z8sqUg",
+  "name": "My workflow",
+  "nodes": [
+    {
+      "id": "f4aac05d-9746-4772-b3fc-c217dfc22241",
+      "name": "When clicking ‘Execute workflow’",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,1125 @@
+{
+  "active": true,
+  "connections": {
+    "Attendre 19h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer la vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Attendre le montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "État du montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour 18h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Choisir les candidats": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Transcrire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - conducteur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Conducteur",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - meilleur moment": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Rédaction",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Conducteur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer le montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Description": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre 19h",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la publication": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer les vidéos utilisées",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancement manuel": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancer le montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre le montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lien public": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur Facebook",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire publications": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire vidéos",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire publications",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire vidéos": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Choisir les candidats",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer les vidéos utilisées": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prévenir Louis",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Miniature YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lien public",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Montage en cours ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre le montage",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Montage réussi ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Montage réussi ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Description",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer les moments": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - meilleur moment",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur Facebook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer la miniature",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récapitulatif": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la publication",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer la miniature": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Miniature YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer la vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Rédaction": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - conducteur",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Transcrire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer les moments",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "État du montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Montage en cours ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "7C0UzcpEXQJ8UG29",
+  "name": "ZAPPING 1 - Zapping quotidien 19h (auto)",
+  "nodes": [
+    {
+      "id": "z1",
+      "name": "Chaque jour 18h",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 18 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        200,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "z0",
+      "name": "Lancement manuel",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "zapping-run-41c7",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        400,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "zapping-run-41c7"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z2",
+      "name": "Lire leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z3",
+      "name": "Lire sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows"
+      },
+      "position": [
+        800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z4",
+      "name": "Lire publications",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        1000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z5",
+      "name": "Lire vidéos",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z6",
+      "name": "Choisir les candidats",
+      "parameters": {
+        "jsCode": "\nconst now = Date.now();\nconst vids = $('Lire vidéos').first().json.data || [];\nconst src = Object.fromEntries(($('Lire sources').first().json.data || []).map(s => [s.channel_id, s]));\nconst pubs = $('Lire publications').first().json.data || [];\nconst segsOf = p => { try { const j = JSON.parse(p.segments || '[]'); return Array.isArray(j) ? j : (j.segments || []); } catch (e) { return []; } };\nconst deja = new Set(pubs.filter(p => p.type === 'zapping').flatMap(p => segsOf(p).map(x => x.video_id)));\nlet c = vids.filter(v => {\n  const s = src[v.channel_id];\n  return s && s.statut === 'usable' && v.publiee_le && now - Date.parse(v.publiee_le) < 30 * 3600e3\n    && !['pas_interessant', 'source_ignoree'].includes(v.decision) && !deja.has(v.video_id) && (v.duree_s || 0) >= 20;\n}).map(v => ({ ...v, prio: (v.score || 0) + (v.decision === 'interessant' ? 3 : 0) }));\nc.sort((a, b) => b.prio - a.prio);\nconst parSrc = {}; const out = [];\nfor (const v of c) { parSrc[v.channel_id] = (parSrc[v.channel_id] || 0) + 1; if (parSrc[v.channel_id] > 3) continue; out.push(v); if (out.length >= 18) break; }\nif (out.length < 6) throw new Error(`Pas assez de matière pour le zapping (${out.length} vidéos utilisables sur 30 h)`);\nreturn out.map(v => ({ json: { video_id: v.video_id, titre: v.titre, source_nom: v.source_nom, channel_id: v.channel_id,\n  categorie: src[v.channel_id].categorie, score: v.score, decision: v.decision || '', angle: v.angle || '', duree_s: v.duree_s,\n  extrait_debut: v.extrait_debut, extrait_fin: v.extrait_fin, personnes: v.personnes || '', camp: v.camp || '', theme: v.theme || '', type_moment: v.type_moment || '' } }));\n"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z7",
+      "name": "Transcrire",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ video_id: $json.video_id, precis: false }) }}",
+        "method": "POST",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 0,
+              "batchSize": 1
+            }
+          },
+          "timeout": 1200000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/transcribe"
+      },
+      "position": [
+        1600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z8",
+      "name": "Préparer les moments",
+      "parameters": {
+        "jsCode": "\nconst cands = $('Choisir les candidats').all();\nconst lecons = (($('Lire leçons').first().json.data || [])[0] || {}).texte || '';\nconst out = [];\n$input.all().forEach((it, i) => {\n  const c = cands[i].json; const ph = it.json.phrases || [];\n  if (!ph.length) return;\n  let txt = ph.map(p => `[${p.start}-${p.end}] ${p.texte}`).join('\\n');\n  if (txt.length > 30000) txt = txt.slice(0, 30000) + '\\n[…transcription tronquée]';\n  const tv = c.categorie === 'tv_radio' || c.categorie === 'emission';\n  const hint = c.extrait_debut != null ? `\\nIndice : Louis a déjà validé le passage ${c.extrait_debut}-${c.extrait_fin} s pour un Short.` : '';\n  const system = `Tu es monteur pour « L'Extrait politique », zapping quotidien de la politique française sur YouTube.\nDans la transcription horodatée ci-dessous, choisis LE meilleur moment pour le zapping du jour :\n- entre 20 et ${tv ? 45 : 60} secondes, compréhensible seul, qui commence au début d'une phrase et finit à la fin d'une phrase (utilise les horodatages) ;\n- privilégie clash, punchline, contradiction, aveu, chiffre choc ;\n- donne un titre de chapitre (≤ 6 mots, factuel, sans insulte) et une phrase de contexte neutre (≤ 15 mots) ;\n- évalue honnêtement : interet (0-10) et risque_demonetisation (0-10 : violence, sexualité, accusations non établies, grossièretés, tragédie).\nRègles apprises à respecter :\\n${lecons}\nRéponds UNIQUEMENT en JSON : {\"start\":0,\"end\":0,\"titre\":\"...\",\"contexte\":\"...\",\"interet\":0,\"risque_demonetisation\":0,\"raison\":\"...\"}`;\n  out.push({ json: { cand: c, body: { model: 'claude-sonnet-4-5', max_tokens: 600, system,\n    messages: [{ role: 'user', content: `Vidéo : ${c.titre}\\nSource : ${c.source_nom} (${c.categorie})\\nDécision de Louis : ${['interessant','pas_interessant'].includes(c.decision) ? c.decision : (c.decision === 'choix_ia' ? 'aucune (choisi par l\\'IA)' : 'aucune')}${hint}\\n\\nTranscription :\\n${txt}` }] } } });\n});\nif (out.length < 5) throw new Error(`Seulement ${out.length} vidéos transcrites, zapping annulé`);\nreturn out;\n"
+      },
+      "position": [
+        1800,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "z9",
+      "name": "Claude - meilleur moment",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 3
+            }
+          },
+          "timeout": 180000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        2000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z10",
+      "name": "Rédaction",
+      "parameters": {
+        "jsCode": "\nconst preps = $('Préparer les moments').all();\nconst res = [];\n$input.all().forEach((it, i) => {\n  const c = preps[i].json.cand;\n  const txt = (it.json.content || []).map(x => x.text || '').join('');\n  try {\n    const m = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1));\n    const d = m.end - m.start;\n    if (!(d >= 12 && d <= 75)) return;\n    res.push({ id: res.length, video_id: c.video_id, source: c.source_nom, categorie: c.categorie, decision_louis: c.decision,\n      score_veille: c.score, titre_video: c.titre, personnes: c.personnes, camp: c.camp, theme: c.theme, type_moment: c.type_moment, start: +m.start, end: +m.end, duree: Math.round(d), titre: m.titre, contexte: m.contexte,\n      interet: m.interet, risque_demonetisation: m.risque_demonetisation, raison: m.raison });\n  } catch (e) {}\n});\nconst lecons = (($('Lire leçons').first().json.data || [])[0] || {}).texte || '';\nconst d = new Date();\nconst dateLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'Europe/Paris' });\nconst system = `Tu es le rédacteur en chef de « L'Extrait politique », le zapping quotidien de la politique française (YouTube, 19h).\nObjectif business : 3 000 €/mois le plus vite possible, sans JAMAIS prendre de strike ni être démonétisé.\nConstruis le conducteur du zapping du ${dateLabel} à partir des moments proposés :\n- durée totale des extraits entre 400 et 500 secondes (avec la voix off, l'intro et l'outro, la vidéo finale doit faire 8 à 10 minutes) ;\n- 9 à 14 extraits ; ouvre sur le moment le plus fort et le moins risqué (rétention des 30 premières secondes) ; enchaîne par thèmes ; garde un moment fort pour la fin ;\n- écarte tout moment avec risque_demonetisation ≥ 6 ; au plus 2 extraits par chaîne TV ; équilibre les camps politiques ;\n- tu peux raccourcir un extrait (ajuste start/end) mais jamais l'allonger ;\n- applique strictement les leçons apprises ci-dessous, et consacre environ 20 % du zapping à UNE hypothèse nouvelle que tu formules (pour apprendre) ;\n- VOIX OFF (c'est notre valeur ajoutée éditoriale, indispensable pour la monétisation) : écris un texte lu par une voix de synthèse\n  · voix_intro : 2-3 phrases (≈ 15 s) qui commencent par « Bonsoir, voici L'Extrait politique du ${dateLabel}. » puis annoncent les sujets forts du jour ;\n  · pour chaque segment, voix : 1-2 phrases (≈ 6 à 12 s, 30 mots max) AVANT l'extrait : qui parle (nom + fonction), où, dans quel contexte et pourquoi c'est important ; ton de présentateur de JT, neutre, factuel, jamais d'opinion ni de moquerie, même traitement pour tous les camps ;\n  · n'affirme que ce qui figure dans les éléments fournis (titre, contexte, transcription) : aucun fait inventé, aucun chiffre non sourcé, aucune accusation ;\n  · voix_outro : 1-2 phrases (≈ 8 s) : rendez-vous demain à 19h et invitation à s'abonner ;\n  · écris pour l'oral : phrases courtes, pas d'abréviations ni de sigles obscurs (écris « Rassemblement national » la première fois), nombres en toutes lettres si courts ;\n- TITRE YouTube (≤ 80 caractères) écrit pour faire CLIQUER, à la manière des grosses chaînes d'actu : émotion forte, tension, curiosité (ex. « Bardella EXPLOSE face à… », « Ce qu'il a dit à l'Assemblée choque tout le monde », « Le clash qui fait trembler le gouvernement ») ; nomme la personnalité la plus connue ; 1 ou 2 mots en MAJUSCULES max ; pas d'emoji ; JAMAIS mensonger : le titre doit correspondre à ce qu'on voit réellement (YouTube sanctionne le clickbait trompeur), aucune accusation, aucune insulte ;\n- accroche ≤ 60 caractères pour l'intro ; description de 2-3 phrases ; 8 à 12 tags ;\n- MINIATURE : vedette = id du segment dont la personne apparaîtra sur la miniature (la plus connue, au moment le plus intense) ; miniature_texte = 2 à 4 mots CHOC en français, très lisibles, différents du titre (ex. « IL CRAQUE EN DIRECT », « HUMILIÉ À L'ASSEMBLÉE », « LA PHRASE DE TROP »), fidèle à l'extrait ; decor_prompt = en anglais, description d'un décor de fond dramatique et symbolique lié au sujet, SANS personne ni texte (ex. « French National Assembly hemicycle under a red stormy sky, smoke, red alarm light », « torn French flag in front of a burning ballot box »), jamais de sang, d'armes ni de violence explicite ;\nLEÇONS APPRISES :\\n${lecons}\nRéponds UNIQUEMENT en JSON :\n{\"titre\":\"...\",\"accroche\":\"...\",\"description\":\"...\",\"tags\":[\"...\"],\"hypothese\":\"...\",\"voix_intro\":\"...\",\"voix_outro\":\"...\",\"vedette\":0,\"miniature_texte\":\"...\",\"decor_prompt\":\"...\",\"segments\":[{\"id\":0,\"start\":0,\"end\":0,\"titre\":\"...\",\"contexte\":\"...\",\"voix\":\"...\"}]}`;\nreturn [{ json: { moments: res, dateLabel, body: { model: 'claude-sonnet-4-5', max_tokens: 6000, system, messages: [{ role: 'user', content: JSON.stringify(res) }] } } }];\n"
+      },
+      "position": [
+        2200,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "z11",
+      "name": "Claude - conducteur",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "timeout": 300000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        2400,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z12",
+      "name": "Conducteur",
+      "parameters": {
+        "jsCode": "\nconst prev = $('Rédaction').first().json;\nconst byId = Object.fromEntries(prev.moments.map(m => [m.id, m]));\nconst txt = ($input.first().json.content || []).map(x => x.text || '').join('');\nconst r = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1));\nconst segs = [];\nfor (const s of r.segments || []) {\n  const m = byId[s.id]; if (!m) continue;\n  let a = Math.max(m.start, +s.start || m.start), b = Math.min(m.end, +s.end || m.end);\n  if (b - a < 10) { a = m.start; b = m.end; }\n  segs.push({ video_id: m.video_id, start: a, end: b, id_moment: s.id, titre: s.titre || m.titre, contexte: s.contexte || m.contexte, voix: String(s.voix || '').slice(0, 400), source: m.source, categorie: m.categorie, personnes: m.personnes, camp: m.camp, theme: m.theme, type_moment: m.type_moment });\n}\nif (segs.length < 5) throw new Error('Conducteur trop court : ' + segs.length + ' extraits');\nconst total = segs.reduce((t, s) => t + (s.end - s.start), 0);\nconst ymd = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });\nconst nom = 'zap_' + ymd.replace(/-/g, '');\n// heure de publication : 19h Paris aujourd'hui (ou tout de suite si déjà passé)\nconst offs = new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris', timeZoneName: 'shortOffset' }).match(/GMT([+-]\\d+)/);\nconst h = offs ? parseInt(offs[1]) : 2;\nlet pub = new Date(`${ymd}T19:00:00${h >= 0 ? '+' : '-'}${String(Math.abs(h)).padStart(2, '0')}:00`);\nif (pub.getTime() < Date.now() + 60e3) pub = new Date(Date.now() + 60e3);\nreturn [{ json: { nom, ymd, dateLabel: prev.dateLabel, titre: r.titre, accroche: r.accroche, description: r.description, tags: r.tags || [], hypothese: r.hypothese || '',\n  segments: segs, total_extraits_s: Math.round(total), publier_a: pub.toISOString(),\n  voix_intro: r.voix_intro || '', voix_outro: r.voix_outro || '',\n  requete: { nom, date_label: prev.dateLabel, accroche: r.accroche, miniature_texte: String(r.miniature_texte || '').slice(0, 60), decor_prompt: String(r.decor_prompt || '').slice(0, 500), vedette: Math.max(0, segs.findIndex(s => s.id_moment === r.vedette)), voix_intro: String(r.voix_intro || '').slice(0, 600), voix_outro: String(r.voix_outro || '').slice(0, 300), segments: segs.map(({ video_id, start, end, titre, contexte, source, voix }) => ({ video_id, start, end, titre, contexte, source, voix })) } } }];\n"
+      },
+      "position": [
+        2600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z13",
+      "name": "Lancer le montage",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.requete) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/zapping"
+      },
+      "position": [
+        2800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z14",
+      "name": "Attendre le montage",
+      "parameters": {
+        "amount": 30
+      },
+      "position": [
+        3000,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "wait-zap-montage-1"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z15",
+      "name": "État du montage",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "url": "={{ 'http://atelier:8000/jobs/' + $('Lancer le montage').first().json.job }}"
+      },
+      "position": [
+        3200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z16",
+      "name": "Montage en cours ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.etat === 'en_cours' && $runIndex < 120 }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3400,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "z17",
+      "name": "Montage réussi ?",
+      "parameters": {
+        "jsCode": "const j = $input.first().json; if (j.etat !== 'termine') throw new Error('Montage du zapping en échec : ' + (j.erreur || j.etat)); return [$input.first()];"
+      },
+      "position": [
+        3600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "z18",
+      "name": "Description",
+      "parameters": {
+        "jsCode": "\nconst c = $('Conducteur').first().json;\nconst job = $('État du montage').last().json;\nconst mmss = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.round(t % 60)).padStart(2, '0')}`;\nconst chap = ['00:00 Intro', ...(job.chapitres || []).map(ch => `${mmss(ch.t)} ${ch.titre}`)];\nconst sources = [...new Set(c.segments.map(s => s.source))];\nconst description = `${c.description}\\n\\nAu sommaire :\\n${chap.join('\\n')}\\n\\nSources : ${sources.join(', ')}.${sources.some(s => /s[ée]nat/i.test(s)) ? '\\nImages fournies par le Sénat français.' : ''}${sources.some(s => /assembl[ée]e nationale/i.test(s)) ? '\\nImages : Assemblée nationale.' : ''}\\nExtraits courts cités à des fins d'information et de revue de l'actualité ; tous droits aux ayants droit.${(job.voix && job.voix.generees) ? '\\nVoix off générée par synthèse vocale.' : ''}\\n\\nL'Extrait politique — le zapping quotidien de la politique française, chaque soir à 19h.\\n#politique #actualite #zapping`;\nreturn [{ json: { ...c, description_finale: description, fichier: job.fichier, miniature: job.miniature, duree_s: job.duree_s, chapitres: job.chapitres || [], erreurs_montage: job.erreurs || [], miniature_erreurs: job.miniature_erreurs || [], originaux_longs: job.originaux_longs || [], voix: job.voix || {}, sources } }];\n"
+      },
+      "position": [
+        3800,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "z19",
+      "name": "Attendre 19h",
+      "parameters": {
+        "dateTime": "={{ $json.publier_a }}",
+        "resume": "specificTime"
+      },
+      "position": [
+        4000,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "wait-zap-19h-1"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z20",
+      "name": "Récupérer la vidéo",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "video",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 600000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $('Description').first().json.fichier }}"
+      },
+      "position": [
+        4200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "z21",
+      "name": "Publier sur YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "binaryProperty": "video",
+        "categoryId": "25",
+        "operation": "upload",
+        "options": {
+          "description": "={{ $('Description').first().json.description_finale }}",
+          "privacyStatus": "public",
+          "selfDeclaredMadeForKids": false,
+          "tags": "={{ ($('Description').first().json.tags || []).join(',') }}"
+        },
+        "regionCode": "FR",
+        "resource": "video",
+        "title": "={{ $('Description').first().json.titre.slice(0,100) }}"
+      },
+      "position": [
+        4400,
+        0
+      ],
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z22",
+      "name": "Récupérer la miniature",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "image",
+              "responseFormat": "file"
+            }
+          }
+        },
+        "url": "={{ 'http://atelier:8000/files_img/' + $('Description').first().json.miniature }}"
+      },
+      "position": [
+        4600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "z23",
+      "name": "Miniature YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "binaryData",
+        "inputDataFieldName": "image",
+        "method": "POST",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "videoId",
+              "value": "={{ $('Publier sur YouTube').first().json.uploadId }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "sendQuery": true,
+        "url": "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
+      },
+      "position": [
+        4800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z24",
+      "name": "Lien public",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "hours",
+              "value": "24"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "={{ 'http://atelier:8000/sign/' + $('Description').first().json.fichier }}"
+      },
+      "position": [
+        5000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "z25",
+      "name": "Publier sur Facebook",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "POST",
+        "options": {
+          "timeout": 600000
+        },
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "file_url",
+              "value": "={{ $json.url }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $('Description').first().json.titre }}"
+            },
+            {
+              "name": "description",
+              "value": "={{ $('Description').first().json.description_finale }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://graph-video.facebook.com/v21.0/1444534085401967/videos"
+      },
+      "position": [
+        5200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z26",
+      "name": "Récapitulatif",
+      "parameters": {
+        "jsCode": "\nconst c = $('Description').first().json;\nlet yt = {}; try { yt = $('Publier sur YouTube').first().json; } catch (e) {}\nlet fb = {}; try { fb = $('Publier sur Facebook').first().json; } catch (e) {}\nlet th = {}; try { th = $('Miniature YouTube').first().json; } catch (e) {}\nconst esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst m = Math.floor(c.duree_s / 60), s = c.duree_s % 60;\nconst lignes = [\n  `🎬 <b>Zapping du ${esc(c.dateLabel)} publié</b>`, `<b>${esc(c.titre)}</b> · ${m} min ${s} s · ${c.chapitres.length} extraits`, '',\n  ...c.chapitres.map((ch, i) => `${i + 1}. ${esc(ch.titre)} <i>(${esc(ch.source)})</i>`), '',\n  yt.uploadId ? `✅ YouTube : https://youtu.be/${yt.uploadId}` : `❌ YouTube : ${esc((yt.error && (yt.error.message || yt.error)) || 'échec')}`,\n  (c.originaux_longs || []).filter(x => x.includes('remplacé')).length ? `🔁 ${(c.originaux_longs || []).filter(x => x.includes('remplacé')).length} extrait(s) vertical(aux) remplacé(s) par la version longue 16:9` : '',\n  (c.miniature_erreurs || []).length ? `🖼️ Miniature simplifiée : ${esc(String(c.miniature_erreurs[0]).slice(0, 150))}` : '',\n  (yt.uploadId && th.error) ? `⚠️ Miniature non appliquée (vérifie la chaîne par téléphone dans YouTube Studio pour autoriser les miniatures)` : '',\n  fb.id ? `✅ Facebook : https://www.facebook.com/${fb.id}` : `❌ Facebook : ${esc((fb.error && fb.error.message) || 'échec')}`,\n  c.erreurs_montage.length ? `⚠️ ${c.erreurs_montage.length} extrait(s) n'ont pas pu être montés` : '',\n  (c.voix && c.voix.demandees && !c.voix.generees) ? `🔇 Voix off absente : ${esc(((c.voix.erreurs || [])[0] || 'clé ElevenLabs manquante').includes('quota') ? 'crédit ElevenLabs épuisé, recharge ou passe au plan supérieur' : ((c.voix.erreurs || [])[0] || 'clé ElevenLabs manquante dans le serveur'))}` : '',\n  (c.voix && c.voix.generees && (c.voix.erreurs || []).length) ? `⚠️ Voix off partielle (${c.voix.erreurs.length} passage(s) sans voix)` : '',\n  '', `🧪 Hypothèse testée aujourd'hui : ${esc(c.hypothese)}`,\n].filter(x => x !== '');\nconst ids = c.segments.map(x => x.video_id);\nreturn [{ json: { texte: lignes.join('\\n').slice(0, 4000), yt_id: yt.uploadId || '', fb_id: fb.id || '',\n  pub_row: { data: [{ pub_id: c.nom, type: 'zapping', publiee_le: new Date().toISOString(), titre: c.titre, yt_id: yt.uploadId || '', fb_id: fb.id || '', ig_id: '',\n    sources: JSON.stringify(c.sources), segments: JSON.stringify({ segments: c.chapitres.map(ch => { const s = c.segments.find(x => x.video_id === ch.video_id) || {}; return { ...ch, contexte: s.contexte, personnes: s.personnes, camp: s.camp, theme: s.theme, type_moment: s.type_moment }; }), hypothese: c.hypothese, accroche: c.accroche }),\n    duree_s: c.duree_s, heure: '19:00', statut_yt: yt.uploadId ? 'public' : 'echec', alerte: '' }] },\n  maj_videos: { filter: { type: 'or', filters: ids.map(v => ({ columnName: 'video_id', condition: 'eq', value: v })) }, data: { statut: 'zapping' } } } }];\n"
+      },
+      "position": [
+        5400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "z27",
+      "name": "Enregistrer la publication",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.pub_row) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        5600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "z28",
+      "name": "Marquer les vidéos utilisées",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Récapitulatif').first().json.maj_videos) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        5800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "z29",
+      "name": "Prévenir Louis",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $('Récapitulatif').first().json.texte }}"
+      },
+      "position": [
+        6000,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "025e56c5-7d31-4fce-8a6d-e85061a80281"
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

@@ -1,0 +1,66 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Deepgram",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "RT0URX9FJy09hkgr",
+  "name": "TEST - Deepgram API",
+  "nodes": [
+    {
+      "id": "c1",
+      "name": "Webhook",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "dg-test-5e1b",
+        "responseMode": "lastNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "dg-test-5e1b"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "QVQbPy6IbcQaQPi4",
+          "name": "Deepgram"
+        }
+      },
+      "id": "c2",
+      "name": "Deepgram",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "{\"url\":\"https://dpgr.am/spacewalk.wav\"}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true"
+      },
+      "position": [
+        250,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

@@ -1,0 +1,676 @@
+{
+  "active": true,
+  "connections": {
+    "Annoncer le retour": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Clore l'alerte",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Créer ou mettre à jour ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer l'alerte",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour l'alerte (escalade)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Depuis un signalement": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Événements",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Depuis une erreur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Événements",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer en texte brut": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer ou mettre à jour ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer l'alerte": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer ou mettre à jour ?",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Envoyer en texte brut",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Erreur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire l'exécution",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire alertes actives": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Regrouper",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire l'exécution": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Depuis une erreur",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Modifier le message": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Mettre à jour l'alerte",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Nouveau message ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer l'alerte",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Modifier le message",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Annoncer le retour",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Regrouper": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Nouveau message ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Signalement": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Depuis un signalement",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Événements": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire alertes actives",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "WIga5P58eZ7Nu6dt",
+  "name": "ALERTES - Erreurs",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Erreur",
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a2",
+      "name": "Lire l'exécution",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "url": "={{ 'https://n8n.actualitevideo.fr/api/v1/executions/' + ($json.execution && $json.execution.id || 0) + '?includeData=true' }}"
+      },
+      "position": [
+        220,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a3",
+      "name": "Depuis une erreur",
+      "parameters": {
+        "jsCode": "\n// Erreur d'un workflow → événement normalisé (avec la vidéo concernée et le corps complet de l'erreur)\nconst e = $('Erreur').first().json;\nconst x = $input.first().json || {};\nconst run = (x.data && x.data.resultData) || {};\nconst noeud = e.execution?.lastNodeExecuted || run.lastNodeExecuted || '?';\nlet err = e.execution?.error || {};\ntry { const r = (run.runData?.[noeud] || []).slice(-1)[0]; if (r && r.error) err = { ...err, ...r.error }; } catch (_) {}\n// vidéo concernée : d'abord la requête qui a planté, sinon le premier nœud qui porte un video_id\nlet video = null;\nconst prend = j => j && (j.titre_short || j.titre) ? { id: j.video_id || '', titre: j.titre_short || j.titre } : null;\ntry { video = prend((err.context?.request?.body?.data || [])[0]); } catch (_) {}\nfor (const runs of Object.values(run.runData || {})) {\n  if (video) break;\n  for (const r of runs) {\n    const j = r?.data?.main?.[0]?.[0]?.json;\n    video = prend(j) || prend(j?.body) || prend((j?.data || [])[0]);\n    if (video) break;\n  }\n}\nconst brut = [err.message, err.description, ...(err.messages || []), err.context?.data ? JSON.stringify(err.context.data) : '']\n  .filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).join('\\n');\nreturn [{ json: { evenements: [{ type: 'echec', origine: 'erreur', workflow: e.workflow?.name || '?', noeud,\n  video, plateforme: '', brut: brut || JSON.stringify(err).slice(0, 2000), exec_id: e.execution?.id || '', quand: new Date().toISOString() }] } }];\n"
+      },
+      "position": [
+        440,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "b1",
+      "name": "Signalement",
+      "parameters": {
+        "authentication": "headerAuth",
+        "httpMethod": "POST",
+        "options": {},
+        "path": "alerte-signal-4e7b",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        0,
+        300
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "alerte-signal-4e7b"
+    },
+    {
+      "id": "b2",
+      "name": "Depuis un signalement",
+      "parameters": {
+        "jsCode": "\nconst b = $('Signalement').first().json.body || {};\nconst evs = (Array.isArray(b.evenements) ? b.evenements : [b]).filter(v => v && v.type);\nreturn [{ json: { evenements: evs.map(v => ({ quand: new Date().toISOString(), ...v })) } }];\n"
+      },
+      "position": [
+        440,
+        300
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c0",
+      "name": "Événements",
+      "parameters": {
+        "jsCode": "return [{ json: { evenements: $input.first().json.evenements || [] } }];"
+      },
+      "position": [
+        660,
+        150
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "c1",
+      "name": "Lire alertes actives",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:\"and\",filters:[{columnName:\"statut\",condition:\"eq\",value:\"active\"}]}) }}"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows"
+      },
+      "position": [
+        880,
+        150
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "c2",
+      "name": "Regrouper",
+      "parameters": {
+        "jsCode": "\n// ---------- outils ----------\nconst esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst masque = s => String(s ?? '')\n  .replace(/(access_token|api_key|key|sig|token|secret|password|client_secret)=([^&\\s\"'\\\\]+)/gi, '$1=***')\n  .replace(/Bearer\\s+[A-Za-z0-9._\\-]+/g, 'Bearer ***')\n  .replace(/sk-[A-Za-z0-9_\\-]{10,}/g, 'sk-***')\n  .replace(/\\b\\d{8,10}:[A-Za-z0-9_\\-]{30,}\\b/g, '***')\n  .replace(/EAA[A-Za-z0-9]{20,}/g, 'EAA***');\nconst TZ = { timeZone: 'Europe/Paris' };\nconst hm = d => new Date(d).toLocaleTimeString('fr-FR', { ...TZ, hour: '2-digit', minute: '2-digit' });\nconst jhm = d => { const t = new Date(d); const j = t.toLocaleDateString('fr-FR', { ...TZ, day: '2-digit', month: '2-digit' });\n  return (j === new Date().toLocaleDateString('fr-FR', { ...TZ, day: '2-digit', month: '2-digit' }) ? '' : j + ' ') + hm(t); };\nconst H = 3600e3, now = Date.now();\nconst prochain9h = () => { // quota YouTube remis à zéro à minuit heure du Pacifique\n  const pac = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));\n  const m = new Date(pac); m.setHours(24, 10, 0, 0); return now + (m - pac); };\nconst NOMS = { youtube: 'YouTube', meta: 'Facebook + Instagram', facebook: 'Facebook', instagram: 'Instagram' };\n\n// ---------- catalogue des causes connues ----------\nconst R = [\n { cle: 'meta_app_bloquee', plateforme: 'meta', test: /Cannot call API for app|API access blocked/i, g: 'rouge', pause_h: 2,\n   titre: 'Meta bloque la publication (Facebook + Instagram)',\n   quoi: \"Meta refuse tous les appels de l'app de publication : ni Facebook ni Instagram ne peuvent publier.\",\n   causes: [\"Meta a restreint ou bloqué l'app 1551385950091181 (le 06/10, même la clé propre de l'app reçoit « API access blocked »)\",\n            \"Le compte Facebook propriétaire du jeton est restreint ou en vérification d'identité\",\n            \"Jeton de Page révoqué (peu probable : un jeton expiré renvoie l'erreur 190, pas 200)\"],\n   action: \"Ouvre developers.facebook.com → Mes apps → l'app → regarde le bandeau rouge, « Examen de l'app » et « Alertes », et réponds à la demande de Meta. Vérifie aussi les notifications du compte Facebook. Une fois réglé, demande à Claude de régénérer le jeton de Page.\" },\n { cle: 'meta_jeton', plateforme: 'meta', test: /\"code\"\\s*:\\s*190\\b|Error validating access token|Session has expired|has been invalidated/i, g: 'rouge', pause_h: 6,\n   titre: 'Jeton Meta expiré', quoi: \"Le jeton qui autorise la publication sur la Page n'est plus valide.\", certain: \"Jeton de Page expiré ou révoqué (erreur 190).\",\n   action: \"Demande à Claude de régénérer le jeton de Page (il faudra te reconnecter à Facebook).\" },\n { cle: 'meta_limite', plateforme: 'meta', test: /\"code\"\\s*:\\s*(4|17|32|613)\\b|too many calls|rate limit/i, g: 'orange', pause_h: 1,\n   titre: \"Meta limite le nombre d'appels\", quoi: 'Meta freine temporairement les publications (trop d’appels).', certain: 'Limite de débit Meta.', action: 'Rien.' },\n { cle: 'ig_traitement', plateforme: 'instagram', test: /2207077|2207026|2207020|Media upload has failed|status_code\"?\\s*:\\s*\"?ERROR/i, g: 'blanc',\n   titre: \"Instagram n'a pas réussi à traiter la vidéo\", quoi: \"Instagram a refusé ou n'a pas pu traiter la vidéo de ce Short.\",\n   causes: [\"Instagram n'a pas pu télécharger la vidéo depuis le lien temporaire (serveur lent)\", 'Vidéo refusée ponctuellement (durée, débit, format)', 'Incident passager côté Instagram'],\n   action: \"Rien d'obligatoire. Si ce Short compte, publie-le à la main sur Instagram (fichier envoyé plus haut pour TikTok).\" },\n { cle: 'yt_limite_envois', plateforme: 'youtube', test: /uploadLimitExceeded|exceeded the number of videos they may upload/i, g: 'orange', pause_h: 6,\n   titre: \"Limite d'envois YouTube atteinte\", quoi: \"YouTube refuse les nouveaux envois : la chaîne a atteint son nombre maximal de vidéos mises en ligne sur 24 h.\",\n   certain: \"Trop de vidéos envoyées en 24 h (« uploadLimitExceeded ») : le 04 et le 05/10, les envois ont été refusés après une dizaine de vidéos.\",\n   action: \"Rien d'urgent. Pour relever la limite : vérifie la chaîne par téléphone (youtube.com/verify) et espace les Shorts (1 toutes les 2-3 h plutôt que 1 par heure). Les Shorts sautés pendant la pause sont à mettre en ligne à la main sur YouTube si tu les veux.\" },\n { cle: 'yt_quota', plateforme: 'youtube', test: /quotaExceeded|dailyLimitExceeded|rateLimitExceeded/i, g: 'orange', pause_jusqu: prochain9h,\n   titre: 'Quota API YouTube épuisé', quoi: \"Le quota journalier de l'API YouTube est consommé.\", certain: 'Quota API journalier dépassé (remis à zéro vers 9 h).', action: 'Rien.' },\n { cle: 'yt_auth', plateforme: 'youtube', test: /invalid_grant|authError|Invalid Credentials|\"code\"\\s*:\\s*401\\b|Unauthorized/i, g: 'rouge', pause_h: 6,\n   titre: 'Connexion YouTube perdue', quoi: \"n8n n'est plus autorisé à publier sur la chaîne YouTube.\",\n   causes: [\"L'autorisation Google a expiré (projet Google en mode « test » : elle expire au bout de 7 jours)\", 'Mot de passe Google changé ou accès retiré'],\n   action: 'Dans n8n : Credentials → « YouTube account » → Reconnect, puis valide avec le compte de la chaîne.' },\n { cle: 'yt_metadonnees', plateforme: 'youtube', test: /invalidTitle|invalidDescription|invalidTags|invalidCategoryId|invalidVideoMetadata/i, g: 'rouge',\n   titre: 'YouTube refuse le titre ou la description', quoi: 'YouTube a refusé les informations de ce Short (titre, description ou mots-clés).',\n   certain: 'Titre/description non conformes (le champ refusé est indiqué dans le détail technique).',\n   action: 'Mets ce Short en ligne à la main en corrigeant le champ refusé, et transmets cette alerte à Claude pour corriger le générateur.' },\n { cle: 'table_type', test: /does not match column type/i, g: 'rouge', titre: 'Bug : donnée refusée par la base',\n   quoi: \"Une valeur au mauvais format est refusée par la table de données : l'étape plantera à chaque passage.\", certain: 'Bug de code (format de donnée).',\n   action: 'Transmets cette alerte à Claude : correction de code nécessaire.' },\n { cle: 'telegram_html', test: /can't parse entities/i, g: 'rouge', titre: 'Bug : message Telegram mal formé',\n   quoi: 'Un message Telegram contient un caractère spécial non échappé et a été refusé.', certain: 'Bug de formatage (HTML non échappé).', action: 'Transmets cette alerte à Claude.' },\n { cle: 'proxy_credit', test: /402 Payment Required/i, g: 'rouge', titre: 'Crédit du proxy épuisé', quoi: 'Impossible de télécharger les vidéos sources : le proxy n’a plus de crédit.',\n   certain: 'Crédit IPRoyal épuisé.', action: 'Recharge le proxy (IPRoyal), puis dis-le à Claude pour relancer les extraits en attente.' },\n { cle: 'yt_robot', test: /Sign in to confirm/i, g: 'rouge', titre: 'YouTube bloque le téléchargement', quoi: 'YouTube a détecté un robot et bloque le téléchargement des sources.',\n   causes: ['Adresse du proxy repérée par YouTube', 'Trop de téléchargements rapprochés'], action: 'À vérifier avec Claude (changer de proxy ou attendre).' },\n { cle: 'zapping_matiere', test: /Pas assez de matière/i, g: 'blanc', titre: 'Pas de zapping aujourd’hui', quoi: 'Pas assez de vidéos utilisables pour monter le zapping.',\n   certain: 'Pas assez de matière.', action: 'Rien.' },\n { cle: 'source_sans_image', test: /source sans image|Stream specifier ':v'.*matches no streams/i, g: 'rouge', titre: 'Vidéo source téléchargée sans image',\n   quoi: \"Le serveur de montage n'a reçu que le son de la vidéo source : impossible de monter le Short.\",\n   causes: [\"YouTube n'a livré que la piste audio à travers le proxy (cas connu, ponctuel)\", \"Vidéo source avec un format inhabituel (direct, vidéo récente encore en traitement)\"],\n   action: 'Demande à Claude de relancer ce Short plus tard (ou de le reprendre depuis une autre source).' },\n { cle: 'claude_credit', test: /credit balance is too low/i, g: 'rouge', titre: 'Crédit Claude (Anthropic) épuisé', quoi: \"L'IA ne répond plus : le crédit API est épuisé.\",\n   certain: 'Crédit Anthropic épuisé.', action: 'Recharge le crédit sur console.anthropic.com.' },\n { cle: 'claude_reponse', test: /overloaded|\"529\"|Aucune note exploitable|Choix Claude illisible/i, g: 'orange', titre: \"Réponse de l'IA inutilisable\",\n   quoi: \"Claude n'a pas renvoyé de réponse exploitable.\", causes: ['Claude surchargé (incident passager)', 'Réponse coupée ou dans un format inattendu'], action: 'Rien.' },\n { cle: 'reseau', test: /ECONNRESET|ETIMEDOUT|ECONNREFUSED|EAI_AGAIN|connection was aborted|socket hang up|timed? ?out|\\b50[234]\\b|Service Unavailable/i, g: 'orange',\n   titre: 'Service injoignable', quoi: \"Un service externe n'a pas répondu à temps.\", causes: ['Panne ou lenteur passagère du service appelé', 'Coupure réseau du serveur'], action: 'Rien.' },\n { cle: 'source_bloquee', test: /règle anti-strike/i, g: 'blanc', titre: 'Source non utilisable pour un extrait', quoi: 'Cette source est réservée à la veille (règle anti-strike) : pas d’extrait.',\n   certain: 'Règle anti-strike.', action: \"Rien, ou reprends le sujet depuis une autre source.\" },\n];\nconst CONTEXTE = {\n  'VEILLE': { impact: \"Les nouvelles vidéos de ce passage ne sont ni enregistrées ni proposées, et aucun Short n'est lancé automatiquement.\",\n              fait: 'La veille repasse automatiquement à la prochaine heure.' },\n  'PRODUCTION': { impact: v => `Le Short ${v ? '« ' + v + ' » ' : ''}n'est pas monté : il ne sera pas publié.`, fait: \"Rien : la production n'est pas relancée automatiquement.\" },\n  'PUBLICATION': { impact: v => `Le Short ${v ? '« ' + v + ' » ' : ''}n'est publié nulle part.`, fait: \"Rien : la publication n'est pas relancée automatiquement.\" },\n  'ZAPPING': { impact: \"Le zapping du jour n'est pas produit.\", fait: 'Rien : nouvel essai demain.' },\n  'APPRENTISSAGE': { impact: \"Le bilan du jour et les leçons ne sont pas mis à jour (aucun effet sur les publications).\", fait: 'Nouvel essai au prochain bilan.' },\n};\nconst ctx = wf => CONTEXTE[Object.keys(CONTEXTE).find(k => String(wf).toUpperCase().startsWith(k))] || { impact: \"Ce workflow s'est arrêté avant la fin.\", fait: 'Rien.' };\n\nfunction diagnostiquer(ev) {\n  const brut = String(ev.brut || '');\n  const r = R.find(x => x.test.test(brut) && (!x.plateforme || !ev.plateforme || x.plateforme === ev.plateforme ||\n              (x.plateforme === 'meta' && ['facebook', 'instagram'].includes(ev.plateforme)) || (ev.plateforme === 'meta' && ['facebook', 'instagram'].includes(x.plateforme))));\n  const c = ctx(ev.workflow);\n  const vt = ev.video && ev.video.titre;\n  const base = { impact: ev.impact || (typeof c.impact === 'function' ? c.impact(vt) : c.impact), fait: c.fait };\n  if (r && r.g === 'orange' && !r.pause_h && !r.pause_jusqu && !/VEILLE/i.test(ev.workflow))\n    return { ...base, ...r, g: 'rouge', plateforme: r.plateforme || ev.plateforme || '', signature: r.cle + '|' + (r.plateforme || ev.plateforme || ev.workflow),\n      action: 'Ce circuit ne réessaie pas tout seul : demande à Claude de relancer' + (vt ? ' « ' + vt + ' »' : ' cette étape') + '.' };\n  if (r) return { ...base, ...r, plateforme: ev.plateforme && ev.plateforme !== r.plateforme && r.plateforme === 'meta' ? 'meta' : (r.plateforme || ev.plateforme || ''),\n                  signature: r.cle + '|' + (r.plateforme || ev.plateforme || ev.workflow) };\n  const premiere = (brut.split('\\n').find(Boolean) || 'erreur inconnue').slice(0, 160);\n  return { ...base, cle: 'inconnu', plateforme: ev.plateforme || '', g: ev.plateforme ? 'rouge' : (/VEILLE/i.test(ev.workflow) ? 'orange' : 'rouge'),\n    signature: 'inconnu|' + ev.workflow + '|' + ev.noeud + '|' + premiere.replace(/[0-9]+/g, '#').slice(0, 60),\n    titre: 'Erreur inattendue' + (ev.plateforme ? ' sur ' + NOMS[ev.plateforme] : ''), quoi: `L'étape « ${ev.noeud} » a échoué : ${premiere}`,\n    inconnue: true, pistes: ['Lire le détail technique ci-dessous (message renvoyé par le service)', 'Vérifier si le service appelé est en panne ou a changé ses règles',\n      'Vérifier une modification récente de ce workflow'],\n    action: 'Si ça se répète, transmets cette alerte à Claude.' };\n}\n\nfunction texte(row, d, ev, escalade) {\n  const G = { rouge: '🔴 <b>ACTION REQUISE</b>', orange: '🟠 <b>Le système réessaie seul</b>', blanc: '⚪ <b>Info</b>' };\n  const g = escalade ? 'rouge' : d.g;\n  const vids = JSON.parse(row.videos || '[]');\n  const L = [`${G[g]} — ${esc(d.titre)}`,\n    row.nb > 1 ? `<i>En échec depuis ${jhm(row.premier)} · ${row.nb} échecs (dernier à ${hm(row.dernier)})</i>` : `<i>${jhm(row.dernier)}</i>`, '',\n    `📌 <b>Ce qui s'est passé :</b> ${esc(d.quoi)}`,\n    `📍 <b>Où :</b> ${esc(ev.workflow)} › ${esc(ev.noeud)}${ev.video && ev.video.titre ? ' · « ' + esc(ev.video.titre) + ' »' : ''}`,\n    `💥 <b>Impact :</b> ${esc(d.impact)}`];\n  if (d.certain) L.push(`🔎 <b>Cause :</b> ${esc(d.certain)}`);\n  else if (d.causes) L.push('🔎 <b>Causes possibles</b> (de la plus à la moins probable) :', ...d.causes.map((c, i) => `  ${i + 1}. ${esc(c)}`));\n  else L.push('🔎 <b>Cause non identifiée.</b> Pistes à vérifier :', ...d.pistes.map((c, i) => `  ${i + 1}. ${esc(c)}`));\n  L.push(`👉 <b>Ce que tu dois faire :</b> ${esc(escalade ? 'Ça échoue à chaque passage : transmets cette alerte à Claude.' : d.action)}`);\n  const fait = [];\n  if (ev.fait) fait.push(ev.fait);\n  if (row.suspendue_jusqu && Date.parse(row.suspendue_jusqu) > now)\n    fait.push(`${NOMS[row.plateforme] || row.plateforme} mis en pause jusqu'à ${jhm(row.suspendue_jusqu)} : les Shorts prévus d'ici là y sont sautés (pas d'échecs en série), puis le système réessaie tout seul.`);\n  if (!fait.length) fait.push(d.fait);\n  L.push(`🤖 <b>Déjà fait par le système :</b> ${esc(fait.join(' '))}`);\n  if (vids.length > 1) {\n    L.push('🎬 <b>Shorts concernés :</b>', ...vids.slice(-8).map(v => `  • ${esc(v.h)} « ${esc(v.t)} » — ${v.e === 'saute' ? 'sauté (pause), à reprendre' : 'échec'}`));\n    const sautes = vids.filter(v => v.e === 'saute').length;\n    if (sautes) L.push(`  <i>${sautes} Short(s) sauté(s) pendant la pause.</i>`);\n  }\n  const corps = L.join('\\n'), tete = '\\n\\n🧾 <b>Détail technique</b>' + (ev.exec_id ? ` (exécution ${esc(ev.exec_id)})` : '') + ' :\\n';\n  const place = Math.max(200, 3900 - corps.length - tete.length - 20);\n  return corps + tete + `<pre>${esc(masque(ev.brut).slice(0, Math.min(1400, Math.floor(place / 1.2))))}</pre>`;\n}\nconst brutTexte = t => t.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');\n\n// ---------- regroupement ----------\nconst rows = ($('Lire alertes actives').first().json.data || []).map(r => ({ ...r }));\nconst evs = $('Événements').first().json.evenements || [];\nconst sorties = [], parSig = new Map();\nfor (const ev of evs) {\n  ev.workflow = ev.workflow || '?'; ev.noeud = ev.noeud || '?';\n  if (ev.type === 'retabli') {\n    for (const row of rows.filter(r => r.statut === 'active' && r.plateforme && (r.plateforme === ev.plateforme || (r.plateforme === 'meta' && ['facebook', 'instagram'].includes(ev.plateforme))))) {\n      row.statut = 'resolue';\n      const vids = JSON.parse(row.videos || '[]'), sautes = vids.filter(v => v.e === 'saute');\n      const t = [`✅ <b>${esc(NOMS[row.plateforme] || row.plateforme)} refonctionne</b>`,\n        `Panne du ${jhm(row.premier)} au ${jhm(now)} · ${row.nb} échec(s).`,\n        `Premier Short publié normalement : « ${esc(ev.video && ev.video.titre || '?')} ».`,\n        ...(vids.length ? ['', `🎬 <b>Shorts non publiés sur ${esc(NOMS[row.plateforme] || row.plateforme)} pendant la panne</b> (à reprendre à la main si tu les veux) :`,\n          ...vids.slice(-12).map(v => `  • ${esc(v.h)} « ${esc(v.t)} »${v.e === 'saute' ? ' (sauté)' : ''}`)] : [])].join('\\n');\n      sorties.push({ action: 'retabli', texte: t, texte_brut: brutTexte(t), signature: row.signature,\n        data: { statut: 'resolue', suspendue_jusqu: null } });\n    }\n    continue;\n  }\n  if (ev.type === 'saute') {\n    const row = rows.filter(r => r.statut === 'active' && r.plateforme === ev.plateforme).sort((a, b) => Date.parse(b.dernier) - Date.parse(a.dernier))[0];\n    if (!row) continue;\n    const vids = JSON.parse(row.videos || '[]'); vids.push({ t: ev.video && ev.video.titre || '?', e: 'saute', h: jhm(now) }); row.videos = JSON.stringify(vids.slice(-30));\n    const det = JSON.parse(row.detail || '{}'), d = diagnostiquer(det.ev || ev);\n    const t = texte(row, d, det.ev || ev, det.escalade);\n    const prev = parSig.get(row.signature);\n    parSig.set(row.signature, prev ? { ...prev, texte: t, texte_brut: brutTexte(t), data: { ...prev.data, videos: row.videos } }\n      : { action: row.message_id ? 'maj' : 'nouveau', creer: false, texte: t, texte_brut: brutTexte(t), message_id: row.message_id, signature: row.signature, data: { videos: row.videos } });\n    continue;\n  }\n  // échec\n  const d = diagnostiquer(ev);\n  let row = rows.find(r => r.statut === 'active' && r.signature === d.signature && now - Date.parse(r.dernier) < 24 * H);\n  const vid = { t: ev.video && ev.video.titre || '', e: 'echec', h: jhm(now) };\n  let action = 'maj', escalade = false;\n  if (row) {\n    row.nb = (+row.nb || 1) + 1; row.dernier = new Date(now).toISOString();\n    const det = JSON.parse(row.detail || '{}');\n    escalade = d.g === 'orange' && !d.pause_h && !d.pause_jusqu && row.nb >= 3;\n    if (escalade && !det.escalade) action = 'nouveau'; // passage en rouge : nouveau message (notifié)\n  } else {\n    action = 'nouveau';\n    row = { signature: d.signature, plateforme: d.plateforme, workflow: ev.workflow, gravite: d.g, statut: 'active', premier: new Date(now).toISOString(),\n            dernier: new Date(now).toISOString(), nb: 1, videos: '[]', _nouvelle: true };\n    rows.push(row);\n  }\n  if (!row._nouvelle && !escalade) action = 'maj';\n  if (vid.t) { const v = JSON.parse(row.videos || '[]'); v.push(vid); row.videos = JSON.stringify(v.slice(-30)); }\n  // pause de la plateforme : cause connue qui l'exige, ou 2e échec d'affilée d'une cause inconnue\n  const pause = d.pause_jusqu ? d.pause_jusqu() : d.pause_h ? now + d.pause_h * H : (row.plateforme && row.nb >= 2 ? now + H : null);\n  if (row.plateforme && pause) row.suspendue_jusqu = new Date(pause).toISOString();\n  row.gravite = escalade ? 'rouge' : d.g;\n  row.detail = JSON.stringify({ ev: { ...ev, brut: String(ev.brut || '').slice(0, 3000) }, escalade });\n  const data = { nb: row.nb, dernier: row.dernier, videos: row.videos, gravite: row.gravite, detail: row.detail, suspendue_jusqu: row.suspendue_jusqu || null };\n  const t = texte(row, d, ev, escalade);\n  const prev = parSig.get(row.signature);\n  const creer = !!row._nouvelle || !!(prev && prev.creer);\n  // pas de message connu à modifier → on en envoie un nouveau\n  if (!creer && !row.message_id) action = 'nouveau';\n  parSig.set(row.signature, { action: creer || action === 'nouveau' || (prev && prev.action === 'nouveau') ? 'nouveau' : 'maj', creer, texte: t, texte_brut: brutTexte(t),\n    message_id: row.message_id, signature: row.signature,\n    data: creer ? { signature: row.signature, plateforme: row.plateforme, workflow: row.workflow, statut: 'active', premier: row.premier, ...data } : data });\n}\nreturn [...parSig.values(), ...sorties].map(s => ({ json: s }));\n"
+      },
+      "position": [
+        1100,
+        150
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "c3",
+      "name": "Nouveau message ?",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "nouveau"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                }
+              },
+              "outputKey": "nouveau",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "maj"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                }
+              },
+              "outputKey": "maj",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "retabli"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict"
+                }
+              },
+              "outputKey": "retabli",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        1320,
+        150
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "d1",
+      "name": "Envoyer l'alerte",
+      "onError": "continueErrorOutput",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        1540,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "alertes-d1"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "d2",
+      "name": "Envoyer en texte brut",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true
+        },
+        "chatId": "6339897621",
+        "text": "={{ $('Regrouper').item.json.texte_brut.slice(0, 4000) }}"
+      },
+      "position": [
+        1760,
+        100
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "alertes-d2"
+    },
+    {
+      "id": "d3",
+      "name": "Créer ou mettre à jour ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $('Regrouper').item.json.creer }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1980,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "d4",
+      "name": "Enregistrer l'alerte",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ data: [{ ...$('Regrouper').item.json.data, message_id: ($json.result && $json.result.message_id) || null }] }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows"
+      },
+      "position": [
+        2200,
+        -100
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "d5",
+      "name": "Mettre à jour l'alerte (escalade)",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ filter: { type: 'and', filters: [{ columnName: 'signature', condition: 'eq', value: $('Regrouper').item.json.signature }, { columnName: 'statut', condition: 'eq', value: 'active' }] }, data: { ...$('Regrouper').item.json.data, message_id: ($json.result && $json.result.message_id) || $('Regrouper').item.json.message_id || null } }) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows/update"
+      },
+      "position": [
+        2200,
+        100
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "e1",
+      "name": "Modifier le message",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalFields": {
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "messageId": "={{ $json.message_id }}",
+        "messageType": "message",
+        "operation": "editMessageText",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        1540,
+        250
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "alertes-e1"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "e2",
+      "name": "Mettre à jour l'alerte",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ filter: { type: 'and', filters: [{ columnName: 'signature', condition: 'eq', value: $('Regrouper').item.json.signature }, { columnName: 'statut', condition: 'eq', value: 'active' }] }, data: $('Regrouper').item.json.data }) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows/update"
+      },
+      "position": [
+        1760,
+        250
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "f1",
+      "name": "Annoncer le retour",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        1540,
+        450
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "alertes-f1"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "f2",
+      "name": "Clore l'alerte",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ filter: { type: 'and', filters: [{ columnName: 'signature', condition: 'eq', value: $('Regrouper').item.json.signature }, { columnName: 'statut', condition: 'eq', value: 'active' }] }, data: $('Regrouper').item.json.data }) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows/update"
+      },
+      "position": [
+        1760,
+        450
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

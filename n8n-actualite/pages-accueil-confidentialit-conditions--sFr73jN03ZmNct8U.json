@@ -1,0 +1,167 @@
+{
+  "active": true,
+  "connections": {
+    "Page accueil": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse accueil",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Page conditions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse conditions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Page confidentialite": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse confidentialite",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "sFr73jN03ZmNct8U",
+  "name": "PAGES - Accueil / Confidentialité / Conditions",
+  "nodes": [
+    {
+      "id": "w0",
+      "name": "Page accueil",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "accueil",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "page-accueil"
+    },
+    {
+      "id": "r0",
+      "name": "Réponse accueil",
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>L’Extrait politique</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.6;color:#222}h1{font-size:1.6em}a{color:#0b57d0}</style></head><body><h1>L’Extrait politique</h1><p>L’Extrait politique est une chaîne d'actualité. Cette application interne (« youtube actualité video automatisation ») aide son éditeur à préparer et publier des vidéos d'actualité sur sa propre chaîne YouTube, via les services API YouTube.</p><p>L'application est utilisée uniquement par l'éditeur de la chaîne. Elle n'est pas proposée au public.</p><div style='display:flex;align-items:center;gap:10px;margin:18px 0;padding:12px;border:1px solid #ddd;border-radius:8px'><svg width='40' height='28' viewBox='0 0 40 28'><rect width='40' height='28' rx='7' fill='#FF0000'/><path d='M16 8v12l10-6z' fill='#fff'/></svg><span>Cette application utilise les <b>services API YouTube</b> (YouTube API Services). En l'utilisant, vous acceptez les <a href='https://www.youtube.com/t/terms'>Conditions d'utilisation de YouTube</a> et les <a href='https://policies.google.com/privacy'>Règles de confidentialité de Google</a>.</span></div><p>L’application publie aussi les vidéos de la chaîne sur <b>TikTok</b> (compte @lextrait_politique), via l’API officielle TikTok (Login Kit et Content Posting API), uniquement sur le compte de l’éditeur et avec son autorisation.</p><p><a href='/webhook/confidentialite'><b>Règles de confidentialité</b></a> · <a href='/webhook/conditions'>Conditions d'utilisation</a></p><p>Contact : <a href='mailto:adresse@retiree.invalid'>adresse@retiree.invalid</a></p><hr><p><a href='/webhook/accueil'>Accueil</a> · <a href='/webhook/confidentialite'>Confidentialité</a> · <a href='/webhook/conditions'>Conditions d'utilisation</a></p></body></html>"
+      },
+      "position": [
+        250,
+        0
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "w1",
+      "name": "Page confidentialite",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "confidentialite",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        200
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "page-confidentialite"
+    },
+    {
+      "id": "r1",
+      "name": "Réponse confidentialite",
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Règles de confidentialité</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.6;color:#222}h1{font-size:1.6em}a{color:#0b57d0}</style></head><body><h1>Règles de confidentialité</h1><p>Dernière mise à jour : 4 octobre 2026</p><h2>Qui sommes-nous</h2><p>L'application « youtube actualité video automatisation » est éditée par l'éditeur de la chaîne L’Extrait politique. Contact : <a href='mailto:adresse@retiree.invalid'>adresse@retiree.invalid</a>.</p><h2>Données utilisées</h2><p>L'application utilise les services API YouTube pour accéder au compte YouTube de son éditeur : informations de la chaîne, liste et statistiques des vidéos, mise en ligne de vidéos. Elle consulte aussi des données publiques YouTube (titres, descriptions, statistiques de vidéos publiques) pour la veille d'actualité.</p><p>Aucune donnée d'autres utilisateurs Google n'est collectée. L'application n'est utilisée que par son éditeur.</p><h2>Stockage et partage</h2><p>Les jetons d'accès sont stockés de manière chiffrée sur un serveur privé. Les données ne sont ni vendues ni partagées avec des tiers, en dehors des prestataires techniques nécessaires au fonctionnement (transcription et analyse de texte).</p><h2>Révocation</h2><p>L'accès peut être révoqué à tout moment depuis la page des autorisations du compte Google : <a href='https://myaccount.google.com/permissions'>https://myaccount.google.com/permissions</a>. Les données associées sont alors supprimées sous 30 jours sur simple demande à <a href='mailto:adresse@retiree.invalid'>adresse@retiree.invalid</a>.</p><h2>Suppression des données</h2><p>Vous pouvez demander la suppression de toutes les données liées à votre compte à tout moment en écrivant à <a href='mailto:adresse@retiree.invalid'>adresse@retiree.invalid</a> ; elles sont supprimées sous 7 jours. Les données issues des services API YouTube ne sont pas conservées plus de 30 jours. Vous pouvez aussi révoquer l'accès via <a href='https://security.google.com/settings/security/permissions'>https://security.google.com/settings/security/permissions</a>.</p><h2>Services API YouTube</h2><p>Cette application utilise les services API YouTube. En l'utilisant, vous acceptez les <a href='https://www.youtube.com/t/terms'>Conditions d'utilisation de YouTube</a>. Voir aussi les <a href='https://policies.google.com/privacy'>Règles de confidentialité de Google</a>.</p><h2>TikTok</h2><p>Pour publier sur TikTok, l’application utilise la connexion TikTok (Login Kit) et la Content Posting API. Elle reçoit uniquement : l’identifiant et le nom public du compte de l’éditeur (scope user.info.basic) et l’autorisation de publier ses vidéos (scopes video.upload et video.publish). Les jetons d’accès sont conservés de façon sécurisée sur le serveur de l’éditeur, ne sont jamais partagés et peuvent être révoqués à tout moment depuis les paramètres TikTok (Sécurité → Applications autorisées). Aucune donnée d’autres utilisateurs TikTok n’est collectée. Voir aussi la <a href='https://www.tiktok.com/legal/privacy-policy-eea'>politique de confidentialité de TikTok</a>.</p><hr><p><a href='/webhook/accueil'>Accueil</a> · <a href='/webhook/confidentialite'>Confidentialité</a> · <a href='/webhook/conditions'>Conditions d'utilisation</a></p></body></html>"
+      },
+      "position": [
+        250,
+        200
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "w2",
+      "name": "Page conditions",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "conditions",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        400
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "page-conditions"
+    },
+    {
+      "id": "r2",
+      "name": "Réponse conditions",
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Conditions d'utilisation</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.6;color:#222}h1{font-size:1.6em}a{color:#0b57d0}</style></head><body><h1>Conditions d'utilisation</h1><p>Dernière mise à jour : 4 octobre 2026</p><p>L'application « youtube actualité video automatisation » est un outil interne réservé à l'éditeur de la chaîne L’Extrait politique. Elle n'est pas destinée au public.</p><p>Son utilisation est soumise aux <a href='https://www.youtube.com/t/terms'>Conditions d'utilisation de YouTube</a> et aux <a href='https://policies.google.com/privacy'>Règles de confidentialité de Google</a>.</p><p>L'application est fournie en l'état, sans garantie. Contact : <a href='mailto:adresse@retiree.invalid'>adresse@retiree.invalid</a>.</p><h2>TikTok</h2><p>La publication sur TikTok se fait via l’API officielle TikTok, sur le seul compte de l’éditeur, dans le respect des <a href='https://www.tiktok.com/legal/terms-of-service'>Conditions d’utilisation de TikTok</a> et des <a href='https://www.tiktok.com/community-guidelines'>Règles communautaires</a>.</p><hr><p><a href='/webhook/accueil'>Accueil</a> · <a href='/webhook/confidentialite'>Confidentialité</a> · <a href='/webhook/conditions'>Conditions d'utilisation</a></p></body></html>"
+      },
+      "position": [
+        250,
+        400
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none"
+  },
+  "tags": []
+}

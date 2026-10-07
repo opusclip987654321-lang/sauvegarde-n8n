@@ -1,0 +1,418 @@
+{
+  "active": true,
+  "connections": {
+    "Confirmer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer la production ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer décision": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Source à ignorer ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Ignorer la source": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Message de veille ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancer la production ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer la production",
+            "type": "main"
+          }
+        ],
+        []
+      ]
+    },
+    "Lire le clic": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre au clic",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer le message": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer la production ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Message de veille ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer le message",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Confirmer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Répondre au clic": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer décision",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Source à ignorer ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ignorer la source",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Message de veille ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Telegram - clic bouton": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire le clic",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "FdatNx2V0FlZNLNQ",
+  "name": "VEILLE 2 - Retours Telegram",
+  "nodes": [
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "t1",
+      "name": "Telegram - clic bouton",
+      "parameters": {
+        "additionalFields": {},
+        "updates": [
+          "callback_query"
+        ]
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "webhookId": "tg-retours-veille-1"
+    },
+    {
+      "id": "t2",
+      "name": "Lire le clic",
+      "parameters": {
+        "jsCode": "\nconst q = $input.first().json.callback_query;\nif (!q || String(q.from.id) !== '6339897621') return [];\nconst [action, vid, a, b] = (q.data || '').split('|');\nconst now = new Date().toISOString();\nconst F = (col, val) => ({ type: 'and', filters: [{ columnName: col, condition: 'eq', value: val }] });\nconst R = {\n  ok:         { label: '✅ Retenu — je prépare l\\'extrait', data: { decision: 'interessant', decision_le: now, statut: 'en_production' }, hook: { path: 'prod-extrait-5b7e', body: { video_id: vid } } },\n  no:         { label: '❌ Rejeté', data: { decision: 'pas_interessant', decision_le: now, statut: 'traitee' } },\n  src:        { label: '🚫 Source ignorée', data: { decision: 'source_ignoree', decision_le: now, statut: 'traitee' }, source: a },\n  clip_ok:    { label: '✅ Extrait validé — je te l\\'envoie pour TikTok', data: { statut: 'extrait_valide' }, hook: { path: 'publication-9a1c', body: { video_id: vid } } },\n  clip_retry: { label: '🔁 Je cherche un autre moment…', data: { statut: 'en_production' }, hook: { path: 'prod-extrait-5b7e', body: { video_id: vid, exclure: [+a, +b] } } },\n  clip_no:    { label: '🗑 Extrait abandonné', data: { statut: 'abandonnee' } },\n}[action];\nif (!R) return [];\nconst veille = ['ok', 'no', 'src'].includes(action);\nreturn [{ json: { query_id: q.id, chat_id: q.message.chat.id, message_id: q.message.message_id, label: R.label, action, video_id: vid,\n  veille, texte: (q.message.text || '') + `\\n\\n<b>${R.label}</b>`,\n  maj_video: { filter: F('video_id', vid), data: R.data },\n  maj_source: R.source ? { filter: F('channel_id', R.source), data: { statut: 'ignored' } } : null,\n  hook: R.hook || null } }];\n"
+      },
+      "position": [
+        200,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "t3",
+      "name": "Répondre au clic",
+      "parameters": {
+        "additionalFields": {
+          "text": "={{ $json.label }}"
+        },
+        "operation": "answerQuery",
+        "queryId": "={{ $json.query_id }}",
+        "resource": "callback"
+      },
+      "position": [
+        400,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "ce64c029-dd4a-4152-8949-3d0157a2f7dc"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "t4",
+      "name": "Enregistrer décision",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Lire le clic').first().json.maj_video) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "t5",
+      "name": "Source à ignorer ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !!$('Lire le clic').first().json.maj_source }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        800,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "t6",
+      "name": "Ignorer la source",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Lire le clic').first().json.maj_source) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows/update"
+      },
+      "position": [
+        1000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "t7",
+      "name": "Message de veille ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $('Lire le clic').first().json.veille }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "t8",
+      "name": "Marquer le message",
+      "parameters": {
+        "additionalFields": {
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "={{ $('Lire le clic').first().json.chat_id }}",
+        "messageId": "={{ $('Lire le clic').first().json.message_id }}",
+        "messageType": "message",
+        "operation": "editMessageText",
+        "resource": "message",
+        "text": "={{ $('Lire le clic').first().json.texte }}"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "38fab498-6dc1-4d55-be76-56ae38749083"
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "t9",
+      "name": "Confirmer",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "reply_to_message_id": "={{ $('Lire le clic').first().json.message_id }}"
+        },
+        "chatId": "={{ $('Lire le clic').first().json.chat_id }}",
+        "text": "={{ $('Lire le clic').first().json.label }}"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "65deca65-d2bf-42b3-b3ae-b22a4921d957"
+    },
+    {
+      "id": "t10",
+      "name": "Lancer la production ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !!$('Lire le clic').first().json.hook }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1600,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "t11",
+      "name": "Lancer la production",
+      "parameters": {
+        "jsonBody": "={{ JSON.stringify($('Lire le clic').first().json.hook.body) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "={{ 'https://n8n.actualitevideo.fr/webhook/' + $('Lire le clic').first().json.hook.path }}"
+      },
+      "position": [
+        1800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

@@ -1,0 +1,993 @@
+{
+  "active": true,
+  "connections": {
+    "Alerte ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer l'alerte",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Analyse": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publications à mettre à jour",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Sources à pénaliser",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Alerte ?",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Goûts existants",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Nouveaux goûts",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Purge 30 jours",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Claude - nouvelles leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Analytics revenus": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analyse",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Analytics vidéos": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analytics revenus",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour 10h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - nouvelles leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer les leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer le bilan",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Goûts existants": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MAJ goûts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "IDs YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Statistiques YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancement manuel": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer les leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire goûts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "IDs YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire publications": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire vidéos",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire publications",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire vidéos": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire goûts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Nouveaux goûts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer goûts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publications à mettre à jour": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MAJ publications",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Sources à pénaliser": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MAJ sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Statistiques YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Analytics vidéos",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "j9QI4UxoKmJbYdRk",
+  "name": "APPRENTISSAGE 1 - Bilan quotidien et leçons",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Chaque jour 10h",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "0 10 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        200,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "a0",
+      "name": "Lancement manuel",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "apprentissage-run-9e2b",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        400,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "apprentissage-run-9e2b"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a2",
+      "name": "Lire leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a3",
+      "name": "Lire sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows"
+      },
+      "position": [
+        800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a4",
+      "name": "Lire publications",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        1000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a5",
+      "name": "Lire vidéos",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a5b",
+      "name": "Lire goûts",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/wbUm5ZAekaTLRHNW/rows"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a6",
+      "name": "IDs YouTube",
+      "parameters": {
+        "jsCode": "\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => p.yt_id && Date.now() - Date.parse(p.publiee_le) < 30 * 86400e3);\nif (!pubs.length) return [{ json: { ids: '', vide: true } }];\nconst out = [];\nfor (let i = 0; i < pubs.length; i += 50) out.push({ json: { ids: pubs.slice(i, i + 50).map(p => p.yt_id).join(','), vide: false } });\nreturn out;\n"
+      },
+      "position": [
+        1600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "a7",
+      "name": "Statistiques YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "statistics,status,contentDetails"
+            },
+            {
+              "name": "id",
+              "value": "={{ $json.ids || 'none' }}"
+            },
+            {
+              "name": "maxResults",
+              "value": "50"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://www.googleapis.com/youtube/v3/videos"
+      },
+      "position": [
+        1800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a7b",
+      "name": "Analytics vidéos",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "ids",
+              "value": "channel==MINE"
+            },
+            {
+              "name": "startDate",
+              "value": "={{ new Date(Date.now()-30*86400e3).toISOString().slice(0,10) }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ new Date().toISOString().slice(0,10) }}"
+            },
+            {
+              "name": "metrics",
+              "value": "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained"
+            },
+            {
+              "name": "dimensions",
+              "value": "video"
+            },
+            {
+              "name": "sort",
+              "value": "-views"
+            },
+            {
+              "name": "maxResults",
+              "value": "200"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://youtubeanalytics.googleapis.com/v2/reports"
+      },
+      "position": [
+        2000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "executeOnce": true,
+      "id": "a7c",
+      "name": "Analytics revenus",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "ids",
+              "value": "channel==MINE"
+            },
+            {
+              "name": "startDate",
+              "value": "={{ new Date(Date.now()-30*86400e3).toISOString().slice(0,10) }}"
+            },
+            {
+              "name": "endDate",
+              "value": "={{ new Date().toISOString().slice(0,10) }}"
+            },
+            {
+              "name": "metrics",
+              "value": "estimatedRevenue,views,subscribersGained"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://youtubeanalytics.googleapis.com/v2/reports"
+      },
+      "position": [
+        2200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "executeOnce": true,
+      "id": "a8",
+      "name": "Analyse",
+      "parameters": {
+        "jsCode": "\nconst now = Date.now();\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => Date.now() - Date.parse(p.publiee_le) < 30 * 86400e3);\nconst stats = {};\nfor (const page of $('Statistiques YouTube').all()) for (const v of (page.json.items || [])) stats[v.id] = v;\nconst tab = j => { const h = (j.columnHeaders || []).map(c => c.name); return (j.rows || []).map(r => Object.fromEntries(r.map((v, i) => [h[i], v]))); };\nconst ana = Object.fromEntries(tab($('Analytics vidéos').first().json).map(r => [r.video, r]));\nconst rev = tab($('Analytics revenus').first().json)[0] || {};\nconst srcs = Object.fromEntries(($('Lire sources').first().json.data || []).map(s => [s.source_nom || s.nom, s]));\nconst majPubs = [], nouvelles = [], penal = {};\nconst resume = [];\nfor (const p of pubs) {\n  const ageH = Math.max(1, (now - Date.parse(p.publiee_le)) / 3600e3);\n  let statut = p.statut_yt, alerte = p.alerte || '';\n  const v = p.yt_id ? stats[p.yt_id] : null;\n  const d = { maj: new Date().toISOString() };\n  if (p.yt_id && !v && ageH > 2) { statut = 'retiree'; }\n  if (v) {\n    d.vues_yt = +(v.statistics.viewCount || 0); d.likes_yt = +(v.statistics.likeCount || 0); d.coms_yt = +(v.statistics.commentCount || 0);\n    const st = v.status || {};\n    statut = st.uploadStatus === 'rejected' ? 'rejetee:' + (st.rejectionReason || '?') : (st.privacyStatus || statut);\n    const rr = (v.contentDetails || {}).regionRestriction || {};\n    if ((rr.blocked || []).length || (rr.allowed && !rr.allowed.includes('FR'))) statut = 'bloquee:' + (rr.blocked || []).slice(0, 5).join('/');\n  }\n  d.statut_yt = statut;\n  const probleme = /^(retiree|rejetee|bloquee)/.test(statut || '');\n  if (probleme && !alerte) {\n    d.alerte = `${statut} détecté le ${new Date().toLocaleDateString('fr-FR')}`;\n    let sl = []; try { sl = JSON.parse(p.sources || '[]'); } catch (e) {}\n    nouvelles.push({ pub: p.pub_id, titre: p.titre, statut, sources: sl });\n    for (const s of sl) penal[s] = (penal[s] || 0) + (sl.length === 1 ? 3 : 1); // Short (1 seule source) : exclusion dès le 1er problème ; zapping (plusieurs sources, coupable inconnu) : +1 chacune\n  }\n  majPubs.push({ filter: { type: 'and', filters: [{ columnName: 'pub_id', condition: 'eq', value: p.pub_id }] }, data: d });\n  let segs = []; let hyp = '';\n  try { const j = JSON.parse(p.segments || '[]'); segs = Array.isArray(j) ? j : (j.segments || []); hyp = j.hypothese || ''; } catch (e) {}\n  resume.push({ type: p.type, titre: p.titre, publiee_il_y_a_h: Math.round(ageH), duree_s: p.duree_s, heure: p.heure, statut,\n    vues: d.vues_yt ?? p.vues_yt ?? null, likes: d.likes_yt ?? null, commentaires: d.coms_yt ?? null,\n    vues_par_h: d.vues_yt != null ? Math.round(d.vues_yt / ageH * 10) / 10 : null, hypothese: hyp,\n    retention_pct: ana[p.yt_id] ? Math.round(ana[p.yt_id].averageViewPercentage) : null, duree_moy_vue_s: ana[p.yt_id] ? ana[p.yt_id].averageViewDuration : null,\n    abonnes_gagnes: ana[p.yt_id] ? ana[p.yt_id].subscribersGained : null,\n    extraits: segs.map(s => `${s.titre} (${s.source}${s.type_moment ? ' · ' + s.type_moment : ''}${s.theme ? ' · ' + s.theme : ''}${s.personnes ? ' · ' + s.personnes : ''})`).slice(0, 15) });\n}\n// sources à pénaliser (l'API ne dit pas quelle source a réclamé : chaque source de la vidéo prend +1)\nconst allSrc = $('Lire sources').first().json.data || [];\nconst majSrc = [];\nfor (const [nom, n] of Object.entries(penal)) {\n  const s = allSrc.find(x => x.nom === nom); if (!s) continue;\n  const score = (s.score_risque || 0) + n;\n  const data = { score_risque: score };\n  if (score >= 3) data.statut = 'blacklisted';\n  majSrc.push({ nom, score, blacklist: !!data.statut, req: { filter: { type: 'and', filters: [{ columnName: 'channel_id', condition: 'eq', value: s.channel_id }] }, data } });\n}\n// cumul permanent des goûts de Louis : les décisions qui vont être purgées (29-30 j) sont ajoutées aux compteurs de la table sources\nconst aPurger = ($('Lire vidéos').first().json.data || []).filter(v => ['interessant','pas_interessant','source_ignoree'].includes(v.decision) && now - Date.parse(v.publiee_le) >= 29 * 86400e3 && now - Date.parse(v.publiee_le) < 30 * 86400e3);\nconst cumul = {};\nfor (const v of aPurger) { const c = cumul[v.channel_id] ||= { r: 0, x: 0 }; v.decision === 'interessant' ? c.r++ : c.x++; }\nfor (const [cid, c] of Object.entries(cumul)) {\n  const s = allSrc.find(x => x.channel_id === cid); if (!s) continue;\n  const ex = majSrc.find(m => m.req.filter.filters[0].value === cid);\n  const data = { nb_retenues: (s.nb_retenues || 0) + c.r, nb_rejetees: (s.nb_rejetees || 0) + c.x };\n  if (ex) Object.assign(ex.req.data, data); else majSrc.push({ nom: s.nom, score: s.score_risque || 0, blacklist: false, req: { filter: { type: 'and', filters: [{ columnName: 'channel_id', condition: 'eq', value: cid }] }, data } });\n}\n// cumul permanent par intervenant / camp / thème / type de moment / source\nconst tagsOf = v => [...String(v.personnes || '').split(',').map(x => x.trim()).filter(Boolean).map(p => ['personne', p]),\n  ['camp', v.camp], ['thème', v.theme], ['moment', v.type_moment], ['source', v.source_nom]].filter(([t, x]) => x);\nconst gExist = Object.fromEntries(($('Lire goûts').first().json.data || []).map(g => [g.cle, g]));\nconst gInc = {};\nfor (const v of aPurger) for (const [t, x] of tagsOf(v)) { const k = t + ':' + x; const c = gInc[k] ||= { type: t, valeur: x, r: 0, x: 0 }; v.decision === 'interessant' ? c.r++ : c.x++; }\nconst gUpd = [], gNew = [];\nfor (const [k, c] of Object.entries(gInc)) {\n  const e = gExist[k];\n  if (e) gUpd.push({ filter: { type: 'and', filters: [{ columnName: 'cle', condition: 'eq', value: k }] }, data: { retenues: (e.retenues || 0) + c.r, rejetees: (e.rejetees || 0) + c.x } });\n  else gNew.push({ cle: k, type: c.type, valeur: c.valeur, retenues: c.r, rejetees: c.x });\n}\nconst profil = {};\nfor (const g of Object.values(gExist)) profil[g.cle] = { retenues: g.retenues || 0, rejetees: g.rejetees || 0 };\nfor (const v of ($('Lire vidéos').first().json.data || []).filter(v => ['interessant','pas_interessant','source_ignoree'].includes(v.decision))) for (const [t, x] of tagsOf(v)) { const p = profil[t + ':' + x] ||= { retenues: 0, rejetees: 0 }; v.decision === 'interessant' ? p.retenues++ : p.rejetees++; }\n// goûts de Louis sur 30 jours\nconst vids = ($('Lire vidéos').first().json.data || []).filter(v => ['interessant','pas_interessant','source_ignoree'].includes(v.decision));\nconst gouts = {};\nfor (const s of allSrc) if (s.nb_retenues || s.nb_rejetees) gouts[s.nom] = { retenues: s.nb_retenues || 0, rejetees: s.nb_rejetees || 0 };\nfor (const v of vids) { const g = gouts[v.source_nom] ||= { retenues: 0, rejetees: 0 }; v.decision === 'interessant' ? g.retenues++ : g.rejetees++; }\nconst lecons = (($('Lire leçons').first().json.data || [])[0] || {});\nconst system = `Tu es l'analyste performance de « L'Extrait politique » (zapping politique quotidien + Shorts, YouTube/Facebook/Instagram/TikTok).\nObjectif : 3 000 €/mois le plus vite possible, avec deux contraintes absolues : aucun strike, aucune démonétisation.\nChaque jour tu relis les résultats et tu réécris les LEÇONS que l'IA de production appliquera demain (choix des sujets, sources, extraits, ordre, titres, durées).\nMéthode :\n- base-toi sur les chiffres : rétention (% moyen regardé, durée moyenne vue) en priorité, puis vues/heure, abonnés gagnés, likes, commentaires, et le revenu de la chaîne sur 30 jours en tenant compte de l'âge des vidéos ; une chaîne neuve a peu de données : distingue ce qui est prouvé, probable, ou à tester ;\n- intègre les goûts de Louis (ses choix sur Telegram) comme un signal fort mais pas absolu ;\n- toute vidéo retirée, rejetée ou bloquée est une alerte droits d'auteur : renforce les règles de prudence sur les sources concernées ;\n- garde toujours les règles anti-strike et anti-démonétisation, ne les assouplis jamais ;\n- conserve ~20 % d'exploration : propose 1 à 3 hypothèses précises à tester demain ;\n- sois concret et court : des règles applicables, pas des généralités.\nRÈGLE D'HONNÊTETÉ (impérative) : si \"donnees_suffisantes\" vaut false, la rubrique 📊 Performances donne seulement les chiffres bruts déjà mesurés, avec l'âge des vidéos, et la phrase « trop tôt pour conclure » — aucun mot comme « confirmé », « faible », « cartonne », « écrase », aucune règle nouvelle tirée de ces chiffres dans les leçons (tu peux seulement noter des pistes à tester). Ensuite : ne présente JAMAIS quelque chose comme « qui marche » ou « qui ne marche pas » sans données de performance mesurées (vues, likes, commentaires) sur au moins 3 publications publiques âgées d'au moins 24 h. Tant que ce n'est pas le cas, écris clairement « Pas encore de données de performance » et ne parle que de ce que Louis a choisi ou écarté (ses goûts), formulé comme tel (« tu as retenu… », « tu as écarté… »), et des hypothèses à tester. Les vidéos encore privées ne comptent pas comme données de performance.\nRéponds UNIQUEMENT en JSON : {\"lecons\":\"texte complet des nouvelles leçons (≤ 3500 caractères)\",\"rapport\":\"message Telegram pour Louis (≤ 900 caractères) en 4 rubriques : 📊 Performances (uniquement des chiffres mesurés, sinon « pas encore de données »), 👤 Tes choix (ce que Louis a retenu/écarté), 🧪 Ce que je teste demain, 💰 Où on en est vers les 3 000 €\"}`;\nconst eligibles = resume.filter(r => r.publiee_il_y_a_h >= 24 && r.statut === 'public').length;\nconst donnees_suffisantes = eligibles >= 3;\nconst user = JSON.stringify({ donnees_suffisantes, publications_publiques_de_plus_de_24h: eligibles, chaine_30j: { revenus_estimes_eur: rev.estimatedRevenue ?? 0, vues: rev.views ?? 0, abonnes_gagnes: rev.subscribersGained ?? 0, objectif_mensuel_eur: 3000 }, lecons_actuelles: lecons.texte || '', publications_30j: resume, alertes_nouvelles: nouvelles, sources_penalisees: majSrc.filter(s => s.req.data.score_risque != null).map(s => ({ nom: s.nom, score_risque: s.score, blacklistee: s.blacklist })), gouts_louis_par_etiquette: profil, consigne_gouts: 'Raisonne d’abord par type de moment, thème, intervenant et camp ; la source/chaîne est un signal secondaire.' });\nreturn [{ json: { majPubs, majSrc, nouvelles, gUpd, gNew, version: (lecons.version || 0) + 1, nb_pubs: resume.length,\n  body: { model: 'claude-sonnet-4-5', max_tokens: 3000, system, messages: [{ role: 'user', content: user }] } } }];\n"
+      },
+      "position": [
+        2400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "a9",
+      "name": "Publications à mettre à jour",
+      "parameters": {
+        "jsCode": "return $('Analyse').first().json.majPubs.map(r => ({ json: r }));"
+      },
+      "position": [
+        2600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a10",
+      "name": "MAJ publications",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows/update"
+      },
+      "position": [
+        2800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a11",
+      "name": "Sources à pénaliser",
+      "parameters": {
+        "jsCode": "return $('Analyse').first().json.majSrc.map(s => ({ json: s.req }));"
+      },
+      "position": [
+        3000,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a12",
+      "name": "MAJ sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows/update"
+      },
+      "position": [
+        3200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a11b",
+      "name": "Goûts existants",
+      "parameters": {
+        "jsCode": "return $(\"Analyse\").first().json.gUpd.map(r => ({ json: r }));"
+      },
+      "position": [
+        3400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a12b",
+      "name": "MAJ goûts",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/wbUm5ZAekaTLRHNW/rows/update"
+      },
+      "position": [
+        3600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a11c",
+      "name": "Nouveaux goûts",
+      "parameters": {
+        "jsCode": "const n = $(\"Analyse\").first().json.gNew; return n.length ? [{ json: { data: n } }] : [];"
+      },
+      "position": [
+        3800,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a12c",
+      "name": "Créer goûts",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/wbUm5ZAekaTLRHNW/rows"
+      },
+      "position": [
+        4000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a13",
+      "name": "Alerte ?",
+      "parameters": {
+        "jsCode": "\nconst a = $('Analyse').first().json;\nif (!a.nouvelles.length) return [];\nconst l = ['🚨 <b>Alerte droits d\\'auteur</b>'];\nfor (const n of a.nouvelles) l.push(`• ${n.titre} → ${n.statut}\\n  Sources : ${n.sources.join(', ')}`);\nconst pen = a.majSrc.filter(s => s.req.data.score_risque != null);\nif (pen.length) l.push('', 'Sources pénalisées : ' + pen.map(s => `${s.nom} (${s.score}/3${s.blacklist ? ', exclue' : ''})`).join(', '));\nl.push('', 'Les publications continuent sans les sources exclues. Si tu sais quelle chaîne a réclamé (YouTube Studio → Droits d\\'auteur), dis-le à Claude pour affiner.');\nreturn [{ json: { texte: l.join('\\n') } }];\n"
+      },
+      "position": [
+        4200,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "a14",
+      "name": "Envoyer l'alerte",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        4400,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "9e56c4a0-a4c6-4950-aab3-7a532a5327f2"
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "a15",
+      "name": "Claude - nouvelles leçons",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($('Analyse').first().json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "timeout": 300000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        4600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "a19",
+      "name": "Purge 30 jours",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "DELETE",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:'and',filters:[{columnName:'publiee_le',condition:'lt',value:new Date(Date.now()-30*86400e3).toISOString()}]}) }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/delete"
+      },
+      "position": [
+        4800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "a16",
+      "name": "Leçons",
+      "parameters": {
+        "jsCode": "\nconst a = $('Analyse').first().json;\nconst txt = ($input.first().json.content || []).map(x => x.text || '').join('');\nconst r = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1));\nif (!r.lecons || r.lecons.length < 200) throw new Error('Leçons générées trop courtes');\nreturn [{ json: { row: { data: [{ version: a.version, date: new Date().toISOString(), texte: r.lecons.slice(0, 6000), rapport: r.rapport }] },\n  texte: (Date.now() > Date.parse('2026-12-20') ? '⏰ <b>Rappel</b> : l\\'accès Facebook/Instagram expire vers le 3 janvier 2027. Dis à Claude de le renouveler (Graph API Explorer → nouveau jeton).\\n\\n' : '') + `📈 <b>Bilan quotidien · leçons v${a.version}</b> (${a.nb_pubs} publications analysées)\\n\\n${String(r.rapport).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}` } }];\n"
+      },
+      "position": [
+        5000,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "a17",
+      "name": "Enregistrer les leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.row) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        5200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "a18",
+      "name": "Envoyer le bilan",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $('Leçons').first().json.texte }}"
+      },
+      "position": [
+        5400,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "52b49822-9677-40f9-8d1a-f67b6bc7a41f"
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

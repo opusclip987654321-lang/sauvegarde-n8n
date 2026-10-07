@@ -1,0 +1,75 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "OPxmDDs9k8wDKD6q",
+  "name": "TEST - Claude API",
+  "nodes": [
+    {
+      "id": "b1",
+      "name": "Webhook",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "claude-test-9c2d",
+        "responseMode": "lastNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "claude-test-9c2d"
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "b2",
+      "name": "Claude",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "{\"model\":\"claude-sonnet-4-5\",\"max_tokens\":30,\"messages\":[{\"role\":\"user\",\"content\":\"Réponds uniquement : Connexion OK\"}]}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {},
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        250,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

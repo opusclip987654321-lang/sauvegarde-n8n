@@ -1,0 +1,73 @@
+{
+  "active": true,
+  "connections": {
+    "Go": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Init",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "wN1fDuvRHGQdrGBT",
+  "name": "TMP test youtube",
+  "nodes": [
+    {
+      "id": "a",
+      "name": "Go",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "yttest-77a",
+        "responseMode": "lastNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "yttest-77a"
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "b",
+      "name": "Init",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "jsonBody": "{\"snippet\":{\"title\":\"test\",\"categoryId\":\"25\"},\"status\":{\"privacyStatus\":\"private\"}}",
+        "method": "POST",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
+      },
+      "position": [
+        300,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

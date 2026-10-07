@@ -1,0 +1,1565 @@
+{
+  "active": true,
+  "connections": {
+    "Annoncer le créneau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre le créneau",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Attendre": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Statut Instagram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Attendre le créneau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Relire la vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Créer le Reel Instagram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Reel créé ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Créneau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Déjà validé ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Demande": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire la vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Déjà validé ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Signaler le doublon",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Réserver le créneau",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer l'analyse du Short": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Signaler aux alertes",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la publication": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer publiée",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer le récap": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la publication",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer pour TikTok": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire pauses",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "File TikTok": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer le fichier",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lien Instagram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lien public temporaire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Meta en pause ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire la vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire publications",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire pauses": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Pauses plateformes",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire planning": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créneau",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire publications": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire planning",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer publiée": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer l'analyse du Short",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Meta en pause ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Publier sur Facebook",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Pauses plateformes": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "YouTube en pause ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "File TikTok",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prêt ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur Instagram",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Réessayer ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur Facebook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Créer le Reel Instagram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur Instagram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lien Instagram",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "YouTube a échoué ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Reel créé ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Relire la vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récapitulatif": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer le récap",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer le fichier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer pour TikTok",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer pour YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Réessayer ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Réserver le créneau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Annoncer le créneau",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Statut Instagram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prêt ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "YouTube - détail de l'erreur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lien public temporaire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "YouTube a échoué ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "YouTube - détail de l'erreur",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Lien public temporaire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "YouTube en pause ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lien public temporaire",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Récupérer pour YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "xqU2o6MR1LtKnFYq",
+  "name": "PUBLICATION 1 - Diffusion (YouTube privé + Facebook + Instagram auto, TikTok manuel)",
+  "nodes": [
+    {
+      "id": "u1",
+      "name": "Demande",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "publication-9a1c",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        220,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "publication-9a1c"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u2",
+      "name": "Lire la vidéo",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:'and',filters:[{columnName:'video_id',condition:'eq',value:$json.body.video_id}]}) }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        440,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u2b",
+      "name": "Lire publications",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "50"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        660,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u2c",
+      "name": "Lire planning",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:\"and\",filters:[{columnName:\"statut\",condition:\"eq\",value:\"planifiee\"}]}) }}"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "u2d",
+      "name": "Créneau",
+      "parameters": {
+        "jsCode": "\nconst v = ($('Lire la vidéo').first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\nconst dup = ['planifiee', 'publiee', 'abandonnee'].includes(v.statut);\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => p.type === 'short');\nconst plan = ($('Lire planning').first().json.data || []).filter(r => r.publication_prevue && r.video_id !== v.video_id);\n// règle de Louis : 1 Short toutes les 3 h minimum, même si l'appel demande moins\nconst ECART = Math.max(3, +((($('Demande').first().json.body) || {}).ecart_h) || 3) * 3600e3;\nconst t = [...pubs.map(p => Date.parse(p.publiee_le)), ...plan.map(r => Date.parse(r.publication_prevue))].filter(x => !isNaN(x));\nconst last = t.length ? Math.max(...t) : 0;\nconst slot = new Date(Math.max(Date.now() + 5e3, last + ECART));\nconst hh = slot.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });\nconst immediat = slot.getTime() - Date.now() < 90e3;\nreturn [{ json: { dup, statut: v.statut, slot: slot.toISOString(), hh, immediat, video_id: v.video_id, titre: v.titre_short || v.titre,\n  maj: { filter: { type: 'and', filters: [{ columnName: 'video_id', condition: 'eq', value: v.video_id }] }, data: { statut: 'planifiee', publication_prevue: slot.toISOString(), pub_exec: String($execution.id) } } } }];\n"
+      },
+      "position": [
+        1100,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "u2x",
+      "name": "Déjà validé ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $('Créneau').first().json.dup }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1320,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "u2y",
+      "name": "Signaler le doublon",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "6339897621",
+        "text": "={{ ($('Créneau').first().json.statut === 'abandonnee' ? '🚫 Short annulé, pas de publication — ' : '⚠️ Doublon ignoré : ce Short est déjà ' + ($('Créneau').first().json.statut === 'publiee' ? 'publié' : 'programmé') + ' — ') + $('Créneau').first().json.titre }}"
+      },
+      "position": [
+        1540,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "3668d7a3-da97-49d9-bd25-6ac31a1fd440"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u2e",
+      "name": "Réserver le créneau",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Créneau').first().json.maj) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "u2f",
+      "name": "Annoncer le créneau",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false
+        },
+        "chatId": "6339897621",
+        "text": "={{ $('Créneau').first().json.immediat ? '🚀 Publication en cours : ' + $('Créneau').first().json.titre : '📅 Programmé à ' + $('Créneau').first().json.hh + ' (1 Short toutes les 3 h) : ' + $('Créneau').first().json.titre }}"
+      },
+      "position": [
+        1980,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "f3978415-0d83-433d-bac5-c17c38b6fd50"
+    },
+    {
+      "id": "u2g",
+      "name": "Attendre le créneau",
+      "parameters": {
+        "dateTime": "={{ $('Créneau').first().json.slot }}",
+        "resume": "specificTime"
+      },
+      "position": [
+        2200,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "wait-short-slot-1"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u2h",
+      "name": "Relire la vidéo",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:'and',filters:[{columnName:'video_id',condition:'eq',value:$('Créneau').first().json.video_id}]}) }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        2420,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "u3",
+      "name": "Préparer",
+      "parameters": {
+        "jsCode": "\nconst v = ($input.first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\n// anti-doublon : seule l'exécution qui a réservé le créneau en dernier publie\nif (v.statut === 'publiee' || v.statut === 'abandonnee' || (v.pub_exec && v.pub_exec !== String($execution.id))) return [];\nif (v.extrait_debut == null) throw new Error('Pas d\\'extrait monté pour cette vidéo');\nconst fichier = `${v.video_id}_${Math.floor(v.extrait_debut)}_${Math.floor(v.extrait_fin)}_v.mp4`;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mention = /s[ée]nat/i.test(v.source_nom || '') ? '\\nImages fournies par le Sénat français.' : (/assembl[ée]e nationale/i.test(v.source_nom || '') ? '\\nImages : Assemblée nationale.' : '');\nconst legende = `${v.titre_short || ''}\\n\\n${v.description_yt || ''}\\n\\n📺 Source : ${v.source_nom}${mention}`.trim();\nreturn [{ json: { ...v, fichier, legende,\n  caption: `📲 <b>À publier sur TikTok</b>\\n\\n1. Enregistre la vidéo (appui long → Enregistrer)\\n2. Dans TikTok : + → choisis la vidéo → ajoute un son tendance si tu veux\\n3. Colle ce texte en légende (appuie dessus pour le copier) :\\n\\n<code>${esc(legende.slice(0, 520))}</code>\\n\\n⏳ Publication YouTube + Facebook + Instagram en cours…`.slice(0, 860) } }];\n"
+      },
+      "position": [
+        2640,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "u3t",
+      "name": "File TikTok",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ fichier: $json.fichier, legende: $json.legende, titre: $json.titre_short || $json.titre }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/tiktok/queue"
+      },
+      "position": [
+        2860,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "u4",
+      "name": "Récupérer le fichier",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "video",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 300000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $('Préparer').first().json.fichier }}"
+      },
+      "position": [
+        3080,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "u5",
+      "name": "Envoyer pour TikTok",
+      "parameters": {
+        "additionalFields": {
+          "caption": "={{ (($('File TikTok').first().json.lien) ? '👉 <a href=\"' + $('File TikTok').first().json.lien + '\">Publier sur TikTok (page)</a>\\n\\n' : '') + $('Préparer').first().json.caption }}",
+          "parse_mode": "HTML"
+        },
+        "binaryData": true,
+        "binaryPropertyName": "video",
+        "chatId": "6339897621",
+        "operation": "sendVideo"
+      },
+      "position": [
+        3300,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "37d7fdac-6ed9-43d0-acbf-4bc51067649d"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "u5b",
+      "name": "Récupérer pour YouTube",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "video",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 300000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $('Préparer').first().json.fichier }}"
+      },
+      "position": [
+        3520,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "u5c",
+      "name": "Publier sur YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "binaryProperty": "video",
+        "categoryId": "25",
+        "operation": "upload",
+        "options": {
+          "description": "={{ $('Préparer').first().json.legende }}",
+          "privacyStatus": "public",
+          "selfDeclaredMadeForKids": false
+        },
+        "regionCode": "FR",
+        "resource": "video",
+        "title": "={{ ($('Préparer').first().json.titre_short || $('Préparer').first().json.titre).slice(0,95) + ' #shorts' }}"
+      },
+      "position": [
+        3740,
+        0
+      ],
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "u6",
+      "name": "Lien public temporaire",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "hours",
+              "value": "24"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "={{ 'http://atelier:8000/sign/' + $('Préparer').first().json.fichier }}"
+      },
+      "position": [
+        3960,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "u7",
+      "name": "Publier sur Facebook",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "POST",
+        "options": {
+          "timeout": 300000
+        },
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "file_url",
+              "value": "={{ $('Lien public temporaire').first().json.url }}"
+            },
+            {
+              "name": "description",
+              "value": "={{ $('Préparer').first().json.legende }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://graph-video.facebook.com/v21.0/1444534085401967/videos"
+      },
+      "position": [
+        4180,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "u8",
+      "name": "Créer le Reel Instagram",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "POST",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "media_type",
+              "value": "REELS"
+            },
+            {
+              "name": "video_url",
+              "value": "={{ $('Lien public temporaire').first().json.url }}"
+            },
+            {
+              "name": "caption",
+              "value": "={{ $('Préparer').first().json.legende }}"
+            },
+            {
+              "name": "share_to_feed",
+              "value": "true"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://graph.facebook.com/v21.0/17841426475235945/media"
+      },
+      "position": [
+        4400,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "u9",
+      "name": "Reel créé ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !!$json.id }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        4620,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "u10",
+      "name": "Attendre",
+      "parameters": {
+        "amount": 20
+      },
+      "position": [
+        4840,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "wait-ig-reel-1"
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "u11",
+      "name": "Statut Instagram",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "fields",
+              "value": "status_code,status"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "={{ 'https://graph.facebook.com/v21.0/' + $('Créer le Reel Instagram').first().json.id }}"
+      },
+      "position": [
+        5060,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "u12",
+      "name": "Prêt ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.status_code === 'FINISHED' }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        5280,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "u13",
+      "name": "Réessayer ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.status_code === 'IN_PROGRESS' && $runIndex < 20 }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        5500,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "u14",
+      "name": "Publier sur Instagram",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "POST",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "creation_id",
+              "value": "={{ $('Créer le Reel Instagram').first().json.id }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://graph.facebook.com/v21.0/17841426475235945/media_publish"
+      },
+      "position": [
+        5720,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "uK2T2YyH270Jigbs",
+          "name": "Meta - Page L'Extrait politique"
+        }
+      },
+      "id": "u15",
+      "name": "Lien Instagram",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "fields",
+              "value": "permalink"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "={{ 'https://graph.facebook.com/v21.0/' + $json.id }}"
+      },
+      "position": [
+        5940,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "u16",
+      "name": "Récapitulatif",
+      "parameters": {
+        "jsCode": "\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst get = n => { try { return $(n).first().json; } catch (e) { return null; } };\nconst v = $('Préparer').first().json;\nconst pauses = get('Pauses plateformes') || {};\nconst RAISONS = { meta_app_bloquee: 'Meta bloque l’app', meta_jeton: 'jeton Meta expiré', meta_limite: 'limite Meta', yt_limite_envois: 'limite d’envois YouTube atteinte',\n  yt_quota: 'quota YouTube épuisé', yt_auth: 'connexion YouTube perdue' };\nconst court = m => { const s = String(m || 'échec');\n  if (/Cannot call API for app|API access blocked/i.test(s)) return 'Meta bloque l’app';\n  if (/uploadLimitExceeded|exceeded the number of videos/i.test(s)) return 'limite d’envois YouTube atteinte';\n  const j = s.match(/\"message\"\\s*:\\s*\"([^\"]{1,160})/); return (j ? j[1] : s).slice(0, 160); };\nconst ev = [], titre = v.titre_short || v.titre || 'Extrait', video = { id: v.video_id, titre };\nconst W = 'PUBLICATION 1';\n// ---- YouTube ----\nlet yt = get('Publier sur YouTube') || {}, ytLigne, ytStatut;\nif (pauses.yt_pause) { ytStatut = 'en_pause'; ytLigne = `⏸️ YouTube : en pause jusqu'à ${pauses.yt_pause.hh} (${esc(RAISONS[pauses.yt_pause.raison] || 'échecs répétés')}) — Short à mettre en ligne plus tard`;\n  ev.push({ type: 'saute', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video }); }\nelse if (yt.uploadId) { ytStatut = 'public'; ytLigne = `✅ YouTube : https://youtube.com/shorts/${yt.uploadId}`;\n  ev.push({ type: 'retabli', plateforme: 'youtube', workflow: W, video }); }\nelse { ytStatut = 'echec';\n  const d = get('YouTube - détail de l\\'erreur'); const corps = d && d.body ? JSON.stringify(d.body) : '';\n  const brut = [(yt.error && (yt.error.message || JSON.stringify(yt.error))) || 'échec sans message', corps ? 'Réponse complète de YouTube (même demande rejouée) : ' + corps : '',\n    d && d.statusCode && d.statusCode < 300 ? '(La demande rejouée a été acceptée : erreur probablement passagère.)' : ''].filter(Boolean).join('\\n');\n  ytLigne = `❌ YouTube : ${esc(court(corps || brut))} — détail dans l'alerte`;\n  ev.push({ type: 'echec', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video, brut, exec_id: String($execution.id) }); }\n// ---- Facebook / Instagram ----\nlet fb = get('Publier sur Facebook'), ig = get('Lien Instagram') || {}, fbLigne, igLigne, fbOk = false;\nif (pauses.meta_pause) {\n  fbLigne = igLigne = null;\n  ev.push({ type: 'saute', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook', video });\n} else {\n  fb = fb || {}; fbOk = !!fb.id && !fb.error;\n  let igErr = ''; try { const s = $('Statut Instagram').last().json; if (s.status_code && s.status_code !== 'FINISHED') igErr = JSON.stringify(s); } catch (e) {}\n  const c = get('Créer le Reel Instagram'); if (c && c.error) igErr = c.error.message || JSON.stringify(c.error);\n  const pub = get('Publier sur Instagram'); if (!ig.permalink && pub && pub.error) igErr = pub.error.message || JSON.stringify(pub.error);\n  const fbErr = fb.error ? (fb.error.message || JSON.stringify(fb.error)) : (fbOk ? '' : 'échec sans message');\n  fbLigne = fbOk ? `✅ Facebook : https://www.facebook.com/${fb.id}` : `❌ Facebook : ${esc(court(fbErr))} — détail dans l'alerte`;\n  igLigne = ig.permalink ? `✅ Instagram : ${ig.permalink}` : `❌ Instagram : ${esc(court(igErr || 'échec'))} — détail dans l'alerte`;\n  const metaGlobal = /OAuthException|Cannot call API|API access blocked|\"code\"\\s*:\\s*(190|200|4|17|32|613)\\b/;\n  const ailleurs = [ytStatut === 'public' ? 'YouTube' : null].filter(Boolean);\n  if (!fbOk && !ig.permalink && metaGlobal.test(fbErr) && metaGlobal.test(igErr || '')) {\n    ev.push({ type: 'echec', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook + Créer le Reel Instagram', video, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est publié ni sur Facebook ni sur Instagram.` + (ailleurs.length ? ` Il est bien sur ${ailleurs.join(', ')}.` : ' Il n’est publié nulle part (hors TikTok manuel).'),\n      brut: 'Facebook : ' + fbErr + '\\nInstagram : ' + igErr });\n  } else {\n    if (fbOk) ev.push({ type: 'retabli', plateforme: 'meta', workflow: W, video }); // Meta répond à nouveau\n    else ev.push({ type: 'echec', plateforme: metaGlobal.test(fbErr) ? 'meta' : 'facebook', workflow: W, noeud: 'Publier sur Facebook', video, brut: fbErr, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est pas publié sur Facebook.` });\n    if (!ig.permalink) ev.push({ type: 'echec', plateforme: metaGlobal.test(igErr) ? 'meta' : 'instagram', workflow: W, noeud: 'Créer le Reel Instagram', video, brut: igErr || 'échec sans message',\n      exec_id: String($execution.id), impact: `« ${titre} » n'est pas publié sur Instagram.` });\n  }\n}\nif (pauses.meta_pause) fbLigne = `⏸️ Facebook + Instagram : en pause jusqu'à ${pauses.meta_pause.hh} (${esc(RAISONS[pauses.meta_pause.raison] || 'échecs répétés')}) — Short à reprendre plus tard`;\nconst lignes = [`🚀 <b>${esc(titre)}</b>`, fbLigne, igLigne, ytLigne, `📲 TikTok : à publier à la main (vidéo ci-dessus)`].filter(Boolean);\nreturn [{ json: { texte: lignes.join('\\n'), fb_ok: fbOk, ig_ok: !!ig.permalink, video_id: v.video_id, evenements: ev,\n  pub_row: { data: [{ pub_id: 'short_' + v.video_id + '_' + Date.now(), type: 'short', publiee_le: new Date().toISOString(), titre: v.titre_short || v.titre,\n    yt_id: yt.uploadId || '', fb_id: (fb && fb.id) || '', ig_id: (ig.id || ''), sources: JSON.stringify([v.source_nom]),\n    segments: JSON.stringify({ segments: [{ titre: v.titre_short, source: v.source_nom, video_id: v.video_id, personnes: v.personnes, camp: v.camp, theme: v.theme, type_moment: v.type_moment }] }),\n    duree_s: Math.round((v.extrait_fin || 0) - (v.extrait_debut || 0)), heure: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }),\n    statut_yt: ytStatut, alerte: ev.filter(e => e.type !== 'retabli').map(e => e.plateforme + ':' + e.type).join(',') }] } } }];\n"
+      },
+      "position": [
+        6160,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "u17",
+      "name": "Envoyer le récap",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $json.texte }}"
+      },
+      "position": [
+        6380,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "9319df9e-38e3-4e66-831f-79cb5dd84fad"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u17b",
+      "name": "Enregistrer la publication",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Récapitulatif').first().json.pub_row) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        6600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "u18",
+      "name": "Marquer publiée",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ filter: {type:'and',filters:[{columnName:'video_id',condition:'eq',value:$('Récapitulatif').first().json.video_id}]}, data: { statut: 'publiee' } }) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        6820,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p1",
+      "name": "Lire pauses",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:\"and\",filters:[{columnName:\"statut\",condition:\"eq\",value:\"active\"}]}) }}"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/n0cY2408IQJRkAug/rows"
+      },
+      "position": [
+        3360,
+        260
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p2",
+      "name": "Pauses plateformes",
+      "parameters": {
+        "jsCode": "\nconst rows = ($input.first().json.data || []);\nconst now = Date.now();\nconst p = pf => rows.filter(r => r.statut === 'active' && r.plateforme === pf && r.suspendue_jusqu && Date.parse(r.suspendue_jusqu) > now)\n  .sort((a, b) => Date.parse(b.suspendue_jusqu) - Date.parse(a.suspendue_jusqu))[0] || null;\nconst yt = p('youtube'), meta = p('meta');\nconst info = r => r ? { jusqu: r.suspendue_jusqu, hh: new Date(r.suspendue_jusqu).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }),\n  raison: (JSON.parse(r.detail || '{}').ev || {}).brut ? r.signature.split('|')[0] : r.signature } : null;\nreturn [{ json: { yt_pause: info(yt), meta_pause: info(meta) } }];\n"
+      },
+      "position": [
+        3580,
+        260
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "p3",
+      "name": "YouTube en pause ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !!$json.yt_pause }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3800,
+        260
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "p4",
+      "name": "YouTube a échoué ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !$json.uploadId }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3850,
+        260
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "p5",
+      "name": "YouTube - détail de l'erreur",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "jsonBody": "={{ JSON.stringify({ snippet: { title: ($('Préparer').first().json.titre_short || $('Préparer').first().json.titre).slice(0,95) + ' #shorts', description: $('Préparer').first().json.legende, categoryId: '25' }, status: { privacyStatus: 'private', selfDeclaredMadeForKids: false } }) }}",
+        "method": "POST",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
+      },
+      "position": [
+        3960,
+        420
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p6",
+      "name": "Meta en pause ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ !!$('Pauses plateformes').first().json.meta_pause }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        4070,
+        260
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p7",
+      "name": "Signaler aux alertes",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ evenements: $('Récapitulatif').first().json.evenements }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/webhook/alerte-signal-4e7b"
+      },
+      "position": [
+        7040,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "cbdf7f92-7709-434c-a60c-1d384184bf78",
+      "name": "Enregistrer l'analyse du Short",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ (() => { const v = $('Préparer').first().json; const r = $('Récapitulatif').first().json.pub_row.data[0]; let a = {}; try { a = JSON.parse(v.analyse_short || '{}'); } catch (e) {} const d = new Date(r.publiee_le); return JSON.stringify({ data: [{ video_id: v.video_id, pub_id: r.pub_id, yt_id: r.yt_id || '', fb_id: r.fb_id || '', ig_id: r.ig_id || '', publiee_le: r.publiee_le, jour: d.toLocaleDateString('fr-FR', { weekday: 'long', timeZone: 'Europe/Paris' }), heure: r.heure, duree_s: r.duree_s, intervenant: a.intervenant || v.personnes || '', type_intervenant: a.type_intervenant || '', notoriete: a.notoriete || '', camp: a.camp || v.camp || '', sujet: a.sujet || '', theme: a.theme || v.theme || '', lien_actu: a.lien_actu || '', signification: a.signification || '', type_moment: a.type_moment || '', ton: a.ton || '', accroche: a.accroche || '', format: a.format || 'extrait_seul', type_titre: a.type_titre || '', chaine: v.source_nom || '', titre_short: v.titre_short || '', analyse_json: JSON.stringify(a), releve_j3: '', releve_j7: '' }] }); })() }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/VAjDxl6ODy5F1FyP/rows"
+      },
+      "position": [
+        7040,
+        160
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

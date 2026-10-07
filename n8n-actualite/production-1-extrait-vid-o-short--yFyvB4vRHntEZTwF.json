@@ -1,0 +1,550 @@
+{
+  "active": true,
+  "connections": {
+    "Choix du moment": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Monter l'extrait",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - choix du moment": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Choix du moment",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Demande": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire la vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer l'extrait": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier automatiquement",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Envoyer l'extrait": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer l'extrait",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Infos vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Transcrire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire la vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer la demande",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Infos vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Légende": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer l'extrait",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Monter l'extrait": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer le fichier",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer la demande": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - choix du moment",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer le fichier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Légende",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Transcrire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "yFyvB4vRHntEZTwF",
+  "name": "PRODUCTION 1 - Extrait vidéo (Short)",
+  "nodes": [
+    {
+      "id": "p1",
+      "name": "Demande",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "prod-extrait-5b7e",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "prod-extrait-5b7e"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p2",
+      "name": "Lire la vidéo",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter",
+              "value": "={{ JSON.stringify({type:'and',filters:[{columnName:'video_id',condition:'eq',value:$json.body.video_id}]}) }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p2b",
+      "name": "Lire sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows"
+      },
+      "position": [
+        300,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p3",
+      "name": "Infos vidéo",
+      "parameters": {
+        "jsCode": "\nconst body = $('Demande').first().json.body || {};\nconst row = ($('Lire la vidéo').first().json.data || [])[0];\nif (!row) throw new Error('Vidéo inconnue : ' + body.video_id);\nconst src = ($input.first().json.data || []).find(s => s.channel_id === row.channel_id);\nif (src && src.statut !== 'usable') throw new Error(`${row.source_nom} est en « ${src.statut} » : pas d'extrait de cette source (règle anti-strike). Le sujet peut être repris depuis une autre source.`);\nreturn [{ json: { ...row, exclure: body.exclure || null } }];\n"
+      },
+      "position": [
+        400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "p5",
+      "name": "Transcrire",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ video_id: $('Infos vidéo').first().json.video_id }) }}",
+        "method": "POST",
+        "options": {
+          "timeout": 1800000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/transcribe"
+      },
+      "position": [
+        800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p5b",
+      "name": "Lire leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        900,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p6",
+      "name": "Préparer la demande",
+      "parameters": {
+        "jsCode": "\nconst v = $('Infos vidéo').first().json;\nconst t = $('Transcrire').first().json;\n// Phase d'exploration (200 premiers Shorts) : on n'applique PAS les leçons, on collecte des données variées.\nconst phrases = (t.phrases || []).map(p => `[${p.start}-${p.end}] ${p.texte}`).join('\\n');\nconst excl = v.exclure ? `\\nNe reprends PAS le passage ${v.exclure[0]}-${v.exclure[1]} s (déjà proposé et refusé) : choisis un autre moment.` : '';\nconst system = `Tu es monteur vidéo pour « L’Extrait politique », chaîne de Shorts qui fait le zapping des meilleurs moments de l'actualité française (politiques, mais aussi analyses de spécialistes, intellectuels, experts).\nTu reçois la transcription horodatée (en secondes) d'une vidéo. Choisis LE meilleur extrait pour un Short :\n- durée : entre 9 et 150 secondes, choisie selon le moment lui-même. Un clash ou une punchline peut durer 10-20 s ; une démonstration, un raisonnement de spécialiste ou un échange argumenté peut aller jusqu'à 2 min 30. Ne rallonge jamais artificiellement, et ne coupe pas un raisonnement en plein milieu ;\n- compréhensible seul, sans contexte (le spectateur doit saisir l'enjeu en 3 secondes) ;\n- commence au DÉBUT d'une phrase et finit à la FIN d'une phrase (utilise exactement les horodatages fournis) ;\n- privilégie : clash, punchline, contradiction, aveu, chiffre choc, émotion, analyse éclairante ;\n- reste neutre : tu montres le moment, tu ne prends pas parti.\nPropose aussi un titre à incruster (6 mots max, percutant, fidèle aux propos, sans majuscules partout) et une description YouTube courte (2 phrases + 3 hashtags).\nEnfin, ANALYSE l'extrait que tu as choisi (l'extrait seul, pas toute la vidéo) avec exactement ces valeurs :\n- intervenant : nom complet de la ou des personnes qui parlent dans l'extrait (max 2, séparées par une virgule) ;\n- type_intervenant : politique | expert | journaliste | citoyen | autre ;\n- notoriete : tres_connu | connu | peu_connu (notoriété de l'intervenant auprès du grand public français) ;\n- camp : LFI | PS | Écologistes | PCF | extrême gauche | Renaissance/centre | LR | RN | Reconquête | souverainistes | gouvernement | institutions | plusieurs camps | non partisan (experts, journalistes, citoyens sans étiquette) ;\n- sujet : l'événement précis, 8 mots max ;\n- theme : sécurité | immigration | économie | budget/dette | social | travail/retraites | éducation | santé | justice | institutions | international | guerre/défense | écologie/énergie | médias | société | religion/laïcité | féminisme | élections | autre ;\n- lien_actu : chaud (sujet du jour, en cours) | recent (sujet de la semaine) | froid (sujet de fond, intemporel) ;\n- signification : faible | moyen | fort (importance de ce qui est dit pour la société française) ;\n- type_moment : clash | moment_fort | moment_emouvant ;\n- ton : colere | indignation | humour | ironie | gravite | emotion | calme ;\n- accroche : phrase_choc | question | attaque | chiffre | demarrage_lent (ce qui se passe dans les 2-3 premières secondes de l'extrait) ;\n- type_titre : citation | question | information | consequence | interpellation (nature du titre que tu proposes).\nRéponds UNIQUEMENT en JSON : {\"start\": 0, \"end\": 0, \"titre\": \"...\", \"description\": \"...\", \"raison\": \"...\", \"analyse\": {\"intervenant\": \"...\", \"type_intervenant\": \"...\", \"notoriete\": \"...\", \"camp\": \"...\", \"sujet\": \"...\", \"theme\": \"...\", \"lien_actu\": \"...\", \"signification\": \"...\", \"type_moment\": \"...\", \"ton\": \"...\", \"accroche\": \"...\", \"type_titre\": \"...\"}}`;\nconst user = `Vidéo : ${v.titre}\\nSource : ${v.source_nom}\\nPubliée le : ${v.publiee_le || '?'}\\nAngle éditorial suggéré : ${v.angle || '-'}${excl}\\n\\nTranscription :\\n${phrases}`;\nreturn [{ json: { duree: t.duree_s, body: { model: 'claude-sonnet-4-5', max_tokens: 1500, system, messages: [{ role: 'user', content: user }] } } }];\n"
+      },
+      "position": [
+        1000,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "p7",
+      "name": "Claude - choix du moment",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "timeout": 180000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p8",
+      "name": "Choix du moment",
+      "parameters": {
+        "jsCode": "\nconst v = $('Infos vidéo').first().json;\nconst duree = $('Préparer la demande').first().json.duree;\nconst txt = ($input.first().json.content || []).map(c => c.text || '').join('');\nlet c;\ntry { c = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1)); } catch (e) { throw new Error('Choix Claude illisible : ' + txt.slice(0, 200)); }\nlet start = Math.max(0, +c.start), end = Math.min(+c.end, duree || +c.end);\nif (!(end > start)) throw new Error('Intervalle invalide');\nif (end - start > 155) end = start + 150;   // plage voulue : 9 s à 2 min 30\nconst a = c.analyse || {};\nconst analyse = { ...a, format: 'extrait_seul', chaine: v.source_nom, duree_s: Math.round(end - start) };\nreturn [{ json: { video_id: v.video_id, source_nom: v.source_nom, titre_video: v.titre, start, end, titre: c.titre, description: c.description, raison: c.raison, analyse } }];\n"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "p9",
+      "name": "Monter l'extrait",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ video_id: $json.video_id, start: $json.start, end: $json.end, titre: $json.titre, source: $json.source_nom, vertical: true }) }}",
+        "method": "POST",
+        "options": {
+          "timeout": 1800000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/clip"
+      },
+      "position": [
+        1600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "p10",
+      "name": "Récupérer le fichier",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "video",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 300000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $json.fichier }}"
+      },
+      "position": [
+        1800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p11",
+      "name": "Légende",
+      "parameters": {
+        "jsCode": "\nconst c = $('Choix du moment').first().json;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mmss = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;\nconst _cap = `🤖 <b>Short prêt — publication automatique au prochain créneau</b>\\n✂️ <b>${esc(c.titre)}</b>\\n📺 ${esc(c.source_nom)} · ${mmss(c.start)} → ${mmss(c.end)} (${Math.round(c.end - c.start)} s)\\n🧠 ${esc(c.raison)}\\n\\n📝 ${esc(c.description)}`;\nreturn [{ json: { caption: _cap.length > 1020 ? _cap.slice(0, 1015) + '…' : _cap,\n  cb_ok: `clip_ok|${c.video_id}`, cb_retry: `clip_retry|${c.video_id}|${Math.round(c.start)}|${Math.round(c.end)}`, cb_no: `clip_no|${c.video_id}` }, binary: $input.first().binary }];\n"
+      },
+      "position": [
+        2000,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "p12",
+      "name": "Envoyer l'extrait",
+      "parameters": {
+        "additionalFields": {
+          "caption": "={{ $json.caption }}",
+          "parse_mode": "HTML"
+        },
+        "binaryData": true,
+        "binaryPropertyName": "video",
+        "chatId": "6339897621",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "additionalFields": {
+                      "callback_data": "={{ $json.cb_no }}"
+                    },
+                    "text": "🚫 Annuler (facultatif)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "operation": "sendVideo",
+        "replyMarkup": "inlineKeyboard"
+      },
+      "position": [
+        2200,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "a0a46131-8c31-4a40-8626-ebc723c5d99c"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "p13",
+      "name": "Enregistrer l'extrait",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ filter: {type:'and',filters:[{columnName:'video_id',condition:'eq',value:$('Choix du moment').first().json.video_id},{columnName:'statut',condition:'neq',value:'abandonnee'}]}, data: { statut: 'extrait_pret', extrait_debut: $('Choix du moment').first().json.start, extrait_fin: $('Choix du moment').first().json.end, titre_short: $('Choix du moment').first().json.titre, description_yt: $('Choix du moment').first().json.description, analyse_short: JSON.stringify($('Choix du moment').first().json.analyse || {}) } }) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        2400,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "p14",
+      "name": "Publier automatiquement",
+      "parameters": {
+        "jsonBody": "={{ JSON.stringify({ video_id: $('Choix du moment').first().json.video_id }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/webhook/publication-9a1c"
+      },
+      "position": [
+        2600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

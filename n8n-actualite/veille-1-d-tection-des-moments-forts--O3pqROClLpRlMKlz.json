@@ -1,0 +1,667 @@
+{
+  "active": true,
+  "connections": {
+    "Choisi par l'IA ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prévenir Louis",
+            "type": "main"
+          }
+        ],
+        []
+      ]
+    },
+    "Claude - notation": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Sélection",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer proposition": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Choisi par l'IA ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Flux RSS YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Nouvelles vidéos",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancement manuel (webhook)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire Shorts récents": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire historique décisions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire Shorts récents",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer candidats",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Sources actives",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lots de 50": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Stats YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Nouvelles vidéos": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lots de 50",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer candidats": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - notation",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Prévenir Louis": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer la production",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Sources actives": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Flux RSS YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Stats YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire historique décisions",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Sélection": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer proposition",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Toutes les heures": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "O3pqROClLpRlMKlz",
+  "name": "VEILLE 1 - Détection des moments forts",
+  "nodes": [
+    {
+      "id": "v1",
+      "name": "Toutes les heures",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "v0",
+      "name": "Lancement manuel (webhook)",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "veille-run-8d2f",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "veille-run-8d2f"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "v2",
+      "name": "Lire sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows?limit=250"
+      },
+      "position": [
+        220,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v3",
+      "name": "Sources actives",
+      "parameters": {
+        "jsCode": "\nconst rows = $input.first().json.data || [];\nconst actives = rows.filter(r => !['blacklisted','ignored'].includes(r.statut));\nreturn actives.map(r => ({ json: r }));\n"
+      },
+      "position": [
+        440,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "v4",
+      "name": "Flux RSS YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "GET",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 10
+            }
+          },
+          "response": {
+            "response": {
+              "outputPropertyName": "data",
+              "responseFormat": "text"
+            }
+          }
+        },
+        "url": "=https://www.youtube.com/feeds/videos.xml?channel_id={{ $json.channel_id }}"
+      },
+      "position": [
+        660,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v5",
+      "name": "Nouvelles vidéos",
+      "parameters": {
+        "jsCode": "\nconst HOURS = 6;               // fenêtre de fraîcheur\nconst sources = $('Sources actives').all().map(i => i.json);\nconst st = $getWorkflowStaticData('global');\nst.seen = st.seen || {};\nlet reset = false; try { reset = $('Lancement manuel (webhook)').first().json.query.reset === '1'; } catch (e) {}\nif (reset) st.seen = {};\nconst now = Date.now();\n// purge des vidéos vues il y a plus de 7 jours\nfor (const [k, t] of Object.entries(st.seen)) if (now - t > 7*24*3600e3) delete st.seen[k];\nconst out = [];\n$input.all().forEach((item, idx) => {\n  const src = sources[idx];\n  const xml = item.json.data || '';\n  if (!src || typeof xml !== 'string') return;\n  const entries = xml.split('<entry>').slice(1);\n  for (const e of entries) {\n    const vid = (e.match(/<yt:videoId>([^<]+)<\\/yt:videoId>/) || [])[1];\n    const pub = (e.match(/<published>([^<]+)<\\/published>/) || [])[1];\n    if (!vid || !pub) continue;\n    const age = now - Date.parse(pub);\n    if (age > HOURS*3600e3) continue;\n    if (st.seen[vid]) continue;\n    st.seen[vid] = now;\n    out.push({ json: { video_id: vid, publiee_le: pub, channel_id: src.channel_id, source_nom: src.nom, source_statut: src.statut, categorie: src.categorie } });\n  }\n});\nreturn out;\n"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "v6",
+      "name": "Lots de 50",
+      "parameters": {
+        "jsCode": "\nconst ids = $input.all().map(i => i.json.video_id);\nconst out = [];\nfor (let i = 0; i < ids.length; i += 50) out.push({ json: { ids: ids.slice(i, i+50).join(',') } });\nreturn out;\n"
+      },
+      "position": [
+        1100,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "v7",
+      "name": "Stats YouTube",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet,statistics,contentDetails"
+            },
+            {
+              "name": "id",
+              "value": "={{ $json.ids }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://www.googleapis.com/youtube/v3/videos"
+      },
+      "position": [
+        1320,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "v7b",
+      "name": "Lire historique décisions",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        1430,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "v7d",
+      "name": "Lire Shorts récents",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "30"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/VAjDxl6ODy5F1FyP/rows"
+      },
+      "position": [
+        1460,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "v7c",
+      "name": "Lire leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        1480,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v8",
+      "name": "Préparer candidats",
+      "parameters": {
+        "jsCode": "\nconst meta = {};\nfor (const i of $('Nouvelles vidéos').all()) meta[i.json.video_id] = i.json;\nconst dur = s => { const m = (s||'').match(/P(?:(\\d+)D)?T?(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/) || []; return (+m[1]||0)*86400 + (+m[2]||0)*3600 + (+m[3]||0)*60 + (+m[4]||0); };\nconst now = Date.now();\nconst cands = [];\nfor (const page of $('Stats YouTube').all()) for (const v of (page.json.items || [])) {\n  const m = meta[v.id]; if (!m) continue;\n  if (['live','upcoming'].includes(v.snippet.liveBroadcastContent)) continue;\n  const h = Math.max(0.25, (now - Date.parse(v.snippet.publishedAt)) / 3600e3);\n  const vues = +(v.statistics.viewCount || 0);\n  cands.push({ ...m, titre: v.snippet.title, description: (v.snippet.description || '').slice(0, 400),\n    duree_s: dur(v.contentDetails.duration), vues, likes: +(v.statistics.likeCount || 0),\n    commentaires: +(v.statistics.commentCount || 0), age_h: Math.round(h*10)/10, vues_par_h: Math.round(vues / h) });\n}\nif (!cands.length) return [];\n// ---- Phase d'exploration (200 premiers Shorts) : pas de goûts ni de leçons, la variété est gérée dans « Sélection » ----\nconst system = `Tu es le rédacteur en chef d'« L’Extrait politique », une chaîne YouTube française qui fait « le zapping des meilleurs moments » de l'actualité : extraits forts (clash, punchline, déclaration choc, contradiction, aveu, moment d'émotion, révélation, analyse éclairante d'un spécialiste).\nTu reçois des vidéos publiées récemment par des médias, institutions, personnalités politiques de tous bords, mais aussi des experts, intellectuels et think tanks (géopolitique, économie, énergie, société). Une analyse de spécialiste qui éclaire ou bouscule l'actualité est un vrai moment fort, au même titre qu'un clash. Note chacune de 0 à 10 selon son potentiel à fournir un moment fort exploitable :\n- 9-10 : moment fort évident, sujet chaud, fort potentiel viral ;\n- 7-8 : bon potentiel, à regarder ;\n- 4-6 : intérêt moyen ;\n- 0-3 : routine, contenu sans moment saillant, sujet froid.\nTiens compte de la dynamique (vues par heure rapportées à la taille habituelle de la source), du titre et de la description. Reste neutre politiquement : juge le potentiel éditorial, pas l'opinion exprimée. Pénalise les rumeurs, décès non confirmés et contenus invérifiables.\nPour chaque vidéo propose : le format (« short » ≤ 2 min 30, « long » ~10 min, ou « aucun »), un angle éditorial (15 mots max) et la raison (15 mots max).\nSi la source est « watch_only », la vidéo ne peut servir qu'à repérer un sujet (pas d'extrait) : signale-le dans l'angle.\nPour chaque vidéo, étiquette aussi : personnes (qui s'exprime ou dont on parle, noms complets, max 3), type_intervenant (politique, expert, journaliste, citoyen, autre), camp (LFI, PS, Écologistes, PCF, extrême gauche, Renaissance/centre, LR, RN, Reconquête, souverainistes, gouvernement, institutions, plusieurs camps, non partisan — « non partisan » pour les experts, journalistes et citoyens sans étiquette), theme (court et normalisé : sécurité, éducation, budget/dette, immigration, justice, international, institutions, social, féminisme, médias…), type_moment (clash, punchline, déclaration, aveu, contradiction, témoignage, chiffre choc, manifestation, analyse, annonce).\nRéponds UNIQUEMENT avec un tableau JSON : [{\"video_id\":\"...\",\"score\":0,\"format\":\"short|long|aucun\",\"angle\":\"...\",\"raison\":\"...\",\"personnes\":[\"...\"],\"type_intervenant\":\"...\",\"camp\":\"...\",\"theme\":\"...\",\"type_moment\":\"...\"}]` ;\nconst out = [];\nfor (let i = 0; i < cands.length; i += 20) {\n  const lot = cands.slice(i, i + 20);\n  const user = JSON.stringify(lot.map(c => ({ video_id: c.video_id, source: c.source_nom, categorie: c.categorie, statut_source: c.source_statut, titre: c.titre, description: c.description, duree_s: c.duree_s, vues: c.vues, vues_par_h: c.vues_par_h, age_h: c.age_h, likes: c.likes, commentaires: c.commentaires })));\n  out.push({ json: { candidats: lot, body: { model: 'claude-sonnet-4-5', max_tokens: 3000, system, messages: [{ role: 'user', content: user }] } } });\n}\nreturn out;\n"
+      },
+      "position": [
+        1540,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "v9",
+      "name": "Claude - notation",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 0,
+              "batchSize": 3
+            }
+          },
+          "timeout": 300000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v10",
+      "name": "Sélection",
+      "parameters": {
+        "jsCode": "\nconst SEUIL = 7, MAX = 8;\nconst cands = $('Préparer candidats').all().flatMap(i => i.json.candidats);\nlet notes = [];\nfor (const it of $input.all()) {\n  const txt = (it.json.content || []).map(c => c.text || '').join('');\n  try { notes.push(...JSON.parse(txt.slice(txt.indexOf('['), txt.lastIndexOf(']') + 1))); } catch (e) { /* lot illisible ignoré */ }\n}\nif (!notes.length) throw new Error('Aucune note exploitable renvoyée par Claude');\nconst byId = Object.fromEntries(notes.map(n => [n.video_id, n]));\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst fmtDur = s => s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor(s%3600/60)).padStart(2,'0')}` : `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;\nconst fmtN = n => n >= 1e6 ? (n/1e6).toFixed(1)+' M' : n >= 1e3 ? Math.round(n/1e3)+' k' : String(n);\nconst deja = new Set(($('Lire historique décisions').first().json.data || []).map(r => r.video_id));\nconst top = cands.filter(c => !deja.has(c.video_id)).map(c => ({ ...c, ...(byId[c.video_id] || { score: 0 }) }))\n  .filter(c => c.score >= SEUIL).sort((a, b) => b.score - a.score || b.vues_par_h - a.vues_par_h).slice(0, MAX);\n// ---- Choix autonome : 1 Short à la fois (créneaux de 3 h), choisi entre 7h et 22h, si la file n'est pas engorgée ----\n// ---- Choix autonome en PHASE D'EXPLORATION : 1 Short à la fois (créneaux de 3 h), entre 7h et 22h ----\n// But : collecter des données variées (sujets, intervenants, camps, chaînes, types de moments) avant les premières analyses à 200 Shorts.\nconst SEUIL_AUTO = 7;\nconst heure = +new Date().toLocaleString('en-GB', { hour: '2-digit', hour12: false, timeZone: 'Europe/Paris' });\nconst tNow = Date.now();\nconst histo = $('Lire historique décisions').first().json.data || [];\nconst enCours = histo.filter(r =>\n  (r.statut === 'planifiee' && Date.parse(r.publication_prevue) > tNow) ||\n  (['en_production', 'extrait_pret', 'extrait_valide'].includes(r.statut) && tNow - Date.parse(r.updatedAt || r.decision_le || 0) < 2 * 3600e3)).length;\n// Shorts récents (publiés + choisis pas encore publiés), du plus récent au plus ancien\nconst norm = s => String(s || '').toLowerCase().trim();\nconst pub = ($('Lire Shorts récents').first().json.data || []).map(r => ({ t: Date.parse(r.publiee_le), source: r.chaine, theme: r.theme, camp: r.camp, pers: r.intervenant, ti: r.type_intervenant }));\nconst pubIds = new Set(($('Lire Shorts récents').first().json.data || []).map(r => r.video_id));\nconst choisis = histo.filter(r => r.decision === 'choix_ia' && !pubIds.has(r.video_id) && r.statut !== 'abandonnee')\n  .map(r => ({ t: Date.parse(r.decision_le || 0), source: r.source_nom, theme: r.theme, camp: r.camp, pers: r.personnes, ti: '' }));\nconst recents = [...choisis, ...pub].sort((a, b) => b.t - a.t);\nconst last = k => recents.slice(0, k);\nconst cnt = (arr, f, val) => arr.filter(x => norm(x[f]) && norm(x[f]) === norm(val)).length;\nconst variete = c => {\n  let adj = 0; const raisons = [];\n  const p1 = String((Array.isArray(c.personnes) ? c.personnes[0] : String(c.personnes || '').split(',')[0]) || '').trim();\n  if (cnt(last(3), 'source', c.source_nom)) { adj -= 1.5; raisons.push('même chaîne récemment'); }\n  const th = Math.min(2, cnt(last(3), 'theme', c.theme)); if (th) { adj -= th; raisons.push('thème déjà traité'); }\n  const cp = Math.min(2, cnt(last(3), 'camp', c.camp)); if (cp) { adj -= cp; raisons.push('camp déjà traité'); }\n  if (p1 && last(5).some(x => norm(x.pers).includes(norm(p1)))) { adj -= 2; raisons.push('intervenant déjà vu'); }\n  let bonus = 0;\n  if (c.theme && !cnt(last(30), 'theme', c.theme)) { bonus++; raisons.push('thème jamais testé'); }\n  if (c.camp && !cnt(last(30), 'camp', c.camp)) { bonus++; raisons.push('camp jamais testé'); }\n  if (c.source_nom && !cnt(last(30), 'source', c.source_nom)) { bonus++; raisons.push('chaîne jamais testée'); }\n  if (c.type_intervenant && c.type_intervenant !== 'politique' && !cnt(last(10), 'ti', c.type_intervenant)) { bonus++; raisons.push(c.type_intervenant + ' peu testé'); }\n  adj += Math.min(2, bonus);\n  return { adj, raisons };\n};\nconst eligibles = (heure >= 7 && heure < 22 && enCours === 0)\n  ? top.filter(c => c.score >= SEUIL_AUTO && c.source_statut === 'usable' && c.format !== 'aucun' && c.duree_s >= 20)\n      .map(c => { const v = variete(c); return { ...c, note_explo: c.score + v.adj, raisons_explo: v.raisons }; })\n      .sort((a, b) => b.note_explo - a.note_explo || b.vues_par_h - a.vues_par_h)\n  : [];\nconst elu = eligibles[0] || null;\nreturn top.map(c => ({ json: { ...c, auto: !!elu && c.video_id === elu.video_id, explo: elu && c.video_id === elu.video_id ? `🧭 Exploration : ${elu.raisons_explo.length ? elu.raisons_explo.join(', ') : 'meilleure note'} (note ${c.score} → ${Math.round(elu.note_explo * 10) / 10})` : '',\n  texte: `🎬 <b>${esc(c.titre)}</b>\\n📺 ${esc(c.source_nom)}${c.source_statut === 'watch_only' ? ' <i>(sujet seulement, pas d\\'extrait)</i>' : ''}\\n⏱ ${fmtDur(c.duree_s)} · 👁 ${fmtN(c.vues)} vues · il y a ${c.age_h} h\\n⭐ <b>${c.score}/10</b> · Format : ${esc(c.format)}\\n💡 <b>Angle :</b> ${esc(c.angle)}\\n🧠 ${esc(c.raison)}\\n🔗 https://youtu.be/${c.video_id}`,\n  cb_ok: `ok|${c.video_id}`, cb_no: `no|${c.video_id}`, cb_src: `src|${c.video_id}|${c.channel_id}` } }));\n"
+      },
+      "position": [
+        1980,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "v12",
+      "name": "Enregistrer proposition",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ data: [{ video_id: $('Sélection').item.json.video_id, channel_id: $('Sélection').item.json.channel_id, source_nom: $('Sélection').item.json.source_nom, titre: $('Sélection').item.json.titre, publiee_le: $('Sélection').item.json.publiee_le, vues: $('Sélection').item.json.vues, duree_s: $('Sélection').item.json.duree_s, score: $('Sélection').item.json.score, format: $('Sélection').item.json.format, angle: $('Sélection').item.json.angle, raison: $('Sélection').item.json.raison, personnes: ($('Sélection').item.json.personnes || []).join(', '), camp: $('Sélection').item.json.camp || '', theme: $('Sélection').item.json.theme || '', type_moment: $('Sélection').item.json.type_moment || '', statut: $('Sélection').item.json.auto ? 'en_production' : 'proposee', ...($('Sélection').item.json.auto ? { decision: 'choix_ia', decision_le: new Date().toISOString() } : { decision: '' }) }] }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        2420,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "v13",
+      "name": "Choisi par l'IA ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $('Sélection').item.json.auto }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        2640,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "v11",
+      "name": "Prévenir Louis",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "additionalFields": {
+                      "callback_data": "={{ 'clip_no|' + $('Sélection').item.json.video_id }}"
+                    },
+                    "text": "🚫 Annuler (facultatif)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyMarkup": "inlineKeyboard",
+        "text": "={{ '🤖 <b>Je lance un Short</b>\\n' + $('Sélection').item.json.texte + ($('Sélection').item.json.explo ? '\\n' + $('Sélection').item.json.explo : '') }}"
+      },
+      "position": [
+        2860,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "69715149-0b1b-4282-8016-38de620b1be4"
+    },
+    {
+      "id": "v14",
+      "name": "Lancer la production",
+      "parameters": {
+        "jsonBody": "={{ JSON.stringify({ video_id: $('Sélection').item.json.video_id, auto: true }) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/webhook/prod-extrait-5b7e"
+      },
+      "position": [
+        3080,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

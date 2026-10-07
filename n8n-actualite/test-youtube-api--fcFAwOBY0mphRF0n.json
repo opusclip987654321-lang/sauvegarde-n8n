@@ -1,0 +1,63 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "YouTube - ma chaine",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "fcFAwOBY0mphRF0n",
+  "name": "TEST - YouTube API",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Webhook",
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "yt-test-7f3a",
+        "responseMode": "lastNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "yt-test-7f3a"
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "p3B04KJtWTDHu2fu",
+          "name": "YouTube account"
+        }
+      },
+      "id": "a2",
+      "name": "YouTube - ma chaine",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "method": "GET",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "url": "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&mine=true"
+      },
+      "position": [
+        250,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}
