@@ -1,0 +1,1125 @@
+{
+  "active": true,
+  "connections": {
+    "Attendre 20h": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer la vidéo",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Attendre le montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "État du montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Chaque jour 16h45": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Choisir les candidats": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Transcrire",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - conducteur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Conducteur",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Claude - meilleur moment": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Rédaction",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Conducteur": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lancer le montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Description": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre 20h",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Enregistrer la publication": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Marquer les vidéos utilisées",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancement manuel": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire leçons",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lancer le montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre le montage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lien public": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur Facebook",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire leçons": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire sources",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire publications": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire vidéos",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire sources": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lire publications",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire vidéos": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Choisir les candidats",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Marquer les vidéos utilisées": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Prévenir Louis",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Miniature YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lien public",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Montage en cours ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Attendre le montage",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Montage réussi ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Montage réussi ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Description",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Préparer les moments": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - meilleur moment",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur Facebook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récapitulatif",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Publier sur YouTube": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Récupérer la miniature",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récapitulatif": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Enregistrer la publication",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer la miniature": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Miniature YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Récupérer la vidéo": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Publier sur YouTube",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Rédaction": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Claude - conducteur",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Transcrire": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Préparer les moments",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "État du montage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Montage en cours ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "a5Myn3NYqL3UG1lu",
+  "name": "VIDÉO LONGUE AFRIQUE - 20h (zapping / extrait long / confrontation)",
+  "nodes": [
+    {
+      "id": "z1",
+      "name": "Chaque jour 16h45",
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "expression": "45 16 * * *",
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "position": [
+        200,
+        0
+      ],
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2
+    },
+    {
+      "id": "z0",
+      "name": "Lancement manuel",
+      "parameters": {
+        "httpMethod": "GET",
+        "options": {},
+        "path": "video-longue-afr-3e5b",
+        "responseMode": "onReceived"
+      },
+      "position": [
+        400,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "44a6b050-3dc9-4675-b05f-d4dec2ba1647"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z2",
+      "name": "Lire leçons",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/mri5I0CGGgI9kABZ/rows"
+      },
+      "position": [
+        600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z3",
+      "name": "Lire sources",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/lnNAVeNHazCvyCPd/rows"
+      },
+      "position": [
+        800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z4",
+      "name": "Lire publications",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        1000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "executeOnce": true,
+      "id": "z5",
+      "name": "Lire vidéos",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "250"
+            },
+            {
+              "name": "sortBy",
+              "value": "id:desc"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows"
+      },
+      "position": [
+        1200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z6",
+      "name": "Choisir les candidats",
+      "parameters": {
+        "jsCode": "\n// Vidéo longue quotidienne Impacteur Afrique : candidats = vidéos repérées par VEILLE AFRIQUE depuis 30 h\nconst now = Date.now();\nconst vids = $('Lire vidéos').first().json.data || [];\nconst src = Object.fromEntries(($('Lire sources').first().json.data || []).map(s => [s.channel_id, s]));\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => p.compte === 'afrique');\nconst segsOf = p => { try { const j = JSON.parse(p.segments || '[]'); return Array.isArray(j) ? j : (j.segments || []); } catch (e) { return []; } };\nconst deja = new Set(pubs.filter(p => p.type === 'longue_afrique').flatMap(p => segsOf(p).map(x => x.video_id)));\nlet c = vids.filter(v => {\n  const s = src[v.channel_id];\n  return s && v.compte === 'afrique' && ['afrique','mixte'].includes(s.compte) && s.statut === 'usable' && v.publiee_le && now - Date.parse(v.publiee_le) < 30 * 3600e3\n    && !['pas_interessant', 'source_ignoree', 'refus_langue'].includes(v.decision) && !deja.has(v.video_id) && (v.duree_s || 0) >= 20;\n}).map(v => ({ ...v, prio: (v.score || 0) + Math.min(2, Math.log10(1 + (v.vues || 0)) / 3) }));\nc.sort((a, b) => b.prio - a.prio);\nconst parSrc = {}; const out = [];\nfor (const v of c) { parSrc[v.channel_id] = (parSrc[v.channel_id] || 0) + 1; if (parSrc[v.channel_id] > 3) continue; out.push(v); if (out.length >= 14) break; }\nif (out.length < 3) throw new Error(`Impacteur Afrique : pas assez de matière pour la vidéo longue (${out.length} vidéos sur 30 h)`);\nreturn out.map(v => ({ json: { video_id: v.video_id, titre: v.titre, source_nom: v.source_nom, channel_id: v.channel_id,\n  categorie: src[v.channel_id].categorie, score: v.score, vues: v.vues, decision: v.decision || '', angle: v.angle || '', duree_s: v.duree_s,\n  extrait_debut: v.extrait_debut, extrait_fin: v.extrait_fin, personnes: v.personnes || '', camp: v.camp || '', theme: v.theme || '', type_moment: v.type_moment || '' } }));\n"
+      },
+      "position": [
+        1400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z7",
+      "name": "Transcrire",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify({ video_id: $json.video_id, precis: true }) }}",
+        "method": "POST",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 0,
+              "batchSize": 1
+            }
+          },
+          "timeout": 1200000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/transcribe"
+      },
+      "position": [
+        1600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z8",
+      "name": "Préparer les moments",
+      "parameters": {
+        "jsCode": "\nconst cands = $('Choisir les candidats').all();\nconst out = [];\n$input.all().forEach((it, i) => {\n  const c = cands[i].json; const ph = it.json.phrases || [];\n  if (!ph.length) return;\n  let txt = ph.map(p => `[${p.start}-${p.end}|c${p.conf ?? '?'}] ${p.texte}`).join('\\n');\n  if (txt.length > 45000) txt = txt.slice(0, 45000) + '\\n[…transcription tronquée]';\n  const system = `Tu es monteur pour « Impacteur Afrique », chaîne YouTube qui publie chaque soir à 20h une vidéo longue sur l'actualité africaine, en français. Objectif : le maximum de vues.\nDans la transcription horodatée ci-dessous (cX = confiance de la transcription française), repère :\n1. « court » : LE meilleur passage de 1 min 30 à 4 min (clash, punchline, discours fort, aveu, chiffre choc, émotion, analyse forte) : pour une vidéo longue, le spectateur veut comprendre et suivre un échange complet, pas un flash. Prends le contexte, la montée en tension et la réponse ;\n2. « long » : s'il existe, LE meilleur passage continu de 5 à 15 minutes qui se suffit à lui-même (discours marquant, interview percutante, débat tendu, démonstration d'un intellectuel). Sinon null.\nRÈGLES : chaque passage commence au début d'une phrase et finit à la fin d'une phrase (horodatages fournis) ; il doit être ENTIÈREMENT EN FRANÇAIS — aucune phrase en wolof, bambara, lingala, dioula, anglais… (texte incohérent ou confiance < c0.80 = suspect) ; compréhensible seul.\nPour chacun : titre de chapitre (≤ 6 mots, factuel), contexte neutre (≤ 15 mots), interet (0-10, potentiel de vues), risque_demonetisation (0-10 : violence, sexualité, accusations non établies, grossièretés, tragédie).\nRéponds UNIQUEMENT en JSON : {\"court\":{\"start\":0,\"end\":0,\"titre\":\"...\",\"contexte\":\"...\",\"interet\":0,\"risque_demonetisation\":0,\"raison\":\"...\"},\"long\":null,\"sujet\":\"...\",\"personnes\":\"...\"}`;\n  out.push({ json: { cand: c, phrases: ph, body: { model: 'claude-sonnet-4-5', max_tokens: 900, system,\n    messages: [{ role: 'user', content: `Vidéo : ${c.titre}\\nSource : ${c.source_nom} (${c.categorie})\\nVues : ${c.vues || '?'}\\n\\nTranscription :\\n${txt}` }] } } });\n});\nif (out.length < 3) throw new Error(`Impacteur Afrique : seulement ${out.length} vidéos transcrites, vidéo longue annulée`);\nreturn out;\n"
+      },
+      "position": [
+        1800,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "z9",
+      "name": "Claude - meilleur moment",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchInterval": 500,
+              "batchSize": 3
+            }
+          },
+          "timeout": 180000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        2000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z10",
+      "name": "Rédaction",
+      "parameters": {
+        "jsCode": "\nconst preps = $('Préparer les moments').all();\nconst res = [];\nconst confOf = (ph, a, b) => { const x = ph.filter(p => p.start >= a - 0.5 && p.end <= b + 0.5 && p.conf != null); const n = x.reduce((s, p) => s + p.texte.split(' ').length, 0); return n ? x.reduce((s, p) => s + p.conf * p.texte.split(' ').length, 0) / n : 1; };\n$input.all().forEach((it, i) => {\n  const c = preps[i].json.cand, ph = preps[i].json.phrases || [];\n  const txt = (it.json.content || []).map(x => x.text || '').join('');\n  let m; try { m = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1)); } catch (e) { return; }\n  const add = (x, type, min, max) => { if (!x) return; const d = x.end - x.start; if (!(d >= min && d <= max)) return; if (confOf(ph, x.start, x.end) < 0.8) return;\n    res.push({ id: res.length, type, video_id: c.video_id, source: c.source_nom, categorie: c.categorie, score_veille: c.score, vues: c.vues, titre_video: c.titre,\n      personnes: m.personnes || c.personnes, sujet: m.sujet || '', camp: c.camp, theme: c.theme, type_moment: c.type_moment, start: +x.start, end: +x.end, duree: Math.round(d),\n      titre: x.titre, contexte: x.contexte, interet: x.interet, risque_demonetisation: x.risque_demonetisation, raison: x.raison }); };\n  add(m.court, 'court', 60, 270); add(m.long, 'long', 270, 960);\n});\nif (!res.length) throw new Error('Impacteur Afrique : aucun moment exploitable en français');\nconst d = new Date();\nconst dateLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'Europe/Paris' });\nconst system = `Tu es le rédacteur en chef d'« Impacteur Afrique », chaîne YouTube et Facebook sur l'actualité africaine en français. Chaque soir à 20h, une vidéo longue.\nOBJECTIF N°1 : LE MAXIMUM DE VUES (clic + rétention), sans strike ni démonétisation.\nPLUS-VALUE ÉDITORIALE : une vidéo longue n'est pas une suite de flashs. Le spectateur doit ressortir en ayant compris un sujet : donne un fil rouge à la vidéo (un thème ou une question qui relie les extraits), ordonne les extraits pour raconter une histoire, ; la plus-value vient du choix et de l'ordre des extraits et des titres à l'écran, pas d'une voix off bavarde.\nChoisis le FORMAT du jour selon la matière disponible (passages « court » de 1 min 30-4 min et passages « long » de 5-15 min) :\n- « zapping » : 3 à 6 passages de 1 min 30 à 4 min chacun (total des extraits 8 à 15 min) ; pour une vidéo longue, privilégie des échanges complets qu'on comprend, jamais des flashs de quelques secondes, le meilleur de l'actualité africaine du jour ; ouvre sur le plus fort, enchaîne par thèmes, garde un moment fort pour la fin ;\n- « extrait_long » : UN passage long exceptionnel (discours, interview, débat) qui fera plus de vues seul qu'un zapping ; tu peux le raccourcir, jamais l'allonger ;\n- « confrontation » : 2 ou 3 passages (2 à 5 min chacun) de vidéos DIFFÉRENTES qui se répondent sur un même sujet (points de vue opposés) ; total 4 à 12 min.\nRègles : écarte tout moment avec risque_demonetisation ≥ 6 ; au plus 2 extraits par chaîne en zapping ; tu peux raccourcir un passage (ajuste start/end) mais jamais l'allonger ; reste neutre (montre, ne prends pas parti).\nVOIX OFF : le public a très peu d'attention, la voix off doit être LA PLUS COURTE POSSIBLE et ne jamais ennuyer. voix_intro : 1 phrase d'accueil (« Bonsoir, voici Impacteur Afrique. ») + UNE accroche sur le moment le plus fort, 8 s maximum. Pour chaque segment, voix : UNE phrase percutante (15 mots max, ≈ 5 s) qui donne envie de voir la suite : qui parle et l'enjeu, formulés comme une accroche, jamais comme un résumé. Tu peux aller jusqu'à 2 phrases SEULEMENT si tu révèles un contexte que le spectateur ignore et qui rend l'extrait plus fort. Pendant la voix off, les images de l'extrait défilent à l'écran. voix_outro : 1 phrase courte (rendez-vous demain + abonnement). N'affirme que ce qui figure dans les éléments fournis. Écris pour l'oral, phrases vivantes, ponctuation qui donne du rythme.\nTITRE YouTube (≤ 80 caractères) écrit pour faire CLIQUER (émotion, tension, curiosité), nomme la personnalité la plus connue, 1-2 mots en MAJUSCULES max, pas d'emoji, JAMAIS mensonger, aucune accusation ni insulte.\naccroche ≤ 60 caractères ; description 2-3 phrases ; 8 à 12 tags (dont Afrique et les pays concernés).\nMINIATURE (elle doit DONNER ENVIE de cliquer) : vedette = id du segment dont la personne apparaîtra (la plus connue, au moment le plus intense) ; miniature_texte = 2 à 4 mots CHOC en français, très lisibles, différents du titre, fidèles à l'extrait ; decor_prompt = en anglais, décor de fond dramatique et symbolique lié au sujet et à l'Afrique, SANS personne ni texte, jamais de sang, d'armes ni de violence explicite.\nRéponds UNIQUEMENT en JSON :\n{\"format\":\"zapping|extrait_long|confrontation\",\"pourquoi\":\"...\",\"titre\":\"...\",\"accroche\":\"...\",\"description\":\"...\",\"tags\":[\"...\"],\"voix_intro\":\"...\",\"voix_outro\":\"...\",\"vedette\":0,\"miniature_texte\":\"...\",\"decor_prompt\":\"...\",\"segments\":[{\"id\":0,\"start\":0,\"end\":0,\"titre\":\"...\",\"contexte\":\"...\",\"voix\":\"...\"}]}`;\nreturn [{ json: { moments: res, dateLabel, body: { model: 'claude-sonnet-4-5', max_tokens: 6000, system, messages: [{ role: 'user', content: JSON.stringify(res) }] } } }];\n"
+      },
+      "position": [
+        2200,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "anthropicApi": {
+          "id": "6hW1jOt9a9oWnhkD",
+          "name": "Anthropic - Claude"
+        }
+      },
+      "id": "z11",
+      "name": "Claude - conducteur",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "method": "POST",
+        "nodeCredentialType": "anthropicApi",
+        "options": {
+          "timeout": 300000
+        },
+        "sendBody": true,
+        "sendHeaders": true,
+        "specifyBody": "json",
+        "url": "https://api.anthropic.com/v1/messages"
+      },
+      "position": [
+        2400,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z12",
+      "name": "Conducteur",
+      "parameters": {
+        "jsCode": "\nconst prev = $('Rédaction').first().json;\nconst byId = Object.fromEntries(prev.moments.map(m => [m.id, m]));\nconst txt = ($input.first().json.content || []).map(x => x.text || '').join('');\nconst r = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}') + 1));\nconst segs = [];\nfor (const s of r.segments || []) {\n  const m = byId[s.id]; if (!m) continue;\n  let a = Math.max(m.start, +s.start || m.start), b = Math.min(m.end, +s.end || m.end);\n  if (b - a < 10) { a = m.start; b = m.end; }\n  segs.push({ video_id: m.video_id, start: a, end: b, id_moment: s.id, titre: s.titre || m.titre, contexte: s.contexte || m.contexte, voix: String(s.voix || '').slice(0, 260), source: m.source, categorie: m.categorie, personnes: m.personnes, camp: m.camp, theme: m.theme, type_moment: m.type_moment });\n}\nconst format = ['zapping','extrait_long','confrontation'].includes(r.format) ? r.format : 'zapping';\nif (segs.length < (format === 'zapping' ? 3 : 1)) throw new Error('Impacteur Afrique : conducteur trop court (' + segs.length + ' extraits)');\nconst totalS = segs.reduce((t, s) => t + (s.end - s.start), 0);\nif (totalS < 300) throw new Error(`Impacteur Afrique : pas assez de matière ce soir (${Math.round(totalS)} s d'extraits, minimum 5 min) — pas de vidéo longue aujourd'hui`);\nconst total = segs.reduce((t, s) => t + (s.end - s.start), 0);\nconst ymd = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });\nconst nom = 'afr_' + ymd.replace(/-/g, '');\n// heure de publication : 20h Paris aujourd'hui (ou tout de suite si déjà passé)\nconst offs = new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris', timeZoneName: 'shortOffset' }).match(/GMT([+-]\\d+)/);\nconst h = offs ? parseInt(offs[1]) : 2;\nlet pub = new Date(`${ymd}T20:00:00${h >= 0 ? '+' : '-'}${String(Math.abs(h)).padStart(2, '0')}:00`);\nif (pub.getTime() < Date.now() + 60e3) pub = new Date(Date.now() + 60e3);\nreturn [{ json: { nom, ymd, dateLabel: prev.dateLabel, titre: r.titre, accroche: r.accroche, description: r.description, tags: r.tags || [], hypothese: (format + ' — ' + (r.pourquoi || '')).slice(0, 300), format,\n  segments: segs, total_extraits_s: Math.round(total), publier_a: pub.toISOString(),\n  voix_intro: r.voix_intro || '', voix_outro: r.voix_outro || '',\n  requete: { nom, date_label: prev.dateLabel, marque: 'IMPACTEUR AFRIQUE', intro_rouge: ({ zapping: `L'actualité africaine du ${prev.dateLabel}`, extrait_long: 'Le moment fort du jour', confrontation: 'Face à face' })[format], bandeau_miniature: ({ zapping: 'Impacteur Afrique · ' + prev.dateLabel, extrait_long: 'Impacteur Afrique', confrontation: 'Face à face · Impacteur Afrique' })[format], outro_gros: 'À DEMAIN, 20H', outro_rouge: 'Abonne-toi pour ne rien rater', outro_petit: 'Impacteur Afrique — l’actualité africaine en français', accroche: r.accroche, miniature_texte: String(r.miniature_texte || '').slice(0, 60), decor_prompt: String(r.decor_prompt || '').slice(0, 500), vedette: Math.max(0, segs.findIndex(s => s.id_moment === r.vedette)), voix_intro: String(r.voix_intro || '').slice(0, 600), voix_outro: String(r.voix_outro || '').slice(0, 300), segments: segs.map(({ video_id, start, end, titre, contexte, source, voix }) => ({ video_id, start, end, titre, contexte, source, voix })) } } }];\n"
+      },
+      "position": [
+        2600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z13",
+      "name": "Lancer le montage",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.requete) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://atelier:8000/zapping"
+      },
+      "position": [
+        2800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z14",
+      "name": "Attendre le montage",
+      "parameters": {
+        "amount": 30
+      },
+      "position": [
+        3000,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "e89aef60-2c96-464c-a658-38a6380f68d2"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z15",
+      "name": "État du montage",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "url": "={{ 'http://atelier:8000/jobs/' + $('Lancer le montage').first().json.job }}"
+      },
+      "position": [
+        3200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z16",
+      "name": "Montage en cours ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.etat === 'en_cours' && $runIndex < 120 }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        3400,
+        0
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "z17",
+      "name": "Montage réussi ?",
+      "parameters": {
+        "jsCode": "const j = $input.first().json; if (j.etat !== 'termine') throw new Error('Montage du zapping en échec : ' + (j.erreur || j.etat)); return [$input.first()];"
+      },
+      "position": [
+        3600,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "z18",
+      "name": "Description",
+      "parameters": {
+        "jsCode": "\nconst c = $('Conducteur').first().json;\nconst job = $('État du montage').last().json;\nconst mmss = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.round(t % 60)).padStart(2, '0')}`;\nconst chap = ['00:00 Intro', ...(job.chapitres || []).map(ch => `${mmss(ch.t)} ${ch.titre}`)];\nconst sources = [...new Set(c.segments.map(s => s.source))];\nconst description = `${c.description}\\n\\nAu sommaire :\\n${chap.join('\\n')}\\n\\nSources : ${sources.join(', ')}.${sources.some(s => /s[ée]nat/i.test(s)) ? '\\nImages fournies par le Sénat français.' : ''}${sources.some(s => /assembl[ée]e nationale/i.test(s)) ? '\\nImages : Assemblée nationale.' : ''}\\nExtraits courts cités à des fins d'information et de revue de l'actualité ; tous droits aux ayants droit.${(job.voix && job.voix.generees) ? '\\nVoix off générée par synthèse vocale.' : ''}\\n\\nImpacteur Afrique — l'actualité africaine en français, chaque soir à 20h.\\n#Afrique #actualite #politique`;\nreturn [{ json: { ...c, description_finale: description, fichier: job.fichier, miniature: job.miniature, duree_s: job.duree_s, chapitres: job.chapitres || [], erreurs_montage: job.erreurs || [], miniature_erreurs: job.miniature_erreurs || [], originaux_longs: job.originaux_longs || [], voix: job.voix || {}, sources } }];\n"
+      },
+      "position": [
+        3800,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "z19",
+      "name": "Attendre 20h",
+      "parameters": {
+        "dateTime": "={{ $json.publier_a }}",
+        "resume": "specificTime"
+      },
+      "position": [
+        4000,
+        0
+      ],
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "webhookId": "4612322b-8b3f-4ff2-839c-083aec66340c"
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z20",
+      "name": "Récupérer la vidéo",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "video",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 600000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $('Description').first().json.fichier }}"
+      },
+      "position": [
+        4200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
+        }
+      },
+      "id": "z21",
+      "name": "Publier sur YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "binaryProperty": "video",
+        "categoryId": "25",
+        "operation": "upload",
+        "options": {
+          "description": "={{ $('Description').first().json.description_finale }}",
+          "privacyStatus": "public",
+          "selfDeclaredMadeForKids": false,
+          "tags": "={{ ($('Description').first().json.tags || []).join(',') }}"
+        },
+        "regionCode": "FR",
+        "resource": "video",
+        "title": "={{ $('Description').first().json.titre.slice(0,100) }}"
+      },
+      "position": [
+        4400,
+        0
+      ],
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z22",
+      "name": "Récupérer la miniature",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "image",
+              "responseFormat": "file"
+            }
+          }
+        },
+        "url": "={{ 'http://atelier:8000/files_img/' + $('Description').first().json.miniature }}"
+      },
+      "position": [
+        4600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
+        }
+      },
+      "id": "z23",
+      "name": "Miniature YouTube",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "contentType": "binaryData",
+        "inputDataFieldName": "image",
+        "method": "POST",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "videoId",
+              "value": "={{ $('Publier sur YouTube').first().json.uploadId }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "sendQuery": true,
+        "url": "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
+      },
+      "position": [
+        4800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "z24",
+      "name": "Lien public",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "hours",
+              "value": "24"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "={{ 'http://atelier:8000/sign/' + $('Description').first().json.fichier }}"
+      },
+      "position": [
+        5000,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
+        }
+      },
+      "id": "z25",
+      "name": "Publier sur Facebook",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "POST",
+        "options": {
+          "timeout": 600000
+        },
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "file_url",
+              "value": "={{ $json.url }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $('Description').first().json.titre }}"
+            },
+            {
+              "name": "description",
+              "value": "={{ $('Description').first().json.description_finale }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://graph-video.facebook.com/v21.0/791858127353368/videos"
+      },
+      "position": [
+        5200,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "z26",
+      "name": "Récapitulatif",
+      "parameters": {
+        "jsCode": "\nconst c = $('Description').first().json;\nlet yt = {}; try { yt = $('Publier sur YouTube').first().json; } catch (e) {}\nlet fb = {}; try { fb = $('Publier sur Facebook').first().json; } catch (e) {}\nlet th = {}; try { th = $('Miniature YouTube').first().json; } catch (e) {}\nconst esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\nconst m = Math.floor(c.duree_s / 60), s = c.duree_s % 60;\nconst lignes = [\n  `🌍 <b>Impacteur Afrique — vidéo du ${esc(c.dateLabel)} publiée</b> (${esc(c.format)})`, `<b>${esc(c.titre)}</b> · ${m} min ${s} s · ${c.chapitres.length} extraits`, '',\n  ...c.chapitres.map((ch, i) => `${i + 1}. ${esc(ch.titre)} <i>(${esc(ch.source)})</i>`), '',\n  yt.uploadId ? `✅ YouTube : https://youtu.be/${yt.uploadId}` : `❌ YouTube : ${esc((yt.error && (yt.error.message || yt.error)) || 'échec')}`,\n  (c.originaux_longs || []).filter(x => x.includes('remplacé')).length ? `🔁 ${(c.originaux_longs || []).filter(x => x.includes('remplacé')).length} extrait(s) vertical(aux) remplacé(s) par la version longue 16:9` : '',\n  (c.miniature_erreurs || []).length ? `🖼️ Miniature simplifiée : ${esc(String(c.miniature_erreurs[0]).slice(0, 150))}` : '',\n  (yt.uploadId && th.error) ? `⚠️ Miniature non appliquée (vérifie la chaîne par téléphone dans YouTube Studio pour autoriser les miniatures)` : '',\n  fb.id ? `✅ Facebook : https://www.facebook.com/${fb.id}` : `❌ Facebook : ${esc((fb.error && fb.error.message) || 'échec')}`,\n  c.erreurs_montage.length ? `⚠️ ${c.erreurs_montage.length} extrait(s) n'ont pas pu être montés` : '',\n  (c.voix && c.voix.demandees && !c.voix.generees) ? `🔇 Voix off absente : ${esc(((c.voix.erreurs || [])[0] || 'clé ElevenLabs manquante').includes('quota') ? 'crédit ElevenLabs épuisé, recharge ou passe au plan supérieur' : ((c.voix.erreurs || [])[0] || 'clé ElevenLabs manquante dans le serveur'))}` : '',\n  (c.voix && c.voix.generees && (c.voix.erreurs || []).length) ? `⚠️ Voix off partielle (${c.voix.erreurs.length} passage(s) sans voix)` : '',\n  '', `🧭 Format choisi : ${esc(c.hypothese)}`,\n].filter(x => x !== '');\nconst ids = c.segments.map(x => x.video_id);\nreturn [{ json: { texte: lignes.join('\\n').slice(0, 4000), yt_id: yt.uploadId || '', fb_id: fb.id || '',\n  pub_row: { data: [{ compte: 'afrique', pub_id: c.nom, type: 'longue_afrique', publiee_le: new Date().toISOString(), titre: c.titre, yt_id: yt.uploadId || '', fb_id: fb.id || '', ig_id: '',\n    sources: JSON.stringify(c.sources), segments: JSON.stringify({ segments: c.chapitres.map(ch => { const s = c.segments.find(x => x.video_id === ch.video_id) || {}; return { ...ch, contexte: s.contexte, personnes: s.personnes, camp: s.camp, theme: s.theme, type_moment: s.type_moment }; }), hypothese: c.hypothese, format: c.format, accroche: c.accroche, miniature_texte: (c.requete || {}).miniature_texte, decor_prompt: (c.requete || {}).decor_prompt }),\n    duree_s: c.duree_s, heure: '20:00', statut_yt: yt.uploadId ? 'public' : 'echec', alerte: '' }] },\n  maj_videos: { filter: { type: 'or', filters: ids.map(v => ({ columnName: 'video_id', condition: 'eq', value: v })) }, data: { statut: 'zapping' } } } }];\n"
+      },
+      "position": [
+        5400,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "z27",
+      "name": "Enregistrer la publication",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.pub_row) }}",
+        "method": "POST",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/3yzEImxnTzfVYcf2/rows"
+      },
+      "position": [
+        5600,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "0cw6ArUQgtJXrcGL",
+          "name": "n8n API (interne)"
+        }
+      },
+      "id": "z28",
+      "name": "Marquer les vidéos utilisées",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($('Récapitulatif').first().json.maj_videos) }}",
+        "method": "PATCH",
+        "options": {},
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "https://n8n.actualitevideo.fr/api/v1/data-tables/I37yf8eBg7eExPeQ/rows/update"
+      },
+      "position": [
+        5800,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "telegramApi": {
+          "id": "qFL6NSZOj76vrgu6",
+          "name": "Telegram - Impacteur bot"
+        }
+      },
+      "id": "z29",
+      "name": "Prévenir Louis",
+      "parameters": {
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_web_page_preview": true,
+          "parse_mode": "HTML"
+        },
+        "chatId": "6339897621",
+        "text": "={{ $('Récapitulatif').first().json.texte }}"
+      },
+      "position": [
+        6000,
+        0
+      ],
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "webhookId": "527292e7-47c9-41d1-9a06-8c3f9a30143b"
+    }
+  ],
+  "settings": {
+    "errorWorkflow": "WIga5P58eZ7Nu6dt",
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "tags": []
+}

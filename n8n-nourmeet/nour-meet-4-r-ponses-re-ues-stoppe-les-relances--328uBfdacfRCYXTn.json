@@ -8,6 +8,11 @@
             "index": 0,
             "node": "Prospect connu ?",
             "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Refus ou adresse invalide ?",
+            "type": "main"
           }
         ]
       ]
@@ -72,6 +77,17 @@
         ]
       ]
     },
+    "Pas déjà exclu": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Champs : exclusion",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "Prospect connu ?": {
       "main": [
         [
@@ -84,11 +100,6 @@
             "index": 0,
             "node": "Champs : annulation",
             "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Refus ou adresse invalide ?",
-            "type": "main"
           }
         ]
       ]
@@ -98,7 +109,7 @@
         [
           {
             "index": 0,
-            "node": "Champs : exclusion",
+            "node": "Pas déjà exclu",
             "type": "main"
           }
         ]
@@ -135,7 +146,7 @@
       "id": "b03b21d7-c7f4-4c8c-aab7-d0a4eaacad92",
       "name": "Analyser la réponse",
       "parameters": {
-        "jsCode": "// Les mails restent NON LUS : Walid les lit lui-même dans sa messagerie.\nconst out = [];\nfor (const { json: m } of $input.all()) {\n  const from = String(m.from || '');\n  const adr = ((from.match(/<([^>]+)>/) || [])[1] || from).trim().toLowerCase();\n  const sujet = String(m.subject || ''); const corps = String(m.textPlain || m.text || '');\n  if (/réponse automatique|reponse automatique|automatic reply|auto[- ]?reply|absent|out of office|congés/i.test(sujet)) continue;\n  if (/mailer-daemon|postmaster/i.test(adr)) {\n    // Retour en erreur : on retrouve l'adresse qui a échoué dans le texte\n    const cible = (corps.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [])\n      .map(e => e.toLowerCase()).find(e => !e.endsWith('@nourmeet.com') && !/mailer-daemon|postmaster/.test(e));\n    if (cible) out.push({ json: { email: cible, motif: 'adresse_invalide' } });\n    continue;\n  }\n  const refus = /^\\s*stop\\b|\\bstop\\b|désinscri|desinscri|ne plus (me |nous )?(contacter|écrire|ecrire)|pas intéress|pas interess/i.test(corps.slice(0, 600) + ' ' + sujet);\n  out.push({ json: { email: adr, motif: refus ? 'refus' : 'reponse' } });\n}\nreturn out;"
+        "jsCode": "// Les mails restent NON LUS : Walid les lit lui-même dans sa messagerie.\nconst out = [];\nfor (const { json: m } of $input.all()) {\n  const from = String(m.from || '');\n  const adr = ((from.match(/<([^>]+)>/) || [])[1] || from).trim().toLowerCase();\n  const sujet = String(m.subject || ''); const corps = String(m.textPlain || m.text || '');\n  if (/réponse automatique|reponse automatique|automatic reply|auto[- ]?reply|absent|out of office|congés/i.test(sujet)) continue;\n  if (/mailer-daemon|postmaster/i.test(adr)) {\n    // Retour en erreur : on retrouve l'adresse qui a échoué dans le texte\n    const cible = (corps.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi) || [])\n      .map(e => e.toLowerCase()).find(e => !e.endsWith('@nourmeet.com') && !/mailer-daemon|postmaster/.test(e));\n    if (cible) out.push({ json: { email: cible, motif: 'adresse_invalide' } });\n    continue;\n  }\n  // On ne lit que le texte écrit par le restaurant : le mail cité contient lui-même « répondez STOP »,\n  // ce qui transformait n'importe quelle réponse courte en refus.\n  const propre = corps.split(/\\r?\\n(?:>|Le .{0,120}a écrit|On .{0,120}wrote|De ?:|From ?:|Envoyé ?:|-{2,} ?(?:Original|Message d'origine)|_{5,})/i)[0];\n  const refus = /\\bstop\\b|désinscri|desinscri|d[ée]sabonn|unsubscribe|ne (plus|pas) (me |nous )?(contacter|écrire|ecrire|solliciter|relancer)|ne plus recevoir|pas intéress|pas interess|aucun intérêt|retirez|supprimez (mon|notre|nos)/i.test(propre.slice(0, 1500) + ' ' + sujet);\n  out.push({ json: { email: adr, motif: refus ? 'refus' : 'reponse' } });\n}\nreturn out;"
       },
       "position": [
         -448,
@@ -317,8 +328,8 @@
         "mode": "runOnceForEachItem"
       },
       "position": [
-        224,
-        304
+        448,
+        448
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -343,8 +354,8 @@
         "options": {}
       },
       "position": [
-        448,
-        304
+        672,
+        448
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -384,6 +395,33 @@
       "position": [
         448,
         440
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "43566b55-0938-458a-8a3f-efea88566fe4",
+      "name": "Pas déjà exclu",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "matchType": "allConditions",
+        "operation": "rowNotExists"
+      },
+      "position": [
+        224,
+        448
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1

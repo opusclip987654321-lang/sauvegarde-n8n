@@ -1,7 +1,7 @@
 {
   "active": true,
   "connections": {
-    "Chaque jour 11h": {
+    "Chaque jour 11h15": {
       "main": [
         [
           {
@@ -145,17 +145,17 @@
       ]
     }
   },
-  "id": "xyHxQBGPgv15sKvv",
-  "name": "MESURES - Réactions des Shorts (J+3 / J+7)",
+  "id": "VzOgSOZnDcpwsosb",
+  "name": "MESURES AFRIQUE - Réactions des Shorts Impacteur Afrique (J+3 / J+7)",
   "nodes": [
     {
       "id": "1a563823-ea72-4d46-9ff5-d9ebf106d5b5",
-      "name": "Chaque jour 11h",
+      "name": "Chaque jour 11h15",
       "parameters": {
         "rule": {
           "interval": [
             {
-              "expression": "0 11 * * *",
+              "expression": "15 11 * * *",
               "field": "cronExpression"
             }
           ]
@@ -174,7 +174,7 @@
       "parameters": {
         "httpMethod": "GET",
         "options": {},
-        "path": "mesures-run-3c7a",
+        "path": "mesures-afr-6d1a",
         "responseMode": "onReceived"
       },
       "position": [
@@ -183,7 +183,7 @@
       ],
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "webhookId": "05ff1874-3987-428d-bea7-a1bd2511bedf"
+      "webhookId": "f53f8f40-2e5c-47c8-9629-45d9d6386027"
     },
     {
       "credentials": {
@@ -225,7 +225,7 @@
       "id": "bcfebdd7-1c98-481b-a1d3-affe279e500e",
       "name": "À relever",
       "parameters": {
-        "jsCode": "\n// Relevés des réactions : J+3 (72 h) et J+7 (168 h) après publication. Tout est enregistré (phase d'exploration, 200 Shorts).\nconst now = Date.now(); const out = [];\nlet force = false; try { force = $('Lancement manuel').first().json.query.force === '1'; } catch (e) {}\nfor (const r of ($input.first().json.data || []).filter(r => r.compte !== 'afrique')) { // Impacteur Afrique : MESURES AFRIQUE\n  const age = (now - Date.parse(r.publiee_le)) / 3600e3; if (!(age > 0)) continue;\n  let releve = null;\n  if (age >= 168 && !r.releve_j7) releve = 'J7';\n  else if (age >= 72 && age < 168 && !r.releve_j3) releve = 'J3';\n  else if (force && age < 72) releve = 'test';\n  if (!releve) continue;\n  out.push({ json: { row_id: r.id, pub_id: r.pub_id, video_id: r.video_id, yt_id: r.yt_id || '', fb_id: r.fb_id || '', ig_id: r.ig_id || '',\n    publiee_le: r.publiee_le, releve, age_h: Math.round(age), manque_j3: releve === 'J7' && !r.releve_j3 } });\n}\nreturn out;\n"
+        "jsCode": "\n// Relevés des réactions : J+3 (72 h) et J+7 (168 h) après publication. Tout est enregistré (phase d'exploration, 200 Shorts).\nconst now = Date.now(); const out = [];\nlet force = false; try { force = $('Lancement manuel').first().json.query.force === '1'; } catch (e) {}\nfor (const r of ($input.first().json.data || []).filter(r => r.compte === 'afrique')) { // Impacteur Afrique uniquement\n  const age = (now - Date.parse(r.publiee_le)) / 3600e3; if (!(age > 0)) continue;\n  let releve = null;\n  if (age >= 168 && !r.releve_j7) releve = 'J7';\n  else if (age >= 72 && age < 168 && !r.releve_j3) releve = 'J3';\n  else if (force && age < 72) releve = 'test';\n  if (!releve) continue;\n  out.push({ json: { row_id: r.id, pub_id: r.pub_id, video_id: r.video_id, yt_id: r.yt_id || '', fb_id: r.fb_id || '', ig_id: r.ig_id || '',\n    publiee_le: r.publiee_le, releve, age_h: Math.round(age), manque_j3: releve === 'J7' && !r.releve_j3 } });\n}\nreturn out;\n"
       },
       "position": [
         800,
@@ -238,8 +238,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "youTubeOAuth2Api": {
-          "id": "p3B04KJtWTDHu2fu",
-          "name": "YouTube account"
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
         }
       },
       "id": "233db11e-40de-4c99-b67d-14450ca62d55",
@@ -276,8 +276,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "youTubeOAuth2Api": {
-          "id": "p3B04KJtWTDHu2fu",
-          "name": "YouTube account"
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
         }
       },
       "id": "cc997506-03cf-4a15-88e4-29e17bac434f",
@@ -326,8 +326,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "8fc1629b-24dc-4d9f-9846-044bd21effb9",
@@ -360,8 +360,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "0cc92e53-58a3-473d-bfd9-a27c1adcc9c0",
@@ -385,8 +385,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "a7ba644e-25f7-4647-83b3-3a6926dba170",
@@ -419,8 +419,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "34d861f7-3ec3-44b7-a8c0-3acef8db577f",
@@ -453,7 +453,7 @@
       "id": "b9ccc248-5976-4543-afdf-9b9f817b6386",
       "name": "Composer les mesures",
       "parameters": {
-        "jsCode": "\nconst items = $('À relever').all();\nconst at = (n, i) => { try { return $(n).all()[i]?.json || {}; } catch (e) { return {}; } };\nconst ok = j => j && !j.error;\nconst num = x => (x === undefined || x === null || x === '' || isNaN(+x)) ? null : +x;\nconst now = new Date().toISOString();\nconst rows = [], maj = [], manques = [];\nitems.forEach((it, i) => {\n  const r = it.json;\n  const base = { pub_id: r.pub_id, video_id: r.video_id, releve: r.releve, mesure_le: now, age_h: r.age_h };\n  // ---- YouTube ----\n  if (r.yt_id) {\n    const s = at('YouTube - statistiques', i), a = at('YouTube - analytics', i);\n    const v = ok(s) ? (s.items || [])[0] : null;\n    const h = ok(a) ? (a.columnHeaders || []).map(c => c.name) : []; const ar = ok(a) && (a.rows || [])[0] ? Object.fromEntries(a.rows[0].map((x, k) => [h[k], x])) : {};\n    const st = v ? v.statistics || {} : {};\n    rows.push({ ...base, plateforme: 'youtube', vues: num(st.viewCount ?? ar.views), portee: null, likes: num(st.likeCount ?? ar.likes), commentaires: num(st.commentCount ?? ar.comments),\n      partages: num(ar.shares), enregistrements: null, abonnes_gagnes: num(ar.subscribersGained), retention_pct: num(ar.averageViewPercentage),\n      duree_moy_vue_s: num(ar.averageViewDuration), temps_total_min: num(ar.estimatedMinutesWatched), revenus: null,\n      brut: JSON.stringify({ statut: v ? v.status : null, statistics: st, analytics: ar, erreurs: [!ok(s) && s.error, !ok(a) && a.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(a)) manques.push('YouTube analytics');\n  }\n  // ---- Facebook ----\n  if (r.fb_id) {\n    const d = at('Facebook - détails', i), ins = at('Facebook - insights', i);\n    const m = {}; if (ok(ins)) for (const x of (ins.data || [])) m[x.name] = (x.values || [])[0]?.value;\n    const pick = (...ks) => { for (const k of ks) if (m[k] !== undefined) return m[k]; return undefined; };\n    const actions = pick('total_video_stories_by_action_type', 'post_video_social_actions') || {};\n    const avgMs = num(pick('total_video_avg_time_watched', 'post_video_avg_time_watched')); const totMs = num(pick('total_video_view_total_time', 'post_video_view_time'));\n    rows.push({ ...base, plateforme: 'facebook', vues: num(pick('blue_reels_play_count', 'fb_reels_total_plays', 'total_video_views') ?? (ok(d) ? d.views : null)),\n      portee: num(pick('post_impressions_unique', 'total_video_impressions_unique')), likes: num(ok(d) ? d.likes?.summary?.total_count : null),\n      commentaires: num(ok(d) ? d.comments?.summary?.total_count : null), partages: num(typeof actions === 'object' ? actions.share : null), enregistrements: null,\n      abonnes_gagnes: num(pick('post_video_followers', 'total_video_followers')), retention_pct: null,\n      duree_moy_vue_s: avgMs != null ? Math.round(avgMs / 100) / 10 : null, temps_total_min: totMs != null ? Math.round(totMs / 6000) / 10 : null, revenus: null,\n      brut: JSON.stringify({ details: ok(d) ? d : null, insights: m, erreurs: [!ok(d) && d.error, !ok(ins) && ins.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(ins)) manques.push('Facebook insights');\n  }\n  // ---- Instagram ----\n  if (r.ig_id) {\n    const d = at('Instagram - détails', i), ins = at('Instagram - insights', i);\n    const m = {}; if (ok(ins)) for (const x of (ins.data || [])) m[x.name] = (x.values || [])[0]?.value;\n    rows.push({ ...base, plateforme: 'instagram', vues: num(m.views), portee: num(m.reach), likes: num(m.likes ?? (ok(d) ? d.like_count : null)),\n      commentaires: num(m.comments ?? (ok(d) ? d.comments_count : null)), partages: num(m.shares), enregistrements: num(m.saved), abonnes_gagnes: null, retention_pct: null,\n      duree_moy_vue_s: m.ig_reels_avg_watch_time != null ? Math.round(m.ig_reels_avg_watch_time / 100) / 10 : null,\n      temps_total_min: m.ig_reels_video_view_total_time != null ? Math.round(m.ig_reels_video_view_total_time / 6000) / 10 : null, revenus: null,\n      brut: JSON.stringify({ details: ok(d) ? d : null, insights: m, erreurs: [!ok(d) && d.error, !ok(ins) && ins.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(ins)) manques.push('Instagram insights');\n  }\n  if (r.releve !== 'test') {\n    const data = r.releve === 'J7' ? { releve_j7: now, ...(r.manque_j3 ? { releve_j3: 'manque' } : {}) } : { releve_j3: now };\n    maj.push({ filter: { type: 'and', filters: [{ columnName: 'pub_id', condition: 'eq', value: r.pub_id }] }, data });\n  }\n});\nreturn [{ json: { rows, maj, manques: [...new Set(manques)], nb: items.length } }];\n"
+        "jsCode": "\nconst items = $('À relever').all();\nconst at = (n, i) => { try { return $(n).all()[i]?.json || {}; } catch (e) { return {}; } };\nconst ok = j => j && !j.error;\nconst num = x => (x === undefined || x === null || x === '' || isNaN(+x)) ? null : +x;\nconst now = new Date().toISOString();\nconst rows = [], maj = [], manques = [];\nitems.forEach((it, i) => {\n  const r = it.json;\n  const base = { compte: 'afrique', pub_id: r.pub_id, video_id: r.video_id, releve: r.releve, mesure_le: now, age_h: r.age_h };\n  // ---- YouTube ----\n  if (r.yt_id) {\n    const s = at('YouTube - statistiques', i), a = at('YouTube - analytics', i);\n    const v = ok(s) ? (s.items || [])[0] : null;\n    const h = ok(a) ? (a.columnHeaders || []).map(c => c.name) : []; const ar = ok(a) && (a.rows || [])[0] ? Object.fromEntries(a.rows[0].map((x, k) => [h[k], x])) : {};\n    const st = v ? v.statistics || {} : {};\n    rows.push({ ...base, plateforme: 'youtube', vues: num(st.viewCount ?? ar.views), portee: null, likes: num(st.likeCount ?? ar.likes), commentaires: num(st.commentCount ?? ar.comments),\n      partages: num(ar.shares), enregistrements: null, abonnes_gagnes: num(ar.subscribersGained), retention_pct: num(ar.averageViewPercentage),\n      duree_moy_vue_s: num(ar.averageViewDuration), temps_total_min: num(ar.estimatedMinutesWatched), revenus: null,\n      brut: JSON.stringify({ statut: v ? v.status : null, statistics: st, analytics: ar, erreurs: [!ok(s) && s.error, !ok(a) && a.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(a)) manques.push('YouTube analytics');\n  }\n  // ---- Facebook ----\n  if (r.fb_id) {\n    const d = at('Facebook - détails', i), ins = at('Facebook - insights', i);\n    const m = {}; if (ok(ins)) for (const x of (ins.data || [])) m[x.name] = (x.values || [])[0]?.value;\n    const pick = (...ks) => { for (const k of ks) if (m[k] !== undefined) return m[k]; return undefined; };\n    const actions = pick('total_video_stories_by_action_type', 'post_video_social_actions') || {};\n    const avgMs = num(pick('total_video_avg_time_watched', 'post_video_avg_time_watched')); const totMs = num(pick('total_video_view_total_time', 'post_video_view_time'));\n    rows.push({ ...base, plateforme: 'facebook', vues: num(pick('blue_reels_play_count', 'fb_reels_total_plays', 'total_video_views') ?? (ok(d) ? d.views : null)),\n      portee: num(pick('post_impressions_unique', 'total_video_impressions_unique')), likes: num(ok(d) ? d.likes?.summary?.total_count : null),\n      commentaires: num(ok(d) ? d.comments?.summary?.total_count : null), partages: num(typeof actions === 'object' ? actions.share : null), enregistrements: null,\n      abonnes_gagnes: num(pick('post_video_followers', 'total_video_followers')), retention_pct: null,\n      duree_moy_vue_s: avgMs != null ? Math.round(avgMs / 100) / 10 : null, temps_total_min: totMs != null ? Math.round(totMs / 6000) / 10 : null, revenus: null,\n      brut: JSON.stringify({ details: ok(d) ? d : null, insights: m, erreurs: [!ok(d) && d.error, !ok(ins) && ins.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(ins)) manques.push('Facebook insights');\n  }\n  // ---- Instagram ----\n  if (r.ig_id) {\n    const d = at('Instagram - détails', i), ins = at('Instagram - insights', i);\n    const m = {}; if (ok(ins)) for (const x of (ins.data || [])) m[x.name] = (x.values || [])[0]?.value;\n    rows.push({ ...base, plateforme: 'instagram', vues: num(m.views), portee: num(m.reach), likes: num(m.likes ?? (ok(d) ? d.like_count : null)),\n      commentaires: num(m.comments ?? (ok(d) ? d.comments_count : null)), partages: num(m.shares), enregistrements: num(m.saved), abonnes_gagnes: null, retention_pct: null,\n      duree_moy_vue_s: m.ig_reels_avg_watch_time != null ? Math.round(m.ig_reels_avg_watch_time / 100) / 10 : null,\n      temps_total_min: m.ig_reels_video_view_total_time != null ? Math.round(m.ig_reels_video_view_total_time / 6000) / 10 : null, revenus: null,\n      brut: JSON.stringify({ details: ok(d) ? d : null, insights: m, erreurs: [!ok(d) && d.error, !ok(ins) && ins.error].filter(Boolean) }).slice(0, 8000) });\n    if (!ok(ins)) manques.push('Instagram insights');\n  }\n  if (r.releve !== 'test') {\n    const data = r.releve === 'J7' ? { releve_j7: now, ...(r.manque_j3 ? { releve_j3: 'manque' } : {}) } : { releve_j3: now };\n    maj.push({ filter: { type: 'and', filters: [{ columnName: 'pub_id', condition: 'eq', value: r.pub_id }] }, data });\n  }\n});\nreturn [{ json: { rows, maj, manques: [...new Set(manques)], nb: items.length } }];\n"
       },
       "position": [
         2200,

@@ -94,7 +94,7 @@
         [
           {
             "index": 0,
-            "node": "Trier et garder les 50 meilleurs",
+            "node": "Lire les exclusions",
             "type": "main"
           }
         ]
@@ -252,6 +252,17 @@
           {
             "index": 0,
             "node": "Analyser l'accueil",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Lire les exclusions": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Trier et garder les 50 meilleurs",
             "type": "main"
           }
         ]
@@ -803,7 +814,7 @@
       "id": "ea9d2b40-0df3-42ac-9049-476180c0d66d",
       "name": "Trier et garder les 50 meilleurs",
       "parameters": {
-        "jsCode": "const C = $('Configuration et requêtes du jour').first().json;\nconst vus = new Set();\nreturn $input.all().sort((a, b) => b.json.score - a.json.score)\n  .filter(it => !vus.has(it.json.email) && vus.add(it.json.email))\n  .slice(0, C.MODE_TEST ? 3 : C.PROPOSITIONS_PAR_JOUR);   // en mode test : 3 mails seulement"
+        "jsCode": "// Exclusion par domaine : seulement pour un refus venant d'un domaine propre au restaurant\n// (un STOP de adresse@retiree.invalid couvre aussi adresse@retiree.invalid), jamais pour une messagerie grand public.\nconst WEBMAIL = /^(gmail|googlemail|hotmail|outlook|live|msn|yahoo|ymail|icloud|me|mac|orange|wanadoo|free|sfr|neuf|bbox|laposte|gmx|aol|proton|protonmail)\\./i;\nconst domaine = (e) => String(e || '').toLowerCase().split('@')[1] || '';\nfunction exclusions(lignes) {\n  const emails = new Set(), domaines = new Set();\n  for (const r of lignes) {\n    const e = String(r.email || '').trim().toLowerCase(); if (!e) continue;\n    emails.add(e);\n    const d = domaine(e);\n    if (r.motif === 'refus' && d && !WEBMAIL.test(d)) domaines.add(d);\n  }\n  return { emails, domaines, exclu: (e) => { e = String(e || '').trim().toLowerCase(); return emails.has(e) || domaines.has(domaine(e)); } };\n}\n\nconst C = $('Configuration et requêtes du jour').first().json;\nconst X = exclusions($input.all().map(i => i.json));\nconst vus = new Set();\nreturn $('E-mail pas déjà prospecté').all()\n  .filter(it => !X.exclu(it.json.email))\n  .sort((a, b) => b.json.score - a.json.score)\n  .filter(it => !vus.has(it.json.email) && vus.add(it.json.email))\n  .slice(0, C.MODE_TEST ? 3 : C.PROPOSITIONS_PAR_JOUR);   // en mode test : 3 mails seulement"
       },
       "position": [
         448,
@@ -1343,6 +1354,27 @@
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
+    },
+    {
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "701317f7-4b5d-4cfd-89ea-a7204488cf2d",
+      "name": "Lire les exclusions",
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_exclusions"
+        },
+        "operation": "get",
+        "returnAll": true
+      },
+      "position": [
+        336,
+        -160
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
     }
   ],
   "settings": {

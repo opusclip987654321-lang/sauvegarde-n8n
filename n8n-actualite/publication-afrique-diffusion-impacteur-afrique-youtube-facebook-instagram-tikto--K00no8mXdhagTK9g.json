@@ -129,17 +129,6 @@
         ]
       ]
     },
-    "File TikTok": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "Récupérer le fichier",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Lien Instagram": {
       "main": [
         [
@@ -251,7 +240,7 @@
         [
           {
             "index": 0,
-            "node": "File TikTok",
+            "node": "Récupérer le fichier",
             "type": "main"
           }
         ]
@@ -458,8 +447,8 @@
       ]
     }
   },
-  "id": "xqU2o6MR1LtKnFYq",
-  "name": "PUBLICATION 1 - Diffusion (YouTube privé + Facebook + Instagram auto, TikTok manuel)",
+  "id": "K00no8mXdhagTK9g",
+  "name": "PUBLICATION AFRIQUE - Diffusion Impacteur Afrique (YouTube + Facebook + Instagram, TikTok manuel)",
   "nodes": [
     {
       "id": "u1",
@@ -467,7 +456,7 @@
       "parameters": {
         "httpMethod": "POST",
         "options": {},
-        "path": "publication-9a1c",
+        "path": "publication-afr-7e21",
         "responseMode": "onReceived"
       },
       "position": [
@@ -476,7 +465,7 @@
       ],
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "webhookId": "publication-9a1c"
+      "webhookId": "2bd35c66-444e-41da-8ca5-2cbf8a77a74f"
     },
     {
       "credentials": {
@@ -528,7 +517,7 @@
           "parameters": [
             {
               "name": "limit",
-              "value": "50"
+              "value": "250"
             },
             {
               "name": "sortBy",
@@ -586,7 +575,7 @@
       "id": "u2d",
       "name": "Créneau",
       "parameters": {
-        "jsCode": "\nconst v = ($('Lire la vidéo').first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\nconst dup = ['planifiee', 'publiee', 'abandonnee'].includes(v.statut);\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => p.type === 'short' && p.compte !== 'afrique');\nconst plan = ($('Lire planning').first().json.data || []).filter(r => r.publication_prevue && r.compte !== 'afrique' && r.video_id !== v.video_id);\n// règle de Louis : 1 Short toutes les 3 h minimum, même si l'appel demande moins\nconst ECART = Math.max(3, +((($('Demande').first().json.body) || {}).ecart_h) || 3) * 3600e3;\nconst t = [...pubs.map(p => Date.parse(p.publiee_le)), ...plan.map(r => Date.parse(r.publication_prevue))].filter(x => !isNaN(x));\nconst last = t.length ? Math.max(...t) : 0;\nconst slot = new Date(Math.max(Date.now() + 5e3, last + ECART));\nconst hh = slot.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });\nconst immediat = slot.getTime() - Date.now() < 90e3;\nreturn [{ json: { dup, statut: v.statut, slot: slot.toISOString(), hh, immediat, video_id: v.video_id, titre: v.titre_short || v.titre,\n  maj: { filter: { type: 'and', filters: [{ columnName: 'video_id', condition: 'eq', value: v.video_id }] }, data: { statut: 'planifiee', publication_prevue: slot.toISOString(), pub_exec: String($execution.id) } } } }];\n"
+        "jsCode": "\nconst v = ($('Lire la vidéo').first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\nconst dup = ['planifiee', 'publiee', 'abandonnee'].includes(v.statut);\nconst pubs = ($('Lire publications').first().json.data || []).filter(p => p.type === 'short' && p.compte === 'afrique');\nconst plan = ($('Lire planning').first().json.data || []).filter(r => r.publication_prevue && r.compte === 'afrique' && r.video_id !== v.video_id);\n// Impacteur Afrique : 1 Short toutes les 6 h (4 par jour)\nconst ECART = 6 * 3600e3;\nconst t = [...pubs.map(p => Date.parse(p.publiee_le)), ...plan.map(r => Date.parse(r.publication_prevue))].filter(x => !isNaN(x));\nconst last = t.length ? Math.max(...t) : 0;\nconst slot = new Date(Math.max(Date.now() + 5e3, last + ECART));\nconst hh = slot.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });\nconst immediat = slot.getTime() - Date.now() < 90e3;\nreturn [{ json: { dup, statut: v.statut, slot: slot.toISOString(), hh, immediat, video_id: v.video_id, titre: v.titre_short || v.titre,\n  maj: { filter: { type: 'and', filters: [{ columnName: 'video_id', condition: 'eq', value: v.video_id }] }, data: { statut: 'planifiee', publication_prevue: slot.toISOString(), pub_exec: String($execution.id) } } } }];\n"
       },
       "position": [
         1100,
@@ -687,10 +676,11 @@
       "name": "Annoncer le créneau",
       "parameters": {
         "additionalFields": {
-          "appendAttribution": false
+          "appendAttribution": false,
+          "parse_mode": "HTML"
         },
         "chatId": "6339897621",
-        "text": "={{ $('Créneau').first().json.immediat ? '🚀 Publication en cours : ' + $('Créneau').first().json.titre : '📅 Programmé à ' + $('Créneau').first().json.hh + ' (1 Short toutes les 3 h) : ' + $('Créneau').first().json.titre }}"
+        "text": "={{ '🌍 <b>Impacteur Afrique</b> — ' + ($('Créneau').first().json.immediat ? '🚀 Publication en cours : ' + $('Créneau').first().json.titre : '📅 Programmé à ' + $('Créneau').first().json.hh + ' (1 Short toutes les 6 h) : ' + $('Créneau').first().json.titre) }}"
       },
       "position": [
         1980,
@@ -713,7 +703,7 @@
       ],
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "webhookId": "wait-short-slot-1"
+      "webhookId": "bcf266f6-3aca-47ee-a611-be478c585bad"
     },
     {
       "credentials": {
@@ -751,7 +741,7 @@
       "id": "u3",
       "name": "Préparer",
       "parameters": {
-        "jsCode": "\nconst v = ($input.first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\n// anti-doublon : seule l'exécution qui a réservé le créneau en dernier publie\nif (v.statut === 'publiee' || v.statut === 'abandonnee' || (v.pub_exec && v.pub_exec !== String($execution.id))) return [];\nif (v.extrait_debut == null) throw new Error('Pas d\\'extrait monté pour cette vidéo');\nconst fichier = v.fichier_clip || `${v.video_id}_${Math.floor(v.extrait_debut)}_${Math.floor(v.extrait_fin)}_v.mp4`;\nconst srcs = v.sources_clip || v.source_nom;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mention = /s[ée]nat/i.test(srcs || '') ? '\\nImages fournies par le Sénat français.' : (/assembl[ée]e nationale/i.test(srcs || '') ? '\\nImages : Assemblée nationale.' : '');\nconst legende = `${v.titre_short || ''}\\n\\n${v.description_yt || ''}\\n\\n📺 ${v.sources_clip ? 'Sources' : 'Source'} : ${srcs}${mention}`.trim();\nreturn [{ json: { ...v, fichier, legende,\n  caption: `📲 <b>À publier sur TikTok</b>\\n\\n1. Enregistre la vidéo (appui long → Enregistrer)\\n2. Dans TikTok : + → choisis la vidéo → ajoute un son tendance si tu veux\\n3. Colle ce texte en légende (appuie dessus pour le copier) :\\n\\n<code>${esc(legende.slice(0, 520))}</code>\\n\\n⏳ Publication YouTube + Facebook + Instagram en cours…`.slice(0, 860) } }];\n"
+        "jsCode": "\nconst v = ($input.first().json.data || [])[0];\nif (!v) throw new Error('Vidéo inconnue');\n// anti-doublon : seule l'exécution qui a réservé le créneau en dernier publie\nif (v.statut === 'publiee' || v.statut === 'abandonnee' || (v.pub_exec && v.pub_exec !== String($execution.id))) return [];\nif (v.extrait_debut == null) throw new Error('Pas d\\'extrait monté pour cette vidéo');\nconst fichier = v.fichier_clip || `${v.video_id}_${Math.floor(v.extrait_debut)}_${Math.floor(v.extrait_fin)}_v.mp4`;\nconst srcs = v.sources_clip || v.source_nom;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mention = /s[ée]nat/i.test(srcs || '') ? '\\nImages fournies par le Sénat français.' : (/assembl[ée]e nationale/i.test(srcs || '') ? '\\nImages : Assemblée nationale.' : '');\nconst legende = `${v.titre_short || ''}\\n\\n${v.description_yt || ''}\\n\\n📺 ${v.sources_clip ? 'Sources' : 'Source'} : ${srcs}${mention}`.trim();\nreturn [{ json: { ...v, fichier, legende,\n  caption: `📲 <b>🌍 À publier sur TikTok Impacteur Afrique</b>\\n\\n1. Enregistre la vidéo (appui long → Enregistrer)\\n2. Dans TikTok : + → choisis la vidéo → ajoute un son tendance si tu veux\\n3. Colle ce texte en légende (appuie dessus pour le copier) :\\n\\n<code>${esc(legende.slice(0, 520))}</code>\\n\\n⏳ Publication Impacteur Afrique (YouTube + Facebook + Instagram) en cours…`.slice(0, 860) } }];\n"
       },
       "position": [
         2640,
@@ -759,33 +749,6 @@
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
-    },
-    {
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "CwNA5uLULnizfCgy",
-          "name": "Atelier vidéo (interne)"
-        }
-      },
-      "id": "u3t",
-      "name": "File TikTok",
-      "onError": "continueRegularOutput",
-      "parameters": {
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "jsonBody": "={{ JSON.stringify({ fichier: $json.fichier, legende: $json.legende, titre: $json.titre_short || $json.titre }) }}",
-        "method": "POST",
-        "options": {},
-        "sendBody": true,
-        "specifyBody": "json",
-        "url": "http://atelier:8000/tiktok/queue"
-      },
-      "position": [
-        2860,
-        0
-      ],
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2
     },
     {
       "credentials": {
@@ -829,7 +792,7 @@
       "name": "Envoyer pour TikTok",
       "parameters": {
         "additionalFields": {
-          "caption": "={{ (($('File TikTok').first().json.lien) ? '👉 <a href=\"' + $('File TikTok').first().json.lien + '\">Publier sur TikTok (page)</a>\\n\\n' : '') + $('Préparer').first().json.caption }}",
+          "caption": "={{ $('Préparer').first().json.caption }}",
           "parse_mode": "HTML"
         },
         "binaryData": true,
@@ -879,8 +842,8 @@
     {
       "credentials": {
         "youTubeOAuth2Api": {
-          "id": "p3B04KJtWTDHu2fu",
-          "name": "YouTube account"
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
         }
       },
       "id": "u5c",
@@ -941,8 +904,8 @@
     {
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "u7",
@@ -968,7 +931,7 @@
           ]
         },
         "sendQuery": true,
-        "url": "https://graph-video.facebook.com/v21.0/1444534085401967/videos"
+        "url": "https://graph-video.facebook.com/v21.0/791858127353368/videos"
       },
       "position": [
         4180,
@@ -980,8 +943,8 @@
     {
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "u8",
@@ -1013,7 +976,7 @@
           ]
         },
         "sendQuery": true,
-        "url": "https://graph.facebook.com/v21.0/17841426475235945/media"
+        "url": "https://graph.facebook.com/v21.0/17841479090202973/media"
       },
       "position": [
         4400,
@@ -1065,13 +1028,13 @@
       ],
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
-      "webhookId": "wait-ig-reel-1"
+      "webhookId": "70a13a43-b713-406b-adfc-0eb2c79e918a"
     },
     {
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "u11",
@@ -1164,8 +1127,8 @@
     {
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "u14",
@@ -1185,7 +1148,7 @@
           ]
         },
         "sendQuery": true,
-        "url": "https://graph.facebook.com/v21.0/17841426475235945/media_publish"
+        "url": "https://graph.facebook.com/v21.0/17841479090202973/media_publish"
       },
       "position": [
         5720,
@@ -1197,8 +1160,8 @@
     {
       "credentials": {
         "httpQueryAuth": {
-          "id": "uK2T2YyH270Jigbs",
-          "name": "Meta - Page L'Extrait politique"
+          "id": "BTT2VG8cuGNTd5Gh",
+          "name": "Meta Page Impacteur Afrique"
         }
       },
       "id": "u15",
@@ -1231,7 +1194,7 @@
       "id": "u16",
       "name": "Récapitulatif",
       "parameters": {
-        "jsCode": "\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst get = n => { try { return $(n).first().json; } catch (e) { return null; } };\nconst v = $('Préparer').first().json;\nconst pauses = get('Pauses plateformes') || {};\nconst RAISONS = { meta_app_bloquee: 'Meta bloque l’app', meta_jeton: 'jeton Meta expiré', meta_limite: 'limite Meta', yt_limite_envois: 'limite d’envois YouTube atteinte',\n  yt_quota: 'quota YouTube épuisé', yt_auth: 'connexion YouTube perdue' };\nconst court = m => { const s = String(m || 'échec');\n  if (/Cannot call API for app|API access blocked/i.test(s)) return 'Meta bloque l’app';\n  if (/uploadLimitExceeded|exceeded the number of videos/i.test(s)) return 'limite d’envois YouTube atteinte';\n  const j = s.match(/\"message\"\\s*:\\s*\"([^\"]{1,160})/); return (j ? j[1] : s).slice(0, 160); };\nconst ev = [], titre = v.titre_short || v.titre || 'Extrait', video = { id: v.video_id, titre };\nconst W = 'PUBLICATION 1';\n// ---- YouTube ----\nlet yt = get('Publier sur YouTube') || {}, ytLigne, ytStatut;\nif (pauses.yt_pause) { ytStatut = 'en_pause'; ytLigne = `⏸️ YouTube : en pause jusqu'à ${pauses.yt_pause.hh} (${esc(RAISONS[pauses.yt_pause.raison] || 'échecs répétés')}) — Short à mettre en ligne plus tard`;\n  ev.push({ type: 'saute', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video }); }\nelse if (yt.uploadId) { ytStatut = 'public'; ytLigne = `✅ YouTube : https://youtube.com/shorts/${yt.uploadId}`;\n  ev.push({ type: 'retabli', plateforme: 'youtube', workflow: W, video }); }\nelse { ytStatut = 'echec';\n  const d = get('YouTube - détail de l\\'erreur'); const corps = d && d.body ? JSON.stringify(d.body) : '';\n  const brut = [(yt.error && (yt.error.message || JSON.stringify(yt.error))) || 'échec sans message', corps ? 'Réponse complète de YouTube (même demande rejouée) : ' + corps : '',\n    d && d.statusCode && d.statusCode < 300 ? '(La demande rejouée a été acceptée : erreur probablement passagère.)' : ''].filter(Boolean).join('\\n');\n  ytLigne = `❌ YouTube : ${esc(court(corps || brut))} — détail dans l'alerte`;\n  ev.push({ type: 'echec', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video, brut, exec_id: String($execution.id) }); }\n// ---- Facebook / Instagram ----\nlet fb = get('Publier sur Facebook'), ig = get('Lien Instagram') || {}, fbLigne, igLigne, fbOk = false;\nif (pauses.meta_pause) {\n  fbLigne = igLigne = null;\n  ev.push({ type: 'saute', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook', video });\n} else {\n  fb = fb || {}; fbOk = !!fb.id && !fb.error;\n  let igErr = ''; try { const s = $('Statut Instagram').last().json; if (s.status_code && s.status_code !== 'FINISHED') igErr = JSON.stringify(s); } catch (e) {}\n  const c = get('Créer le Reel Instagram'); if (c && c.error) igErr = c.error.message || JSON.stringify(c.error);\n  const pub = get('Publier sur Instagram'); if (!ig.permalink && pub && pub.error) igErr = pub.error.message || JSON.stringify(pub.error);\n  const fbErr = fb.error ? (fb.error.message || JSON.stringify(fb.error)) : (fbOk ? '' : 'échec sans message');\n  fbLigne = fbOk ? `✅ Facebook : https://www.facebook.com/${fb.id}` : `❌ Facebook : ${esc(court(fbErr))} — détail dans l'alerte`;\n  igLigne = ig.permalink ? `✅ Instagram : ${ig.permalink}` : `❌ Instagram : ${esc(court(igErr || 'échec'))} — détail dans l'alerte`;\n  const metaGlobal = /OAuthException|Cannot call API|API access blocked|\"code\"\\s*:\\s*(190|200|4|17|32|613)\\b/;\n  const ailleurs = [ytStatut === 'public' ? 'YouTube' : null].filter(Boolean);\n  if (!fbOk && !ig.permalink && metaGlobal.test(fbErr) && metaGlobal.test(igErr || '')) {\n    ev.push({ type: 'echec', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook + Créer le Reel Instagram', video, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est publié ni sur Facebook ni sur Instagram.` + (ailleurs.length ? ` Il est bien sur ${ailleurs.join(', ')}.` : ' Il n’est publié nulle part (hors TikTok manuel).'),\n      brut: 'Facebook : ' + fbErr + '\\nInstagram : ' + igErr });\n  } else {\n    if (fbOk) ev.push({ type: 'retabli', plateforme: 'meta', workflow: W, video }); // Meta répond à nouveau\n    else ev.push({ type: 'echec', plateforme: metaGlobal.test(fbErr) ? 'meta' : 'facebook', workflow: W, noeud: 'Publier sur Facebook', video, brut: fbErr, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est pas publié sur Facebook.` });\n    if (!ig.permalink) ev.push({ type: 'echec', plateforme: metaGlobal.test(igErr) ? 'meta' : 'instagram', workflow: W, noeud: 'Créer le Reel Instagram', video, brut: igErr || 'échec sans message',\n      exec_id: String($execution.id), impact: `« ${titre} » n'est pas publié sur Instagram.` });\n  }\n}\nif (pauses.meta_pause) fbLigne = `⏸️ Facebook + Instagram : en pause jusqu'à ${pauses.meta_pause.hh} (${esc(RAISONS[pauses.meta_pause.raison] || 'échecs répétés')}) — Short à reprendre plus tard`;\nconst lignes = [`🚀 <b>${esc(titre)}</b>`, fbLigne, igLigne, ytLigne, `📲 TikTok : à publier à la main (vidéo ci-dessus)`].filter(Boolean);\nreturn [{ json: { texte: lignes.join('\\n'), fb_ok: fbOk, ig_ok: !!ig.permalink, video_id: v.video_id, evenements: ev,\n  pub_row: { data: [{ pub_id: 'short_' + v.video_id + '_' + Date.now(), type: 'short', publiee_le: new Date().toISOString(), titre: v.titre_short || v.titre,\n    yt_id: yt.uploadId || '', fb_id: (fb && fb.id) || '', ig_id: (ig.id || ''), sources: JSON.stringify(v.sources_clip ? v.sources_clip.split(' + ') : [v.source_nom]),\n    segments: JSON.stringify({ segments: [{ titre: v.titre_short, source: v.source_nom, video_id: v.video_id, personnes: v.personnes, camp: v.camp, theme: v.theme, type_moment: v.type_moment }] }),\n    duree_s: (() => { try { const d = JSON.parse(v.analyse_short || '{}').duree_s; if (d) return d; } catch (e) {} return Math.round((v.extrait_fin || 0) - (v.extrait_debut || 0)); })(), heure: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }),\n    statut_yt: ytStatut, alerte: ev.filter(e => e.type !== 'retabli').map(e => e.plateforme + ':' + e.type).join(',') }] } } }];\n"
+        "jsCode": "\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst get = n => { try { return $(n).first().json; } catch (e) { return null; } };\nconst v = $('Préparer').first().json;\nconst pauses = get('Pauses plateformes') || {};\nconst RAISONS = { meta_app_bloquee: 'Meta bloque l’app', meta_jeton: 'jeton Meta expiré', meta_limite: 'limite Meta', yt_limite_envois: 'limite d’envois YouTube atteinte',\n  yt_quota: 'quota YouTube épuisé', yt_auth: 'connexion YouTube perdue' };\nconst court = m => { const s = String(m || 'échec');\n  if (/Cannot call API for app|API access blocked/i.test(s)) return 'Meta bloque l’app';\n  if (/uploadLimitExceeded|exceeded the number of videos/i.test(s)) return 'limite d’envois YouTube atteinte';\n  const j = s.match(/\"message\"\\s*:\\s*\"([^\"]{1,160})/); return (j ? j[1] : s).slice(0, 160); };\nconst ev = [], titre = v.titre_short || v.titre || 'Extrait', video = { id: v.video_id, titre };\nconst W = 'PUBLICATION AFRIQUE';\n// ---- YouTube ----\nlet yt = get('Publier sur YouTube') || {}, ytLigne, ytStatut;\nif (pauses.yt_pause) { ytStatut = 'en_pause'; ytLigne = `⏸️ YouTube : en pause jusqu'à ${pauses.yt_pause.hh} (${esc(RAISONS[pauses.yt_pause.raison] || 'échecs répétés')}) — Short à mettre en ligne plus tard`;\n  ev.push({ type: 'saute', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video }); }\nelse if (yt.uploadId) { ytStatut = 'public'; ytLigne = `✅ YouTube : https://youtube.com/shorts/${yt.uploadId}`;\n  ev.push({ type: 'retabli', plateforme: 'youtube', workflow: W, video }); }\nelse { ytStatut = 'echec';\n  const d = get('YouTube - détail de l\\'erreur'); const corps = d && d.body ? JSON.stringify(d.body) : '';\n  const brut = [(yt.error && (yt.error.message || JSON.stringify(yt.error))) || 'échec sans message', corps ? 'Réponse complète de YouTube (même demande rejouée) : ' + corps : '',\n    d && d.statusCode && d.statusCode < 300 ? '(La demande rejouée a été acceptée : erreur probablement passagère.)' : ''].filter(Boolean).join('\\n');\n  ytLigne = `❌ YouTube : ${esc(court(corps || brut))}`;\n  ev.push({ type: 'echec', plateforme: 'youtube', workflow: W, noeud: 'Publier sur YouTube', video, brut, exec_id: String($execution.id) }); }\n// ---- Facebook / Instagram ----\nlet fb = get('Publier sur Facebook'), ig = get('Lien Instagram') || {}, fbLigne, igLigne, fbOk = false;\nif (pauses.meta_pause) {\n  fbLigne = igLigne = null;\n  ev.push({ type: 'saute', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook', video });\n} else {\n  fb = fb || {}; fbOk = !!fb.id && !fb.error;\n  let igErr = ''; try { const s = $('Statut Instagram').last().json; if (s.status_code && s.status_code !== 'FINISHED') igErr = JSON.stringify(s); } catch (e) {}\n  const c = get('Créer le Reel Instagram'); if (c && c.error) igErr = c.error.message || JSON.stringify(c.error);\n  const pub = get('Publier sur Instagram'); if (!ig.permalink && pub && pub.error) igErr = pub.error.message || JSON.stringify(pub.error);\n  const fbErr = fb.error ? (fb.error.message || JSON.stringify(fb.error)) : (fbOk ? '' : 'échec sans message');\n  fbLigne = fbOk ? `✅ Facebook : https://www.facebook.com/${fb.id}` : `❌ Facebook : ${esc(court(fbErr))}`;\n  igLigne = ig.permalink ? `✅ Instagram : ${ig.permalink}` : `❌ Instagram : ${esc(court(igErr || 'échec'))}`;\n  const metaGlobal = /OAuthException|Cannot call API|API access blocked|\"code\"\\s*:\\s*(190|200|4|17|32|613)\\b/;\n  const ailleurs = [ytStatut === 'public' ? 'YouTube' : null].filter(Boolean);\n  if (!fbOk && !ig.permalink && metaGlobal.test(fbErr) && metaGlobal.test(igErr || '')) {\n    ev.push({ type: 'echec', plateforme: 'meta', workflow: W, noeud: 'Publier sur Facebook + Créer le Reel Instagram', video, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est publié ni sur Facebook ni sur Instagram.` + (ailleurs.length ? ` Il est bien sur ${ailleurs.join(', ')}.` : ' Il n’est publié nulle part (hors TikTok manuel).'),\n      brut: 'Facebook : ' + fbErr + '\\nInstagram : ' + igErr });\n  } else {\n    if (fbOk) ev.push({ type: 'retabli', plateforme: 'meta', workflow: W, video }); // Meta répond à nouveau\n    else ev.push({ type: 'echec', plateforme: metaGlobal.test(fbErr) ? 'meta' : 'facebook', workflow: W, noeud: 'Publier sur Facebook', video, brut: fbErr, exec_id: String($execution.id),\n      impact: `« ${titre} » n'est pas publié sur Facebook.` });\n    if (!ig.permalink) ev.push({ type: 'echec', plateforme: metaGlobal.test(igErr) ? 'meta' : 'instagram', workflow: W, noeud: 'Créer le Reel Instagram', video, brut: igErr || 'échec sans message',\n      exec_id: String($execution.id), impact: `« ${titre} » n'est pas publié sur Instagram.` });\n  }\n}\nif (pauses.meta_pause) fbLigne = `⏸️ Facebook + Instagram : en pause jusqu'à ${pauses.meta_pause.hh} (${esc(RAISONS[pauses.meta_pause.raison] || 'échecs répétés')}) — Short à reprendre plus tard`;\nconst lignes = [`🌍 <b>Impacteur Afrique</b>\\n🚀 <b>${esc(titre)}</b>`, fbLigne, igLigne, ytLigne, `📲 TikTok : à publier à la main (vidéo ci-dessus)`].filter(Boolean);\nreturn [{ json: { texte: lignes.join('\\n'), fb_ok: fbOk, ig_ok: !!ig.permalink, video_id: v.video_id, evenements: ev,\n  pub_row: { data: [{ compte: 'afrique', pub_id: 'shortafr_' + v.video_id + '_' + Date.now(), type: 'short', publiee_le: new Date().toISOString(), titre: v.titre_short || v.titre,\n    yt_id: yt.uploadId || '', fb_id: (fb && fb.id) || '', ig_id: (ig.id || ''), sources: JSON.stringify(v.sources_clip ? v.sources_clip.split(' + ') : [v.source_nom]),\n    segments: JSON.stringify({ segments: [{ titre: v.titre_short, source: v.source_nom, video_id: v.video_id, personnes: v.personnes, camp: v.camp, theme: v.theme, type_moment: v.type_moment }] }),\n    duree_s: (() => { try { const d = JSON.parse(v.analyse_short || '{}').duree_s; if (d) return d; } catch (e) {} return Math.round((v.extrait_fin || 0) - (v.extrait_debut || 0)); })(), heure: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }),\n    statut_yt: ytStatut, alerte: ev.filter(e => e.type !== 'retabli').map(e => e.plateforme + ':' + e.type).join(',') }] } } }];\n"
       },
       "position": [
         6160,
@@ -1365,7 +1328,7 @@
       "id": "p2",
       "name": "Pauses plateformes",
       "parameters": {
-        "jsCode": "\nconst rows = ($input.first().json.data || []);\nconst now = Date.now();\nconst p = pf => rows.filter(r => r.statut === 'active' && r.plateforme === pf && r.suspendue_jusqu && Date.parse(r.suspendue_jusqu) > now)\n  .sort((a, b) => Date.parse(b.suspendue_jusqu) - Date.parse(a.suspendue_jusqu))[0] || null;\nconst yt = p('youtube'), meta = p('meta');\nconst info = r => r ? { jusqu: r.suspendue_jusqu, hh: new Date(r.suspendue_jusqu).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' }),\n  raison: (JSON.parse(r.detail || '{}').ev || {}).brut ? r.signature.split('|')[0] : r.signature } : null;\nreturn [{ json: { yt_pause: info(yt), meta_pause: info(meta) } }];\n"
+        "jsCode": "// Impacteur Afrique a ses propres comptes YouTube et Meta : les pauses de L'Extrait politique ne s'appliquent pas ici.\nreturn [{ json: { yt_pause: null, meta_pause: null } }];"
       },
       "position": [
         3580,
@@ -1439,8 +1402,8 @@
     {
       "credentials": {
         "youTubeOAuth2Api": {
-          "id": "p3B04KJtWTDHu2fu",
-          "name": "YouTube account"
+          "id": "MxKSQxBVxNRvmKfh",
+          "name": "youtube impacteur afrique"
         }
       },
       "id": "p5",
@@ -1508,6 +1471,7 @@
           "name": "n8n API (interne)"
         }
       },
+      "disabled": true,
       "id": "p7",
       "name": "Signaler aux alertes",
       "onError": "continueRegularOutput",
@@ -1541,7 +1505,7 @@
       "parameters": {
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
-        "jsonBody": "={{ (() => { const v = $('Préparer').first().json; const r = $('Récapitulatif').first().json.pub_row.data[0]; let a = {}; try { a = JSON.parse(v.analyse_short || '{}'); } catch (e) {} const d = new Date(r.publiee_le); return JSON.stringify({ data: [{ video_id: v.video_id, pub_id: r.pub_id, yt_id: r.yt_id || '', fb_id: r.fb_id || '', ig_id: r.ig_id || '', publiee_le: r.publiee_le, jour: d.toLocaleDateString('fr-FR', { weekday: 'long', timeZone: 'Europe/Paris' }), heure: r.heure, duree_s: r.duree_s, intervenant: a.intervenant || v.personnes || '', type_intervenant: a.type_intervenant || '', notoriete: a.notoriete || '', camp: a.camp || v.camp || '', sujet: a.sujet || '', theme: a.theme || v.theme || '', lien_actu: a.lien_actu || '', signification: a.signification || '', type_moment: a.type_moment || '', ton: a.ton || '', accroche: a.accroche || '', format: a.format || 'extrait_seul', type_titre: a.type_titre || '', chaine: v.sources_clip || v.source_nom || '', titre_short: v.titre_short || '', analyse_json: JSON.stringify(a), releve_j3: '', releve_j7: '' }] }); })() }}",
+        "jsonBody": "={{ (() => { const v = $('Préparer').first().json; const r = $('Récapitulatif').first().json.pub_row.data[0]; let a = {}; try { a = JSON.parse(v.analyse_short || '{}'); } catch (e) {} const d = new Date(r.publiee_le); return JSON.stringify({ data: [{ compte: 'afrique', video_id: v.video_id, pub_id: r.pub_id, yt_id: r.yt_id || '', fb_id: r.fb_id || '', ig_id: r.ig_id || '', publiee_le: r.publiee_le, jour: d.toLocaleDateString('fr-FR', { weekday: 'long', timeZone: 'Europe/Paris' }), heure: r.heure, duree_s: r.duree_s, intervenant: a.intervenant || v.personnes || '', type_intervenant: a.type_intervenant || '', notoriete: a.notoriete || '', camp: a.camp || v.camp || '', sujet: a.sujet || '', theme: a.theme || v.theme || '', lien_actu: a.lien_actu || '', signification: a.signification || '', type_moment: a.type_moment || '', ton: a.ton || '', accroche: a.accroche || '', format: a.format || 'extrait_seul', type_titre: a.type_titre || '', chaine: v.sources_clip || v.source_nom || '', titre_short: v.titre_short || '', analyse_json: JSON.stringify(a), releve_j3: '', releve_j7: '' }] }); })() }}",
         "method": "POST",
         "options": {},
         "sendBody": true,
