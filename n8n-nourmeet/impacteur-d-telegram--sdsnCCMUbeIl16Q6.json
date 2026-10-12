@@ -55,6 +55,28 @@
         ]
       ]
     },
+    "CERVEAU - analyser demande": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES VALIDATION",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "CERVEAU - demande (webhook)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CERVEAU - analyser demande",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "CLAUDE - invitation personnalité": {
       "main": [
         [
@@ -686,7 +708,7 @@
       "id": "dcaef7bc-43c9-4174-87d3-3782c7fb6c30",
       "name": "PREPARER VALIDATION",
       "parameters": {
-        "jsCode": "// V20 : traite /valider, /email, /rejeter sur une fiche prête.\nconst req=$('ANALYSER MESSAGE').first().json;\nconst cle=String(req.cle_unique||'').trim();\nconst action=String(req.action||'');\nconst chat_id=String(req.chat_id||'');\nconst rows=$input.all().map(i=>i.json);\nconst row=rows.find(r=>String(r.cle_unique||'').trim()===cle);\nif(!row){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Aucune fiche trouvée pour '+cle+'.'}}];\n}\nconst publicDomains=new Set(['gmail.com','hotmail.com','outlook.com','yahoo.com','proton.me','icloud.com','live.com']);\nlet candidats=[];try{candidats=JSON.parse(String(row.emails_candidats||'[]'));}catch(e){candidats=[];}\nif(!Array.isArray(candidats))candidats=[];\n\nif(action==='rejeter'){\n  return [{json:{...row,ok:true,action,chat_id,\n    statut:'REJETE_MANUEL',validation_contact:'NON',\n    derniere_mise_a_jour:new Date().toISOString(),\n    telegram_message:'🗑 Fiche '+cle+' rejetée ('+String(row.auteur||'')+'). Aucun brouillon ne sera créé. L’auteur reste prospectable pour un autre livre.'}}];\n}\n\nif(String(row.draft_id||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'ℹ️ Un brouillon Gmail existe déjà pour '+cle+' ('+String(row.auteur||'')+').'}}];\n}\nif(!String(row.message_auteur||'').trim()||!String(row.objet_auteur||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ La fiche '+cle+' n’a pas d’invitation rédigée : impossible de la valider. Statut actuel : '+String(row.statut||'')+'.'}}];\n}\n\nlet email='';let source='';\nif(action==='email'){\n  email=String(req.email||'').trim().toLowerCase();\n  const c=candidats.find(x=>x&&String(x.email||'').toLowerCase()===email);\n  if(c&&/^https:\\/\\//.test(String(c.source||'')))source=String(c.source);\n}else{\n  const best=candidats.find(x=>x&&x.email&&!publicDomains.has(String(x.email).split('@')[1]||''))||candidats.find(x=>x&&x.email);\n  if(!best){\n    return [{json:{ok:false,action,chat_id,telegram_message:'❌ Aucun email candidat pour '+cle+'.\\nRéponds : /email '+cle+' adresse@retiree.invalid'}}];\n  }\n  email=String(best.email).trim().toLowerCase();\n  if(/^https:\\/\\//.test(String(best.source||'')))source=String(best.source);\n}\nif(!/^\\S+@\\S+\\.\\S+$/.test(email)){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Adresse invalide : '+email}}];\n}\nif(!source)source=/^https:\\/\\//.test(String(row.source_livre||''))?String(row.source_livre):'https://validation.telegram.impacteur/'+encodeURIComponent(cle);\nconst domaine=email.split('@')[1]||'';\nconst exception=publicDomains.has(domaine);\nreturn [{json:{...row,ok:true,action,chat_id,\n  email_contact:email,type_contact:'auteur',source_contact_validee:source,\n  statut:'APPROUVE',validation_contact:exception?'OUI_EXCEPTION':'OUI',\n  derniere_mise_a_jour:new Date().toISOString(),\n  telegram_message:'✅ Fiche '+cle+' approuvée ('+String(row.auteur||'')+').\\n✉️ '+email+(exception?' (domaine grand public : validé en exception)':'')+'\\n📨 Création du brouillon Gmail '+String(row.chaine||'')+' en cours…'}}];"
+        "jsCode": "// V20 : traite /valider, /email, /rejeter sur une fiche prête.\nlet req;try{req=$('ANALYSER MESSAGE').first().json;}catch(e){req=$('CERVEAU - analyser demande').first().json;}\nlet cle=String(req.cle_unique||'').trim();\nconst action=String(req.action||'');\nconst chat_id=String(req.chat_id||'');\nconst rows=$input.all().map(i=>i.json);\nconst normR=s=>String(s||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();\nconst row=cle?rows.find(r=>String(r.cle_unique||'').trim()===cle):rows.find(r=>normR(r.auteur)===normR(req.auteur)&&normR(r.livre||'')===normR(req.livre||'')&&String(r.statut||'').trim().toUpperCase().startsWith('A_VERIFIER'));\nif(row&&!cle)cle=String(row.cle_unique||'').trim();\nif(!row){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Aucune fiche trouvée pour '+(cle||String(req.auteur||'?'))+'.'}}];\n}\nconst publicDomains=new Set(['gmail.com','hotmail.com','outlook.com','yahoo.com','proton.me','icloud.com','live.com']);\nlet candidats=[];try{candidats=JSON.parse(String(row.emails_candidats||'[]'));}catch(e){candidats=[];}\nif(!Array.isArray(candidats))candidats=[];\n\nif(action==='rejeter'){\n  return [{json:{...row,ok:true,action,chat_id,\n    statut:'REJETE_MANUEL',validation_contact:'NON',\n    derniere_mise_a_jour:new Date().toISOString(),\n    telegram_message:'🗑 Fiche '+cle+' rejetée ('+String(row.auteur||'')+'). Aucun brouillon ne sera créé. L’auteur reste prospectable pour un autre livre.'}}];\n}\n\nif(String(row.draft_id||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'ℹ️ Un brouillon Gmail existe déjà pour '+cle+' ('+String(row.auteur||'')+').'}}];\n}\nif(!String(row.message_auteur||'').trim()||!String(row.objet_auteur||'').trim()){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ La fiche '+cle+' n’a pas d’invitation rédigée : impossible de la valider. Statut actuel : '+String(row.statut||'')+'.'}}];\n}\n\nlet email='';let source='';\nif(action==='email'){\n  email=String(req.email||'').trim().toLowerCase();\n  const c=candidats.find(x=>x&&String(x.email||'').toLowerCase()===email);\n  if(c&&/^https:\\/\\//.test(String(c.source||'')))source=String(c.source);\n}else{\n  const saisie=String(row.email_contact||'').trim().toLowerCase();\n  const best=saisie?{email:saisie,source:String(row.source_contact_validee||'')}:(candidats.find(x=>x&&x.email&&!publicDomains.has(String(x.email).split('@')[1]||''))||candidats.find(x=>x&&x.email));\n  if(!best){\n    return [{json:{ok:false,action,chat_id,telegram_message:'❌ Pas d\\'adresse pour '+cle+'.\\nMets-la dans la colonne email_contact du Sheet, ou réponds : /email '+cle+' adresse@retiree.invalid'}}];\n  }\n  email=String(best.email).trim().toLowerCase();\n  if(/^https:\\/\\//.test(String(best.source||'')))source=String(best.source);\n}\nif(!/^\\S+@\\S+\\.\\S+$/.test(email)){\n  return [{json:{ok:false,action,chat_id,telegram_message:'❌ Adresse invalide : '+email}}];\n}\nif(!source)source=/^https:\\/\\//.test(String(row.source_livre||''))?String(row.source_livre):'https://validation.telegram.impacteur/'+encodeURIComponent(cle);\nconst domaine=email.split('@')[1]||'';\nconst exception=publicDomains.has(domaine);\nreturn [{json:{...row,ok:true,action,chat_id,\n  email_contact:email,type_contact:'auteur',source_contact_validee:source,\n  statut:'APPROUVE',validation_contact:exception?'OUI_EXCEPTION':'OUI',\n  derniere_mise_a_jour:new Date().toISOString(),\n  telegram_message:'✅ Fiche '+cle+' approuvée ('+String(row.auteur||'')+').\\n✉️ '+email+(exception?' (domaine grand public : validé en exception)':'')+'\\n📨 Création du brouillon Gmail '+String(row.chaine||'')+' en cours…'}}];"
       },
       "position": [
         1264,
@@ -2112,6 +2134,35 @@
       "position": [
         2656,
         2800
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "cerveau-valider-webhook",
+      "name": "CERVEAU - demande (webhook)",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "cerveau-valider-7e692c978e1f8674"
+      },
+      "position": [
+        616,
+        2384
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "bacb2e8a-e10c-4dcc-b71a-cc6927065d43"
+    },
+    {
+      "id": "cerveau-valider-analyse",
+      "name": "CERVEAU - analyser demande",
+      "parameters": {
+        "jsCode": "// Demande du site du cerveau (boutons Valider / Rejeter de la page Impacteur).\n// L'adresse du webhook est secrète (gardée dans le .env du cerveau) : elle vaut autorisation.\nconst corps=$input.first().json.body||{};\nconst store=$getWorkflowStaticData('global');\nif(!store.telegram_owner_user_id)return [];\nconst choix=String(corps.choix||'');\nif(choix!=='valider'&&choix!=='rejeter')return [];\nconst auteur=String(corps.auteur||'').trim().slice(0,120);\nconst livre=String(corps.livre||'').trim().slice(0,160);\nif(!auteur)return [];\nreturn [{json:{route:'validation',action:choix,chat_id:String(store.telegram_chat_id||''),cle_unique:'',auteur,livre,origine:'site'}}];"
+      },
+      "position": [
+        836,
+        2384
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
