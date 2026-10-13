@@ -1,6 +1,17 @@
 {
   "active": true,
   "connections": {
+    "Ajouter les interviews": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Lots de 50",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "Choisi par l'IA ?": {
       "main": [
         [
@@ -117,7 +128,7 @@
         [
           {
             "index": 0,
-            "node": "Lots de 50",
+            "node": "Recherche interviews",
             "type": "main"
           }
         ]
@@ -140,6 +151,17 @@
           {
             "index": 0,
             "node": "Lancer la production",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Recherche interviews": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Ajouter les interviews",
             "type": "main"
           }
         ]
@@ -296,6 +318,7 @@
       "typeVersion": 4.2
     },
     {
+      "alwaysOutputData": true,
       "id": "v5",
       "name": "Nouvelles vidéos",
       "parameters": {
@@ -472,7 +495,7 @@
       "id": "v8",
       "name": "Préparer candidats",
       "parameters": {
-        "jsCode": "\nconst meta = {};\nfor (const i of $('Nouvelles vidéos').all()) meta[i.json.video_id] = i.json;\nconst dur = s => { const m = (s||'').match(/P(?:(\\d+)D)?T?(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/) || []; return (+m[1]||0)*86400 + (+m[2]||0)*3600 + (+m[3]||0)*60 + (+m[4]||0); };\nconst now = Date.now();\nconst cands = [];\nfor (const page of $('Stats YouTube').all()) for (const v of (page.json.items || [])) {\n  const m = meta[v.id]; if (!m) continue;\n  if (['live','upcoming'].includes(v.snippet.liveBroadcastContent)) continue;\n  const h = Math.max(0.25, (now - Date.parse(v.snippet.publishedAt)) / 3600e3);\n  const vues = +(v.statistics.viewCount || 0);\n  cands.push({ ...m, titre: v.snippet.title, description: (v.snippet.description || '').slice(0, 400),\n    duree_s: dur(v.contentDetails.duration), vues, likes: +(v.statistics.likeCount || 0),\n    commentaires: +(v.statistics.commentCount || 0), age_h: Math.round(h*10)/10, vues_par_h: Math.round(vues / h) });\n}\nif (!cands.length) return [];\n// ---- Phase d'exploration (200 premiers Shorts) : pas de goûts ni de leçons, la variété est gérée dans « Sélection » ----\nconst system = `Tu es le rédacteur en chef d'« L’Extrait politique », une chaîne YouTube française qui fait « le zapping des meilleurs moments » de l'actualité : extraits forts (clash, punchline, déclaration choc, contradiction, aveu, moment d'émotion, révélation, analyse éclairante d'un spécialiste).\nTu reçois des vidéos publiées récemment par des médias, institutions, personnalités politiques de tous bords, mais aussi des experts, intellectuels et think tanks (géopolitique, économie, énergie, société). Une analyse de spécialiste qui éclaire ou bouscule l'actualité est un vrai moment fort, au même titre qu'un clash. Note chacune de 0 à 10 selon son potentiel à fournir un moment fort exploitable :\n- 9-10 : moment fort évident, sujet chaud, fort potentiel viral ;\n- 7-8 : bon potentiel, à regarder ;\n- 4-6 : intérêt moyen ;\n- 0-3 : routine, contenu sans moment saillant, sujet froid.\nTiens compte de la dynamique (vues par heure rapportées à la taille habituelle de la source), du titre et de la description. Reste neutre politiquement : juge le potentiel éditorial, pas l'opinion exprimée. Pénalise les rumeurs, décès non confirmés et contenus invérifiables.\nIMPORTANT : si le sujet principal concerne l'Afrique (un pays africain, le Sahel, l'AES, la Françafrique, la diaspora africaine…), mets score 0 : ces sujets sont réservés à une autre chaîne (Impacteur Afrique). L'immigration en France reste un sujet français.\nPour chaque vidéo propose : le format (« short » ≤ 2 min 30, « long » ~10 min, ou « aucun »), un angle éditorial (15 mots max) et la raison (15 mots max).\nSi la source est « watch_only », la vidéo ne peut servir qu'à repérer un sujet (pas d'extrait) : signale-le dans l'angle.\nPour chaque vidéo, étiquette aussi : personnes (qui s'exprime ou dont on parle, noms complets, max 3), type_intervenant (politique, expert, journaliste, citoyen, autre), camp (LFI, PS, Écologistes, PCF, extrême gauche, Renaissance/centre, LR, RN, Reconquête, souverainistes, gouvernement, institutions, plusieurs camps, non partisan — « non partisan » pour les experts, journalistes et citoyens sans étiquette), theme (court et normalisé : sécurité, éducation, budget/dette, immigration, justice, international, institutions, social, féminisme, médias…), type_moment (clash, punchline, déclaration, aveu, contradiction, témoignage, chiffre choc, manifestation, analyse, annonce).\nRéponds UNIQUEMENT avec un tableau JSON : [{\"video_id\":\"...\",\"score\":0,\"format\":\"short|long|aucun\",\"angle\":\"...\",\"raison\":\"...\",\"personnes\":[\"...\"],\"type_intervenant\":\"...\",\"camp\":\"...\",\"theme\":\"...\",\"type_moment\":\"...\"}]` ;\nconst out = [];\nfor (let i = 0; i < cands.length; i += 20) {\n  const lot = cands.slice(i, i + 20);\n  const user = JSON.stringify(lot.map(c => ({ video_id: c.video_id, source: c.source_nom, categorie: c.categorie, statut_source: c.source_statut, titre: c.titre, description: c.description, duree_s: c.duree_s, vues: c.vues, vues_par_h: c.vues_par_h, age_h: c.age_h, likes: c.likes, commentaires: c.commentaires })));\n  out.push({ json: { candidats: lot, body: { model: 'claude-sonnet-4-5', max_tokens: 3000, system, messages: [{ role: 'user', content: user }] } } });\n}\nreturn out;\n"
+        "jsCode": "\nconst meta = {};\nfor (const i of $('Ajouter les interviews').all()) meta[i.json.video_id] = i.json;\nconst dur = s => { const m = (s||'').match(/P(?:(\\d+)D)?T?(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+)S)?/) || []; return (+m[1]||0)*86400 + (+m[2]||0)*3600 + (+m[3]||0)*60 + (+m[4]||0); };\nconst now = Date.now();\nconst cands = [];\nfor (const page of $('Stats YouTube').all()) for (const v of (page.json.items || [])) {\n  const m = meta[v.id]; if (!m) continue;\n  if (['live','upcoming'].includes(v.snippet.liveBroadcastContent)) continue;\n  const h = Math.max(0.25, (now - Date.parse(v.snippet.publishedAt)) / 3600e3);\n  const vues = +(v.statistics.viewCount || 0);\n  cands.push({ ...m, titre: v.snippet.title, description: (v.snippet.description || '').slice(0, 400),\n    duree_s: dur(v.contentDetails.duration), vues, likes: +(v.statistics.likeCount || 0),\n    commentaires: +(v.statistics.commentCount || 0), age_h: Math.round(h*10)/10, vues_par_h: Math.round(vues / h) });\n}\nif (!cands.length) return [];\n// ---- Phase d'exploration (200 premiers Shorts) : pas de goûts ni de leçons, la variété est gérée dans « Sélection » ----\nconst system = `Tu es le rédacteur en chef d'« L’Extrait politique », une chaîne YouTube française qui fait « le zapping des meilleurs moments » de l'actualité : extraits forts (clash, punchline, déclaration choc, contradiction, aveu, moment d'émotion, révélation, analyse éclairante d'un spécialiste).\nTu reçois des vidéos publiées récemment par des médias, institutions, personnalités politiques de tous bords, mais aussi des experts, intellectuels et think tanks (géopolitique, économie, énergie, société). Une analyse de spécialiste qui éclaire ou bouscule l'actualité est un vrai moment fort, au même titre qu'un clash. Note chacune de 0 à 10 selon son potentiel à fournir un moment fort exploitable :\n- 9-10 : moment fort évident, sujet chaud, fort potentiel viral ;\n- 7-8 : bon potentiel, à regarder ;\n- 4-6 : intérêt moyen ;\n- 0-3 : routine, contenu sans moment saillant, sujet froid.\nTiens compte de la dynamique (vues par heure rapportées à la taille habituelle de la source), du titre et de la description. LIGNE ÉDITORIALE : la chaîne ne publie QUE des moments où l'une de ces personnalités parle elle-même : Florian Philippot, Alain Soral, Juan Branco, François Asselineau, Nicolas Dupont-Aignan, Jean Lassalle, Étienne Chouard, Idriss Aberkane, Didier Raoult, Éric Zemmour, Marion Maréchal, Sarah Knafo, Jean-Luc Mélenchon, Rima Hassan, François Ruffin. Si aucune d'elles ne s'exprime dans la vidéo (d'après le titre, la description et la source), mets score 0 et format « aucun ». Pas d'autocensure : ne baisse jamais la note à cause des opinions exprimées ou du caractère clivant de la personne. Pénalise les rumeurs, décès non confirmés et contenus invérifiables.\nIMPORTANT : si le sujet principal concerne l'Afrique (un pays africain, le Sahel, l'AES, la Françafrique, la diaspora africaine…), mets score 0 : ces sujets sont réservés à une autre chaîne (Impacteur Afrique). L'immigration en France reste un sujet français.\nPour chaque vidéo propose : le format (« short » ≤ 2 min 30, « long » ~10 min, ou « aucun »), un angle éditorial (15 mots max) et la raison (15 mots max).\nSi la source est « watch_only », la vidéo ne peut servir qu'à repérer un sujet (pas d'extrait) : signale-le dans l'angle.\nPour chaque vidéo, étiquette aussi : personnes (qui s'exprime ou dont on parle, noms complets, max 3), type_intervenant (politique, expert, journaliste, citoyen, autre), camp (LFI, PS, Écologistes, PCF, extrême gauche, Renaissance/centre, LR, RN, Reconquête, souverainistes, gouvernement, institutions, plusieurs camps, non partisan — « non partisan » pour les experts, journalistes et citoyens sans étiquette), theme (court et normalisé : sécurité, éducation, budget/dette, immigration, justice, international, institutions, social, féminisme, médias…), type_moment (clash, punchline, déclaration, aveu, contradiction, témoignage, chiffre choc, manifestation, analyse, annonce).\nRéponds UNIQUEMENT avec un tableau JSON : [{\"video_id\":\"...\",\"score\":0,\"format\":\"short|long|aucun\",\"angle\":\"...\",\"raison\":\"...\",\"personnes\":[\"...\"],\"type_intervenant\":\"...\",\"camp\":\"...\",\"theme\":\"...\",\"type_moment\":\"...\"}]` ;\nconst out = [];\nfor (let i = 0; i < cands.length; i += 20) {\n  const lot = cands.slice(i, i + 20);\n  const user = JSON.stringify(lot.map(c => ({ video_id: c.video_id, source: c.source_nom, categorie: c.categorie, statut_source: c.source_statut, titre: c.titre, description: c.description, duree_s: c.duree_s, vues: c.vues, vues_par_h: c.vues_par_h, age_h: c.age_h, likes: c.likes, commentaires: c.commentaires })));\n  out.push({ json: { candidats: lot, body: { model: 'claude-sonnet-4-5', max_tokens: 3000, system, messages: [{ role: 'user', content: user }] } } });\n}\nreturn out;\n"
       },
       "position": [
         1540,
@@ -655,6 +678,81 @@
       ],
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpQueryAuth": {
+          "id": "ymnWss6dmiFLUshi",
+          "name": "YouTube recherche (clé du cerveau)"
+        }
+      },
+      "executeOnce": true,
+      "id": "89c047cf-5259-4009-8505-1303c89a0bd3",
+      "name": "Recherche interviews",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "method": "GET",
+        "options": {},
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            },
+            {
+              "name": "type",
+              "value": "video"
+            },
+            {
+              "name": "order",
+              "value": "date"
+            },
+            {
+              "name": "maxResults",
+              "value": "50"
+            },
+            {
+              "name": "videoDuration",
+              "value": "long"
+            },
+            {
+              "name": "relevanceLanguage",
+              "value": "fr"
+            },
+            {
+              "name": "publishedAfter",
+              "value": "={{ new Date(Date.now() - 3 * 3600e3).toISOString() }}"
+            },
+            {
+              "name": "q",
+              "value": "\"Florian Philippot\"|\"Alain Soral\"|\"Juan Branco\"|\"François Asselineau\"|\"Nicolas Dupont-Aignan\"|\"Jean Lassalle\"|\"Étienne Chouard\"|\"Idriss Aberkane\"|\"Didier Raoult\"|\"Éric Zemmour\"|\"Marion Maréchal\"|\"Sarah Knafo\"|\"Jean-Luc Mélenchon\"|\"Rima Hassan\"|\"François Ruffin\""
+            }
+          ]
+        },
+        "sendQuery": true,
+        "url": "https://www.googleapis.com/youtube/v3/search"
+      },
+      "position": [
+        940,
+        220
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "cbc28f35-aa65-4d6e-b49a-010a952c9ab4",
+      "name": "Ajouter les interviews",
+      "parameters": {
+        "jsCode": "\n// Interviews des personnalités trouvées par la recherche YouTube, ajoutées aux nouvelles vidéos des chaînes suivies.\nconst HOURS = 6;\nconst st = $getWorkflowStaticData('global');\nst.seen = st.seen || {};\nconst rows = $('Lire sources').first().json.data || [];\nconst bloque = new Set(rows.filter(r => r.compte === 'afrique' || ['blacklisted', 'ignored'].includes(r.statut)).map(r => r.channel_id));\nconst now = Date.now();\nconst out = $('Nouvelles vidéos').all().filter(i => i.json.video_id).map(i => ({ json: i.json }));\nfor (const it of $('Recherche interviews').all()) for (const v of (it.json.items || [])) {\n  const vid = v.id && v.id.videoId; const sn = v.snippet || {};\n  if (!vid || st.seen[vid] || bloque.has(sn.channelId)) continue;\n  if (['live', 'upcoming'].includes(sn.liveBroadcastContent)) continue;\n  if (now - Date.parse(sn.publishedAt) > HOURS * 3600e3) continue;\n  st.seen[vid] = now;\n  out.push({ json: { video_id: vid, publiee_le: sn.publishedAt, channel_id: sn.channelId, source_nom: sn.channelTitle,\n    source_statut: 'usable', categorie: 'interview' } });\n}\nreturn out;\n"
+      },
+      "position": [
+        1160,
+        220
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
     }
   ],
   "settings": {
