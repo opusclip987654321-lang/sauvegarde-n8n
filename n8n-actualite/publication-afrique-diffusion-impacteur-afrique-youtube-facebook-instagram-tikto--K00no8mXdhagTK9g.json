@@ -622,6 +622,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "u2y",
       "name": "Signaler le doublon",
       "parameters": {
@@ -672,6 +673,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "u2f",
       "name": "Annoncer le créneau",
       "parameters": {
@@ -1210,6 +1212,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "u17",
       "name": "Envoyer le récap",
       "parameters": {

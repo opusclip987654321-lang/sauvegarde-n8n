@@ -681,6 +681,7 @@
           "name": "Telegram - Impacteur Prospection"
         }
       },
+      "disabled": true,
       "id": "cerveau-retenu-telegram",
       "maxTries": 3,
       "name": "TELEGRAM - retenus",

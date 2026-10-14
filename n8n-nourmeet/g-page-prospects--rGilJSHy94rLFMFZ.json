@@ -1,0 +1,616 @@
+{
+  "active": false,
+  "connections": {
+    "CONSTRUIRE PAGE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "AFFICHER PAGE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIGNE A ECRIRE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "METTRE A JOUR FICHE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "LIRE FICHES": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "CONSTRUIRE PAGE",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "MAJ VALIDE ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIGNE A ECRIRE",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "REPONSE ERREUR",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "METTRE A JOUR FICHE": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "REPONSE OK",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PAGE - action": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "PREPARER MAJ",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PAGE - ouverture": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "LIRE FICHES",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "PREPARER MAJ": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MAJ VALIDE ?",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "rGilJSHy94rLFMFZ",
+  "name": "G - PAGE PROSPECTS",
+  "nodes": [
+    {
+      "id": "c7f69ed2-49fd-4eae-b8af-9de60d66c8f8",
+      "name": "PAGE - ouverture",
+      "parameters": {
+        "options": {},
+        "path": "impacteur-prospects",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        272
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "592a0ce1-8a46-44b7-9a14-e19096177f87"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "3c233438-bccc-4a15-af98-0ca0b348a5c7",
+      "name": "LIRE FICHES",
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M/edit?gid=0#gid=0"
+        }
+      },
+      "position": [
+        224,
+        272
+      ],
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5
+    },
+    {
+      "id": "d969ae94-b931-404f-86ca-8e7141bd0946",
+      "name": "CONSTRUIRE PAGE",
+      "parameters": {
+        "jsCode": "// CONSTRUIRE PAGE — liste de toutes les fiches du tableau Prospection\n// ===== CONFIG : noms des colonnes du tableau (à ajuster si besoin) =====\nconst CLE_ACCES = 'NfUdXKpkIT86U1NLVffoj0cG';\nconst COL = {\n  cle: 'cle_unique',\n  auteur: 'auteur',\n  livre: 'livre',\n  chaine: 'chaine',\n  statut: 'statut',\n  email: 'email_contact',\n  source: 'source_contact',\n  linkedin: 'linkedin',\n  lien: 'lien',\n  date_envoi: 'date_envoi',\n  ouvert: 'ouvert_le',\n  objet: 'objet',\n  message: 'message_html',\n};\n// =====================================================================\n\nconst q = $('PAGE - ouverture').first().json.query || {};\nif (q.k !== CLE_ACCES) {\n  return [{ json: { html: '<!doctype html><meta charset=\"utf-8\"><p>Accès refusé.</p>' } }];\n}\n\nconst enTexte = h => h\n  .replace(/<img[^>]*>/gi, '')\n  .replace(/<br\\s*\\/?>/gi, '\\n').replace(/<\\/(p|h\\d)>/gi, '\\n\\n').replace(/<\\/(div|li)>/gi, '\\n').replace(/<li[^>]*>/gi, '- ')\n  .replace(/<[^>]+>/g, '')\n  .replace(/&nbsp;/g, ' ').replace(/&#39;|&apos;/g, \"'\").replace(/&quot;/g, '\"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')\n  .replace(/\\n{3,}/g, '\\n\\n').trim();\nconst val = (r, k) => (r[COL[k]] == null ? '' : String(r[COL[k]]).trim());\nconst fiches = $input.all()\n  .map(i => i.json)\n  .filter(r => val(r, 'cle') || val(r, 'auteur'))\n  .map(r => ({\n    cle: val(r, 'cle'),\n    auteur: val(r, 'auteur'),\n    livre: val(r, 'livre'),\n    chaine: val(r, 'chaine'),\n    statut: val(r, 'statut'),\n    email: val(r, 'email'),\n    source: val(r, 'source'),\n    linkedin: val(r, 'linkedin'),\n    lien: val(r, 'lien'),\n    date_envoi: val(r, 'date_envoi'),\n    ouvert: val(r, 'ouvert'),\n    objet: val(r, 'objet'),\n    message: enTexte(val(r, 'message')),\n  }))\n  .reverse(); // les plus récentes en haut\n\nconst data = JSON.stringify(fiches).replace(/</g, '\\\\u003c');\n\nconst html = `<!doctype html>\n<html lang=\"fr\"><head><meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<title>Prospects Impacteur</title>\n<style>\n:root{--bg:#f6f6f4;--card:#fff;--txt:#1d1d1b;--mut:#6b6b66;--bd:#e2e2dc;--acc:#2f8f6f;--lien:#2f7f63;--ok:#1d7a3e;--warn:#a35c00;--ko:#b3261e;--champ:#fbfbf9}\n@media (prefers-color-scheme:dark){:root{--bg:#1c1c1c;--card:#232322;--txt:#ececea;--mut:#a3a39d;--bd:#3a3a36;--acc:#78c2a4;--lien:#78c2a4;--ok:#6cc58d;--warn:#e0a24a;--ko:#ef8a82;--champ:#1c1c1c}}\n*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}\n.w{max-width:1000px;margin:auto;padding:20px 16px 48px}h1{font-size:26px;margin:0 0 10px}\n.intro{color:var(--mut);margin:0 0 14px}\n.bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}\n.bar button{border:1px solid var(--bd);background:var(--card);color:var(--txt);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:14px}\n.bar button.on{background:var(--acc);border-color:var(--acc);color:#111}\n.bar input{flex:1;min-width:180px;border:1px solid var(--bd);background:var(--card);color:var(--txt);border-radius:8px;padding:7px 10px;font-size:15px}\n#liste{display:grid;gap:14px}\n.f{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;display:grid;gap:10px}\n.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.nom{font-weight:700;text-transform:uppercase}\n.meta{color:var(--mut)}.meta a{color:var(--lien)}\n.tag{font-size:13px;padding:2px 10px;border-radius:999px;border:1px solid var(--bd)}\n.t-sans{color:var(--warn);border-color:var(--warn)}.t-pret{color:var(--lien);border-color:var(--lien)}.t-env{color:var(--ok);border-color:var(--ok)}.t-rej{color:var(--ko);border-color:var(--ko)}\ndetails summary{cursor:pointer}\n.ed{display:grid;gap:8px;margin-top:8px}\n.ed input,.ed textarea,.ligne input{width:100%;border:1px solid var(--bd);background:var(--champ);color:var(--txt);border-radius:8px;padding:9px 12px;font:inherit}\n.ed textarea{min-height:240px;resize:vertical}\n.ligne{display:flex;gap:10px}.ligne input{flex:1}\nbutton.p{background:var(--acc);border:0;color:#111;border-radius:8px;padding:9px 18px;font:inherit;cursor:pointer}\n.sec{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--mut)}\n.sec button{border:1px solid var(--bd);background:transparent;color:var(--txt);border-radius:8px;padding:7px 12px;font:inherit;font-size:15px;cursor:pointer}\n.msg{font-size:14px}.vide{color:var(--mut);padding:20px 0}\n</style></head><body><div class=\"w\">\n<h1>Tous les prospects (<span id=\"total\"></span>)</h1>\n<p class=\"intro\">Tous les auteurs et invités trouvés. Colle l'adresse que tu as trouvée, clique sur « Inviter », et l'invitation part à la prochaine passe d'envoi (10h07 ou 15h07), depuis la boîte de la chaîne. Tu peux retoucher le mail avant.</p>\n<div class=\"bar\" id=\"filtres\"></div>\n<div id=\"liste\"></div></div>\n<script>\nconst FICHES = ${data};\nconst CLE = ${JSON.stringify(CLE_ACCES)};\nconst ENV = /ENVOYE/i, REJ = /REJET/i;\nfunction etat(f){ if(REJ.test(f.statut)) return 'rej'; if(ENV.test(f.statut)) return 'env'; return f.email ? 'pret' : 'sans'; }\nconst LIB = {sans:'Sans email',pret:'Prête à partir',env:'Envoyée',rej:'Écartée'};\nconst FILTRES = [['sans','Sans email'],['pret','Prêtes à partir'],['env','Envoyées'],['rej','Écartées'],['tout','Tout']];\nlet filtre = 'sans', recherche = '';\nconst esc = s => String(s).replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]));\nconst lienRecherche = f => 'https://www.google.com/search?q=' + encodeURIComponent('\"' + f.auteur + '\" contact email ' + (f.livre||''));\nfunction barre(){\n  const n = k => k==='tout' ? FICHES.length : FICHES.filter(f => etat(f)===k).length;\n  document.getElementById('total').textContent = FICHES.length;\n  document.getElementById('filtres').innerHTML = FILTRES.map(([k,l]) =>\n    '<button data-f=\"'+k+'\" class=\"'+(k===filtre?'on':'')+'\">'+l+' ('+n(k)+')</button>').join('') +\n    '<input id=\"rech\" placeholder=\"Rechercher un nom, un livre…\" value=\"'+esc(recherche)+'\">';\n}\nfunction carte(f){\n  const e = etat(f);\n  const liens = [\n    f.lien ? '<a href=\"'+esc(f.lien)+'\" target=\"_blank\" rel=\"noopener\">livre / vidéo</a>' : '',\n    f.linkedin ? '<a href=\"'+esc(f.linkedin)+'\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>' : '',\n    '<a href=\"'+lienRecherche(f)+'\" target=\"_blank\" rel=\"noopener\">chercher l\\\\'adresse</a>'\n  ].filter(Boolean).join(' · ');\n  const infos = [f.chaine && ('Chaîne '+esc(f.chaine)), f.email && esc(f.email),\n    f.date_envoi && ('envoyée le '+esc(f.date_envoi)), f.ouvert && ('ouverte le '+esc(f.ouvert))].filter(Boolean).join(' · ');\n  let h = '<div class=\"f\" data-cle=\"'+esc(f.cle)+'\"><div class=\"top\"><span class=\"nom\">'+esc(f.auteur||'(sans nom)')+'</span>'+\n    '<span class=\"tag t-'+e+'\">'+LIB[e]+'</span></div>'+\n    '<div class=\"meta\">'+esc(f.livre)+(infos?'<br>'+infos:'')+'</div><div class=\"meta\">'+liens+'</div>';\n  if (e==='env') return h+'</div>';\n  h += '<details><summary>Voir ou retoucher le mail</summary><div class=\"ed\">'+\n    '<input class=\"objet\" value=\"'+esc(f.objet)+'\" placeholder=\"Objet\">'+\n    '<textarea class=\"corps\" placeholder=\"Pas encore d\\\\'invitation rédigée pour cette fiche\">'+esc(f.message)+'</textarea>'+\n    '</div></details>'+\n    '<div class=\"ligne\"><input type=\"email\" class=\"adr\" placeholder=\"adresse@retiree.invalid\" value=\"'+esc(f.email)+'\">'+\n    '<button class=\"p\" data-a=\"email\">Inviter</button></div>'+\n    '<div class=\"sec\">Pas d\\\\'adresse, seulement LinkedIn ou un formulaire ? '+\n    '<button data-a=\"copier\">Copier le texte</button><button data-a=\"manuel\">Envoyé de mon côté</button>'+\n    (e==='rej' ? '' : '<button data-a=\"rejeter\">Pas celui-là</button>')+\n    '<span class=\"msg\"></span></div></div>';\n  return h;\n}\nfunction rendu(){\n  barre();\n  const r = recherche.toLowerCase();\n  const liste = FICHES.filter(f => (filtre==='tout' || etat(f)===filtre) &&\n    (!r || (f.auteur+' '+f.livre+' '+f.email).toLowerCase().includes(r)));\n  document.getElementById('liste').innerHTML = liste.length ? liste.map(carte).join('') : '<div class=\"vide\">Aucune fiche ici.</div>';\n}\ndocument.addEventListener('click', async ev => {\n  const b = ev.target.closest('button'); if(!b) return;\n  if (b.dataset.f){ filtre = b.dataset.f; rendu(); return; }\n  const c = b.closest('.f'); if(!c || !b.dataset.a) return;\n  const f = FICHES.find(x => x.cle === c.dataset.cle);\n  const msg = c.querySelector('.msg'), action = b.dataset.a;\n  const email = c.querySelector('.adr').value.trim();\n  const objet = c.querySelector('.objet').value.trim(), corps = c.querySelector('.corps').value.trim();\n  if (action==='copier'){\n    try { await navigator.clipboard.writeText(objet+'\\\\n\\\\n'+corps); msg.textContent='Texte copié.'; }\n    catch(e){ msg.textContent='Copie impossible, sélectionne le texte à la main.'; }\n    return;\n  }\n  if (action==='email' && !/^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$/.test(email)){ msg.textContent='Adresse invalide.'; return; }\n  if (action==='email' && !corps){ msg.textContent='Il manque le texte du mail.'; return; }\n  if (action==='rejeter' && !confirm('Écarter '+f.auteur+' ?')) return;\n  const corpsModifie = corps !== f.message, objetModifie = objet !== f.objet;\n  msg.textContent = 'Enregistrement…';\n  try {\n    const rep = await fetch('impacteur-prospects-action', {method:'POST', headers:{'Content-Type':'application/json'},\n      body: JSON.stringify({k:CLE, cle:f.cle, action, email,\n        objet: objetModifie ? objet : undefined, message: corpsModifie ? corps : undefined})});\n    const j = await rep.json();\n    if (!j.ok) throw new Error(j.erreur || 'erreur');\n    if (objetModifie) f.objet = objet; if (corpsModifie) f.message = corps;\n    if (action==='email'){ f.email = email.toLowerCase(); f.statut = 'A_VERIFIER'; }\n    if (action==='manuel'){ f.statut = 'ENVOYE_MANUEL'; f.date_envoi = j.date || ''; if(email) f.email = email; }\n    if (action==='rejeter'){ f.statut = 'REJETE_MANUEL'; }\n    rendu();\n  } catch(e){ msg.textContent = 'Échec : ' + e.message; }\n});\ndocument.addEventListener('input', ev => { if(ev.target.id==='rech'){ recherche = ev.target.value; const p = ev.target.selectionStart; rendu(); const i = document.getElementById('rech'); i.focus(); i.setSelectionRange(p,p); }});\nrendu();\n</script></body></html>`;\n\nreturn [{ json: { html } }];\n"
+      },
+      "position": [
+        448,
+        272
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "8759caa4-4cb5-4cc3-882d-bbdda4c0b673",
+      "name": "AFFICHER PAGE",
+      "parameters": {
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        },
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}"
+      },
+      "position": [
+        672,
+        272
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "73af5319-e308-4686-a155-69936a86cabe",
+      "name": "PAGE - action",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "impacteur-prospects-action",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        560
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "7369311b-54fa-4d86-a093-d0a5b12a94de"
+    },
+    {
+      "id": "19e77d5e-5e6b-460f-92f9-dc96a6bed51b",
+      "name": "PREPARER MAJ",
+      "parameters": {
+        "jsCode": "// PREPARER MAJ — transforme un clic de la page en mise à jour d'une ligne du tableau\n// ===== CONFIG : mêmes noms de colonnes que dans CONSTRUIRE PAGE =====\nconst CLE_ACCES = 'NfUdXKpkIT86U1NLVffoj0cG';\nconst COL = { cle: 'cle_unique', statut: 'statut', email: 'email_contact', source: 'source_contact', date_envoi: 'date_envoi', objet: 'objet', message: 'message_html' };\n// ====================================================================\n\nconst b = $input.first().json.body || {};\nconst erreur = m => [{ json: { valide: false, erreur: m } }];\nif (b.k !== CLE_ACCES) return erreur('accès refusé');\nif (!b.cle) return erreur('fiche inconnue');\n\nconst email = String(b.email || '').trim().toLowerCase();\nconst emailOk = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\nconst aujourdhui = new Date().toLocaleDateString('fr-CA', { timeZone: 'Europe/Paris' });\nconst maj = { [COL.cle]: String(b.cle) };\n\n// Mail retouché sur la page : texte simple → HTML (paragraphes et retours à la ligne)\nconst enHtml = t => t.split(/\\n{2,}/).map(p => '<p>' + p\n  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')\n  .replace(/(https?:\\/\\/[^\\s<]+)/g, '<a href=\"$1\">$1</a>')\n  .replace(/\\n/g, '<br>') + '</p>').join('\\n');\nif (typeof b.objet === 'string' && b.objet.trim()) maj[COL.objet] = b.objet.trim();\nif (typeof b.message === 'string' && b.message.trim()) maj[COL.message] = enHtml(b.message.trim());\n\nif (b.action === 'email') {\n  if (!emailOk) return erreur('email invalide');\n  maj[COL.email] = email;\n  maj[COL.source] = 'manuel (page prospects)';\n  maj[COL.statut] = 'A_VERIFIER'; // C l'enverra à sa prochaine passe\n} else if (b.action === 'manuel') {\n  if (emailOk) maj[COL.email] = email;\n  maj[COL.statut] = 'ENVOYE_MANUEL'; // C ne la touche plus\n  maj[COL.date_envoi] = aujourdhui;\n} else if (b.action === 'rejeter') {\n  maj[COL.statut] = 'REJETE_MANUEL';\n} else {\n  return erreur('action inconnue');\n}\n\nreturn [{ json: { valide: true, date: aujourdhui, maj } }];\n"
+      },
+      "position": [
+        224,
+        560
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "37964a9d-bf8c-4479-bb0e-a015ba0d23f3",
+      "name": "MAJ VALIDE ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "a081ef23-122d-4a0e-a4f6-e785dca2f1ae",
+              "leftValue": "={{ $json.valide }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        448,
+        560
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "72dcb02e-0e5b-4f2b-a10a-cfd8937172fd",
+      "name": "LIGNE A ECRIRE",
+      "parameters": {
+        "jsCode": "return [{ json: $input.first().json.maj }];"
+      },
+      "position": [
+        672,
+        464
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O4lmXxULfR6ZuTV2",
+          "name": "Google Sheets account"
+        }
+      },
+      "id": "9ae4c3a1-5260-42af-bc6f-9e21deece7ad",
+      "name": "METTRE A JOUR FICHE",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "cle_unique",
+              "id": "cle_unique",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "auteur",
+              "id": "auteur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "livre",
+              "id": "livre",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "editeur",
+              "id": "editeur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "date_publication",
+              "id": "date_publication",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_livre",
+              "id": "source_livre",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "description_livre",
+              "id": "description_livre",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "chaine",
+              "id": "chaine",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "recherches_auteur",
+              "id": "recherches_auteur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "recherches_editeur",
+              "id": "recherches_editeur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "emails_candidats",
+              "id": "emails_candidats",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "sources_contacts",
+              "id": "sources_contacts",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "objet_auteur",
+              "id": "objet_auteur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "message_auteur",
+              "id": "message_auteur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "objet_editeur",
+              "id": "objet_editeur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "message_editeur",
+              "id": "message_editeur",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "informations_a_verifier",
+              "id": "informations_a_verifier",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "email_contact",
+              "id": "email_contact",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "type_contact",
+              "id": "type_contact",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "source_contact_validee",
+              "id": "source_contact_validee",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "validation_contact",
+              "id": "validation_contact",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "statut",
+              "id": "statut",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "draft_id",
+              "id": "draft_id",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "derniere_mise_a_jour",
+              "id": "derniere_mise_a_jour",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "date_envoi",
+              "id": "date_envoi",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "ouvert_le",
+              "id": "ouvert_le",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "corps",
+              "id": "corps",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "compte_envoi",
+              "id": "compte_envoi",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "canBeUsedToMatch": true,
+              "defaultMatch": false,
+              "display": true,
+              "displayName": "row_number",
+              "id": "row_number",
+              "readOnly": true,
+              "removed": true,
+              "required": false,
+              "type": "number"
+            }
+          ],
+          "value": {}
+        },
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M"
+        },
+        "operation": "update",
+        "options": {},
+        "sheetName": {
+          "__rl": true,
+          "mode": "url",
+          "value": "https://docs.google.com/spreadsheets/d/1f4iIGffvwnEyAWVB7ZY3UgpWAuO828Uu05PSPHcnQ9M/edit?gid=0#gid=0"
+        }
+      },
+      "position": [
+        880,
+        464
+      ],
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5
+    },
+    {
+      "id": "2b286ef3-94ca-446f-b775-b70022e41ef2",
+      "name": "REPONSE OK",
+      "parameters": {
+        "options": {},
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, date: $('PREPARER MAJ').first().json.date }) }}"
+      },
+      "position": [
+        1104,
+        464
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "5e54395c-d568-4e37-baeb-274b9562b994",
+      "name": "REPONSE ERREUR",
+      "parameters": {
+        "options": {},
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: false, erreur: $json.erreur }) }}"
+      },
+      "position": [
+        672,
+        688
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "aa648bf5-1471-485f-ab1e-e090d7ed209a",
+      "name": "Note",
+      "parameters": {
+        "content": "## G — PAGE PROSPECTS\nAdresse : https://n8n.nourmeet.com/webhook/impacteur-prospects?k=NfUdXKpkIT86U1NLVffoj0cG\n\nAprès import : choisir le credential Google Sheets dans LIRE FICHES et METTRE A JOUR FICHE, vérifier l'onglet, puis publier.\nInviter → email + statut A_VERIFIER (+ objet/message si retouchés), part à la prochaine passe de C. Envoyé de mon côté → ENVOYE_MANUEL. Pas celui-là → REJETE_MANUEL.\nNoms de colonnes : bloc CONFIG en haut de CONSTRUIRE PAGE et PREPARER MAJ.",
+        "height": 220,
+        "width": 720
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

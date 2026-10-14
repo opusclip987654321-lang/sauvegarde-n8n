@@ -744,6 +744,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "c28f8219-4d21-4b9d-b6bf-f366e9a372d2",
       "name": "Envoyer l'extrait",
       "parameters": {

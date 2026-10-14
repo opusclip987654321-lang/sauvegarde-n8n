@@ -1,6 +1,24 @@
 {
   "active": true,
   "connections": {
+    "Action claire ?": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Envoyer l'alerte",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Créer ou mettre à jour ?",
+            "type": "main"
+          }
+        ]
+      ]
+    },
     "Annoncer le retour": {
       "main": [
         [
@@ -130,7 +148,7 @@
         [
           {
             "index": 0,
-            "node": "Envoyer l'alerte",
+            "node": "Action claire ?",
             "type": "main"
           }
         ],
@@ -620,6 +638,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "f1",
       "name": "Annoncer le retour",
       "onError": "continueRegularOutput",
@@ -666,6 +685,37 @@
       ],
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2
+    },
+    {
+      "id": "a17a5975-21a7-4706-a0c9-61d8822e7fd4",
+      "name": "Action claire ?",
+      "parameters": {
+        "conditions": {
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ String($json.texte || '').includes('ACTION REQUISE') && !/Ce que tu dois faire :<\\/b> Rien/.test(String($json.texte || '')) }}",
+              "operator": {
+                "operation": "true",
+                "singleValue": true,
+                "type": "boolean"
+              },
+              "rightValue": true
+            }
+          ],
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          }
+        },
+        "options": {}
+      },
+      "position": [
+        1540,
+        -200
+      ],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
     }
   ],
   "settings": {

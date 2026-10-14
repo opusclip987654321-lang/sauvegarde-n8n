@@ -441,6 +441,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "p12",
       "name": "Envoyer l'extrait",
       "parameters": {
@@ -587,6 +588,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "acbc32e7-6e2c-4786-b60a-133deec4de48",
       "name": "Prévenir (vidéo écartée)",
       "parameters": {

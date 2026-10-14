@@ -459,6 +459,7 @@
           "name": "Telegram - Impacteur bot"
         }
       },
+      "disabled": true,
       "id": "p12",
       "name": "Envoyer l'extrait",
       "parameters": {

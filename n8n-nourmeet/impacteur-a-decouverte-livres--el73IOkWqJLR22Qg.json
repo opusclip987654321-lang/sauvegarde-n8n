@@ -777,6 +777,7 @@
           "name": "Telegram - Impacteur Prospection"
         }
       },
+      "disabled": true,
       "id": "73eb591f-d527-456b-a86f-7f83e9455d13",
       "maxTries": 3,
       "name": "TELEGRAM - envoyer",
