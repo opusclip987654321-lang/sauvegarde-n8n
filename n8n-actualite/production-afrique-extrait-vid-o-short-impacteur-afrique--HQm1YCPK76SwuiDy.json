@@ -425,7 +425,7 @@
       "id": "p11",
       "name": "Légende",
       "parameters": {
-        "jsCode": "\nconst c = $('Choix du moment').first().json;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mmss = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;\nconst _cap = `🌍 <b>Impacteur Afrique</b> — 🤖 <b>Short prêt, publication au prochain créneau (toutes les 6 h)</b>\\n✂️ <b>${esc(c.titre)}</b>\\n📺 ${esc(c.source_nom)} · ${mmss(c.start)} → ${mmss(c.end)} (${Math.round(c.end - c.start)} s)\\n🧠 ${esc(c.raison)}\\n\\n📝 ${esc(c.description)}`;\nreturn [{ json: { caption: _cap.length > 1020 ? _cap.slice(0, 1015) + '…' : _cap,\n  cb_ok: `clip_ok|${c.video_id}`, cb_retry: `clip_retry|${c.video_id}|${Math.round(c.start)}|${Math.round(c.end)}`, cb_no: `clip_no|${c.video_id}` }, binary: $input.first().binary }];\n"
+        "jsCode": "\nconst c = $('Choix du moment').first().json;\nconst esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst mmss = s => `${Math.floor(s/60)}:${String(Math.round(s%60)).padStart(2,'0')}`;\nconst _cap = `🌍 <b>Impacteur Afrique</b> — 🤖 <b>Short prêt, publication au prochain créneau (12h ou 18h)</b>\\n✂️ <b>${esc(c.titre)}</b>\\n📺 ${esc(c.source_nom)} · ${mmss(c.start)} → ${mmss(c.end)} (${Math.round(c.end - c.start)} s)\\n🧠 ${esc(c.raison)}\\n\\n📝 ${esc(c.description)}`;\nreturn [{ json: { caption: _cap.length > 1020 ? _cap.slice(0, 1015) + '…' : _cap,\n  cb_ok: `clip_ok|${c.video_id}`, cb_retry: `clip_retry|${c.video_id}|${Math.round(c.start)}|${Math.round(c.end)}`, cb_no: `clip_no|${c.video_id}` }, binary: $input.first().binary }];\n"
       },
       "position": [
         2000,

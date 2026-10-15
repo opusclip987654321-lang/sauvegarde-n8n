@@ -1,0 +1,322 @@
+{
+  "active": true,
+  "connections": {
+    "Aiguillage": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Deepgram",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Atelier",
+            "type": "main"
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Fichier",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Atelier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse JSON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Deepgram": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse JSON",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Fichier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse fichier",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Vérifier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Aiguillage",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Vérifier",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "ZnAFX8oPXK642Oel",
+  "name": "OUTIL CLAUDE - Passerelle montage (transcription + atelier)",
+  "nodes": [
+    {
+      "id": "w",
+      "name": "Webhook",
+      "parameters": {
+        "httpMethod": "POST",
+        "options": {},
+        "path": "claude-montage-53578e",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "claude-montage-53578e"
+    },
+    {
+      "id": "c",
+      "name": "Vérifier",
+      "parameters": {
+        "jsCode": "const it = $input.first();\nconst h = it.json.headers || {};\nif (h['x-claude-token'] !== '53578e635ff7acf1fc6943c55f3e0ec7') throw new Error('jeton invalide');\nconst q = it.json.query || {};\nconst out = { json: { action: q.action || '', path: q.path || '', name: q.name || '', payload: it.json.body || {} } };\nif (it.binary) { const k = Object.keys(it.binary)[0]; if (k) out.binary = { data: it.binary[k] }; }\nreturn [out];"
+      },
+      "position": [
+        220,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "s",
+      "name": "Aiguillage",
+      "parameters": {
+        "options": {},
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "transcribe"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "transcribe",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "atelier"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "atelier",
+              "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "file"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "file",
+              "renameOutput": true
+            }
+          ]
+        }
+      },
+      "position": [
+        440,
+        0
+      ],
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "QVQbPy6IbcQaQPi4",
+          "name": "Deepgram"
+        }
+      },
+      "id": "d",
+      "name": "Deepgram",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "contentType": "binaryData",
+        "genericAuthType": "httpHeaderAuth",
+        "inputDataFieldName": "data",
+        "method": "POST",
+        "options": {
+          "timeout": 1800000
+        },
+        "sendBody": true,
+        "url": "https://api.deepgram.com/v1/listen?model=nova-2&language=fr&smart_format=true&punctuate=true&utterances=true"
+      },
+      "position": [
+        700,
+        -200
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "a",
+      "name": "Atelier",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "jsonBody": "={{ JSON.stringify($json.payload) }}",
+        "method": "POST",
+        "options": {
+          "timeout": 1800000
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "={{ 'http://atelier:8000/' + $json.path }}"
+      },
+      "position": [
+        700,
+        0
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "CwNA5uLULnizfCgy",
+          "name": "Atelier vidéo (interne)"
+        }
+      },
+      "id": "f",
+      "name": "Fichier",
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "data",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 600000
+        },
+        "url": "={{ 'http://atelier:8000/files/' + $json.name }}"
+      },
+      "position": [
+        700,
+        200
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "id": "rj",
+      "name": "Réponse JSON",
+      "parameters": {
+        "options": {},
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}"
+      },
+      "position": [
+        960,
+        -100
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    },
+    {
+      "id": "rb",
+      "name": "Réponse fichier",
+      "parameters": {
+        "options": {},
+        "respondWith": "binary"
+      },
+      "position": [
+        960,
+        200
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}
