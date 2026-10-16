@@ -23,6 +23,13 @@
             "node": "Fichier",
             "type": "main"
           }
+        ],
+        [
+          {
+            "index": 0,
+            "node": "Image",
+            "type": "main"
+          }
         ]
       ]
     },
@@ -49,6 +56,17 @@
       ]
     },
     "Fichier": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Réponse fichier",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Image": {
       "main": [
         [
           {
@@ -187,6 +205,28 @@
               },
               "outputKey": "file",
               "renameOutput": true
+            },
+            {
+              "conditions": {
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "operator": {
+                      "operation": "equals",
+                      "type": "string"
+                    },
+                    "rightValue": "image"
+                  }
+                ],
+                "options": {
+                  "caseSensitive": true,
+                  "typeValidation": "strict",
+                  "version": 1
+                }
+              },
+              "outputKey": "image",
+              "renameOutput": true
             }
           ]
         }
@@ -313,6 +353,42 @@
       ],
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1
+    },
+    {
+      "id": "img",
+      "name": "Image",
+      "parameters": {
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "ExtraitPolitiqueMontage/1.0 (https://n8n.actualitevideo.fr/; montage video) n8n-http"
+            },
+            {
+              "name": "Accept",
+              "value": "image/*"
+            }
+          ]
+        },
+        "method": "GET",
+        "options": {
+          "response": {
+            "response": {
+              "outputPropertyName": "data",
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 60000
+        },
+        "sendHeaders": true,
+        "url": "={{ String($json.payload.url || '').startsWith('https://upload.wikimedia.org/') ? $json.payload.url : 'https://upload.wikimedia.org/interdit' }}"
+      },
+      "position": [
+        700,
+        400
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
     }
   ],
   "settings": {
