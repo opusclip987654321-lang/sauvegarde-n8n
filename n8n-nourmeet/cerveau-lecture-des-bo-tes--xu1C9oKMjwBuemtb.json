@@ -1,0 +1,302 @@
+{
+  "active": true,
+  "connections": {
+    "Appel du cerveau": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte opusclip987654321",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte gougamwalid": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte impacteurfrexit",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte impacteurafrique": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Rassembler",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte impacteurfrexit": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte impacteurafrique",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte impacteurmedia": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte gougamwalid",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte opusclip987654321": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte walidvideos12",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Boîte walidvideos12": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Boîte impacteurmedia",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Rassembler": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Répondre",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "xu1C9oKMjwBuemtb",
+  "name": "CERVEAU - lecture des boîtes",
+  "nodes": [
+    {
+      "id": "b0",
+      "name": "Appel du cerveau",
+      "parameters": {
+        "options": {},
+        "path": "cerveau-boites-4164bbc2a98b058978a7ada3fda245d2",
+        "responseMode": "responseNode"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "cerveau-boites-4164bbc2a98b058978a7ada3fda245d2"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "VK1rrQLANXKusvmS",
+          "name": "Gmail account 3"
+        }
+      },
+      "executeOnce": true,
+      "id": "b1",
+      "name": "Boîte opusclip987654321",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        224,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "08825825-8389-443e-a5d5-a513f432cb3a"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Sd29yoVIgsOOKOyj",
+          "name": "Gmail account 4"
+        }
+      },
+      "executeOnce": true,
+      "id": "b2",
+      "name": "Boîte walidvideos12",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        448,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "335b4498-8d90-4094-89fd-56f21fb30aed"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "fxIN1ksGZS2UEveb",
+          "name": "Gmail account 5"
+        }
+      },
+      "executeOnce": true,
+      "id": "b3",
+      "name": "Boîte impacteurmedia",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        672,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "77ac6f2e-ad10-4805-856c-03090459712d"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7REqIXIuHirnrPIq",
+          "name": "Gmail account 2"
+        }
+      },
+      "executeOnce": true,
+      "id": "b4",
+      "name": "Boîte gougamwalid",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        880,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "b7480a4a-b8bc-4d5c-b10f-a4e6d8928e49"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GoNqP58lNcHKXlN0",
+          "name": "Gmail - Impacteur Frexit"
+        }
+      },
+      "executeOnce": true,
+      "id": "b5",
+      "name": "Boîte impacteurfrexit",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        1104,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "1163cc60-2c69-4f67-a915-69005bc92466"
+    },
+    {
+      "alwaysOutputData": true,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "SO5LY7nXS3log8Bk",
+          "name": "Gmail account"
+        }
+      },
+      "executeOnce": true,
+      "id": "b6",
+      "name": "Boîte impacteurafrique",
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "filters": {
+          "q": "in:inbox newer_than:3d -category:promotions -category:social -category:forums"
+        },
+        "operation": "getAll"
+      },
+      "position": [
+        1328,
+        0
+      ],
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "webhookId": "d639afc7-603e-41b7-a5c9-defbd442ce20"
+    },
+    {
+      "id": "b7",
+      "name": "Rassembler",
+      "parameters": {
+        "jsCode": "\nconst boites = [[\"opusclip\", \"Boîte opusclip987654321\"], [\"walidvideos12\", \"Boîte walidvideos12\"], [\"impacteurmedia\", \"Boîte impacteurmedia\"], [\"gougamwalid\", \"Boîte gougamwalid\"], [\"impacteurfrexit\", \"Boîte impacteurfrexit\"], [\"impacteurafrique\", \"Boîte impacteurafrique\"]];\nconst sortie = [];\nlet precedents = '';\nfor (const [boite, noeud] of boites) {\n  let items = [];\n  try { items = $(noeud).all(); } catch (e) { sortie.push({ json: { boite, erreur: 'pas lue : ' + e.message } }); continue; }\n  const panne = items.find((i) => i.json && i.json.error);\n  if (panne) { sortie.push({ json: { boite, erreur: String(panne.json.error.message || panne.json.error).slice(0, 300) } }); continue; }\n  const mails = items.filter((i) => i.json && i.json.id);\n  // Un nœud éteint laisse passer les mails du précédent : on ne les compte pas deux fois.\n  const ids = mails.map((i) => i.json.id).join(',');\n  if (ids && ids === precedents) { sortie.push({ json: { boite, erreur: 'nœud éteint dans n8n' } }); continue; }\n  precedents = ids;\n  sortie.push({ json: { boite, lus: mails.length } });\n  for (const i of mails) {\n    const m = i.json;\n    sortie.push({ json: { boite, id: m.id, threadId: m.threadId, From: m.From, To: m.To, Subject: m.Subject, snippet: m.snippet, internalDate: m.internalDate,\n      labelIds: m.labelIds || (m.labels || []).map((l) => l.id) } });\n  }\n}\nreturn sortie;\n"
+      },
+      "position": [
+        1552,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "b8",
+      "name": "Répondre",
+      "parameters": {
+        "options": {},
+        "respondWith": "allIncomingItems"
+      },
+      "position": [
+        1760,
+        0
+      ],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none"
+  },
+  "tags": []
+}
