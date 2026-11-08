@@ -1188,8 +1188,8 @@
         "url": "={{ $(\"Analyser l'accueil\").item.json.legales_url || 'https://site-absent.invalid' }}"
       },
       "position": [
-        -436,
-        292
+        -432,
+        304
       ],
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2
@@ -1227,8 +1227,8 @@
         "url": "={{ $(\"Analyser l'accueil\").item.json.reservation_url || 'https://site-absent.invalid' }}"
       },
       "position": [
-        -216,
-        292
+        -224,
+        304
       ],
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2
@@ -1266,8 +1266,8 @@
         "url": "={{ $(\"Analyser l'accueil\").item.json.facebook_url || 'https://site-absent.invalid' }}"
       },
       "position": [
-        4,
-        292
+        16,
+        304
       ],
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2
@@ -1286,8 +1286,8 @@
         }
       },
       "position": [
-        -2428,
-        332
+        -2432,
+        336
       ],
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2
@@ -1319,7 +1319,7 @@
         "options": {}
       },
       "position": [
-        -1988,
+        -1984,
         112
       ],
       "type": "n8n-nodes-base.if",
@@ -1343,12 +1343,11 @@
           ]
         },
         "matchType": "allConditions",
-        "operation": "get",
-        "options": {}
+        "operation": "get"
       },
       "position": [
-        -1768,
-        332
+        -1776,
+        336
       ],
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1
@@ -1360,8 +1359,8 @@
         "jsCode": "// 40 fiches « sans_email » par jour, en rotation pour couvrir tout le stock.\nconst lignes = $input.all().map((x) => x.json)\n  .filter((r) => String(r.site || '').trim() && String(r.statut || '') === 'sans_email');\nconst jour = Math.floor(Date.now() / 86400000);\nconst N = 40;\nconst debut = lignes.length ? (jour * N) % lignes.length : 0;\nconst choisies = lignes.slice(debut, debut + N);\nif (choisies.length < N) choisies.push(...lignes.slice(0, Math.min(N - choisies.length, Math.max(0, debut))));\nreturn choisies.map((r) => ({ json: {\n  place_id: r.place_id, nom: r.nom || '', adresse: r.adresse || '', ville: r.ville || '', code_postal: r.code_postal || '',\n  site: r.site, telephone: r.telephone || '', maps_url: r.maps_url || '', note: r.note ?? null, nb_avis: r.nb_avis ?? null,\n  niveau_prix: r.niveau_prix || '', groupes: false, alcool_google: false, indices_google: r.indices_google || '',\n} }));"
       },
       "position": [
-        -1548,
-        332
+        -1552,
+        336
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
@@ -1401,10 +1400,10 @@
           },
           "timeout": 15000
         },
-        "url": "https://cerveau.nourmeet.com/loop/nour-meet/eb2d301ca94480a4db125b873411a466"
+        "url": "https://loopagent.actualitevideo.fr/loop/nour-meet/d6589ebec04ed1006b4a81ec68cab851"
       },
       "position": [
-        -2900,
+        -2896,
         112
       ],
       "type": "n8n-nodes-base.httpRequest",

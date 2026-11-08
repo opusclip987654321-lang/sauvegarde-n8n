@@ -1078,7 +1078,7 @@
       "id": "61fb3b3e-8330-49cc-8e30-588b6d72c148",
       "name": "PREPARER BROUILLON IMMEDIAT",
       "parameters": {
-        "jsCode": "// Après approbation (/valider ou /email), crée le brouillon tout de suite.\nconst p=$('PREPARER VALIDATION').first().json;\nif(!p.ok||p.action==='rejeter')return [];\nif(String(p.draft_id||'').trim())return [];\nconst escH=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst logoUrl=/afrique/i.test(String(p.chaine||''))?'https://cerveau.nourmeet.com/logos/impacteur-afrique.png':'https://cerveau.nourmeet.com/logos/impacteur-frexit.png';\nconst message_html='<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#111\">'+escH(String(p.message_auteur||'')).replace(/\\n/g,'<br>')+'<br><br><img src=\"'+logoUrl+'\" width=\"88\" height=\"88\" alt=\"'+escH(String(p.chaine||''))+'\" style=\"border-radius:50%\"></div>';\nreturn [{json:{\n cle_unique:String(p.cle_unique||''),email_contact:String(p.email_contact||''),\n chaine:String(p.chaine||''),objet:String(p.objet_auteur||''),message:message_html,\n auteur:String(p.auteur||''),chat_id:String(p.chat_id||'')\n}}];"
+        "jsCode": "// Après approbation (/valider ou /email), crée le brouillon tout de suite.\nconst p=$('PREPARER VALIDATION').first().json;\nif(!p.ok||p.action==='rejeter')return [];\nif(String(p.draft_id||'').trim())return [];\nconst escH=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');\nconst logoUrl=/afrique/i.test(String(p.chaine||''))?' https://loopagent.actualitevideo.fr/logos/impacteur-afrique.png':' https://loopagent.actualitevideo.fr/logos/impacteur-frexit.png';\nconst message_html='<div style=\"font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#111\">'+escH(String(p.message_auteur||'')).replace(/\\n/g,'<br>')+'<br><br><img src=\"'+logoUrl+'\" width=\"88\" height=\"88\" alt=\"'+escH(String(p.chaine||''))+'\" style=\"border-radius:50%\"></div>';\nreturn [{json:{\n cle_unique:String(p.cle_unique||''),email_contact:String(p.email_contact||''),\n chaine:String(p.chaine||''),objet:String(p.objet_auteur||''),message:message_html,\n auteur:String(p.auteur||''),chat_id:String(p.chat_id||'')\n}}];"
       },
       "position": [
         1856,
@@ -2147,7 +2147,7 @@
         "path": "cerveau-valider-7e692c978e1f8674"
       },
       "position": [
-        616,
+        624,
         2384
       ],
       "type": "n8n-nodes-base.webhook",
@@ -2161,7 +2161,7 @@
         "jsCode": "// Demande du site du cerveau (boutons Valider / Rejeter de la page Impacteur).\n// L'adresse du webhook est secrète (gardée dans le .env du cerveau) : elle vaut autorisation.\nconst corps=$input.first().json.body||{};\nconst store=$getWorkflowStaticData('global');\nif(!store.telegram_owner_user_id)return [];\nconst choix=String(corps.choix||'');\nif(choix!=='valider'&&choix!=='rejeter')return [];\nconst auteur=String(corps.auteur||'').trim().slice(0,120);\nconst livre=String(corps.livre||'').trim().slice(0,160);\nif(!auteur)return [];\nreturn [{json:{route:'validation',action:choix,chat_id:String(store.telegram_chat_id||''),cle_unique:'',auteur,livre,origine:'site'}}];"
       },
       "position": [
-        836,
+        848,
         2384
       ],
       "type": "n8n-nodes-base.code",
