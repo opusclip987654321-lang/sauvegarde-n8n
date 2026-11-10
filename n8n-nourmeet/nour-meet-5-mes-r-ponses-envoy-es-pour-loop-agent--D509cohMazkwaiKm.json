@@ -1,0 +1,100 @@
+{
+  "active": true,
+  "connections": {
+    "Garder destinataire et date": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Écrire np_mes_reponses",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Mail envoyé (IMAP, dossier Envoyés)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Garder destinataire et date",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "id": "D509cohMazkwaiKm",
+  "name": "Nour Meet 5 - Mes réponses envoyées (pour Loop Agent)",
+  "nodes": [
+    {
+      "credentials": {
+        "imap": {
+          "id": "KYNtvsWkOOnoEL1O",
+          "name": "IMAP OVH contact@nourmeet.com"
+        }
+      },
+      "id": "nm5-imap",
+      "name": "Mail envoyé (IMAP, dossier Envoyés)",
+      "parameters": {
+        "format": "simple",
+        "mailbox": "Sent",
+        "options": {
+          "customEmailConfig": "[\"ALL\", [\"SINCE\", \"2026-09-25\"]]",
+          "trackLastMessageId": true
+        },
+        "postProcessAction": "nothing"
+      },
+      "position": [
+        0,
+        0
+      ],
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1
+    },
+    {
+      "id": "nm5-code",
+      "name": "Garder destinataire et date",
+      "parameters": {
+        "jsCode": "// Mes réponses (Walid) : destinataire, date, objet et ce que Walid a écrit (sans la citation).\nconst out = [];\nfor (const { json: m } of $input.all()) {\n  const to = String(m.to || '') + ',' + String(m.cc || '');\n  const adrs = [...new Set((to.match(/[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+/g) || []).map((a) => a.toLowerCase()))];\n  const d = m.date ? new Date(m.date) : new Date();\n  const corps = String(m.textPlain || m.text || '').split(/\\n\\s*(?:>|Le .{0,160}a écrit|-{2,}\\s*Message d'origine|De ?:|From ?:)/)[0].trim().slice(0, 1500);\n  const objet = String(m.subject || '').slice(0, 200);\n  for (const a of adrs) if (a !== 'contact@nourmeet.com') out.push({ json: { destinataire: a, envoye: (isNaN(d) ? new Date() : d).toISOString(), objet, texte: corps } });\n}\nreturn out;"
+      },
+      "position": [
+        260,
+        0
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "nm5-table",
+      "name": "Écrire np_mes_reponses",
+      "parameters": {
+        "columns": {
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false,
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": [],
+          "schema": [],
+          "value": {}
+        },
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "np_mes_reponses"
+        },
+        "options": {}
+      },
+      "position": [
+        520,
+        0
+      ],
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1
+    }
+  ],
+  "settings": {
+    "binaryMode": "separate",
+    "executionOrder": "v1"
+  },
+  "tags": []
+}
